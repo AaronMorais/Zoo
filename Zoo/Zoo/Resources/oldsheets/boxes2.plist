@@ -1,0 +1,830 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>frames</key>
+	<dict>
+		
+		<key>elephantbox1.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{167, 114}, {632, 502}}</string>
+			<key>spriteOffset</key>
+			<string>{3, -45}</string>
+			<key>spriteSize</key>
+			<string>{632, 502}</string>
+			<key>spriteSourceSize</key>
+			<string>{960, 640}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{3160, 2010}, {632, 502}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>elephantbox2.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{167, 114}, {632, 502}}</string>
+			<key>spriteOffset</key>
+			<string>{3, -45}</string>
+			<key>spriteSize</key>
+			<string>{632, 502}</string>
+			<key>spriteSourceSize</key>
+			<string>{960, 640}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{1268, 2514}, {632, 502}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>elephantbox3.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{167, 115}, {632, 500}}</string>
+			<key>spriteOffset</key>
+			<string>{3, -45}</string>
+			<key>spriteSize</key>
+			<string>{632, 500}</string>
+			<key>spriteSourceSize</key>
+			<string>{960, 640}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{3170, 2514}, {632, 500}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>elephantbox4.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{167, 114}, {630, 502}}</string>
+			<key>spriteOffset</key>
+			<string>{2, -45}</string>
+			<key>spriteSize</key>
+			<string>{630, 502}</string>
+			<key>spriteSourceSize</key>
+			<string>{960, 640}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{0, 1002}, {630, 502}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>elephantbox5.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{167, 114}, {630, 502}}</string>
+			<key>spriteOffset</key>
+			<string>{2, -45}</string>
+			<key>spriteSize</key>
+			<string>{630, 502}</string>
+			<key>spriteSourceSize</key>
+			<string>{960, 640}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{1896, 1002}, {630, 502}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>elephantbox6.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{167, 114}, {628, 502}}</string>
+			<key>spriteOffset</key>
+			<string>{1, -45}</string>
+			<key>spriteSize</key>
+			<string>{628, 502}</string>
+			<key>spriteSourceSize</key>
+			<string>{960, 640}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{3148, 0}, {628, 502}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>elephantbox7.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{167, 114}, {630, 502}}</string>
+			<key>spriteOffset</key>
+			<string>{2, -45}</string>
+			<key>spriteSize</key>
+			<string>{630, 502}</string>
+			<key>spriteSourceSize</key>
+			<string>{960, 640}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{0, 1506}, {630, 502}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>elephantbox8.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{167, 114}, {630, 502}}</string>
+			<key>spriteOffset</key>
+			<string>{2, -45}</string>
+			<key>spriteSize</key>
+			<string>{630, 502}</string>
+			<key>spriteSourceSize</key>
+			<string>{960, 640}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{2528, 1002}, {630, 502}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>elephantbox9.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{167, 114}, {632, 502}}</string>
+			<key>spriteOffset</key>
+			<string>{3, -45}</string>
+			<key>spriteSize</key>
+			<string>{632, 502}</string>
+			<key>spriteSourceSize</key>
+			<string>{960, 640}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{0, 2514}, {632, 502}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>hippobox1.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{170, 99}, {628, 496}}</string>
+			<key>spriteOffset</key>
+			<string>{4, -27}</string>
+			<key>spriteSize</key>
+			<string>{628, 496}</string>
+			<key>spriteSourceSize</key>
+			<string>{960, 640}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{0, 504}, {628, 496}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>hippobox2.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{170, 99}, {628, 496}}</string>
+			<key>spriteOffset</key>
+			<string>{4, -27}</string>
+			<key>spriteSize</key>
+			<string>{628, 496}</string>
+			<key>spriteSourceSize</key>
+			<string>{960, 640}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{2518, 0}, {628, 496}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>hippobox3.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{170, 99}, {632, 496}}</string>
+			<key>spriteOffset</key>
+			<string>{6, -27}</string>
+			<key>spriteSize</key>
+			<string>{632, 496}</string>
+			<key>spriteSourceSize</key>
+			<string>{960, 640}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{2536, 2514}, {632, 496}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>hippobox4.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{169, 99}, {632, 496}}</string>
+			<key>spriteOffset</key>
+			<string>{5, -27}</string>
+			<key>spriteSize</key>
+			<string>{632, 496}</string>
+			<key>spriteSourceSize</key>
+			<string>{960, 640}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{1902, 2514}, {632, 496}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>hippobox5.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{169, 99}, {630, 496}}</string>
+			<key>spriteOffset</key>
+			<string>{4, -27}</string>
+			<key>spriteSize</key>
+			<string>{630, 496}</string>
+			<key>spriteSourceSize</key>
+			<string>{960, 640}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{3150, 504}, {630, 496}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>hippobox6.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{168, 99}, {630, 496}}</string>
+			<key>spriteOffset</key>
+			<string>{3, -27}</string>
+			<key>spriteSize</key>
+			<string>{630, 496}</string>
+			<key>spriteSourceSize</key>
+			<string>{960, 640}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{1896, 2010}, {630, 496}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>hippobox7.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{169, 99}, {628, 496}}</string>
+			<key>spriteOffset</key>
+			<string>{3, -27}</string>
+			<key>spriteSize</key>
+			<string>{628, 496}</string>
+			<key>spriteSourceSize</key>
+			<string>{960, 640}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{1260, 504}, {628, 496}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>hippobox8.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{170, 99}, {628, 496}}</string>
+			<key>spriteOffset</key>
+			<string>{4, -27}</string>
+			<key>spriteSize</key>
+			<string>{628, 496}</string>
+			<key>spriteSourceSize</key>
+			<string>{960, 640}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{2520, 504}, {628, 496}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>hippobox9.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{170, 99}, {628, 496}}</string>
+			<key>spriteOffset</key>
+			<string>{4, -27}</string>
+			<key>spriteSize</key>
+			<string>{628, 496}</string>
+			<key>spriteSourceSize</key>
+			<string>{960, 640}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{628, 0}, {628, 496}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>lionbox1.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{167, 116}, {630, 496}}</string>
+			<key>spriteOffset</key>
+			<string>{2, -44}</string>
+			<key>spriteSize</key>
+			<string>{630, 496}</string>
+			<key>spriteSourceSize</key>
+			<string>{960, 640}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{3160, 1002}, {630, 496}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>lionbox2.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{167, 116}, {630, 496}}</string>
+			<key>spriteOffset</key>
+			<string>{2, -44}</string>
+			<key>spriteSize</key>
+			<string>{630, 496}</string>
+			<key>spriteSourceSize</key>
+			<string>{960, 640}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{632, 2010}, {630, 496}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>lionbox3.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{171, 116}, {630, 496}}</string>
+			<key>spriteOffset</key>
+			<string>{6, -44}</string>
+			<key>spriteSize</key>
+			<string>{630, 496}</string>
+			<key>spriteSourceSize</key>
+			<string>{960, 640}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{3160, 1506}, {630, 496}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>lionbox4.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{169, 116}, {628, 496}}</string>
+			<key>spriteOffset</key>
+			<string>{3, -44}</string>
+			<key>spriteSize</key>
+			<string>{628, 496}</string>
+			<key>spriteSourceSize</key>
+			<string>{960, 640}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{1890, 504}, {628, 496}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>lionbox5.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{167, 116}, {628, 496}}</string>
+			<key>spriteOffset</key>
+			<string>{1, -44}</string>
+			<key>spriteSize</key>
+			<string>{628, 496}</string>
+			<key>spriteSourceSize</key>
+			<string>{960, 640}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{630, 504}, {628, 496}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>lionbox6.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{166, 116}, {626, 496}}</string>
+			<key>spriteOffset</key>
+			<string>{-1, -44}</string>
+			<key>spriteSize</key>
+			<string>{626, 496}</string>
+			<key>spriteSourceSize</key>
+			<string>{960, 640}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{0, 0}, {626, 496}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>lionbox7.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{166, 116}, {628, 496}}</string>
+			<key>spriteOffset</key>
+			<string>{0, -44}</string>
+			<key>spriteSize</key>
+			<string>{628, 496}</string>
+			<key>spriteSourceSize</key>
+			<string>{960, 640}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{1258, 0}, {628, 496}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>lionbox8.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{166, 116}, {630, 496}}</string>
+			<key>spriteOffset</key>
+			<string>{1, -44}</string>
+			<key>spriteSize</key>
+			<string>{630, 496}</string>
+			<key>spriteSourceSize</key>
+			<string>{960, 640}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{632, 1506}, {630, 496}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>lionbox9.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{167, 116}, {630, 496}}</string>
+			<key>spriteOffset</key>
+			<string>{2, -44}</string>
+			<key>spriteSize</key>
+			<string>{630, 496}</string>
+			<key>spriteSourceSize</key>
+			<string>{960, 640}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{0, 2010}, {630, 496}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>penguinbox1.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{164, 113}, {630, 500}}</string>
+			<key>spriteOffset</key>
+			<string>{-1, -43}</string>
+			<key>spriteSize</key>
+			<string>{630, 500}</string>
+			<key>spriteSourceSize</key>
+			<string>{960, 640}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{1896, 1506}, {630, 500}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>penguinbox2.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{164, 113}, {630, 500}}</string>
+			<key>spriteOffset</key>
+			<string>{-1, -43}</string>
+			<key>spriteSize</key>
+			<string>{630, 500}</string>
+			<key>spriteSourceSize</key>
+			<string>{960, 640}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{1264, 1002}, {630, 500}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>penguinbox3.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{168, 113}, {628, 500}}</string>
+			<key>spriteOffset</key>
+			<string>{2, -43}</string>
+			<key>spriteSize</key>
+			<string>{628, 500}</string>
+			<key>spriteSourceSize</key>
+			<string>{960, 640}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{1888, 0}, {628, 500}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>penguinbox4.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{168, 113}, {630, 500}}</string>
+			<key>spriteOffset</key>
+			<string>{3, -43}</string>
+			<key>spriteSize</key>
+			<string>{630, 500}</string>
+			<key>spriteSourceSize</key>
+			<string>{960, 640}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{1264, 1506}, {630, 500}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>penguinbox5.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{168, 113}, {630, 500}}</string>
+			<key>spriteOffset</key>
+			<string>{3, -43}</string>
+			<key>spriteSize</key>
+			<string>{630, 500}</string>
+			<key>spriteSourceSize</key>
+			<string>{960, 640}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{2528, 1506}, {630, 500}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>penguinbox6.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{167, 113}, {632, 500}}</string>
+			<key>spriteOffset</key>
+			<string>{3, -43}</string>
+			<key>spriteSize</key>
+			<string>{632, 500}</string>
+			<key>spriteSourceSize</key>
+			<string>{960, 640}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{634, 2514}, {632, 500}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>penguinbox7.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{166, 113}, {630, 500}}</string>
+			<key>spriteOffset</key>
+			<string>{1, -43}</string>
+			<key>spriteSize</key>
+			<string>{630, 500}</string>
+			<key>spriteSourceSize</key>
+			<string>{960, 640}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{1264, 2010}, {630, 500}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>penguinbox8.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{165, 113}, {630, 500}}</string>
+			<key>spriteOffset</key>
+			<string>{0, -43}</string>
+			<key>spriteSize</key>
+			<string>{630, 500}</string>
+			<key>spriteSourceSize</key>
+			<string>{960, 640}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{632, 1002}, {630, 500}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>penguinbox9.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{164, 113}, {630, 500}}</string>
+			<key>spriteOffset</key>
+			<string>{-1, -43}</string>
+			<key>spriteSize</key>
+			<string>{630, 500}</string>
+			<key>spriteSourceSize</key>
+			<string>{960, 640}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{2528, 2010}, {630, 500}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+	</dict>
+	<key>metadata</key>
+	<dict>
+		<key>version</key>
+		<string>1.5.5</string>
+		<key>format</key>
+		<integer>3</integer>
+		<key>size</key>
+		<string>{4096, 4096}</string>
+		<key>name</key>
+		<string>Untitled</string>
+		<key>premultipliedAlpha</key>
+		<false/>
+		<key>target</key>
+		<dict>
+			<key>name</key>
+			<string>default</string>
+			<key>textureFileName</key>
+			<string>boxes2</string>
+			<key>textureFileExtension</key>
+			<string>.png</string>
+			<key>coordinatesFileName</key>
+			<string>boxes2</string>
+			<key>coordinatesFileExtension</key>
+			<string>.plist</string>
+			<key>premultipliedAlpha</key>
+			<false/>
+		</dict>
+	</dict>
+</dict>
+</plist>
