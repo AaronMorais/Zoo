@@ -284,6 +284,7 @@ PP 30/1000*/
     [lBlinkAction retain];
 }
 
+#pragma mark Start Game
 //start the game
 - (void)startGame{
     gameState = true;
@@ -293,43 +294,37 @@ PP 30/1000*/
 }
 
 static int countDown = 5;
-static CCSprite* count;
+CCSprite* count;
 - (void)countDown{
     countDown--;
-    CCLayer *fadeLayer = [[CCLayerColor alloc] initWithColor:ccc4(100, 100, 100, 0.5) width:100 height:100];
-    fadeLayer.position = CGPointMake(floorf(self.boundingBox.size.width/2.0f), floorf(self.boundingBox.size.height));
-    [self.scene addChild:fadeLayer];
     if(countDown == 4){
+        fadeLayer = [CCLayerColor layerWithColor:ccc4(0, 0, 0, 255)];
+        [fadeLayer setOpacity:175];
+        [self addChild:fadeLayer z:1];
+        
+        [[CCDirector sharedDirector] touchDispatcher].dispatchEvents = NO;
+        
         [self schedule:@selector(countDown) interval:0.5];
-    }if(countDown == 3){
-        count = [CCSprite spriteWithSpriteFrameName:@"3.png"];
-        count.position = ccp(winSize.width/2, winSize.height/2);
-        count.scale = 0.75;
-        [self addChild:count];
-        [self schedule:@selector(countDown) interval:1];
-        [self countdownSound];
-    }else if(countDown == 2){
+    }else if(countDown > 0){
         [self removeChild:count cleanup:YES];
-        count = [CCSprite spriteWithSpriteFrameName:@"2.png"];
+        NSString* path = [NSString stringWithFormat:@"%d.png",countDown];
+        count = [CCSprite spriteWithSpriteFrameName:path];
         count.position = ccp(winSize.width/2, winSize.height/2);
         count.scale = 0.75;
-        [self addChild:count];
-        [self schedule:@selector(countDown) interval:1];
-        [self countdownSound];
-    }else if(countDown == 1){
-        [self removeChild:count cleanup:YES];
-        count = [CCSprite spriteWithSpriteFrameName:@"1.png"];
-        count.position = ccp(winSize.width/2, winSize.height/2);
-        count.scale = 0.75;
-        [self addChild:count];
+        [self addChild:count z:2];
         [self schedule:@selector(countDown) interval:1];
         [self countdownSound];
     }else if(countDown == 0){
+        id fadeOut = [CCFadeTo actionWithDuration:0.5f opacity:0];
+        id removeLayer = [CCCallFunc actionWithTarget:self selector:@selector(removeFadeLayer)];
+        id seq = [CCSequence actions:fadeOut, removeLayer, nil];
+        [fadeLayer runAction:seq];
+        
         [self removeChild:count cleanup:YES];
         count = [CCSprite spriteWithSpriteFrameName:@"go!.png"];
         count.position = ccp(winSize.width/2, winSize.height/2);
         count.scale = 0.65;
-        [self addChild:count];
+        [self addChild:count z:2];
         [self schedule:@selector(countDown) interval:0.5];
         [self countdownSound];
     }else if(countDown == -1){
@@ -337,7 +332,12 @@ static CCSprite* count;
         [self removeChild:count cleanup:YES];
         [self unschedule:@selector(countDown)];
         countDown = 5;
+        [[CCDirector sharedDirector] touchDispatcher].dispatchEvents = YES;
     }
+}
+
+- (void) removeFadeLayer {
+    [self removeChild:fadeLayer cleanup:YES];
 }
 
 //create all boxes

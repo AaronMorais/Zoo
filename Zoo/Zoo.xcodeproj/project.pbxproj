@@ -10,7 +10,6 @@
 		930829BE15DADAE2006C7CF9 /* assets in Resources */ = {isa = PBXBuildFile; fileRef = 930829BD15DADAE2006C7CF9 /* assets */; };
 		930829C315DADC5C006C7CF9 /* GameLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 930829C215DADC5C006C7CF9 /* GameLayer.m */; };
 		933B9A2F15E99B16003770CF /* Singleton.m in Sources */ = {isa = PBXBuildFile; fileRef = 933B9A2E15E99B16003770CF /* Singleton.m */; };
-		9357B51216B20A4F00EB940F /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 9357B51116B20A4F00EB940F /* GameScene.m */; };
 		9378905E15DCACE9000AA56F /* DragSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = 9378905D15DCACE9000AA56F /* DragSprite.m */; };
 		9379BAE01687EDD700DB272D /* MenuLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9379BADF1687EDD700DB272D /* MenuLayer.m */; };
 		9383FC9316924F1F0031E2DC /* countdown.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9383FC9216924F1F0031E2DC /* countdown.mp3 */; };
@@ -161,8 +160,6 @@
 		930829C215DADC5C006C7CF9 /* GameLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameLayer.m; sourceTree = "<group>"; };
 		933B9A2D15E99B16003770CF /* Singleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Singleton.h; sourceTree = "<group>"; };
 		933B9A2E15E99B16003770CF /* Singleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Singleton.m; sourceTree = "<group>"; };
-		9357B51016B20A4F00EB940F /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
-		9357B51116B20A4F00EB940F /* GameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameScene.m; sourceTree = "<group>"; };
 		9378905C15DCACE9000AA56F /* DragSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DragSprite.h; sourceTree = "<group>"; };
 		9378905D15DCACE9000AA56F /* DragSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DragSprite.m; sourceTree = "<group>"; };
 		9379BADE1687EDD700DB272D /* MenuLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuLayer.h; sourceTree = "<group>"; };
@@ -521,8 +518,6 @@
 				939CAB8C169151E50064D90C /* PauseLayer.m */,
 				930829C115DADC5C006C7CF9 /* GameLayer.h */,
 				930829C215DADC5C006C7CF9 /* GameLayer.m */,
-				9357B51016B20A4F00EB940F /* GameScene.h */,
-				9357B51116B20A4F00EB940F /* GameScene.m */,
 				93B0DC9A15DEE8FF001D462B /* BoxSprite.h */,
 				93B0DC9B15DEE8FF001D462B /* BoxSprite.m */,
 				9378905C15DCACE9000AA56F /* DragSprite.h */,
@@ -1114,7 +1109,6 @@
 				93B0DC9C15DEE8FF001D462B /* BoxSprite.m in Sources */,
 				933B9A2F15E99B16003770CF /* Singleton.m in Sources */,
 				9379BAE01687EDD700DB272D /* MenuLayer.m in Sources */,
-				9357B51216B20A4F00EB940F /* GameScene.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

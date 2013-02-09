@@ -103,7 +103,7 @@
 
 - (void) play: (CCMenuItem*) menuItem{
     [[CCDirector sharedDirector] replaceScene:
-        [CCTransitionFade transitionWithDuration:0.0f scene:[GameLayer scene]]];
+        [CCTransitionFade transitionWithDuration:1.0f scene:[GameLayer scene]]];
 }
 - (void) leaderboard:(CCMenuItem*) menuItem{
 	NSLog(@"ldb");

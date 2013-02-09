@@ -19,6 +19,7 @@
 
 @class DragSprite;
 @interface GameLayer : CCLayerColor{
+        CCLayerColor* fadeLayer;
         CGSize winSize;
         CCSprite* lifeSprite;
         CCSprite* pause;
