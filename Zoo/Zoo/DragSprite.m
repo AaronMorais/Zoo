@@ -3,7 +3,7 @@
 @implementation DragSprite
 @synthesize type, side, blink, flail, currentPosition;
 
-//initialization of sprite 
+//initialization of sprite
 -(id) initWithTexture:(CCTexture2D*)texture rect:(CGRect)rect{
    if((self=[super initWithTexture:texture rect:rect])){
             //make sure touches are handled by the sprite. swallows touch so only one animal per touchpoint!
@@ -16,7 +16,7 @@
             [sharedSingleton retain];
        
             //sprite moves as soon as it is initializes
-            [self moveSprite];
+//            [self moveSprite]; removed because .type is not set on init
    }
    return self;
 }
@@ -194,10 +194,6 @@
 }
 
 -(void) powerupFunction{
-//pig powerup: lose a life
-    if([self.type intValue] == 5){
-        [self loseLife];
-    }
 //hippo powerup
     if([self.type intValue] == 6){
         [self gainLife];

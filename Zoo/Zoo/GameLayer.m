@@ -473,12 +473,13 @@ PP 30/1000*/
         sprite.blink = NULL;
         sprite.flail = NULL;
         sprite.type = [NSNumber numberWithInt:8];
-    }else{                                                
+    }else{
         sprite = [DragSprite spriteWithFile:@"assets/animals/penguingold.png"];
         sprite.blink = NULL;
         sprite.flail = NULL;
         sprite.type = [NSNumber numberWithInt:9];
     }
+    [sprite moveSprite];
     //assign side and type
     sprite.side = side;
     //add sprite to layer and assign correct z axis

@@ -24,6 +24,7 @@
 -(void) resumeMoveSprite;
 -(void) powerupFunction;
 -(void) updateSpeed;
+-(void) moveSprite;
 @property(retain) NSNumber* type, * side;
 @property(retain) NSValue* currentPosition;
 @property(retain) CCAction* blink, *flail;
