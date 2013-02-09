@@ -60,6 +60,7 @@ PP 30/1000*/
         //load assets
         [self loadAssets];
         //start game
+        countDownCounter = 5;
         [self countDown];
 	}
 	return self;
@@ -293,46 +294,42 @@ PP 30/1000*/
     [self schedule:@selector(addSprite) interval:1];
 }
 
-static int countDown = 5;
-CCSprite* count;
 - (void)countDown{
-    countDown--;
-    if(countDown == 4){
+    countDownCounter--;
+    [[[CCDirector sharedDirector] touchDispatcher] setDispatchEvents:NO];
+    if(countDownCounter == 4){
         fadeLayer = [CCLayerColor layerWithColor:ccc4(0, 0, 0, 255)];
         [fadeLayer setOpacity:175];
         [self addChild:fadeLayer z:1];
-        
-        [[CCDirector sharedDirector] touchDispatcher].dispatchEvents = NO;
-        
         [self schedule:@selector(countDown) interval:0.5];
-    }else if(countDown > 0){
-        [self removeChild:count cleanup:YES];
-        NSString* path = [NSString stringWithFormat:@"%d.png",countDown];
-        count = [CCSprite spriteWithSpriteFrameName:path];
-        count.position = ccp(winSize.width/2, winSize.height/2);
-        count.scale = 0.75;
-        [self addChild:count z:2];
+    }else if(countDownCounter > 0){
+        [self removeChild:countDownSprite cleanup:YES];
+        NSString* path = [NSString stringWithFormat:@"%d.png",countDownCounter];
+        countDownSprite = [CCSprite spriteWithSpriteFrameName:path];
+        countDownSprite.position = ccp(winSize.width/2, winSize.height/2);
+        countDownSprite.scale = 0.75;
+        [self addChild:countDownSprite z:2];
         [self schedule:@selector(countDown) interval:1];
         [self countdownSound];
-    }else if(countDown == 0){
+    }else if(countDownCounter == 0){
         id fadeOut = [CCFadeTo actionWithDuration:0.5f opacity:0];
         id removeLayer = [CCCallFunc actionWithTarget:self selector:@selector(removeFadeLayer)];
         id seq = [CCSequence actions:fadeOut, removeLayer, nil];
         [fadeLayer runAction:seq];
         
-        [self removeChild:count cleanup:YES];
-        count = [CCSprite spriteWithSpriteFrameName:@"go!.png"];
-        count.position = ccp(winSize.width/2, winSize.height/2);
-        count.scale = 0.65;
-        [self addChild:count z:2];
+        [self removeChild:countDownSprite cleanup:YES];
+        countDownSprite = [CCSprite spriteWithSpriteFrameName:@"go!.png"];
+        countDownSprite.position = ccp(winSize.width/2, winSize.height/2);
+        countDownSprite.scale = 0.65;
+        [self addChild:countDownSprite z:2];
         [self schedule:@selector(countDown) interval:0.5];
         [self countdownSound];
-    }else if(countDown == -1){
+    }else if(countDownCounter == -1){
         [self startGame];
-        [self removeChild:count cleanup:YES];
+        [self removeChild:countDownSprite cleanup:YES];
         [self unschedule:@selector(countDown)];
-        countDown = 5;
-        [[CCDirector sharedDirector] touchDispatcher].dispatchEvents = YES;
+        countDownCounter = 5;
+        [[[CCDirector sharedDirector] touchDispatcher] setDispatchEvents:YES];
     }
 }
 

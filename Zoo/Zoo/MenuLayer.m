@@ -70,22 +70,15 @@
     menuItem3.scale = 0.34;
     menuItem3.position = CGPointMake(149,-19);
     
-    CCMenuItemImage * menuItem4 = [CCMenuItemImage itemWithNormalSprite:[CCSprite spriteWithSpriteFrameName:@"quit.png"]
-                                    selectedSprite:[CCSprite spriteWithSpriteFrameName:@"quit.png"]
-                                    target:self
-                                    selector:@selector(quit:)];
-    menuItem4.scale = 0.34;
-    menuItem4.position = CGPointMake(149,-102);
-    
-    CCMenuItemImage * menuItem5 = [CCMenuItemImage itemWithNormalSprite:[CCSprite spriteWithSpriteFrameName:@"htp.png"]
+    CCMenuItemImage * menuItem4 = [CCMenuItemImage itemWithNormalSprite:[CCSprite spriteWithSpriteFrameName:@"htp.png"]
                                     selectedSprite:[CCSprite spriteWithSpriteFrameName:@"htp.png"]
                                     target:self
                                     selector:@selector(howToPlay:)];
-    menuItem5.scale = 0.34;
-    menuItem5.position = CGPointMake(50,-19);
+    menuItem4.scale = 0.34;
+    menuItem4.position = CGPointMake(50,-19);
     
 	// Create a menu and add your menu items to it
-	CCMenu * myMenu = [CCMenu menuWithItems:menuItem1, menuItem2, menuItem3, menuItem4, menuItem5, nil];
+	myMenu = [CCMenu menuWithItems:menuItem1, menuItem2, menuItem3, menuItem4, nil];
 	// add the menu to your scene
 	[self addChild:myMenu];
 }
@@ -102,8 +95,9 @@
 }
 
 - (void) play: (CCMenuItem*) menuItem{
+    myMenu.enabled = NO;
     [[CCDirector sharedDirector] replaceScene:
-        [CCTransitionFade transitionWithDuration:1.0f scene:[GameLayer scene]]];
+        [CCTransitionFade transitionWithDuration:0.0f scene:[GameLayer scene]]];
 }
 - (void) leaderboard:(CCMenuItem*) menuItem{
 	NSLog(@"ldb");
@@ -114,9 +108,5 @@
 - (void) howToPlay:(CCMenuItem*) menuItem{
 	NSLog(@"htp");
 }
-- (void) quit: (CCMenuItem*) menuItem{
-	NSLog(@"quit");
-}
- 
  
 @end
