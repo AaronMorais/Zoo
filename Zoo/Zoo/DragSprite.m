@@ -194,28 +194,36 @@
 }
 
 -(void) powerupFunction{
+//pig powerup: lose a life
     if([self.type intValue] == 5){
         [self loseLife];
     }
+//hippo powerup
     if([self.type intValue] == 6){
-    //hippo
         [self gainLife];
     }
+//lion powerup
     if([self.type intValue] == 7){
         [self gainLife];
-    //lion
     }
+//elephant powerup
     if([self.type intValue] == 8){
         [self gainLife];
     }
+//penguin powerup: halfspeed for 3 seconds
     if([self.type intValue] == 9){
-        [sharedSingleton halfSpeed];
-        [self scheduleOnce:@selector(fullSpeed) delay:3];
+        [self.parent performSelector:@selector(halfSpeed)];
+        [self.parent performSelector:@selector(fullSpeed) withObject:self afterDelay:3.0f];
     }
 }
--(void) fullSpeed{
-    [sharedSingleton fullSpeed];
+
+- (void) updateSpeed {
+    [self stopAllActions];
+    [self blinkCurrentSprite];
+    [self closest];
+    [self resumeMoveSprite];
 }
+
 //remove sprite's touch control
 -(void) onExit{
     [[[CCDirector sharedDirector] touchDispatcher] removeDelegate:self];

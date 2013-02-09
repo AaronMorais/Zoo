@@ -2,7 +2,7 @@
 @class Singleton;
  
 @implementation Singleton
-@synthesize bezierArray, animals, gameSpeed, currentSpawnRate, sae;
+@synthesize bezierArray, animals, gameSpeed, currentSpawnRate, sae, saveSpeed;
  
 static Singleton *sharedInstance = nil;
  
@@ -67,43 +67,14 @@ static Singleton *sharedInstance = nil;
     [currentSpawnRate addObject:speedRate];
 }
 
-float saveSpeed = 0.0;
-float saveRate = 0.0;
+
 
 -(void) halfSpeed{
-    float speedFloat = [[[self gameSpeed] objectAtIndex:0] floatValue];
-    saveSpeed = speedFloat;
-    speedFloat /=2;
-    NSNumber* speed = [NSNumber numberWithFloat:speedFloat];
-    [gameSpeed removeAllObjects];
-    [gameSpeed release];
-    gameSpeed = [[NSMutableArray alloc] init];
-    [gameSpeed addObject:speed];
-    
-    double initRate = [[[self currentSpawnRate] objectAtIndex:0] floatValue];
-    saveRate = initRate;
-    initRate /=2;
-    NSNumber* speedRate = [NSNumber numberWithDouble:initRate];
-    [currentSpawnRate removeAllObjects];
-    [currentSpawnRate release];
-    currentSpawnRate = [[NSMutableArray alloc] init];
-    [currentSpawnRate addObject:speedRate];
+    [[self gameSpeed] replaceObjectAtIndex:0 withObject:[NSNumber numberWithFloat:[[gameSpeed objectAtIndex:0] floatValue]/2]];
 }
 
 -(void) fullSpeed{
-    float speedFloat = saveSpeed;
-    NSNumber* speed = [NSNumber numberWithFloat:speedFloat];
-    [gameSpeed removeAllObjects];
-    [gameSpeed release];
-    gameSpeed = [[NSMutableArray alloc] init];
-    [gameSpeed addObject:speed];
-    
-    float initRate = saveRate;
-    NSNumber* speedRate = [NSNumber numberWithFloat:initRate];
-    [currentSpawnRate removeAllObjects];
-    [currentSpawnRate release];
-    currentSpawnRate = [[NSMutableArray alloc] init];
-    [currentSpawnRate addObject:speedRate];
+    [[self gameSpeed] replaceObjectAtIndex:0 withObject:[NSNumber numberWithFloat:[[gameSpeed objectAtIndex:0] floatValue]*2]];
 }
 
 -(void) initDB{

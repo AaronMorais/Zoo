@@ -75,7 +75,9 @@
 // returns a CCScene that contains the GameLayer as the only child
 +(CCScene *) scene;
 -(void) checkIntersect;
--(void) loseLife;
 -(void) gainLife;
+-(void) loseLife;
+-(void) halfSpeed;
+-(void) fullSpeed;
 
 @end

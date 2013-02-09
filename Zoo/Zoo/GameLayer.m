@@ -659,21 +659,35 @@ PP 30/1000*/
 }
 
 //increment score function
-- (void) unitIncrement:(NSInteger)num{
+- (void) unitIncrement:(NSInteger)num {
     //incremenet score by 100*provided val and then display visually
     currentScore +=(10*num);
     [score setString:[NSString stringWithFormat:@"%d",currentScore]];
 }
 
 //reset score function
-- (void) resetScore{
+- (void) resetScore {
     //reset counter and display visually
     currentScore = 0;
     [score setString:[NSString stringWithFormat:@"%d",currentScore]];
 }
 
+- (void) halfSpeed {
+    [sharedSingleton halfSpeed];
+    for(DragSprite* dragSprite in [sharedSingleton animals]){
+        [dragSprite updateSpeed];
+    }
+}
+
+- (void) fullSpeed {
+    [sharedSingleton fullSpeed];
+    for(DragSprite* dragSprite in [sharedSingleton animals]){
+        [dragSprite updateSpeed];
+    }
+}
+
 //lose life function
-- (void) loseLife{
+- (void) loseLife {
     //decrement counter, display visually
     //if 0 lives, wait 0.25 seconds then call game-over function
     lifeCount--;

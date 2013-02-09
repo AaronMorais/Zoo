@@ -12,7 +12,6 @@
 #import "SimpleAudioEngine.h"
 
 @interface Singleton : NSObject {
-    SimpleAudioEngine* sae;
 }
  
 @property(atomic,retain) NSMutableArray* bezierArray;
@@ -20,6 +19,7 @@
 @property(atomic,retain) NSMutableArray* gameSpeed;
 @property(atomic,retain) NSMutableArray* currentSpawnRate;
 @property(atomic,retain) SimpleAudioEngine* sae;
+@property(atomic,retain) NSNumber* saveSpeed;
 
 + (id)sharedInstance;
 - (Boolean)checkHighScore:(int)newScore;
