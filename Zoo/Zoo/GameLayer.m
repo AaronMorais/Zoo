@@ -627,6 +627,7 @@ PP 30/1000*/
                 //lose life or change box counter depending on animal type
                 if([boxOrder objectAtIndex:location] == [NSNumber numberWithInt:check]){
                     [[boxes objectAtIndex:location] swallow];
+                    [dragSprite powerupFunction];
                 }else{
                     [self loseLife];
                 }
@@ -637,7 +638,6 @@ PP 30/1000*/
     //iterate through flagged animals and remove them
     //remove animals from singleton
     for(DragSprite* remove in discardedItems){
-        [remove powerupFunction];
         [self removeChild:remove cleanup:YES];
     }
     [[sharedSingleton animals] removeObjectsInArray:discardedItems];
