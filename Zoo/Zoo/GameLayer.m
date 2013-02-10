@@ -691,6 +691,7 @@ PP 30/1000*/
         [beltSprite stopAllActions];
         [self unschedule:@selector(addSprite)];
     } else {
+        [beltSprite stopAllActions];
         [beltSprite runAction:beltAction];
         [self schedule:@selector(addSprite) interval:2.0f];
     }
