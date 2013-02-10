@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		930829BE15DADAE2006C7CF9 /* assets in Resources */ = {isa = PBXBuildFile; fileRef = 930829BD15DADAE2006C7CF9 /* assets */; };
 		930829C315DADC5C006C7CF9 /* GameLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 930829C215DADC5C006C7CF9 /* GameLayer.m */; };
+		931C13A116C7693C00BBAD18 /* RadialGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 931C13A016C7693C00BBAD18 /* RadialGradientLayer.m */; };
 		933B9A2F15E99B16003770CF /* Singleton.m in Sources */ = {isa = PBXBuildFile; fileRef = 933B9A2E15E99B16003770CF /* Singleton.m */; };
 		9378905E15DCACE9000AA56F /* DragSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = 9378905D15DCACE9000AA56F /* DragSprite.m */; };
 		9379BAE01687EDD700DB272D /* MenuLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9379BADF1687EDD700DB272D /* MenuLayer.m */; };
@@ -158,6 +159,8 @@
 		930829BD15DADAE2006C7CF9 /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; name = assets; path = Resources/assets; sourceTree = "<group>"; };
 		930829C115DADC5C006C7CF9 /* GameLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameLayer.h; sourceTree = "<group>"; };
 		930829C215DADC5C006C7CF9 /* GameLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameLayer.m; sourceTree = "<group>"; };
+		931C139F16C7693C00BBAD18 /* RadialGradientLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadialGradientLayer.h; sourceTree = "<group>"; };
+		931C13A016C7693C00BBAD18 /* RadialGradientLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadialGradientLayer.m; sourceTree = "<group>"; };
 		933B9A2D15E99B16003770CF /* Singleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Singleton.h; sourceTree = "<group>"; };
 		933B9A2E15E99B16003770CF /* Singleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Singleton.m; sourceTree = "<group>"; };
 		9378905C15DCACE9000AA56F /* DragSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DragSprite.h; sourceTree = "<group>"; };
@@ -522,6 +525,8 @@
 				93B0DC9B15DEE8FF001D462B /* BoxSprite.m */,
 				9378905C15DCACE9000AA56F /* DragSprite.h */,
 				9378905D15DCACE9000AA56F /* DragSprite.m */,
+				931C139F16C7693C00BBAD18 /* RadialGradientLayer.h */,
+				931C13A016C7693C00BBAD18 /* RadialGradientLayer.m */,
 				93CAD25E158E9C4C00F4EC4C /* Resources */,
 				93CAD276158E9C4C00F4EC4C /* libs */,
 				93CAD3CF158E9C4E00F4EC4C /* Supporting Files */,
@@ -1109,6 +1114,7 @@
 				93B0DC9C15DEE8FF001D462B /* BoxSprite.m in Sources */,
 				933B9A2F15E99B16003770CF /* Singleton.m in Sources */,
 				9379BAE01687EDD700DB272D /* MenuLayer.m in Sources */,
+				931C13A116C7693C00BBAD18 /* RadialGradientLayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

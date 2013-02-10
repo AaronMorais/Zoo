@@ -298,8 +298,7 @@ PP 30/1000*/
     countDownCounter--;
     [[[CCDirector sharedDirector] touchDispatcher] setDispatchEvents:NO];
     if(countDownCounter == 4){
-        fadeLayer = [CCLayerColor layerWithColor:ccc4(0, 0, 0, 255)];
-        [fadeLayer setOpacity:175];
+        fadeLayer = [[RadialGradientLayer alloc] initWithColor:ccc3(0,0,0) fadeIn:NO speed:2];
         [self addChild:fadeLayer z:1];
         [self schedule:@selector(countDown) interval:0.5];
     }else if(countDownCounter > 0){
@@ -312,10 +311,8 @@ PP 30/1000*/
         [self schedule:@selector(countDown) interval:1];
         [self countdownSound];
     }else if(countDownCounter == 0){
-        id fadeOut = [CCFadeTo actionWithDuration:0.5f opacity:0];
-        id removeLayer = [CCCallFunc actionWithTarget:self selector:@selector(removeFadeLayer)];
-        id seq = [CCSequence actions:fadeOut, removeLayer, nil];
-        [fadeLayer runAction:seq];
+        [fadeLayer fadeAwayScheduler];
+        [self performSelector:@selector(removeFadeLayer) withObject:self afterDelay:2.0f];
         
         [self removeChild:countDownSprite cleanup:YES];
         countDownSprite = [CCSprite spriteWithSpriteFrameName:@"go!.png"];
@@ -628,8 +625,10 @@ PP 30/1000*/
                 if([boxOrder objectAtIndex:location] == [NSNumber numberWithInt:check]){
                     [[boxes objectAtIndex:location] swallow];
                     [dragSprite powerupFunction];
+                    [self showPowerupGradient];
                 }else{
                     [self loseLife];
+                    [self showLoseLifeGradient];
                 }
             }
         }
@@ -662,6 +661,19 @@ PP 30/1000*/
         [box runAction:_lBoxAction];
     }
 }
+
+- (void) showPowerupGradient {
+    fadeLayer = [[RadialGradientLayer alloc] initWithColor:ccc3(0,0,255) fadeIn:NO speed:20];
+    [self addChild:fadeLayer z:1];
+    [self performSelector:@selector(removeFadeLayer) withObject:self afterDelay:0.15f];
+}
+
+- (void) showLoseLifeGradient {
+    fadeLayer = [[RadialGradientLayer alloc] initWithColor:ccc3(255,0,0) fadeIn:NO speed:20];
+    [self addChild:fadeLayer z:1];
+    [self performSelector:@selector(removeFadeLayer) withObject:self afterDelay:0.15f];
+}
+
 
 //increment score function
 - (void) unitIncrement:(NSInteger)num {

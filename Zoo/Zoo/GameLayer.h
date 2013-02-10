@@ -16,12 +16,13 @@
 #import "BoxSprite.h"
 #import "SimpleAudioEngine.h"
 #import "Singleton.h"
+#import "RadialGradientLayer.h"
 
 @class DragSprite;
 @interface GameLayer : CCLayerColor{
         int countDownCounter;
         CCSprite* countDownSprite;
-        CCLayerColor* fadeLayer;
+        RadialGradientLayer* fadeLayer;
         CGSize winSize;
         CCSprite* lifeSprite;
         CCSprite* pause;
