@@ -153,6 +153,7 @@
 		93CAD3CD158E9C4E00F4EC4C /* vec4.c in Sources */ = {isa = PBXBuildFile; fileRef = 93CAD3CC158E9C4E00F4EC4C /* vec4.c */; };
 		93CAD3D2158E9C4E00F4EC4C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 93CAD3D1158E9C4E00F4EC4C /* main.m */; };
 		93CAD3D5158E9C4E00F4EC4C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 93CAD3D4158E9C4E00F4EC4C /* AppDelegate.m */; };
+		93D1127616C8294500E0F414 /* LoadingLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D1127516C8294500E0F414 /* LoadingLayer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -451,6 +452,8 @@
 		93CAD3D1158E9C4E00F4EC4C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		93CAD3D3158E9C4E00F4EC4C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		93CAD3D4158E9C4E00F4EC4C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		93D1127416C8294500E0F414 /* LoadingLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingLayer.h; sourceTree = "<group>"; };
+		93D1127516C8294500E0F414 /* LoadingLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingLayer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -519,6 +522,8 @@
 				9379BADF1687EDD700DB272D /* MenuLayer.m */,
 				939CAB8B169151E50064D90C /* PauseLayer.h */,
 				939CAB8C169151E50064D90C /* PauseLayer.m */,
+				93D1127416C8294500E0F414 /* LoadingLayer.h */,
+				93D1127516C8294500E0F414 /* LoadingLayer.m */,
 				930829C115DADC5C006C7CF9 /* GameLayer.h */,
 				930829C215DADC5C006C7CF9 /* GameLayer.m */,
 				93B0DC9A15DEE8FF001D462B /* BoxSprite.h */,
@@ -1115,6 +1120,7 @@
 				933B9A2F15E99B16003770CF /* Singleton.m in Sources */,
 				9379BAE01687EDD700DB272D /* MenuLayer.m in Sources */,
 				931C13A116C7693C00BBAD18 /* RadialGradientLayer.m in Sources */,
+				93D1127616C8294500E0F414 /* LoadingLayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

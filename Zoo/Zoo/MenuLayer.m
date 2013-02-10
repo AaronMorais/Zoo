@@ -25,6 +25,10 @@
 	if( (self=[super init] )) {
         sharedSingleton = [Singleton sharedInstance];
         [sharedSingleton retain];
+        
+        loading = [[LoadingLayer alloc] initWithColor:ccc4(0,0,0,255)];
+        [self addChild:loading];
+        
         [self menuMusic];
         [self addBackgroundImage];
         [self setUpMenus];
@@ -37,7 +41,7 @@
 -(void) addBackgroundImage{
     CGSize winSize;
     winSize = [[CCDirector sharedDirector] winSize];
-    CCSprite* background = [CCSprite spriteWithFile:@"assets/mainBackground.png"];
+    background = [CCSprite spriteWithFile:@"assets/mainBackground.png"];
     [self addChild:background];
     background.position = ccp(winSize.width/2, winSize.height/2);
 }
@@ -96,11 +100,18 @@
 }
 
 - (void) play: (CCMenuItem*) menuItem{
-    myMenu.enabled = NO;
+    [self removeChild:background cleanup:YES];
+    [self removeChild:myMenu cleanup:YES];
+    [self scheduleOnce:@selector(loadGameScene) delay:0.0f];
+}
+
+- (void) loadGameScene {
     [[CCDirector sharedDirector] replaceScene:
         [CCTransitionFade transitionWithDuration:0.0f scene:[GameLayer scene]]];
 }
 - (void) leaderboard:(CCMenuItem*) menuItem{
+    [self removeChild:background cleanup:YES];
+    [self removeChild:myMenu cleanup:YES];
 	NSLog(@"ldb");
 }
 - (void) options:(CCMenuItem*) menuItem{
