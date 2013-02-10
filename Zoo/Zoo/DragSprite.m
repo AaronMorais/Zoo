@@ -1,4 +1,5 @@
 #import "DragSprite.h"
+#import "GameLayer.h"
 
 @implementation DragSprite
 @synthesize type, side, blink, flail, currentPosition;
@@ -61,7 +62,6 @@
 
 //touch end handling function
 - (void)ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event{
-
     //stop the sprite from flailing and stop sprite from popping
     [self stopAllActions];
     [self blinkCurrentSprite];
@@ -78,7 +78,11 @@
     //start moving the sprite again
     CCCallFunc* resumeMove = [CCCallFunc actionWithTarget:self selector:@selector(resumeMoveSprite)];
     //run action
-    [self runAction:[CCSequence actions:moveTo, resumeMove, nil]];
+    if([sharedSingleton frozenPowerupActivated]){
+        [self runAction:[CCSequence actions:moveTo, nil]];
+    } else {
+        [self runAction:[CCSequence actions:moveTo, resumeMove, nil]];
+    }
     //checkIntersect again
     [self.parent performSelector:@selector(checkIntersect)];
 }
@@ -194,22 +198,29 @@
 }
 
 -(void) powerupFunction{
-//hippo powerup
+//hippo powerup: slow movement speed and spawn rate for 8 secs
     if([self.type intValue] == 6){
-        [self gainLife];
+        if(![sharedSingleton slowdownPowerupActivated]) {
+            [self.parent performSelector:@selector(halfSpeed)];
+        }
+        [NSObject cancelPreviousPerformRequestsWithTarget:self.parent selector:@selector(fullSpeed) object:self];
+        [self.parent performSelector:@selector(fullSpeed) withObject:self afterDelay:8.0f];
     }
-//lion powerup
+//lion powerup: no pigs for 10 seconds
     if([self.type intValue] == 7){
-        [self gainLife];
+        [self.parent performSelector:@selector(setPigsNotAllowed:) withObject:(id)YES];
+        [NSObject cancelPreviousPerformRequestsWithTarget:self.parent selector:@selector(setPigsNotAllowed:) object:self];
+        [self.parent performSelector:@selector(setPigsNotAllowed:) withObject:(id)NO afterDelay:10.0f];
     }
-//elephant powerup
+//elephant powerup: plus life
     if([self.type intValue] == 8){
         [self gainLife];
     }
-//penguin powerup: halfspeed for 3 seconds
+//penguin powerup: freeze belt for 5 secs
     if([self.type intValue] == 9){
-        [self.parent performSelector:@selector(halfSpeed)];
-        [self.parent performSelector:@selector(fullSpeed) withObject:self afterDelay:3.0f];
+        [self.parent performSelector:@selector(stopMovingBelt) withObject:self];
+        [NSObject cancelPreviousPerformRequestsWithTarget:self.parent selector:@selector(startMovingBelt) object:self];
+        [self.parent performSelector:@selector(startMovingBelt) withObject:self afterDelay:5.0f];
     }
 }
 

@@ -20,6 +20,8 @@
 @property(atomic,retain) NSMutableArray* currentSpawnRate;
 @property(atomic,retain) SimpleAudioEngine* sae;
 @property(atomic,retain) NSNumber* saveSpeed;
+@property(atomic) BOOL frozenPowerupActivated;
+@property(atomic) BOOL slowdownPowerupActivated;
 
 + (id)sharedInstance;
 - (Boolean)checkHighScore:(int)newScore;

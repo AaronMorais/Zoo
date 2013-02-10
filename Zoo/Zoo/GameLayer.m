@@ -33,7 +33,7 @@ PP 30/1000*/
 @synthesize eBoxAction = _eBoxAction;
 @synthesize hBoxAction = _hBoxAction;
 @synthesize lBoxAction = _lBoxAction;
-@synthesize pFlailAction, lFlailAction, eFlailAction, hFlailAction, pBlinkAction, lBlinkAction, eBlinkAction, hBlinkAction, boxes,currentScore;
+@synthesize pFlailAction, lFlailAction, eFlailAction, hFlailAction, pBlinkAction, lBlinkAction, eBlinkAction, hBlinkAction, boxes,currentScore, pigsNotAllowed;
 
 // Helper class method that creates a Scene with the GameLayer as the only child.
 +(CCScene*) scene{
@@ -425,6 +425,10 @@ PP 30/1000*/
 - (void)addSprite{
     NSNumber* nsType = [self randFunction:820:1000]; //randomly choose animal type
     int type = [nsType intValue];
+    while(pigsNotAllowed && type > 820 && type < 920) {
+        nsType = [self randFunction:820:1000];
+        type = [nsType intValue];
+    }
     NSNumber* side = [self randFunction:1:2]; //randomly choose animal side
     DragSprite* sprite; //init animal
     
@@ -673,7 +677,34 @@ PP 30/1000*/
     [score setString:[NSString stringWithFormat:@"%d",currentScore]];
 }
 
+- (void) startMovingBelt {
+    [self moveBelt:YES];
+}
+
+- (void) stopMovingBelt {
+    [self moveBelt:NO];
+}
+
+-(void) moveBelt:(BOOL)move {
+    [sharedSingleton setFrozenPowerupActivated:!move];
+    if(!move) {
+        [beltSprite stopAllActions];
+        [self unschedule:@selector(addSprite)];
+    } else {
+        [beltSprite runAction:beltAction];
+        [self schedule:@selector(addSprite) interval:2.0f];
+    }
+    for(DragSprite* dragSprite in [sharedSingleton animals]){
+        if(move) {
+            [dragSprite updateSpeed];
+        } else {
+            [dragSprite stopAllActions];
+        }
+    }
+}
 - (void) halfSpeed {
+    [sharedSingleton setSlowdownPowerupActivated:YES];
+    
     [sharedSingleton halfSpeed];
     for(DragSprite* dragSprite in [sharedSingleton animals]){
         [dragSprite updateSpeed];
@@ -681,6 +712,8 @@ PP 30/1000*/
 }
 
 - (void) fullSpeed {
+    [sharedSingleton setSlowdownPowerupActivated:NO];
+
     [sharedSingleton fullSpeed];
     for(DragSprite* dragSprite in [sharedSingleton animals]){
         [dragSprite updateSpeed];
@@ -696,7 +729,7 @@ PP 30/1000*/
         [lifeSprite setDisplayFrame:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:[NSString stringWithFormat:@"%dlives.png",lifeCount]]];
     }
     if(lifeCount == 0){
-        [self scheduleOnce:@selector(gameOver) delay:0.25];
+     //   [self scheduleOnce:@selector(gameOver) delay:0.25];
     }
 }
 

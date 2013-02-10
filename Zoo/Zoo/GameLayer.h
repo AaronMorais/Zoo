@@ -71,6 +71,7 @@
 @property (nonatomic,retain) CCAction *pBlinkAction,* eBlinkAction,* hBlinkAction,* lBlinkAction;
 @property (nonatomic,assign) NSMutableArray *animals,* boxes;
 @property (nonatomic) NSInteger currentScore;
+@property (nonatomic,assign) BOOL pigsNotAllowed;
 
 // returns a CCScene that contains the GameLayer as the only child
 +(CCScene *) scene;
@@ -79,5 +80,7 @@
 -(void) loseLife;
 -(void) halfSpeed;
 -(void) fullSpeed;
+-(void) startMovingBelt;
+-(void) stopMovingBelt;
 
 @end

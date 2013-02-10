@@ -2,7 +2,7 @@
 @class Singleton;
  
 @implementation Singleton
-@synthesize bezierArray, animals, gameSpeed, currentSpawnRate, sae, saveSpeed;
+@synthesize bezierArray, animals, gameSpeed, currentSpawnRate, sae, saveSpeed, frozenPowerupActivated, slowdownPowerupActivated;
  
 static Singleton *sharedInstance = nil;
  
@@ -45,6 +45,9 @@ static Singleton *sharedInstance = nil;
 }
 
 -(void) resetSingleton{
+    frozenPowerupActivated = NO;
+    slowdownPowerupActivated = NO;
+
     //init array for animals
     [animals removeAllObjects];
     [animals release];
@@ -70,10 +73,12 @@ static Singleton *sharedInstance = nil;
 
 
 -(void) halfSpeed{
+    [[self currentSpawnRate] replaceObjectAtIndex:0 withObject:[NSNumber numberWithFloat:[[currentSpawnRate objectAtIndex:0] floatValue]*2]];
     [[self gameSpeed] replaceObjectAtIndex:0 withObject:[NSNumber numberWithFloat:[[gameSpeed objectAtIndex:0] floatValue]/2]];
 }
 
 -(void) fullSpeed{
+    [[self currentSpawnRate] replaceObjectAtIndex:0 withObject:[NSNumber numberWithFloat:[[currentSpawnRate objectAtIndex:0] floatValue]/2]];
     [[self gameSpeed] replaceObjectAtIndex:0 withObject:[NSNumber numberWithFloat:[[gameSpeed objectAtIndex:0] floatValue]*2]];
 }
 
