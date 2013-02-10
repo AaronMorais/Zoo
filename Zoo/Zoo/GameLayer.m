@@ -312,7 +312,7 @@ PP 30/1000*/
         [self countdownSound];
     }else if(countDownCounter == 0){
         [fadeLayer fadeAwayScheduler];
-        [self performSelector:@selector(removeFadeLayer) withObject:self afterDelay:2.0f];
+        [self scheduleOnce:@selector(removeFadeLayer) delay:2.0f];
         
         [self removeChild:countDownSprite cleanup:YES];
         countDownSprite = [CCSprite spriteWithSpriteFrameName:@"go!.png"];
@@ -665,13 +665,13 @@ PP 30/1000*/
 - (void) showPowerupGradient {
     fadeLayer = [[RadialGradientLayer alloc] initWithColor:ccc3(0,0,255) fadeIn:NO speed:20];
     [self addChild:fadeLayer z:1];
-    [self performSelector:@selector(removeFadeLayer) withObject:self afterDelay:0.15f];
+    [self scheduleOnce:@selector(removeFadeLayer) delay:0.15f];
 }
 
 - (void) showLoseLifeGradient {
     fadeLayer = [[RadialGradientLayer alloc] initWithColor:ccc3(255,0,0) fadeIn:NO speed:20];
     [self addChild:fadeLayer z:1];
-    [self performSelector:@selector(removeFadeLayer) withObject:self afterDelay:0.15f];
+    [self scheduleOnce:@selector(removeFadeLayer) delay:0.15f];
 }
 
 
