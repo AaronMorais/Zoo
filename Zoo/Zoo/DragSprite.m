@@ -43,6 +43,7 @@
         [self.parent reorderChild:self z:2];
         [self stopAllActions];
         [self flailCurrentSprite];
+        [self showShadow:YES];
 		return YES;
 	}
     
@@ -68,6 +69,7 @@
     [self blinkCurrentSprite];
     self.scale = 1;
     [self.parent reorderChild:self z:1];
+    [self showShadow:NO];
     
     //check intersection with boxes FIX THIS - IT CHECKS ALL OF THEM 
     [self.parent respondsToSelector:@selector(checkIntersect)];
@@ -256,6 +258,19 @@
 //calls the parent lose life
 -(void) gainLife{
     [self.parent performSelector:@selector(gainLife)];
+}
+
+- (void) showShadow:(BOOL)enabled {
+    if (enabled) {
+        shadow = [CCSprite spriteWithSpriteFrame:[self displayFrame]];
+        [self addChild:shadow z:-1];
+        shadow.ignoreAnchorPointForPosition = YES;
+        shadow.color = ccBLACK;
+        shadow.opacity = 100;
+        shadow.position = ccp(-5,-5);
+    } else {
+        [self removeChild:shadow cleanup:YES];
+    }
 }
 
 @end

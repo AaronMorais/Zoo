@@ -484,6 +484,7 @@
 				93CAD25D158E9C4C00F4EC4C /* Zoo */,
 				93CAD24A158E9C4C00F4EC4C /* Frameworks */,
 				93CAD248158E9C4C00F4EC4C /* Products */,
+				93CAD3CF158E9C4E00F4EC4C /* Supporting Files */,
 			);
 			sourceTree = "<group>";
 		};
@@ -534,7 +535,6 @@
 				931C13A016C7693C00BBAD18 /* RadialGradientLayer.m */,
 				93CAD25E158E9C4C00F4EC4C /* Resources */,
 				93CAD276158E9C4C00F4EC4C /* libs */,
-				93CAD3CF158E9C4E00F4EC4C /* Supporting Files */,
 			);
 			path = Zoo;
 			sourceTree = "<group>";
@@ -922,6 +922,7 @@
 				93CAD3D1158E9C4E00F4EC4C /* main.m */,
 			);
 			name = "Supporting Files";
+			path = Zoo;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -14,6 +14,7 @@
     NSNumber* side; //numeric side which the animal will spawn; currently 1-2; UNUSED!
     CCAction* blink; //store the blink action for the sprite
     CCAction* flail; //store the flail action for the sprite
+    CCSprite* shadow;
     Singleton* sharedSingleton; //access to singleton
 
 }
