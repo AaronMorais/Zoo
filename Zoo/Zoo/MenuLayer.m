@@ -53,32 +53,33 @@
                                     selectedSprite:[CCSprite spriteWithSpriteFrameName:@"p.png"]
                                     target:self
                                     selector:@selector(play:)];
-    menuItem1.scale = 0.6;
-    menuItem1.position = CGPointMake(-120,-58);
+    menuItem1.scale = 0.42;
     
     CCMenuItemImage * menuItem2 = [CCMenuItemImage itemWithNormalSprite:[CCSprite spriteWithSpriteFrameName:@"ldb.png"]
                                     selectedSprite:[CCSprite spriteWithSpriteFrameName:@"ldb.png"]
                                     target:self
                                     selector:@selector(leaderboard:)];
-    menuItem2.scale = 0.34;
-    menuItem2.position = CGPointMake(50,-102);
+    menuItem2.scale = 0.42;
     
-    CCMenuItemImage * menuItem3 = [CCMenuItemImage itemWithNormalSprite:[CCSprite spriteWithSpriteFrameName:@"optns.png"]
-                                    selectedSprite:[CCSprite spriteWithSpriteFrameName:@"optns.png"]
-                                    target:self
-                                    selector:@selector(options:)];
-    menuItem3.scale = 0.34;
-    menuItem3.position = CGPointMake(149,-19);
-    
-    CCMenuItemImage * menuItem4 = [CCMenuItemImage itemWithNormalSprite:[CCSprite spriteWithSpriteFrameName:@"htp.png"]
+    CCMenuItemImage * menuItem3 = [CCMenuItemImage itemWithNormalSprite:[CCSprite spriteWithSpriteFrameName:@"htp.png"]
                                     selectedSprite:[CCSprite spriteWithSpriteFrameName:@"htp.png"]
                                     target:self
                                     selector:@selector(howToPlay:)];
-    menuItem4.scale = 0.34;
-    menuItem4.position = CGPointMake(50,-19);
+    menuItem3.scale = 0.42;
+
+    
+    CCMenuItemImage * menuItem4 = [CCMenuItemImage itemWithNormalSprite:[CCSprite spriteWithSpriteFrameName:@"optns.png"]
+                                    selectedSprite:[CCSprite spriteWithSpriteFrameName:@"optns.png"]
+                                    target:self
+                                    selector:@selector(options:)];
+    menuItem4.scale = 0.42;
+    
     
 	// Create a menu and add your menu items to it
 	myMenu = [CCMenu menuWithItems:menuItem1, menuItem2, menuItem3, menuItem4, nil];
+    [myMenu alignItemsHorizontallyWithPadding:-30.0f];
+    myMenu.position = ccp([[CCDirector sharedDirector] winSize].width/2, 95);
+    
 	// add the menu to your scene
 	[self addChild:myMenu];
 }
