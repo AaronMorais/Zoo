@@ -203,14 +203,14 @@
         if(![sharedSingleton slowdownPowerupActivated]) {
             [self.parent performSelector:@selector(halfSpeed)];
         }
-        [NSObject cancelPreviousPerformRequestsWithTarget:self.parent selector:@selector(fullSpeed) object:self];
-        [self.parent performSelector:@selector(fullSpeed) withObject:self afterDelay:8.0f];
+        [self unschedule:@selector(fullSpeed)];
+        [self.parent scheduleOnce:@selector(fullSpeed) delay:8.0f];
     }
 //lion powerup: no pigs for 10 seconds
     if([self.type intValue] == 7){
         [self.parent performSelector:@selector(setPigsNotAllowed:) withObject:(id)YES];
-        [NSObject cancelPreviousPerformRequestsWithTarget:self.parent selector:@selector(setPigsNotAllowed:) object:self];
-        [self.parent performSelector:@selector(setPigsNotAllowed:) withObject:(id)NO afterDelay:10.0f];
+        [self unschedule:@selector(setPigsAllowed)];
+        [self scheduleOnce:@selector(setPigsAllowed) delay:10.0f];
     }
 //elephant powerup: plus life
     if([self.type intValue] == 8){
@@ -219,9 +219,13 @@
 //penguin powerup: freeze belt for 5 secs
     if([self.type intValue] == 9){
         [self.parent performSelector:@selector(stopMovingBelt) withObject:self];
-        [NSObject cancelPreviousPerformRequestsWithTarget:self.parent selector:@selector(startMovingBelt) object:self];
-        [self.parent performSelector:@selector(startMovingBelt) withObject:self afterDelay:5.0f];
+        [self.parent unschedule:@selector(startMovingBelt)];
+        [self.parent scheduleOnce:@selector(startMovingBelt) delay:5.0f];
     }
+}
+
+- (void) setPigsAllowed {
+    [self.parent performSelector:@selector(setPigsNotAllowed:) withObject:(id)NO];
 }
 
 - (void) updateSpeed {
