@@ -40,6 +40,7 @@
 	if([self isTouchOnSprite:touchPoint]){
 		whereTouch=ccpSub(self.position, touchPoint);
         self.scale = 1.2;
+        [self.parent reorderChild:self z:2];
         [self stopAllActions];
         [self flailCurrentSprite];
 		return YES;
@@ -66,6 +67,7 @@
     [self stopAllActions];
     [self blinkCurrentSprite];
     self.scale = 1;
+    [self.parent reorderChild:self z:1];
     
     //check intersection with boxes FIX THIS - IT CHECKS ALL OF THEM 
     [self.parent respondsToSelector:@selector(checkIntersect)];
