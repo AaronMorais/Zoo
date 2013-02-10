@@ -730,7 +730,7 @@ PP 30/1000*/
         [lifeSprite setDisplayFrame:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:[NSString stringWithFormat:@"%dlives.png",lifeCount]]];
     }
     if(lifeCount == 0){
-     //   [self scheduleOnce:@selector(gameOver) delay:0.25];
+        [self scheduleOnce:@selector(gameOver) delay:0.25];
     }
 }
 
