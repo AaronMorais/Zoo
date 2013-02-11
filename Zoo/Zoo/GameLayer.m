@@ -564,14 +564,41 @@ PP 30/1000*/
     }
     //check if pause button was touched
     if(CGRectContainsPoint(pause.boundingBox, touchPoint)){
-        [[CCDirector sharedDirector] replaceScene:
-            [CCTransitionFade transitionWithDuration:0.5f scene:[MenuLayer scene]]];
-       // [self pauseGame];
+        [self pauseGame:isPaused];
+        isPaused = !isPaused;
     }
 }
--(void)pauseGame{
-	//[self addChild:[[CommonPauseLayer alloc] initWithColor:ccc4(222, 0, 0, 200)
-	//											withTarget:self]];
+
+- (void) pauseGame:(BOOL)paused {
+    if (paused) {
+        [self pauseSchedulerAndActions];
+        CCArray *children = self.children;
+        [children makeObjectsPerformSelector:@selector(pauseSchedulerAndActions)];
+        pauseLayer = [[GameOverlayLayer alloc] initAsPauseMenu];
+        [self addChild:pauseLayer z:5];
+    } else {
+        [self resumeSchedulerAndActions];
+        CCArray *children = self.children;
+        [children makeObjectsPerformSelector:@selector(resumeSchedulerAndActions)];
+        [self removeChild:pauseLayer cleanup:YES];
+        [[[CCDirector sharedDirector] touchDispatcher] removeDelegate:pauseLayer];
+    }
+}
+
+- (void) restartGame {
+    [self removePauseLayer];
+    [[CCDirector sharedDirector] replaceScene:
+        [CCTransitionFade transitionWithDuration:0.0f scene:[GameLayer scene]]];
+}
+
+- (void) quitToMain {
+    [self removePauseLayer];
+    [[CCDirector sharedDirector] replaceScene:
+     [CCTransitionFade transitionWithDuration:0.5f scene:[MenuLayer scene]]];
+}
+
+- (void) removePauseLayer {
+    [pauseLayer removeFromParentAndCleanup:YES];
 }
 
 //check intersections between box and animals
@@ -742,7 +769,7 @@ PP 30/1000*/
         [lifeSprite setDisplayFrame:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:[NSString stringWithFormat:@"%dlives.png",lifeCount]]];
     }
     if(lifeCount == 0){
-        [self scheduleOnce:@selector(gameOver) delay:0.25];
+//        [self scheduleOnce:@selector(gameOver) delay:0.25];
     }
 }
 
@@ -812,6 +839,8 @@ PP 30/1000*/
 
 	// don't forget to call "super dealloc"
 	[super dealloc];
+    [pauseLayer release];
+    [pauseLayer dealloc];
 }
 
 /* SOME GAME CENTER STUFF

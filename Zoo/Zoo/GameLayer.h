@@ -17,12 +17,15 @@
 #import "SimpleAudioEngine.h"
 #import "Singleton.h"
 #import "RadialGradientLayer.h"
+#import "GameOverlayLayer.h"
 
 @class DragSprite;
 @interface GameLayer : CCLayerColor{
         int countDownCounter;
         CCSprite* countDownSprite;
         RadialGradientLayer* fadeLayer;
+        BOOL isPaused;
+        GameOverlayLayer* pauseLayer;
         CGSize winSize;
         CCSprite* lifeSprite;
         CCSprite* pause;
@@ -83,5 +86,8 @@
 -(void) fullSpeed;
 -(void) startMovingBelt;
 -(void) stopMovingBelt;
+-(void) pauseGame:(BOOL)paused;
+- (void) restartGame;
+- (void) quitToMain;
 
 @end

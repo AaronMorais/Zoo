@@ -28,5 +28,6 @@
 - (void) resetSingleton;
 - (void) halfSpeed;
 - (void) fullSpeed;
+- (int) getHighScore;
 
 @end

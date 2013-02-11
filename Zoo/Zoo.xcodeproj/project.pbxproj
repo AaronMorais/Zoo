@@ -154,6 +154,7 @@
 		93CAD3D2158E9C4E00F4EC4C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 93CAD3D1158E9C4E00F4EC4C /* main.m */; };
 		93CAD3D5158E9C4E00F4EC4C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 93CAD3D4158E9C4E00F4EC4C /* AppDelegate.m */; };
 		93D1127616C8294500E0F414 /* LoadingLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D1127516C8294500E0F414 /* LoadingLayer.m */; };
+		93D1127916C8431A00E0F414 /* GameOverlayLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D1127816C8431A00E0F414 /* GameOverlayLayer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -191,8 +192,6 @@
 		939CAB82169141A80064D90C /* pickup.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = pickup.mp3; path = Resources/pickup.mp3; sourceTree = "<group>"; };
 		939CAB871691432F0064D90C /* gameLoop.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = gameLoop.mp3; path = Resources/gameLoop.mp3; sourceTree = "<group>"; };
 		939CAB89169143960064D90C /* gameStop.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = gameStop.mp3; path = Resources/gameStop.mp3; sourceTree = "<group>"; };
-		939CAB8B169151E50064D90C /* PauseLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PauseLayer.h; sourceTree = "<group>"; };
-		939CAB8C169151E50064D90C /* PauseLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PauseLayer.m; sourceTree = "<group>"; };
 		93B0DC9A15DEE8FF001D462B /* BoxSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoxSprite.h; sourceTree = "<group>"; };
 		93B0DC9B15DEE8FF001D462B /* BoxSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoxSprite.m; sourceTree = "<group>"; };
 		93CAD247158E9C4C00F4EC4C /* Jungle Box.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Jungle Box.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -454,6 +453,8 @@
 		93CAD3D4158E9C4E00F4EC4C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		93D1127416C8294500E0F414 /* LoadingLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingLayer.h; sourceTree = "<group>"; };
 		93D1127516C8294500E0F414 /* LoadingLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingLayer.m; sourceTree = "<group>"; };
+		93D1127716C8431A00E0F414 /* GameOverlayLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameOverlayLayer.h; sourceTree = "<group>"; };
+		93D1127816C8431A00E0F414 /* GameOverlayLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameOverlayLayer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -521,8 +522,8 @@
 				933B9A2E15E99B16003770CF /* Singleton.m */,
 				9379BADE1687EDD700DB272D /* MenuLayer.h */,
 				9379BADF1687EDD700DB272D /* MenuLayer.m */,
-				939CAB8B169151E50064D90C /* PauseLayer.h */,
-				939CAB8C169151E50064D90C /* PauseLayer.m */,
+				93D1127716C8431A00E0F414 /* GameOverlayLayer.h */,
+				93D1127816C8431A00E0F414 /* GameOverlayLayer.m */,
 				93D1127416C8294500E0F414 /* LoadingLayer.h */,
 				93D1127516C8294500E0F414 /* LoadingLayer.m */,
 				930829C115DADC5C006C7CF9 /* GameLayer.h */,
@@ -1122,6 +1123,7 @@
 				9379BAE01687EDD700DB272D /* MenuLayer.m in Sources */,
 				931C13A116C7693C00BBAD18 /* RadialGradientLayer.m in Sources */,
 				93D1127616C8294500E0F414 /* LoadingLayer.m in Sources */,
+				93D1127916C8431A00E0F414 /* GameOverlayLayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
