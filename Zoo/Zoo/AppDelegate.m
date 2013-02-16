@@ -10,7 +10,6 @@
 #import "AppDelegate.h"
 #import "GameLayer.h"
 #import "MenuLayer.h"
-#import "Singleton.h"
 #import "ABGameKitHelper.h"
 #import "RootViewController.h"
 
@@ -99,7 +98,6 @@
 
     [[ABGameKitHelper sharedClass] authenticatePlayer];
     
-    Singleton* sharedSingleton;
     sharedSingleton = [Singleton sharedInstance];
 	// and add the scene to the stack. The director will run it when it automatically when the view is displayed.
 	[director_ pushScene: [MenuLayer scene]];
@@ -127,6 +125,7 @@
 {
 	if( [navController_ visibleViewController] == director_ )
 		[director_ pause];
+    [[sharedSingleton sae] pauseBackgroundMusic];
 }
 
 // call got rejected
@@ -134,6 +133,7 @@
 {
 	if( [navController_ visibleViewController] == director_ )
 		[director_ resume];
+    [[sharedSingleton sae] resumeBackgroundMusic];
 }
 
 -(void) applicationDidEnterBackground:(UIApplication*)application
