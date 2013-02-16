@@ -93,26 +93,64 @@
 
 - (id)initAsGameOver:(int)score {
     self = [self init];
-    if (self) {        
-        highScoreHeader = [[CCLabelTTF alloc] initWithString:@"highscore:" fontName:@"Aharoni" fontSize:55.0f];
-        highScoreHeader.ignoreAnchorPointForPosition = YES;
-        highScoreHeader.position = ccp(winSize.width * 0.125, winSize.height * 0.72);
-        [self addChild:highScoreHeader];
-        
-        highScoreFooter = [[CCLabelTTF alloc] initWithString:[NSString stringWithFormat:@"%d",[sharedSingleton getHighScore]] fontName:@"Aharoni" fontSize:70.0f];
-        highScoreFooter.ignoreAnchorPointForPosition = YES;
-        highScoreFooter.position = ccp(winSize.width * 0.45, winSize.height * 0.55);
-        [self addChild:highScoreFooter];
-        
-        yourScoreHeader = [[CCLabelTTF alloc] initWithString:@"yourScore:" fontName:@"Aharoni" fontSize:55.0f];
+    if (self) {
+        yourScoreHeader = [[CCLabelTTF alloc] initWithString:@"your score:" fontName:@"Aharoni" fontSize:40.0f];
         yourScoreHeader.ignoreAnchorPointForPosition = YES;
-        yourScoreHeader.position = ccp(winSize.width * 0.125, winSize.height * 0.72);
+        yourScoreHeader.position = ccp(winSize.width * 0.125, winSize.height * 0.63);
         [self addChild:yourScoreHeader];
         
-        yourScoreFooter = [[CCLabelTTF alloc] initWithString:[NSString stringWithFormat:@"%d",score] fontName:@"Aharoni" fontSize:70.0f];
+        yourScoreFooter = [[CCLabelTTF alloc] initWithString:[NSString stringWithFormat:@"%d",score] fontName:@"Aharoni" fontSize:55.0f];
         yourScoreFooter.ignoreAnchorPointForPosition = YES;
-        yourScoreFooter.position = ccp(winSize.width * 0.45, winSize.height * 0.55);
+        [yourScoreFooter setHorizontalAlignment:kCCTextAlignmentRight];
+        yourScoreFooter.anchorPoint = ccp(0,0.5);
+        CGSize ysfSize = [yourScoreFooter.string sizeWithFont:[UIFont fontWithName:@"Aharoni" size:55.0f]];
+        yourScoreFooter.position = ccp(winSize.width * 0.88 - ysfSize.width, winSize.height * 0.51);
         [self addChild:yourScoreFooter];
+    
+        highScoreHeader = [[CCLabelTTF alloc] initWithString:@"highscore:" fontName:@"Aharoni" fontSize:40.0f];
+        highScoreHeader.ignoreAnchorPointForPosition = YES;
+        highScoreHeader.position = ccp(winSize.width * 0.125, winSize.height * 0.42);
+        [self addChild:highScoreHeader];
+        
+        highScoreFooter = [[CCLabelTTF alloc] initWithString:[NSString stringWithFormat:@"%d",[sharedSingleton getHighScore]] fontName:@"Aharoni" fontSize:55.0f];
+        highScoreFooter.ignoreAnchorPointForPosition = YES;
+        CGSize hsfSize = [highScoreFooter.string sizeWithFont:[UIFont fontWithName:@"Aharoni" size:55.0f]];
+        highScoreFooter.position = ccp(winSize.width * 0.88 - hsfSize.width, winSize.height * 0.30);
+        [self addChild:highScoreFooter];
+        
+        [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile: @"assets/mainMenu.plist"];
+        CCSpriteBatchNode* mainSpriteSheet = [CCSpriteBatchNode batchNodeWithFile:@"assets/mainMenu.png"];
+        [self addChild:mainSpriteSheet];
+
+        
+        CCMenuItemImage * restartMenuItem = [CCMenuItemImage itemWithNormalSprite:[CCSprite spriteWithSpriteFrameName:@"ldb.png"]
+                                        selectedSprite:[CCSprite spriteWithSpriteFrameName:@"ldb.png"]
+                                        target:self
+                                        selector:@selector(restartGame)];
+        restartMenuItem.scale = 0.35;
+        
+        CCMenuItemImage * optionsMenuItem = [CCMenuItemImage itemWithNormalSprite:[CCSprite spriteWithSpriteFrameName:@"htp.png"]
+                                        selectedSprite:[CCSprite spriteWithSpriteFrameName:@"htp.png"]
+                                        target:self
+                                        selector:@selector(openOptions)];
+        optionsMenuItem.scale = 0.35;
+
+        
+        CCMenuItemImage * quitMenuItem = [CCMenuItemImage itemWithNormalSprite:[CCSprite spriteWithSpriteFrameName:@"optns.png"]
+                                        selectedSprite:[CCSprite spriteWithSpriteFrameName:@"optns.png"]
+                                        target:self
+                                        selector:@selector(quitToMain)];
+        quitMenuItem.scale = 0.35;
+        
+        
+        // Create a menu and add your menu items to it
+        menu = [CCMenu menuWithItems:restartMenuItem, optionsMenuItem, quitMenuItem, nil];
+        [menu alignItemsHorizontallyWithPadding:5.0f];
+        menu.position = ccp(winSize.width/2, 55);
+        
+        // add the menu to your scene
+        [self addChild:menu];
+        menu.enabled = NO;
     }
     return self;
 }
@@ -129,10 +167,12 @@
 }
 
 - (void) resumeGame {
+    [self showLayer:NO];
     [(GameLayer *)self.parent pauseGame:NO];
 }
 
 - (void) restartGame {
+    [self showLayer:NO];
     [(GameLayer *)self.parent restartGame];
 }
 
@@ -141,6 +181,7 @@
 }
 
 - (void) quitToMain {
+    [self showLayer:NO];
     [(GameLayer *)self.parent quitToMain];
 }
 

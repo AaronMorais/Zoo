@@ -593,13 +593,11 @@ PP 30/1000*/
 }
 
 - (void) restartGame {
-    [pauseLayer showLayer:NO];
     [[CCDirector sharedDirector] replaceScene:
         [CCTransitionFade transitionWithDuration:0.0f scene:[GameLayer scene]]];
 }
 
 - (void) quitToMain {
-    [pauseLayer showLayer:NO];
     [[CCDirector sharedDirector] replaceScene:
      [CCTransitionFade transitionWithDuration:0.5f scene:[MenuLayer scene]]];
 }
@@ -772,7 +770,7 @@ PP 30/1000*/
         [lifeSprite setDisplayFrame:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:[NSString stringWithFormat:@"%dlives.png",lifeCount]]];
     }
     if(lifeCount == 0){
-//        [self scheduleOnce:@selector(gameOver) delay:0.25];
+        [self scheduleOnce:@selector(gameOver) delay:0.25];
     }
 }
 
@@ -788,19 +786,15 @@ PP 30/1000*/
 - (void) gameOver{
     Boolean highScoreFlag = [sharedSingleton checkHighScore:currentScore]; //send the singleton the current game score, a high score may be recorded
     if(highScoreFlag){
-    }
-    
+    }    
     [self endGameSound]; //play endgame sounds
 
-    [[CCDirector sharedDirector] stopAnimation]; //stop all game animation
-    [[CCDirector sharedDirector] pause]; //pause game
-    sleep(2);
-    [[CCDirector sharedDirector] stopAnimation]; // call this to make sure you don't start a second display link!
-    [[CCDirector sharedDirector] resume]; //restart all animations and sounds
-    [[CCDirector sharedDirector] startAnimation];
-    [[CCDirector sharedDirector] replaceScene:
-        [CCTransitionFade transitionWithDuration:0.0f scene:[GameLayer scene]]];
-
+    [self pauseSchedulerAndActions];
+    CCArray *children = self.children;
+    [children makeObjectsPerformSelector:@selector(pauseSchedulerAndActions)];
+    GameOverlayLayer *gameOver = [[GameOverlayLayer alloc] initAsGameOver:currentScore];
+    [self addChild:gameOver z:6];
+    [gameOver showLayer:YES];
 }
 
 - (void) startSounds{
