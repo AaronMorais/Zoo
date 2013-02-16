@@ -10,8 +10,8 @@
 #import "AppDelegate.h"
 #import "NSData+AES256.h"
 
-#define APPNAME @"MyAppName"
-#define AESKEY @"RandomKeyHere"
+#define APPNAME @"Zoo_Box"
+#define AESKEY @"1VdeqbQRaOin/PXbzLF8hYzGuY+rkZrRboTyCMJ/+pU="
 
 @implementation ABGameKitHelper
 
