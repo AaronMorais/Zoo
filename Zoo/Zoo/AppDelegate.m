@@ -7,11 +7,11 @@
 //
 
 #import "cocos2d.h"
-
 #import "AppDelegate.h"
 #import "GameLayer.h"
 #import "MenuLayer.h"
 #import "Singleton.h"
+#import "ABGameKitHelper.h"
 
 @implementation AppController
 

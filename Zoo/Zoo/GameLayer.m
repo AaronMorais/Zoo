@@ -788,7 +788,8 @@ PP 30/1000*/
     if(highScoreFlag){
     }    
     [self endGameSound]; //play endgame sounds
-
+    gameState = NO;
+    
     [self pauseSchedulerAndActions];
     CCArray *children = self.children;
     [children makeObjectsPerformSelector:@selector(pauseSchedulerAndActions)];

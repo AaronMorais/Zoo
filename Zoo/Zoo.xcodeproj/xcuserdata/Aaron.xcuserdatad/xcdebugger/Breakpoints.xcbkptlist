@@ -73,22 +73,22 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Zoo/DragSprite.m"
-         timestampString = "382155905.767644"
+         timestampString = "382219451.6795"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "260"
-         endingLineNumber = "260">
+         startingLineNumber = "281"
+         endingLineNumber = "281">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Zoo/DragSprite.m"
-         timestampString = "382155444.361895"
+         timestampString = "382218847.850333"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "68"
-         endingLineNumber = "68"
+         startingLineNumber = "70"
+         endingLineNumber = "70"
          landmarkName = "-ccTouchEnded:withEvent:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -97,12 +97,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Zoo/GameLayer.m"
-         timestampString = "382149327.516932"
+         timestampString = "382733580.982461"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "668"
-         endingLineNumber = "668"
-         landmarkName = "-unitIncrement:"
+         startingLineNumber = "702"
+         endingLineNumber = "702"
+         landmarkName = "-showLoseLifeGradient"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -110,12 +110,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Zoo/GameLayer.m"
-         timestampString = "382155905.767644"
+         timestampString = "382733580.982461"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "714"
-         endingLineNumber = "714"
-         landmarkName = "-fullSpeed"
+         startingLineNumber = "749"
+         endingLineNumber = "749"
+         landmarkName = "-halfSpeed"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -123,13 +123,13 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Zoo/GameLayer.m"
-         timestampString = "382155905.767644"
+         timestampString = "382733580.982461"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "741"
-         endingLineNumber = "741"
-         landmarkName = "-gainLife"
-         landmarkType = "5">
+         startingLineNumber = "776"
+         endingLineNumber = "776"
+         landmarkName = "@implementation GameLayer"
+         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "Yes"
@@ -149,11 +149,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Zoo/DragSprite.m"
-         timestampString = "382155444.361895"
+         timestampString = "382218847.850333"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "67"
-         endingLineNumber = "67"
+         startingLineNumber = "69"
+         endingLineNumber = "69"
          landmarkName = "-ccTouchEnded:withEvent:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -162,11 +162,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Zoo/DragSprite.m"
-         timestampString = "382155630.950069"
+         timestampString = "382218847.850333"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "154"
-         endingLineNumber = "154"
+         startingLineNumber = "158"
+         endingLineNumber = "158"
          landmarkName = "-moveSprite"
          landmarkType = "5">
       </FileBreakpoint>
@@ -175,11 +175,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Zoo/DragSprite.m"
-         timestampString = "382155630.950069"
+         timestampString = "382218847.850333"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "156"
-         endingLineNumber = "156"
+         startingLineNumber = "160"
+         endingLineNumber = "160"
          landmarkName = "-moveSprite"
          landmarkType = "5">
       </FileBreakpoint>
@@ -188,11 +188,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Zoo/GameLayer.m"
-         timestampString = "382149327.516932"
+         timestampString = "382723618.300884"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "488"
-         endingLineNumber = "488"
+         startingLineNumber = "486"
+         endingLineNumber = "486"
          landmarkName = "-addSprite"
          landmarkType = "5">
       </FileBreakpoint>
@@ -201,24 +201,24 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Zoo/GameLayer.m"
-         timestampString = "382149327.516932"
+         timestampString = "382723618.300884"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "497"
-         endingLineNumber = "497"
-         landmarkName = "@implementation GameLayer"
-         landmarkType = "3">
+         startingLineNumber = "495"
+         endingLineNumber = "495"
+         landmarkName = "-addSprite"
+         landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Zoo/GameLayer.m"
-         timestampString = "382149327.516932"
+         timestampString = "382723618.300884"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "505"
-         endingLineNumber = "505"
+         startingLineNumber = "503"
+         endingLineNumber = "503"
          landmarkName = "-animalLoop"
          landmarkType = "5">
       </FileBreakpoint>
@@ -240,12 +240,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Zoo/GameLayer.m"
-         timestampString = "382141833.148282"
+         timestampString = "382723618.300884"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "417"
-         endingLineNumber = "417"
-         landmarkName = "-numInArray:"
+         startingLineNumber = "415"
+         endingLineNumber = "415"
+         landmarkName = "-generateOrder"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -253,11 +253,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Zoo/GameLayer.m"
-         timestampString = "382149327.516932"
+         timestampString = "382723618.300884"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "492"
-         endingLineNumber = "492"
+         startingLineNumber = "490"
+         endingLineNumber = "490"
          landmarkName = "-addSprite"
          landmarkType = "5">
       </FileBreakpoint>
@@ -266,11 +266,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Zoo/GameLayer.m"
-         timestampString = "382149327.516932"
+         timestampString = "382723618.300884"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "511"
-         endingLineNumber = "511"
+         startingLineNumber = "509"
+         endingLineNumber = "509"
          landmarkName = "-animalLoop"
          landmarkType = "5">
       </FileBreakpoint>
@@ -279,11 +279,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Zoo/GameLayer.m"
-         timestampString = "382149327.516932"
+         timestampString = "382723618.300884"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "515"
-         endingLineNumber = "515"
+         startingLineNumber = "513"
+         endingLineNumber = "513"
          landmarkName = "-animalLoop"
          landmarkType = "5">
       </FileBreakpoint>
@@ -292,11 +292,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Zoo/GameLayer.m"
-         timestampString = "382149327.516932"
+         timestampString = "382723618.300884"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "487"
-         endingLineNumber = "487"
+         startingLineNumber = "485"
+         endingLineNumber = "485"
          landmarkName = "-addSprite"
          landmarkType = "5">
       </FileBreakpoint>
@@ -305,11 +305,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Zoo/GameLayer.m"
-         timestampString = "382149327.516932"
+         timestampString = "382723618.300884"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "481"
-         endingLineNumber = "481"
+         startingLineNumber = "479"
+         endingLineNumber = "479"
          landmarkName = "-addSprite"
          landmarkType = "5">
       </FileBreakpoint>
