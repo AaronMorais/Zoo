@@ -1,7 +1,8 @@
 #import "GameLayer.h"
 #import "MenuLayer.h"
 #import "AppDelegate.h"
- 
+#import "ABGameKitHelper.h"
+
 @implementation MenuLayer
  
 +(id) scene{
@@ -110,9 +111,7 @@
         [CCTransitionFade transitionWithDuration:0.0f scene:[GameLayer scene]]];
 }
 - (void) leaderboard:(CCMenuItem*) menuItem{
-    [self removeChild:background cleanup:YES];
-    [self removeChild:myMenu cleanup:YES];
-	NSLog(@"ldb");
+    [[ABGameKitHelper sharedClass] showLeaderboard:@"ZooBoxLeaderboard"];
 }
 - (void) options:(CCMenuItem*) menuItem{
 	NSLog(@"options");

@@ -10,6 +10,7 @@
 		930829BE15DADAE2006C7CF9 /* assets in Resources */ = {isa = PBXBuildFile; fileRef = 930829BD15DADAE2006C7CF9 /* assets */; };
 		930829C315DADC5C006C7CF9 /* GameLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 930829C215DADC5C006C7CF9 /* GameLayer.m */; };
 		931C13A116C7693C00BBAD18 /* RadialGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 931C13A016C7693C00BBAD18 /* RadialGradientLayer.m */; };
+		93200B3C16D0377A00F32512 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93200B3B16D0377A00F32512 /* RootViewController.m */; };
 		933B9A2F15E99B16003770CF /* Singleton.m in Sources */ = {isa = PBXBuildFile; fileRef = 933B9A2E15E99B16003770CF /* Singleton.m */; };
 		9378905E15DCACE9000AA56F /* DragSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = 9378905D15DCACE9000AA56F /* DragSprite.m */; };
 		9379BAE01687EDD700DB272D /* MenuLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9379BADF1687EDD700DB272D /* MenuLayer.m */; };
@@ -155,7 +156,8 @@
 		93CAD3D5158E9C4E00F4EC4C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 93CAD3D4158E9C4E00F4EC4C /* AppDelegate.m */; };
 		93D1127616C8294500E0F414 /* LoadingLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D1127516C8294500E0F414 /* LoadingLayer.m */; };
 		93D1127916C8431A00E0F414 /* GameOverlayLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D1127816C8431A00E0F414 /* GameOverlayLayer.m */; };
-		93EC44F716D024E80073C80D /* ABGameKitHelper in Resources */ = {isa = PBXBuildFile; fileRef = 93EC44F616D024E80073C80D /* ABGameKitHelper */; };
+		93EC44FF16D025BF0073C80D /* ABGameKitHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 93EC44FC16D025BE0073C80D /* ABGameKitHelper.m */; };
+		93EC450016D025BF0073C80D /* NSData+AES256.m in Sources */ = {isa = PBXBuildFile; fileRef = 93EC44FE16D025BE0073C80D /* NSData+AES256.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -164,6 +166,8 @@
 		930829C215DADC5C006C7CF9 /* GameLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameLayer.m; sourceTree = "<group>"; };
 		931C139F16C7693C00BBAD18 /* RadialGradientLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadialGradientLayer.h; sourceTree = "<group>"; };
 		931C13A016C7693C00BBAD18 /* RadialGradientLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadialGradientLayer.m; sourceTree = "<group>"; };
+		93200B3A16D0377A00F32512 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		93200B3B16D0377A00F32512 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		933B9A2D15E99B16003770CF /* Singleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Singleton.h; sourceTree = "<group>"; };
 		933B9A2E15E99B16003770CF /* Singleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Singleton.m; sourceTree = "<group>"; };
 		9378905C15DCACE9000AA56F /* DragSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DragSprite.h; sourceTree = "<group>"; };
@@ -456,7 +460,10 @@
 		93D1127516C8294500E0F414 /* LoadingLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingLayer.m; sourceTree = "<group>"; };
 		93D1127716C8431A00E0F414 /* GameOverlayLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameOverlayLayer.h; sourceTree = "<group>"; };
 		93D1127816C8431A00E0F414 /* GameOverlayLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameOverlayLayer.m; sourceTree = "<group>"; };
-		93EC44F616D024E80073C80D /* ABGameKitHelper */ = {isa = PBXFileReference; lastKnownFileType = folder; name = ABGameKitHelper; path = libs/ABGameKitHelper; sourceTree = "<group>"; };
+		93EC44FB16D025BE0073C80D /* ABGameKitHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ABGameKitHelper.h; path = libs/ABGameKitHelper/ABGameKitHelper.h; sourceTree = "<group>"; };
+		93EC44FC16D025BE0073C80D /* ABGameKitHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ABGameKitHelper.m; path = libs/ABGameKitHelper/ABGameKitHelper.m; sourceTree = "<group>"; };
+		93EC44FD16D025BE0073C80D /* NSData+AES256.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSData+AES256.h"; path = "libs/ABGameKitHelper/NSData+AES256.h"; sourceTree = "<group>"; };
+		93EC44FE16D025BE0073C80D /* NSData+AES256.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSData+AES256.m"; path = "libs/ABGameKitHelper/NSData+AES256.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -520,6 +527,8 @@
 			children = (
 				93CAD3D3158E9C4E00F4EC4C /* AppDelegate.h */,
 				93CAD3D4158E9C4E00F4EC4C /* AppDelegate.m */,
+				93200B3A16D0377A00F32512 /* RootViewController.h */,
+				93200B3B16D0377A00F32512 /* RootViewController.m */,
 				933B9A2D15E99B16003770CF /* Singleton.h */,
 				933B9A2E15E99B16003770CF /* Singleton.m */,
 				9379BADE1687EDD700DB272D /* MenuLayer.h */,
@@ -536,8 +545,8 @@
 				9378905D15DCACE9000AA56F /* DragSprite.m */,
 				931C139F16C7693C00BBAD18 /* RadialGradientLayer.h */,
 				931C13A016C7693C00BBAD18 /* RadialGradientLayer.m */,
-				93CAD25E158E9C4C00F4EC4C /* Resources */,
 				93CAD276158E9C4C00F4EC4C /* libs */,
+				93CAD25E158E9C4C00F4EC4C /* Resources */,
 			);
 			path = Zoo;
 			sourceTree = "<group>";
@@ -575,7 +584,10 @@
 		93CAD276158E9C4C00F4EC4C /* libs */ = {
 			isa = PBXGroup;
 			children = (
-				93EC44F616D024E80073C80D /* ABGameKitHelper */,
+				93EC44FB16D025BE0073C80D /* ABGameKitHelper.h */,
+				93EC44FC16D025BE0073C80D /* ABGameKitHelper.m */,
+				93EC44FD16D025BE0073C80D /* NSData+AES256.h */,
+				93EC44FE16D025BE0073C80D /* NSData+AES256.m */,
 				938FFDD415E023BD009E8257 /* FMDatabase.h */,
 				938FFDD515E023BD009E8257 /* FMDatabaseAdditions.h */,
 				938FFDD615E023BD009E8257 /* FMDatabasePool.h */,
@@ -1002,7 +1014,6 @@
 				939CAB8A169143960064D90C /* gameStop.mp3 in Resources */,
 				9383FC9316924F1F0031E2DC /* countdown.mp3 in Resources */,
 				9383FC98169252620031E2DC /* Default-568h@2x.png in Resources */,
-				93EC44F716D024E80073C80D /* ABGameKitHelper in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1128,6 +1139,9 @@
 				931C13A116C7693C00BBAD18 /* RadialGradientLayer.m in Sources */,
 				93D1127616C8294500E0F414 /* LoadingLayer.m in Sources */,
 				93D1127916C8431A00E0F414 /* GameOverlayLayer.m in Sources */,
+				93EC44FF16D025BF0073C80D /* ABGameKitHelper.m in Sources */,
+				93EC450016D025BF0073C80D /* NSData+AES256.m in Sources */,
+				93200B3C16D0377A00F32512 /* RootViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -12,6 +12,7 @@
 #import "MenuLayer.h"
 #import "Singleton.h"
 #import "ABGameKitHelper.h"
+#import "RootViewController.h"
 
 @implementation AppController
 
@@ -59,7 +60,7 @@
 		CCLOG(@"Retina Display Not supported");
 
 	// Create a Navigation Controller with the Director
-	navController_ = [[UINavigationController alloc] initWithRootViewController:director_];
+	navController_ = [[RootViewController alloc] initWithRootViewController:director_];
 	navController_.navigationBarHidden = YES;
 
 	// set the Navigation Controller as the root view controller
@@ -96,10 +97,12 @@
 	// Assume that PVR images have premultiplied alpha
 	[CCTexture2D PVRImagesHavePremultipliedAlpha:YES];
 
+    [[ABGameKitHelper sharedClass] authenticatePlayer];
+    
     Singleton* sharedSingleton;
     sharedSingleton = [Singleton sharedInstance];
 	// and add the scene to the stack. The director will run it when it automatically when the view is displayed.
-	[director_ pushScene: [GameLayer scene]];
+	[director_ pushScene: [MenuLayer scene]];
 
 	return YES;
 }

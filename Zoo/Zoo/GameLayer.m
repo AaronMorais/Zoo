@@ -24,6 +24,7 @@ PP 30/1000*/
 // Needed to obtain the Navigation Controller
 #import "AppDelegate.h"
 #import "MenuLayer.h"
+#import "ABGameKitHelper.h"
 
 #pragma mark - GameLayer
 
@@ -785,8 +786,8 @@ PP 30/1000*/
 //end the game
 - (void) gameOver{
     Boolean highScoreFlag = [sharedSingleton checkHighScore:currentScore]; //send the singleton the current game score, a high score may be recorded
-    if(highScoreFlag){
-    }    
+     [[ABGameKitHelper sharedClass] reportScore:currentScore forLeaderboard:@"ZooBoxLeaderboard"];
+    
     [self endGameSound]; //play endgame sounds
     gameState = NO;
     
