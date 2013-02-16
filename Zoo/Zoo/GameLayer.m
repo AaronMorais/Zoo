@@ -561,7 +561,7 @@ PP 30/1000*/
         }
     }
     //check if pause button was touched
-    if(CGRectContainsPoint(pause.boundingBox, touchPoint)){
+    if(CGRectContainsPoint(pause.boundingBox, touchPoint) && gameState){
         [self pauseGame:YES];
     }
 }
@@ -585,7 +585,7 @@ PP 30/1000*/
 
 - (void) restartGame {
     [[CCDirector sharedDirector] replaceScene:
-        [CCTransitionFade transitionWithDuration:0.0f scene:[GameLayer scene]]];
+        [CCTransitionFade transitionWithDuration:0.5f scene:[GameLayer scene]]];
 }
 
 - (void) quitToMain {

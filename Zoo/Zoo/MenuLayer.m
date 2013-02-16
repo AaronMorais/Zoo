@@ -106,7 +106,7 @@
 
 - (void) loadGameScene {
     [[CCDirector sharedDirector] replaceScene:
-        [CCTransitionFade transitionWithDuration:0.0f scene:[GameLayer scene]]];
+        [CCTransitionFade transitionWithDuration:0.5f scene:[GameLayer scene]]];
 }
 - (void) leaderboard:(CCMenuItem*) menuItem{
     [[ABGameKitHelper sharedClass] showLeaderboard:@"ZooBoxLeaderboard"];
