@@ -32,8 +32,6 @@
         fadeLayer = [CCLayerColor layerWithColor:ccc4(0, 0, 0, 255)];
         [fadeLayer setOpacity:175];
         [self addChild:fadeLayer];
-        
-        [[[CCDirector sharedDirector] touchDispatcher] addTargetedDelegate:self priority:-1 swallowsTouches:YES];
     }
     return self;
 }
@@ -88,6 +86,7 @@
         
         // add the menu to your scene
         [self addChild:menu];
+        menu.enabled = NO;
     }
     return self;
 }
@@ -118,6 +117,17 @@
     return self;
 }
 
+- (void) showLayer:(BOOL)show {
+    menu.enabled = show;
+    self.visible = show;
+    if(show) {
+        [[[CCDirector sharedDirector] touchDispatcher] removeDelegate:self];
+        [[[CCDirector sharedDirector] touchDispatcher] addTargetedDelegate:self priority:-1 swallowsTouches:YES];
+    } else {
+        [[[CCDirector sharedDirector] touchDispatcher] removeDelegate:self];
+    }
+}
+
 - (void) resumeGame {
     [(GameLayer *)self.parent pauseGame:NO];
 }
@@ -135,7 +145,6 @@
 }
 
 - (BOOL)ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event {
-    NSLog(@"touch %@", self);
     return YES;
 }
 

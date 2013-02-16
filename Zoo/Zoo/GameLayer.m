@@ -72,6 +72,7 @@ PP 30/1000*/
     [self addBackgroundImage];
     //add score label
     [self addScoreLabel];
+    [self addPauseLayer];
     //load sprite sheets
     [self loadSpriteSheets];
     //add pause button
@@ -102,6 +103,12 @@ PP 30/1000*/
     [self addChild: score];
     score.anchorPoint = ccp(0,0.5);
     score.position =  ccp((.1 * winSize.width),winSize.height-(.065 * winSize.height));
+}
+
+- (void) addPauseLayer {
+    pauseLayer = [[GameOverlayLayer alloc] initAsPauseMenu];
+    [self addChild:pauseLayer z:6];
+    [pauseLayer showLayer:NO];
 }
 
 - (void) loadSpriteSheets{
@@ -564,8 +571,7 @@ PP 30/1000*/
     }
     //check if pause button was touched
     if(CGRectContainsPoint(pause.boundingBox, touchPoint)){
-        [self pauseGame:isPaused];
-        isPaused = !isPaused;
+        [self pauseGame:YES];
     }
 }
 
@@ -574,31 +580,28 @@ PP 30/1000*/
         [self pauseSchedulerAndActions];
         CCArray *children = self.children;
         [children makeObjectsPerformSelector:@selector(pauseSchedulerAndActions)];
-        pauseLayer = [[GameOverlayLayer alloc] initAsPauseMenu];
-        [self addChild:pauseLayer z:5];
+        
+        [pauseLayer showLayer:YES];
+
     } else {
         [self resumeSchedulerAndActions];
         CCArray *children = self.children;
         [children makeObjectsPerformSelector:@selector(resumeSchedulerAndActions)];
-        [self removeChild:pauseLayer cleanup:YES];
-        [[[CCDirector sharedDirector] touchDispatcher] removeDelegate:pauseLayer];
+        
+        [pauseLayer showLayer:NO];
     }
 }
 
 - (void) restartGame {
-    [self removePauseLayer];
+    [pauseLayer showLayer:NO];
     [[CCDirector sharedDirector] replaceScene:
         [CCTransitionFade transitionWithDuration:0.0f scene:[GameLayer scene]]];
 }
 
 - (void) quitToMain {
-    [self removePauseLayer];
+    [pauseLayer showLayer:NO];
     [[CCDirector sharedDirector] replaceScene:
      [CCTransitionFade transitionWithDuration:0.5f scene:[MenuLayer scene]]];
-}
-
-- (void) removePauseLayer {
-    [pauseLayer removeFromParentAndCleanup:YES];
 }
 
 //check intersections between box and animals
