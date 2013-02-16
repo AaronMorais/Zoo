@@ -30,7 +30,7 @@
 								   depthFormat:0	//GL_DEPTH_COMPONENT24_OES
 							preserveBackbuffer:NO
 									sharegroup:nil
-								 multiSampling:NO
+					 			 multiSampling:NO
 							   numberOfSamples:0];
                                
 	[glView setMultipleTouchEnabled:YES];
@@ -170,11 +170,4 @@
 	[[CCDirector sharedDirector] setNextDeltaTimeZero:YES];
 }
 
-- (void) dealloc
-{
-	[window_ release];
-	[navController_ release];
-
-	[super dealloc];
-}
 @end

@@ -25,7 +25,6 @@
 	// Apple recommends to re-assign "self" with the "super" return value
 	if( (self=[super init] )) {
         sharedSingleton = [Singleton sharedInstance];
-        [sharedSingleton retain];
         
         loading = [[LoadingLayer alloc] initWithColor:ccc4(0,0,0,255)];
         [self addChild:loading];
@@ -97,7 +96,6 @@
  
 	// don't forget to call "super dealloc"
     [[sharedSingleton sae] pauseBackgroundMusic];
-	[super dealloc];
 }
 
 - (void) play: (CCMenuItem*) menuItem{

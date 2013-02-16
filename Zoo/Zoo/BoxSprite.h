@@ -18,7 +18,7 @@
 -(void) firstStroke;
 
 @property NSInteger currentCapacity, originalCapacity, swallowed;
-@property(retain) CCLabelTTF* currentNumber;
-@property(retain) CCRenderTexture* currentStroke;
+@property(strong) CCLabelTTF* currentNumber;
+@property(strong) CCRenderTexture* currentStroke;
 
 @end

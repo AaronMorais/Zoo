@@ -86,7 +86,6 @@ PP 30/1000*/
     boxes = [[NSMutableArray alloc]init];
     //init singleton
     sharedSingleton = [Singleton sharedInstance];
-    [sharedSingleton retain];
     [sharedSingleton resetSingleton];
     [self addBoxes];
 }
@@ -257,7 +256,6 @@ PP 30/1000*/
     
     beltAction = [CCRepeatForever actionWithAction:
                             [CCAnimate actionWithAnimation:beltAnim]];
-    [beltAction retain];
     self.pBoxAction = [CCAnimate actionWithAnimation:pboxAnim];
     self.eBoxAction = [CCAnimate actionWithAnimation:eboxAnim];
     self.hBoxAction = [CCAnimate actionWithAnimation:hboxAnim];
@@ -283,14 +281,6 @@ PP 30/1000*/
                     [CCAnimate actionWithAnimation:lbAnim]];
     lFlailAction = [CCRepeatForever actionWithAction:
                     [CCAnimate actionWithAnimation:lfAnim]];
-    [pFlailAction retain];
-    [pBlinkAction retain];
-    [eFlailAction retain];
-    [eBlinkAction retain];
-    [hFlailAction retain];
-    [hBlinkAction retain];
-    [lFlailAction retain];
-    [lBlinkAction retain];
 }
 
 #pragma mark Start Game
@@ -831,16 +821,6 @@ PP 30/1000*/
 
 // on "dealloc" you need to release all your retained objects
 //FIX THIS - I DON"T THINK EVERYTHING IS DEALLOCED
-- (void) dealloc {
-	// in case you have something to dealloc, do it in this method
-	// in this particular example nothing needs to be released.
-	// cocos2d will automatically release all the children (Label)
-
-	// don't forget to call "super dealloc"
-	[super dealloc];
-    [pauseLayer release];
-    [pauseLayer dealloc];
-}
 
 /* SOME GAME CENTER STUFF
 #pragma mark GameKit delegate

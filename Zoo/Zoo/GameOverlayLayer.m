@@ -26,7 +26,6 @@
     self = [super init];
     if (self) {
         sharedSingleton = [Singleton sharedInstance];
-        [sharedSingleton retain];
         winSize = [[CCDirector sharedDirector] winSize];
         
         fadeLayer = [CCLayerColor layerWithColor:ccc4(0, 0, 0, 255)];

@@ -14,7 +14,6 @@
             sharedSingleton = [Singleton sharedInstance];
        
             //make sure the singleton does not get removed
-            [sharedSingleton retain];
        
             //sprite moves as soon as it is initializes
 //            [self moveSprite]; removed because .type is not set on init
@@ -212,7 +211,7 @@
     }
 //lion powerup: no pigs for 10 seconds
     if([self.type intValue] == 7){
-        [self.parent performSelector:@selector(setPigsNotAllowed:) withObject:(id)YES];
+        [self.parent performSelector:@selector(setPigsNotAllowed:) withObject:[NSNumber numberWithBool:YES]];
         [self unschedule:@selector(setPigsAllowed)];
         [self scheduleOnce:@selector(setPigsAllowed) delay:10.0f];
     }
@@ -229,7 +228,7 @@
 }
 
 - (void) setPigsAllowed {
-    [self.parent performSelector:@selector(setPigsNotAllowed:) withObject:(id)NO];
+    [self.parent performSelector:@selector(setPigsNotAllowed:) withObject:[NSNumber numberWithBool:NO]];
 }
 
 - (void) updateSpeed {

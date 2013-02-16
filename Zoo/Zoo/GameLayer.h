@@ -65,13 +65,13 @@
         Singleton* sharedSingleton;
 }
 
-@property (nonatomic,retain) CCAction *pBoxAction;
-@property (nonatomic,retain) CCAction *eBoxAction;
-@property (nonatomic,retain) CCAction *hBoxAction;
-@property (nonatomic,retain) CCAction *lBoxAction;
-@property (nonatomic,retain) CCAction *pFlailAction,* eFlailAction,* hFlailAction,* lFlailAction;
-@property (nonatomic,retain) CCAction *pBlinkAction,* eBlinkAction,* hBlinkAction,* lBlinkAction;
-@property (nonatomic,assign) NSMutableArray *animals,* boxes;
+@property (nonatomic,strong) CCAction *pBoxAction;
+@property (nonatomic,strong) CCAction *eBoxAction;
+@property (nonatomic,strong) CCAction *hBoxAction;
+@property (nonatomic,strong) CCAction *lBoxAction;
+@property (nonatomic,strong) CCAction *pFlailAction,* eFlailAction,* hFlailAction,* lFlailAction;
+@property (nonatomic,strong) CCAction *pBlinkAction,* eBlinkAction,* hBlinkAction,* lBlinkAction;
+@property (nonatomic) NSMutableArray *animals,* boxes;
 @property (nonatomic) NSInteger currentScore;
 @property (nonatomic,assign) BOOL pigsNotAllowed;
 @property (nonatomic,assign) BOOL gameState;
