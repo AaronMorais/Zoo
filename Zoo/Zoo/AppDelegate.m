@@ -39,7 +39,7 @@
 	director_.wantsFullScreenLayout = YES;
 
 	// Display FSP and SPF
-//	[director_ setDisplayStats:YES];
+	[director_ setDisplayStats:YES];
 
 	// set FPS at 60
 	[director_ setAnimationInterval:1.0/60];
@@ -137,6 +137,10 @@
 {
 	if( [navController_ visibleViewController] == director_ )
 		[director_ stopAnimation];
+    GameLayer *game = [[[CCDirector sharedDirector] runningScene].children objectAtIndex:0];
+    if([game isKindOfClass:[GameLayer class]] && [game gameState]) {
+        [game pauseGame:YES];
+    }
 }
 
 -(void) applicationWillEnterForeground:(UIApplication*)application

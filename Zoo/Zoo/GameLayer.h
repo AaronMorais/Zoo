@@ -24,14 +24,12 @@
         int countDownCounter;
         CCSprite* countDownSprite;
         RadialGradientLayer* fadeLayer;
-        BOOL isPaused;
         GameOverlayLayer* pauseLayer;
         CGSize winSize;
         CCSprite* lifeSprite;
         CCSprite* pause;
         CCSprite* beltSprite;
         CCLabelTTF* score;
-        bool gameState;
         NSMutableArray* boxOrder;
         NSMutableArray* boxes;
         NSInteger currentScore;
@@ -76,6 +74,7 @@
 @property (nonatomic,assign) NSMutableArray *animals,* boxes;
 @property (nonatomic) NSInteger currentScore;
 @property (nonatomic,assign) BOOL pigsNotAllowed;
+@property (nonatomic,assign) BOOL gameState;
 
 // returns a CCScene that contains the GameLayer as the only child
 +(CCScene *) scene;

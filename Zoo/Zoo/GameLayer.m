@@ -33,7 +33,7 @@ PP 30/1000*/
 @synthesize eBoxAction = _eBoxAction;
 @synthesize hBoxAction = _hBoxAction;
 @synthesize lBoxAction = _lBoxAction;
-@synthesize pFlailAction, lFlailAction, eFlailAction, hFlailAction, pBlinkAction, lBlinkAction, eBlinkAction, hBlinkAction, boxes,currentScore, pigsNotAllowed;
+@synthesize pFlailAction, lFlailAction, eFlailAction, hFlailAction, pBlinkAction, lBlinkAction, eBlinkAction, hBlinkAction, boxes,currentScore, pigsNotAllowed, gameState;
 
 // Helper class method that creates a Scene with the GameLayer as the only child.
 +(CCScene*) scene{
