@@ -3,7 +3,9 @@
  
 @implementation Singleton
 @synthesize bezierArray, animals, gameSpeed, currentSpawnRate, sae, saveSpeed, frozenPowerupActivated, slowdownPowerupActivated;
- 
+
+#define IS_IPHONE_5 ([UIScreen mainScreen].bounds.size.height == 568.0)
+
 static Singleton *sharedInstance = nil;
  
 + (Singleton*)sharedInstance {
@@ -258,6 +260,9 @@ static Singleton *sharedInstance = nil;
 		float t = (float)i / points;
 		CGPoint p;
 		p.x = [self bezierat:bezierPoints[0].x: bezierPoints[1].x: bezierPoints[2].x: bezierPoints[3].x: t];
+        if(IS_IPHONE_5) {
+            p.x += 44;
+        }
 		p.y = [self bezierat:bezierPoints[0].y: bezierPoints[1].y: bezierPoints[2].y: bezierPoints[3].y: t];
 		[array addObject:[NSValue valueWithCGPoint:p]];
     }

@@ -1,6 +1,8 @@
 #import "DragSprite.h"
 #import "GameLayer.h"
 
+#define IS_IPHONE_5 ([UIScreen mainScreen].bounds.size.height == 568.0)
+
 @implementation DragSprite
 @synthesize type, side, blink, flail, currentPosition;
 
@@ -148,10 +150,15 @@
 
 - (void) moveSprite{
     //set initial position and declare arrays
-    self.position = ccp(6, 83);
+    if(IS_IPHONE_5){
+        self.position = ccp(50,83);
+    } else {
+        self.position = ccp(6, 83);
+    }
+    CGPoint savedPoint;
+    savedPoint = self.position;
     NSMutableArray* moveArray = [NSMutableArray array];
     NSMutableArray* bezierArray = [sharedSingleton bezierArray];
-    CGPoint savedPoint = ccp(6,83);
     
     //move animal to each point smoothly
     for(NSValue* val in bezierArray){
