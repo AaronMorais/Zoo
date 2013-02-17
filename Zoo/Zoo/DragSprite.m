@@ -246,6 +246,7 @@
 }
 
 - (void) updateSpeed {
+    if(self.scale != 1) { return;}
     [self stopAllActions];
     [self blinkCurrentSprite];
     [self closest];
