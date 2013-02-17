@@ -65,6 +65,8 @@
 
 //touch end handling function
 - (void)ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event{
+    if(![(GameLayer *)self.parent gameState]) { return;}
+
     //stop the sprite from flailing and stop sprite from popping
     [self stopAllActions];
     [self blinkCurrentSprite];
