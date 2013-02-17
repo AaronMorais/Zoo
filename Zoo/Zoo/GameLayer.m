@@ -55,7 +55,7 @@ PP 30/1000*/
 // on "init" you need to initialize your instance
 -(id) init{
 	// always call "super" init
-	if((self=[super initWithColor:ccc4(200,200,200,200)]) ){
+	if((self=[super initWithColor:ccc4(0,0,0,255)]) ){
         //initialize touch handling
         [[[CCDirector sharedDirector] touchDispatcher] addTargetedDelegate:self priority:0 swallowsTouches:NO];
         //load assets
