@@ -45,7 +45,8 @@
         
         highScoreFooter = [[CCLabelTTF alloc] initWithString:[NSString stringWithFormat:@"%d",[sharedSingleton getHighScore]] fontName:@"Aharoni" fontSize:70.0f];
         highScoreFooter.ignoreAnchorPointForPosition = YES;
-        highScoreFooter.position = ccp(winSize.width * 0.45, winSize.height * 0.55);
+        CGSize hsfSize = [highScoreFooter.string sizeWithFont:[UIFont fontWithName:@"Aharoni" size:70.0f]];
+        highScoreFooter.position = ccp(winSize.width * 0.88 - hsfSize.width, winSize.height * 0.55);
         [self addChild:highScoreFooter];
         
         [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile: @"assets/mainMenu.plist"];
