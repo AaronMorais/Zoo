@@ -207,7 +207,7 @@
     }
 }
 
--(void) powerupFunction{
+-(BOOL) powerupFunction{
 //hippo powerup: slow movement speed and spawn rate for 8 secs
     if([self.type intValue] == 6){
         if(![sharedSingleton slowdownPowerupActivated]) {
@@ -231,6 +231,11 @@
         [self.parent performSelector:@selector(stopMovingBelt) withObject:self];
         [self.parent unschedule:@selector(startMovingBelt)];
         [self.parent scheduleOnce:@selector(startMovingBelt) delay:5.0f];
+    }
+    if([self.type intValue] >= 6) {
+        return true;
+    } else {
+        return false;
     }
 }
 

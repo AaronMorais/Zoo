@@ -23,7 +23,7 @@
 -(void) removeMe;
 -(void) rememberPosition;
 -(void) resumeMoveSprite;
--(void) powerupFunction;
+-(BOOL) powerupFunction;
 -(void) updateSpeed;
 -(void) moveSprite;
 @property(strong) NSNumber* type, * side;

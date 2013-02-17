@@ -643,8 +643,9 @@ PP 30/1000*/
                 //lose life or change box counter depending on animal type
                 if([boxOrder objectAtIndex:location] == [NSNumber numberWithInt:check]){
                     [[boxes objectAtIndex:location] swallow];
-                    [dragSprite powerupFunction];
-                    [self showPowerupGradient];
+                    if([dragSprite powerupFunction]) {
+                        [self showPowerupGradient];
+                    }
                 }else{
                     [self loseLife];
                     [self showLoseLifeGradient];
