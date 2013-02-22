@@ -628,21 +628,23 @@ PP 30/1000*/
                 int check = [dragSprite.type intValue];
                 //p.e.h.l
                 //hip.li.el.pen
-                if(check == 6){
-                    check = 3;
-                }
-                if(check == 7){
-                    check = 4;
-                }
-                if(check == 8){
-                    check = 2;
-                }
-                if(check == 9){
-                    check = 1;
-                }
+//                if(check == 6){
+//                    check = 3;
+//                }
+//                if(check == 7){
+//                    check = 4;
+//                }
+//                if(check == 8){
+//                    check = 2;
+//                }
+//                if(check == 9){
+//                    check = 1;
+//                }
                 //lose life or change box counter depending on animal type
-                if([boxOrder objectAtIndex:location] == [NSNumber numberWithInt:check]){
-                    [[boxes objectAtIndex:location] swallow];
+                if([boxOrder objectAtIndex:location] == [NSNumber numberWithInt:check] || check > 5){
+                    if(check <= 5) {
+                        [[boxes objectAtIndex:location] swallow];
+                    }
                     if([dragSprite powerupFunction]) {
                         [self showPowerupGradient];
                     }

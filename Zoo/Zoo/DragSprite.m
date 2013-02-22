@@ -138,7 +138,7 @@
             flag = 1;
         }
     }
-    if([self.type intValue] != 5){
+    if([self.type intValue] < 5){
         CCCallFunc* loseLife = [CCCallFunc actionWithTarget:self selector:@selector(loseLife)];
         [moveArray addObject:loseLife];
     }
@@ -174,7 +174,7 @@
         [moveArray addObject:rememberPosition];
         savedPoint = p;
     }
-    if([self.type intValue] != 5){
+    if([self.type intValue] < 5){
         //lose life if animal is dead
         CCCallFunc* loseLife = [CCCallFunc actionWithTarget:self selector:@selector(loseLife)];
         [moveArray addObject:loseLife];
