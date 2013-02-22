@@ -35,14 +35,23 @@
 
 //init/reset the box with a new number
 - (void)newNumber{
-    //get new number
-    NSNumber* new = [self randFunction:1:5];
-    //set new number
-    self.currentCapacity = [new integerValue];
-    self.originalCapacity = [new integerValue];
-    
     //reset swallowed
     self.swallowed = 0;
+    
+    if(self.currentCapacity && self.currentCapacity >0) {
+        self.currentCapacity +=1;
+        self.originalCapacity +=1;
+        if(self.currentCapacity > 10){
+            self.currentCapacity = 10;
+            self.originalCapacity = 10;
+        }
+    } else {
+        //get new number
+        NSNumber* new = [self randFunction:1:5];
+        //set new number
+        self.currentCapacity = [new integerValue];
+        self.originalCapacity = [new integerValue];
+    }
     
     //if the box had a number, reset its values
     if(self.currentNumber){
