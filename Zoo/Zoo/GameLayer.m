@@ -398,29 +398,17 @@ PP 30/1000*/
     boxOrder = [[NSMutableArray alloc] init];
     int count = 1;
     while(count <=4){
-        NSNumber* randomNum = [self randFunction:1:4];
-        if(![self numInArray:randomNum]){
-            [boxOrder addObject:randomNum];
-            count++;
-        }
+        NSNumber* randomNum = [NSNumber numberWithInt:count];
+        [boxOrder addObject:randomNum];
+        count++;
     }
-}
-
-//check if num is in array
-- (bool)numInArray:(NSNumber*)checkNum{
-    for(NSNumber*num in boxOrder){
-        if(num == checkNum){
-            return true;
-        }
-    }
-    return false;
 }
 
 //add sprite to game
 - (void)addSprite{
     NSNumber* nsType = [self randFunction:1:1000]; //randomly choose animal type
     int type = [nsType intValue];
-    while(pigsNotAllowed && type > 820 && type < 920) {
+    while((pigsNotAllowed && type > 819 && type < 920) || (lifeCount==3 && type < 970 && type > 964)) {
         nsType = [self randFunction:1:1000];
         type = [nsType intValue];
     }
