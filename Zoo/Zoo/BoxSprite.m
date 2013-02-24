@@ -41,13 +41,13 @@
     if(self.currentCapacity && self.currentCapacity >0) {
         self.currentCapacity +=1;
         self.originalCapacity +=1;
-        if(self.currentCapacity > 10){
-            self.currentCapacity = 10;
-            self.originalCapacity = 10;
+        if(self.currentCapacity > 5){
+            self.currentCapacity = 5;
+            self.originalCapacity = 5;
         }
     } else {
-        //get new number
-        NSNumber* new = [self randFunction:1:5];
+        //reset box at 0 to 5 rather than incrementing by 1
+        NSNumber* new = [NSNumber numberWithInt:5];
         //set new number
         self.currentCapacity = [new integerValue];
         self.originalCapacity = [new integerValue];
