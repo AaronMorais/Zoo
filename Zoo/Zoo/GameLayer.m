@@ -404,7 +404,7 @@ PP 30/1000*/
 - (void)addSprite{
     NSNumber* nsType = [self randFunction:1:1000]; //randomly choose animal type
     int type = [nsType intValue];
-    while((pigsNotAllowed && type > 819 && type < 920) || (lifeCount==3 && type < 970 && type > 964)) {
+    while((pigsNotAllowed && type > 819 && type < 920) || (lifeCount==5 && type < 970 && type > 964)) {
         nsType = [self randFunction:1:1000];
         type = [nsType intValue];
     }
@@ -759,7 +759,7 @@ PP 30/1000*/
 
 - (void) gainLife{
     //increment counter, display visually
-    if(lifeCount !=3){
+    if(lifeCount !=5){
         lifeCount++;
         [lifeSprite setDisplayFrame:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:[NSString stringWithFormat:@"%dlives.png",lifeCount]]];
     }
