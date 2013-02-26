@@ -296,7 +296,7 @@ PP 30/1000*/
     countDownCounter--;
     [[[CCDirector sharedDirector] touchDispatcher] setDispatchEvents:NO];
     if(countDownCounter == 4){
-        fadeLayer = [[RadialGradientLayer alloc] initWithColor:ccc3(0,0,0) fadeIn:NO speed:2];
+        fadeLayer = [[RadialGradientLayer alloc] initWithColor:ccc3(0,0,0) fadeIn:NO speed:2 large:YES];
         [self addChild:fadeLayer z:1];
         [self schedule:@selector(countDown) interval:0.5];
     }else if(countDownCounter > 0){
@@ -326,10 +326,6 @@ PP 30/1000*/
         countDownCounter = 5;
         [[[CCDirector sharedDirector] touchDispatcher] setDispatchEvents:YES];
     }
-}
-
-- (void) removeFadeLayer {
-    [self removeChild:fadeLayer cleanup:YES];
 }
 
 //create all boxes
@@ -636,8 +632,9 @@ PP 30/1000*/
                     if(check <= 5) {
                         [[boxes objectAtIndex:location] swallow];
                     }
-                    if([dragSprite powerupFunction]) {
-                        [self showPowerupGradient];
+                    CGFloat gradientLength = [dragSprite powerupFunction];
+                    if(gradientLength != 0.0f) {
+                        [self showPowerupGradient:gradientLength];
                     }
                 }else{
                     [self loseLife];
@@ -675,18 +672,31 @@ PP 30/1000*/
     }
 }
 
-- (void) showPowerupGradient {
-    fadeLayer = [[RadialGradientLayer alloc] initWithColor:ccc3(0,0,255) fadeIn:NO speed:20];
-    [self addChild:fadeLayer z:1];
-    [self scheduleOnce:@selector(removeFadeLayer) delay:0.15f];
+- (void) showPowerupGradient:(CGFloat)delay {
+    [self unschedule:@selector(removePowerupLayer)];
+    powerupLayer = [[RadialGradientLayer alloc] initWithColor:ccc3(0,0,255) fadeIn:NO speed:20 large:NO];
+    [self addChild:powerupLayer z:1];
+    [self scheduleOnce:@selector(removePowerupLayer) delay:delay];
+}
+
+- (void) removePowerupLayer {
+    [self removeChild:powerupLayer cleanup:YES];
+    powerupLayer = nil;
 }
 
 - (void) showLoseLifeGradient {
-    fadeLayer = [[RadialGradientLayer alloc] initWithColor:ccc3(255,0,0) fadeIn:NO speed:20];
+    if(fadeLayer) {
+        return;
+    }
+    fadeLayer = [[RadialGradientLayer alloc] initWithColor:ccc3(255,0,0) fadeIn:NO speed:20 large:YES];
     [self addChild:fadeLayer z:1];
     [self scheduleOnce:@selector(removeFadeLayer) delay:0.15f];
 }
 
+- (void) removeFadeLayer {
+    [self removeChild:fadeLayer cleanup:YES];
+    fadeLayer = nil;
+}
 
 //increment score function
 - (void) unitIncrement:(NSInteger)num {

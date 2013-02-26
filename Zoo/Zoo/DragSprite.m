@@ -206,7 +206,7 @@
     }
 }
 
--(BOOL) powerupFunction{
+-(CGFloat) powerupFunction{
 //hippo powerup: slow movement speed and spawn rate for 8 secs
     if([self.type intValue] == 6){
         [self.parent performSelector:@selector(startMovingBelt) withObject:self];
@@ -215,28 +215,28 @@
         }
         [self unschedule:@selector(fullSpeed)];
         [self.parent scheduleOnce:@selector(fullSpeed) delay:8.0f];
+        return 8.0f;
     }
 //lion powerup: no pigs for 10 seconds
     if([self.type intValue] == 7){
         [self.parent performSelector:@selector(setPigsNotAllowed:) withObject:[NSNumber numberWithBool:YES]];
         [self unschedule:@selector(setPigsAllowed)];
         [self scheduleOnce:@selector(setPigsAllowed) delay:10.0f];
+        return 10.0f;
     }
 //elephant powerup: plus life
     if([self.type intValue] == 8){
         [self gainLife];
+        return 0.15f;
     }
 //penguin powerup: freeze belt for 5 secs
     if([self.type intValue] == 9){
         [self.parent performSelector:@selector(stopMovingBelt) withObject:self];
         [self.parent unschedule:@selector(startMovingBelt)];
         [self.parent scheduleOnce:@selector(startMovingBelt) delay:5.0f];
+        return 5.0f;
     }
-    if([self.type intValue] >= 6) {
-        return true;
-    } else {
-        return false;
-    }
+    return 0.0f;
 }
 
 - (void) setPigsAllowed {

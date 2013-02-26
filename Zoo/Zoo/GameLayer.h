@@ -24,6 +24,7 @@
         int countDownCounter;
         CCSprite* countDownSprite;
         RadialGradientLayer* fadeLayer;
+        RadialGradientLayer* powerupLayer;
         GameOverlayLayer* pauseLayer;
         CGSize winSize;
         CCSprite* lifeSprite;
