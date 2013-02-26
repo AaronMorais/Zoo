@@ -402,7 +402,7 @@ PP 30/1000*/
 
 //add sprite to game
 - (void)addSprite{
-    NSNumber* nsType = [self randFunction:1:1000]; //randomly choose animal type
+    NSNumber* nsType = [self randFunction:900:1000]; //randomly choose animal type
     int type = [nsType intValue];
     while((pigsNotAllowed && type > 819 && type < 920) || (lifeCount==3 && type < 970 && type > 964)) {
         nsType = [self randFunction:1:1000];
@@ -633,7 +633,7 @@ PP 30/1000*/
                         [[boxes objectAtIndex:location] swallow];
                     }
                     CGFloat gradientLength = [dragSprite powerupFunction];
-                    if(gradientLength != 0.0f) {
+                    if(gradientLength > 0.0f) {
                         [self showPowerupGradient:gradientLength];
                     }
                 }else{
@@ -674,8 +674,10 @@ PP 30/1000*/
 
 - (void) showPowerupGradient:(CGFloat)delay {
     [self unschedule:@selector(removePowerupLayer)];
+    [self removePowerupLayer];
     powerupLayer = [[RadialGradientLayer alloc] initWithColor:ccc3(0,0,255) fadeIn:NO speed:20 large:NO];
     [self addChild:powerupLayer z:1];
+    
     [self scheduleOnce:@selector(removePowerupLayer) delay:delay];
 }
 
