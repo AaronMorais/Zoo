@@ -633,7 +633,7 @@ PP 30/1000*/
                         [[boxes objectAtIndex:location] swallow];
                     }
                     CGFloat gradientLength = [dragSprite powerupFunction];
-                    if(gradientLength != 0.0f) {
+                    if(gradientLength > 0.0f) {
                         [self showPowerupGradient:gradientLength];
                     }
                 }else{
@@ -674,8 +674,10 @@ PP 30/1000*/
 
 - (void) showPowerupGradient:(CGFloat)delay {
     [self unschedule:@selector(removePowerupLayer)];
+    [self removePowerupLayer];
     powerupLayer = [[RadialGradientLayer alloc] initWithColor:ccc3(0,0,255) fadeIn:NO speed:20 large:NO];
     [self addChild:powerupLayer z:1];
+    
     [self scheduleOnce:@selector(removePowerupLayer) delay:delay];
 }
 

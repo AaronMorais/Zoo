@@ -24,7 +24,7 @@
 -(void) removeMe;
 -(void) rememberPosition;
 -(void) resumeMoveSprite;
--(BOOL) powerupFunction;
+-(CGFloat) powerupFunction;
 -(void) updateSpeed;
 -(void) moveSprite:(BOOL)resume;
 @property(strong) NSNumber* type, * side;
