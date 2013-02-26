@@ -122,9 +122,11 @@
     int flag = 0;
     if(!resume) {
         if(IS_IPHONE_5){
-            self.position = ccp(50,83);
+            self.position = ccp(-10,83);
+        } else if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+            self.position = ccp(-10, 83);
         } else {
-            self.position = ccp(6, 83);
+            self.position = ccp(-10, 199.199997);
         }
         savedPoint = self.position;
         flag = 1;
@@ -139,6 +141,11 @@
     for(NSValue* val in bezierArray){
         if(flag == 1){
             CGPoint p = [val CGPointValue];
+            if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+                p.x *= 2.133333333;
+                p.y *= 2.4;
+            }
+            NSLog(@"%f", p.y);
             float speed = [[[sharedSingleton gameSpeed] objectAtIndex:0] floatValue];
             float distanceApart = ccpDistance(savedPoint,p);
             float duration = distanceApart/(200*speed);
@@ -185,9 +192,11 @@
     }
     age++;
     if(IS_IPHONE_5){
-        self.position = ccp(50,83);
+        self.position = ccp(-10,83);
+    } else if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+        self.position = ccp(-10, 83);
     } else {
-        self.position = ccp(6, 83);
+        self.position = ccp(-10, 199.199997);
     }
     [self updateSpeed];
 }
