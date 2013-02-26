@@ -743,23 +743,6 @@ PP 30/1000*/
         }
     }
 }
-- (void) halfSpeed {
-    [sharedSingleton setSlowdownPowerupActivated:YES];
-    
-    [sharedSingleton halfSpeed];
-    for(DragSprite* dragSprite in [sharedSingleton animals]){
-        [dragSprite updateSpeed];
-    }
-}
-
-- (void) fullSpeed {
-    [sharedSingleton setSlowdownPowerupActivated:NO];
-
-    [sharedSingleton fullSpeed];
-    for(DragSprite* dragSprite in [sharedSingleton animals]){
-        [dragSprite updateSpeed];
-    }
-}
 
 //lose life function
 - (void) loseLife {
