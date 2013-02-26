@@ -560,12 +560,11 @@ PP 30/1000*/
 
 - (void) pauseGame:(BOOL)paused {
     if (paused) {
+        [pauseLayer showLayer:YES];
+        
         [self pauseSchedulerAndActions];
         CCArray *children = self.children;
         [children makeObjectsPerformSelector:@selector(pauseSchedulerAndActions)];
-        
-        [pauseLayer showLayer:YES];
-
     } else {
         [self resumeSchedulerAndActions];
         CCArray *children = self.children;
