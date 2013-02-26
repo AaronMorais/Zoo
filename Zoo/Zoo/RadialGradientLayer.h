@@ -11,7 +11,7 @@
 
 @interface RadialGradientLayer : CCLayer
 
-- (id)initWithColor:(ccColor3B)color fadeIn:(BOOL)fade speed:(int)speed;
+- (id)initWithColor:(ccColor3B)color fadeIn:(BOOL)fade speed:(int)speed large:(BOOL)large;
 - (void) fadeAwayScheduler;
 
 @end

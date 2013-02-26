@@ -16,12 +16,14 @@
     int count;
     int savedSpeed;
     ccColor3B savedColor;
+    BOOL isLarge;
 }
-- (id)initWithColor:(ccColor3B)color fadeIn:(BOOL)fade speed:(int)speed{
+- (id)initWithColor:(ccColor3B)color fadeIn:(BOOL)fade speed:(int)speed large:(BOOL)large{
     self = [super init];
     if (self) {
         savedColor = color;
         savedSpeed = speed;
+        isLarge = large;
         if(fade) {
             [self fadeInScheduler];
             count = 0;
@@ -58,24 +60,26 @@
 }
 
 - (void) showRadialGradientWithOpacity:(CGFloat)opacity color:(ccColor3B) color{
+    CGFloat size;
+    if(isLarge) { size = 4; } else { size = 16; }
     [self removeAllChildrenWithCleanup:YES];
     ccColor4B initial = ccc4(color.r, color.g, color.b, 0);
     ccColor4B final = ccc4(color.r, color.g, color.b, opacity);
     CGSize winSize = [[CCDirector sharedDirector] winSize];
     gradient = [CCLayerGradient layerWithColor:initial fadingTo:final alongVector:ccp(0,-1)];
     [self addChild:gradient];
-    [gradient changeHeight:winSize.height/4];
+    [gradient changeHeight:winSize.height/size];
     gradient2 = [CCLayerGradient layerWithColor:initial fadingTo:final alongVector:ccp(0,1)];
     [self addChild:gradient2];
-    [gradient2 changeHeight:winSize.height/4];
-    gradient2.position = ccp(0, winSize.height - winSize.height/4);
+    [gradient2 changeHeight:winSize.height/size];
+    gradient2.position = ccp(0, winSize.height - winSize.height/size);
     gradient3 = [CCLayerGradient layerWithColor:final fadingTo:initial alongVector:ccp(1,0)];
     [self addChild:gradient3];
-    [gradient3 changeWidth:winSize.width/4];
+    [gradient3 changeWidth:winSize.width/size];
     gradient4 = [CCLayerGradient layerWithColor:final fadingTo:initial alongVector:ccp(-1,0)];
     [self addChild:gradient4];
-    [gradient4 changeWidth:winSize.width/4];
-    gradient4.position = ccp(winSize.width - winSize.width/4, 0);
+    [gradient4 changeWidth:winSize.width/size];
+    gradient4.position = ccp(winSize.width - winSize.width/size, 0);
 }
 
 @end
