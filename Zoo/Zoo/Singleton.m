@@ -239,7 +239,6 @@ static Singleton *sharedInstance = nil;
 		{530,80}
 	};
     [bezierArray addObjectsFromArray:[self generateBezier:bezierThree:100]];
-    
 }
 
 - (NSMutableArray*) generateBezier:(CGPoint[4])bezierPoints:(int)points {
@@ -252,6 +251,10 @@ static Singleton *sharedInstance = nil;
             p.x += 44;
         }
 		p.y = [self bezierat:bezierPoints[0].y: bezierPoints[1].y: bezierPoints[2].y: bezierPoints[3].y: t];
+        if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+            p.x *= 2.133333333;
+            p.y *= 2.4;          
+        }
 		[array addObject:[NSValue valueWithCGPoint:p]];
     }
     return array;

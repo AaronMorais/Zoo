@@ -141,11 +141,6 @@
     for(NSValue* val in bezierArray){
         if(flag == 1){
             CGPoint p = [val CGPointValue];
-            if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-                p.x *= 2.133333333;
-                p.y *= 2.4;
-            }
-            NSLog(@"%f", p.y);
             float speed = [[[sharedSingleton gameSpeed] objectAtIndex:0] floatValue];
             float distanceApart = ccpDistance(savedPoint,p);
             float duration = distanceApart/(200*speed);
