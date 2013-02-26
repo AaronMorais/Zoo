@@ -10,12 +10,13 @@
 @interface DragSprite : CCSprite <CCTargetedTouchDelegate> {
 
 	CGPoint whereTouch; //initial pick up location
-    NSNumber* type; //numeric type of animal; currently 1-4
-    NSNumber* side; //numeric side which the animal will spawn; currently 1-2; UNUSED!
-    CCAction* blink; //store the blink action for the sprite
-    CCAction* flail; //store the flail action for the sprite
-    CCSprite* shadow;
-    Singleton* sharedSingleton; //access to singleton
+    NSNumber *type; //numeric type of animal; currently 1-4
+    NSNumber *side; //numeric side which the animal will spawn; currently 1-2; UNUSED!
+    CCAction *blink; //store the blink action for the sprite
+    CCAction *flail; //store the flail action for the sprite
+    CCSprite *shadow;
+    Singleton *sharedSingleton; //access to singleton
+    NSInteger age;
 
 }
 
@@ -25,7 +26,7 @@
 -(void) resumeMoveSprite;
 -(BOOL) powerupFunction;
 -(void) updateSpeed;
--(void) moveSprite;
+-(void) moveSprite:(BOOL)resume;
 @property(strong) NSNumber* type, * side;
 @property(strong) NSValue* currentPosition;
 @property(strong) CCAction* blink, *flail;

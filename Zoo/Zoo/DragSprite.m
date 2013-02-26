@@ -15,10 +15,7 @@
             //initialize the singleton instance
             sharedSingleton = [Singleton sharedInstance];
        
-            //make sure the singleton does not get removed
-       
-            //sprite moves as soon as it is initializes
-//            [self moveSprite]; removed because .type is not set on init
+            age = 1;
    }
    return self;
 }
@@ -116,11 +113,28 @@
 }
 
 - (void) resumeMoveSprite{
-    NSMutableArray *moveArray = [NSMutableArray array];
-    NSMutableArray *bezierArray = [sharedSingleton bezierArray];
+    [self moveSprite:YES];
+}
+
+- (void) moveSprite:(BOOL)resume{
+    //set initial position and declare arrays
+    CGPoint savedPoint;
     int flag = 0;
-    CGPoint savedPoint = [self.currentPosition CGPointValue];
+    if(!resume) {
+        if(IS_IPHONE_5){
+            self.position = ccp(50,83);
+        } else {
+            self.position = ccp(6, 83);
+        }
+        savedPoint = self.position;
+        flag = 1;
+    } else {
+        savedPoint = [self.currentPosition CGPointValue];
+    }
+    NSMutableArray* moveArray = [NSMutableArray array];
+    NSMutableArray* bezierArray = [sharedSingleton bezierArray];
     
+    //move animal to each point smoothly
     //iterate through every point until getting to current spot then add to actions array
     for(NSValue* val in bezierArray){
         if(flag == 1){
@@ -133,57 +147,26 @@
             CCCallFunc* rememberPosition = [CCCallFunc actionWithTarget:self selector:@selector(rememberPosition)];
             [moveArray addObject:rememberPosition];
             savedPoint = p;
-        }
-        if([val isEqual:self.currentPosition]){
+        } else if([val isEqual:self.currentPosition]){
             flag = 1;
         }
     }
-    if([self.type intValue] < 5){
-        CCCallFunc* loseLife = [CCCallFunc actionWithTarget:self selector:@selector(loseLife)];
-        [moveArray addObject:loseLife];
-    }
-    
-    CCCallFunc* removeSprite = [CCCallFunc actionWithTarget:self selector:@selector(removeMe)];
-    [moveArray addObject:removeSprite];
-    
-    CCSequence* moveSeq = [CCSequence actionWithArray:moveArray];
-    [self runAction:moveSeq];
-}
 
-- (void) moveSprite{
-    //set initial position and declare arrays
-    if(IS_IPHONE_5){
-        self.position = ccp(50,83);
-    } else {
-        self.position = ccp(6, 83);
-    }
-    CGPoint savedPoint;
-    savedPoint = self.position;
-    NSMutableArray* moveArray = [NSMutableArray array];
-    NSMutableArray* bezierArray = [sharedSingleton bezierArray];
-    
-    //move animal to each point smoothly
-    for(NSValue* val in bezierArray){
-        CGPoint p = [val CGPointValue];
-        float speed = [[[sharedSingleton gameSpeed] objectAtIndex:0] floatValue];
-        float distanceApart = ccpDistance(savedPoint,p);
-        float duration = distanceApart/(200*speed);
-        CCMoveTo* moveTo = [CCMoveTo actionWithDuration:duration position:p];
-        [moveArray addObject:moveTo];
-        CCCallFunc* rememberPosition = [CCCallFunc actionWithTarget:self selector:@selector(rememberPosition)];
-        [moveArray addObject:rememberPosition];
-        savedPoint = p;
-    }
     if([self.type intValue] < 5){
         //lose life if animal is dead
         CCCallFunc* loseLife = [CCCallFunc actionWithTarget:self selector:@selector(loseLife)];
         [moveArray addObject:loseLife];
     }
-    
-    //animal dies at end of belt
-    CCCallFunc* removeSprite = [CCCallFunc actionWithTarget:self selector:@selector(removeMe)];
-    [moveArray addObject:removeSprite];
-    
+    if([self.type intValue] > 5){
+        //powerup gets reborn at end of belt
+        CCCallFunc* resetPosition = [CCCallFunc actionWithTarget:self selector:@selector(resetPosition)];
+        [moveArray addObject:resetPosition];
+    } else {
+        //animal dies at end of belt
+        CCCallFunc* removeSprite = [CCCallFunc actionWithTarget:self selector:@selector(removeMe)];
+        [moveArray addObject:removeSprite];
+    }
+
     //execute sequence
     CCSequence* moveSeq = [CCSequence actionWithArray:moveArray];
     [self runAction:moveSeq];
@@ -193,6 +176,20 @@
 //save current sprite position in currentPosition variable
 -(void) rememberPosition{
     [self setCurrentPosition:[NSValue valueWithCGPoint:self.position]];
+}
+
+- (void) resetPosition {
+    if (age > 3) {
+        [self removeMe];
+        return;
+    }
+    age++;
+    if(IS_IPHONE_5){
+        self.position = ccp(50,83);
+    } else {
+        self.position = ccp(6, 83);
+    }
+    [self updateSpeed];
 }
 
 //make sprite flail
