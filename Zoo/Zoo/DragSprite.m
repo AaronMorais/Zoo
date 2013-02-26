@@ -207,15 +207,12 @@
 }
 
 -(CGFloat) powerupFunction{
-//hippo powerup: slow movement speed and spawn rate for 8 secs
+//hippo powerup: double points
     if([self.type intValue] == 6){
-        [self.parent performSelector:@selector(startMovingBelt) withObject:self];
-        if(![sharedSingleton slowdownPowerupActivated]) {
-            [self.parent performSelector:@selector(halfSpeed)];
-        }
-        [self unschedule:@selector(fullSpeed)];
-        [self.parent scheduleOnce:@selector(fullSpeed) delay:8.0f];
-        return 8.0f;
+        [sharedSingleton setDoublePointPowerupActivated:YES];
+        [self unschedule:@selector(setNoDoublePoints)];
+        [self scheduleOnce:@selector(setNoDoublePoints) delay:5.0f];
+        return 5.0f;
     }
 //lion powerup: no pigs for 10 seconds
     if([self.type intValue] == 7){
@@ -241,6 +238,10 @@
 
 - (void) setPigsAllowed {
     [self.parent performSelector:@selector(setPigsNotAllowed:) withObject:[NSNumber numberWithBool:NO]];
+}
+
+- (void) setNoDoublePoints {
+    [sharedSingleton setDoublePointPowerupActivated:NO];
 }
 
 - (void) updateSpeed {

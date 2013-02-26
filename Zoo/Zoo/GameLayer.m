@@ -702,6 +702,9 @@ PP 30/1000*/
 
 //increment score function
 - (void) unitIncrement:(NSInteger)num {
+    if([sharedSingleton doublePointPowerupActivated]){
+        num *=2;
+    }
     //incremenet score by 100*provided val and then display visually
     currentScore +=(10*num);
     [score setString:[NSString stringWithFormat:@"%d",currentScore]];

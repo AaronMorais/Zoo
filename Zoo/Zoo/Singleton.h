@@ -21,7 +21,7 @@
 @property(atomic,strong) SimpleAudioEngine* sae;
 @property(atomic,strong) NSNumber* saveSpeed;
 @property(atomic) BOOL frozenPowerupActivated;
-@property(atomic) BOOL slowdownPowerupActivated;
+@property(atomic) BOOL doublePointPowerupActivated;
 
 + (id)sharedInstance;
 - (Boolean)checkHighScore:(int)newScore;

@@ -2,7 +2,7 @@
 @class Singleton;
  
 @implementation Singleton
-@synthesize bezierArray, animals, gameSpeed, currentSpawnRate, sae, saveSpeed, frozenPowerupActivated, slowdownPowerupActivated;
+@synthesize bezierArray, animals, gameSpeed, currentSpawnRate, sae, saveSpeed, frozenPowerupActivated, doublePointPowerupActivated;
 
 #define IS_IPHONE_5 ([UIScreen mainScreen].bounds.size.height == 568.0)
 
@@ -48,7 +48,7 @@ static Singleton *sharedInstance = nil;
 
 -(void) resetSingleton{
     frozenPowerupActivated = NO;
-    slowdownPowerupActivated = NO;
+    doublePointPowerupActivated = NO;
 
     //init array for animals
     [animals removeAllObjects];
@@ -67,18 +67,6 @@ static Singleton *sharedInstance = nil;
     [currentSpawnRate removeAllObjects];
     currentSpawnRate = [[NSMutableArray alloc] init];
     [currentSpawnRate addObject:speedRate];
-}
-
-
-
--(void) halfSpeed{
-    [[self currentSpawnRate] replaceObjectAtIndex:0 withObject:[NSNumber numberWithFloat:[[currentSpawnRate objectAtIndex:0] floatValue]*2]];
-    [[self gameSpeed] replaceObjectAtIndex:0 withObject:[NSNumber numberWithFloat:[[gameSpeed objectAtIndex:0] floatValue]/2]];
-}
-
--(void) fullSpeed{
-    [[self currentSpawnRate] replaceObjectAtIndex:0 withObject:[NSNumber numberWithFloat:[[currentSpawnRate objectAtIndex:0] floatValue]/2]];
-    [[self gameSpeed] replaceObjectAtIndex:0 withObject:[NSNumber numberWithFloat:[[gameSpeed objectAtIndex:0] floatValue]*2]];
 }
 
 -(void) initDB{
