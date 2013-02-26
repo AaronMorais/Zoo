@@ -466,7 +466,7 @@ PP 30/1000*/
         sprite.flail = NULL;
         sprite.type = [NSNumber numberWithInt:9];
     }
-    [sprite moveSprite];
+    [sprite moveSprite:NO];
     //assign side and type
     sprite.side = side;
     //add sprite to layer and assign correct z axis
@@ -484,32 +484,36 @@ PP 30/1000*/
     NSNumber* rateNum = [[sharedSingleton currentSpawnRate] objectAtIndex:0];
     double rate = [rateNum doubleValue];
     
-    //every 5000 points increase speed
-    if(currentScore%3 == 0 && currentScore>0){
-        //get game speed from singleton
-        NSNumber* speedNum = [[sharedSingleton gameSpeed] objectAtIndex:0];
-        double speed= [speedNum doubleValue];
-        
-        //increase speed but decrease rate
-        speed += 0.04;
-        rate *= 0.95;
-
-        //cap speed at 1.95
-        if(speed > 1.95){
-            speed = 1.95;
-        }
-        
-        //cap rate at 0.3
-        if(rate < 0.45){
-            rate = 0.45;
-        }
-        
-        //save values into singleton
-        rateNum = [NSNumber numberWithDouble:rate];
-        [[sharedSingleton currentSpawnRate] replaceObjectAtIndex:0 withObject:rateNum];
-        speedNum = [NSNumber numberWithDouble:speed];
-        [[sharedSingleton gameSpeed] replaceObjectAtIndex:0 withObject:speedNum];
+    //get game speed from singleton
+    NSNumber* speedNum = [[sharedSingleton gameSpeed] objectAtIndex:0];
+    double speed= [speedNum doubleValue];
+    
+    //increase speed but decrease rate
+    if(currentScore < 1000) {
+        speed *= 1.020;
+        rate *= 0.990;
+    } else {
+        speed *= 1.015;
+        rate *= 0.995;
     }
+    
+    //cap speed at 1.7
+    if(speed > 1.6){
+        speed = 1.6;
+    }
+    
+    //cap rate at 0.3
+    if(rate < 0.6){
+        rate = 0.6;
+    }
+    NSLog(@"speed: %f, rate: %f", speed, rate);
+    
+    //save values into singleton
+    rateNum = [NSNumber numberWithDouble:rate];
+    [[sharedSingleton currentSpawnRate] replaceObjectAtIndex:0 withObject:rateNum];
+    speedNum = [NSNumber numberWithDouble:speed];
+    [[sharedSingleton gameSpeed] replaceObjectAtIndex:0 withObject:speedNum];
+
     //determine delay by random number and rate
     NSNumber* randomNum = [self randFunction:7:15];
     double delay = [randomNum doubleValue];
