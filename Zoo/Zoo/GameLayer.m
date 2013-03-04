@@ -402,7 +402,7 @@ PP 30/1000*/
 
 //add sprite to game
 - (void)addSprite{
-    NSNumber* nsType = [self randFunction:1:1000]; //randomly choose animal type
+    NSNumber* nsType = [self randFunction:900:1000]; //randomly choose animal type
     int type = [nsType intValue];
     while((pigsNotAllowed && type > 819 && type < 920) || (lifeCount==5 && type < 970 && type > 964)) {
         nsType = [self randFunction:1:1000];
