@@ -8,7 +8,7 @@
 
 #import "GameOverlayLayer.h"
 #import "MenuLayer.h"
-#import "Singleton.h"
+#import "GameManager.h"
 #import "GameLayer.h"
 
 @implementation GameOverlayLayer {
@@ -18,14 +18,14 @@
     CCLabelTTF *highScoreFooter;
     CCLabelTTF *yourScoreHeader;
     CCLabelTTF *yourScoreFooter;
-    Singleton *sharedSingleton;
+    GameManager *sharedSingleton;
     CCMenu * menu;
 }
 
 - (id)init {
     self = [super init];
     if (self) {
-        sharedSingleton = [Singleton sharedInstance];
+        sharedSingleton = [GameManager sharedInstance];
         winSize = [[CCDirector sharedDirector] winSize];
         
         fadeLayer = [CCLayerColor layerWithColor:ccc4(0, 0, 0, 255)];

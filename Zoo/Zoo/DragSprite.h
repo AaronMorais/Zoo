@@ -4,7 +4,7 @@
 //
 
 #import "cocos2d.h" //cocos2d library for sprite class
-#import "Singleton.h" //game singleton
+#import "GameManager.h" //game singleton
 
 //touch delegate used to identify touches on sprite
 @interface DragSprite : CCSprite <CCTargetedTouchDelegate> {
@@ -15,7 +15,7 @@
     CCAction *blink; //store the blink action for the sprite
     CCAction *flail; //store the flail action for the sprite
     CCSprite *shadow;
-    Singleton *sharedSingleton; //access to singleton
+    GameManager *sharedSingleton; //access to singleton
     NSInteger age;
 
 }

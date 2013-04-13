@@ -98,7 +98,7 @@
 
     [[ABGameKitHelper sharedClass] authenticatePlayer];
     
-    sharedSingleton = [Singleton sharedInstance];
+    sharedSingleton = [GameManager sharedInstance];
 	// and add the scene to the stack. The director will run it when it automatically when the view is displayed.
 	[director_ pushScene: [MenuLayer scene]];
 

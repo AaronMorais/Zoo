@@ -24,7 +24,7 @@
 	// always call "super" init
 	// Apple recommends to re-assign "self" with the "super" return value
 	if( (self=[super init] )) {
-        sharedSingleton = [Singleton sharedInstance];
+        sharedSingleton = [GameManager sharedInstance];
         
         loading = [[LoadingLayer alloc] initWithColor:ccc4(0,0,0,255)];
         [self addChild:loading];

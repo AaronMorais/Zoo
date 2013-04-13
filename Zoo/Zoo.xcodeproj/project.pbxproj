@@ -11,7 +11,7 @@
 		930829C315DADC5C006C7CF9 /* GameLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 930829C215DADC5C006C7CF9 /* GameLayer.m */; };
 		931C13A116C7693C00BBAD18 /* RadialGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 931C13A016C7693C00BBAD18 /* RadialGradientLayer.m */; };
 		93200B3C16D0377A00F32512 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93200B3B16D0377A00F32512 /* RootViewController.m */; };
-		933B9A2F15E99B16003770CF /* Singleton.m in Sources */ = {isa = PBXBuildFile; fileRef = 933B9A2E15E99B16003770CF /* Singleton.m */; };
+		933B9A2F15E99B16003770CF /* GameManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 933B9A2E15E99B16003770CF /* GameManager.m */; };
 		9378905E15DCACE9000AA56F /* DragSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = 9378905D15DCACE9000AA56F /* DragSprite.m */; };
 		9379BAE01687EDD700DB272D /* MenuLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9379BADF1687EDD700DB272D /* MenuLayer.m */; };
 		9383FC9316924F1F0031E2DC /* countdown.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9383FC9216924F1F0031E2DC /* countdown.mp3 */; };
@@ -168,14 +168,14 @@
 		931C13A016C7693C00BBAD18 /* RadialGradientLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadialGradientLayer.m; sourceTree = "<group>"; };
 		93200B3A16D0377A00F32512 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		93200B3B16D0377A00F32512 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
-		933B9A2D15E99B16003770CF /* Singleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Singleton.h; sourceTree = "<group>"; };
-		933B9A2E15E99B16003770CF /* Singleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Singleton.m; sourceTree = "<group>"; };
+		933B9A2D15E99B16003770CF /* GameManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameManager.h; sourceTree = "<group>"; };
+		933B9A2E15E99B16003770CF /* GameManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameManager.m; sourceTree = "<group>"; };
 		9378905C15DCACE9000AA56F /* DragSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DragSprite.h; sourceTree = "<group>"; };
 		9378905D15DCACE9000AA56F /* DragSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DragSprite.m; sourceTree = "<group>"; };
 		9379BADE1687EDD700DB272D /* MenuLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuLayer.h; sourceTree = "<group>"; };
 		9379BADF1687EDD700DB272D /* MenuLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuLayer.m; sourceTree = "<group>"; };
 		9383FC9216924F1F0031E2DC /* countdown.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = countdown.mp3; path = Resources/countdown.mp3; sourceTree = "<group>"; };
-		9383FC95169251B20031E2DC /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		9383FC95169251B20031E2DC /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
 		938FFD9215E01665009E8257 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		938FFDD215E02399009E8257 /* FMDB */ = {isa = PBXFileReference; lastKnownFileType = folder; name = FMDB; path = libs/FMDB; sourceTree = "<group>"; };
 		938FFDD415E023BD009E8257 /* FMDatabase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FMDatabase.h; path = libs/FMDB/FMDatabase.h; sourceTree = "<group>"; };
@@ -487,10 +487,55 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		93A2F2F317190B7B007367DB /* Sprites */ = {
+			isa = PBXGroup;
+			children = (
+				93B0DC9A15DEE8FF001D462B /* BoxSprite.h */,
+				93B0DC9B15DEE8FF001D462B /* BoxSprite.m */,
+				9378905C15DCACE9000AA56F /* DragSprite.h */,
+				9378905D15DCACE9000AA56F /* DragSprite.m */,
+			);
+			name = Sprites;
+			sourceTree = "<group>";
+		};
+		93A2F2F417190B91007367DB /* Layers */ = {
+			isa = PBXGroup;
+			children = (
+				9379BADE1687EDD700DB272D /* MenuLayer.h */,
+				9379BADF1687EDD700DB272D /* MenuLayer.m */,
+				93D1127416C8294500E0F414 /* LoadingLayer.h */,
+				93D1127516C8294500E0F414 /* LoadingLayer.m */,
+				930829C115DADC5C006C7CF9 /* GameLayer.h */,
+				930829C215DADC5C006C7CF9 /* GameLayer.m */,
+				93D1127716C8431A00E0F414 /* GameOverlayLayer.h */,
+				93D1127816C8431A00E0F414 /* GameOverlayLayer.m */,
+				931C139F16C7693C00BBAD18 /* RadialGradientLayer.h */,
+				931C13A016C7693C00BBAD18 /* RadialGradientLayer.m */,
+			);
+			name = Layers;
+			sourceTree = "<group>";
+		};
+		93A2F2F517190BC4007367DB /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				933B9A2D15E99B16003770CF /* GameManager.h */,
+				933B9A2E15E99B16003770CF /* GameManager.m */,
+			);
+			name = Managers;
+			sourceTree = "<group>";
+		};
+		93A2F2F617190BEC007367DB /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				93200B3A16D0377A00F32512 /* RootViewController.h */,
+				93200B3B16D0377A00F32512 /* RootViewController.m */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
 		93CAD23C158E9C4C00F4EC4C = {
 			isa = PBXGroup;
 			children = (
-				9383FC95169251B20031E2DC /* Default-568h@2x.png */,
 				93CAD25D158E9C4C00F4EC4C /* Zoo */,
 				93CAD24A158E9C4C00F4EC4C /* Frameworks */,
 				93CAD248158E9C4C00F4EC4C /* Products */,
@@ -525,28 +570,14 @@
 		93CAD25D158E9C4C00F4EC4C /* Zoo */ = {
 			isa = PBXGroup;
 			children = (
+				93A2F2F417190B91007367DB /* Layers */,
+				93A2F2F317190B7B007367DB /* Sprites */,
+				93A2F2F617190BEC007367DB /* View Controllers */,
+				93CAD276158E9C4C00F4EC4C /* Third Party */,
+				93A2F2F517190BC4007367DB /* Managers */,
+				93CAD25E158E9C4C00F4EC4C /* Resources */,
 				93CAD3D3158E9C4E00F4EC4C /* AppDelegate.h */,
 				93CAD3D4158E9C4E00F4EC4C /* AppDelegate.m */,
-				93200B3A16D0377A00F32512 /* RootViewController.h */,
-				93200B3B16D0377A00F32512 /* RootViewController.m */,
-				933B9A2D15E99B16003770CF /* Singleton.h */,
-				933B9A2E15E99B16003770CF /* Singleton.m */,
-				9379BADE1687EDD700DB272D /* MenuLayer.h */,
-				9379BADF1687EDD700DB272D /* MenuLayer.m */,
-				93D1127716C8431A00E0F414 /* GameOverlayLayer.h */,
-				93D1127816C8431A00E0F414 /* GameOverlayLayer.m */,
-				93D1127416C8294500E0F414 /* LoadingLayer.h */,
-				93D1127516C8294500E0F414 /* LoadingLayer.m */,
-				930829C115DADC5C006C7CF9 /* GameLayer.h */,
-				930829C215DADC5C006C7CF9 /* GameLayer.m */,
-				93B0DC9A15DEE8FF001D462B /* BoxSprite.h */,
-				93B0DC9B15DEE8FF001D462B /* BoxSprite.m */,
-				9378905C15DCACE9000AA56F /* DragSprite.h */,
-				9378905D15DCACE9000AA56F /* DragSprite.m */,
-				931C139F16C7693C00BBAD18 /* RadialGradientLayer.h */,
-				931C13A016C7693C00BBAD18 /* RadialGradientLayer.m */,
-				93CAD276158E9C4C00F4EC4C /* libs */,
-				93CAD25E158E9C4C00F4EC4C /* Resources */,
 			);
 			path = Zoo;
 			sourceTree = "<group>";
@@ -554,6 +585,7 @@
 		93CAD25E158E9C4C00F4EC4C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				9383FC95169251B20031E2DC /* Default-568h@2x.png */,
 				939CAB7D16912AF00064D90C /* Icon@2x.png */,
 				939CAB871691432F0064D90C /* gameLoop.mp3 */,
 				9383FC9216924F1F0031E2DC /* countdown.mp3 */,
@@ -581,7 +613,7 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
-		93CAD276158E9C4C00F4EC4C /* libs */ = {
+		93CAD276158E9C4C00F4EC4C /* Third Party */ = {
 			isa = PBXGroup;
 			children = (
 				93EC44FB16D025BE0073C80D /* ABGameKitHelper.h */,
@@ -607,7 +639,7 @@
 				93CAD38E158E9C4D00F4EC4C /* CocosDenshion */,
 				93CAD39D158E9C4D00F4EC4C /* kazmath */,
 			);
-			name = libs;
+			name = "Third Party";
 			sourceTree = "<group>";
 		};
 		93CAD277158E9C4C00F4EC4C /* cocos2d */ = {
@@ -1134,7 +1166,7 @@
 				930829C315DADC5C006C7CF9 /* GameLayer.m in Sources */,
 				9378905E15DCACE9000AA56F /* DragSprite.m in Sources */,
 				93B0DC9C15DEE8FF001D462B /* BoxSprite.m in Sources */,
-				933B9A2F15E99B16003770CF /* Singleton.m in Sources */,
+				933B9A2F15E99B16003770CF /* GameManager.m in Sources */,
 				9379BAE01687EDD700DB272D /* MenuLayer.m in Sources */,
 				931C13A116C7693C00BBAD18 /* RadialGradientLayer.m in Sources */,
 				93D1127616C8294500E0F414 /* LoadingLayer.m in Sources */,
@@ -1156,8 +1188,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Aaron Morais";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Aaron Morais";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Aaron Morais (9H7KMKFCSH)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Aaron Morais (9H7KMKFCSH)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -1170,8 +1202,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
-				PROVISIONING_PROFILE = "D7B3F6CC-950A-4C96-9D7B-0E4947BC2821";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D7B3F6CC-950A-4C96-9D7B-0E4947BC2821";
+				PROVISIONING_PROFILE = "4AF79503-396C-4A03-BF18-31C3A731C5D9";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4AF79503-396C-4A03-BF18-31C3A731C5D9";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1185,8 +1217,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Aaron Morais";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Aaron Morais";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Aaron Morais (9H7KMKFCSH)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Aaron Morais (9H7KMKFCSH)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					NDEBUG,
@@ -1197,8 +1229,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
-				PROVISIONING_PROFILE = "D7B3F6CC-950A-4C96-9D7B-0E4947BC2821";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D7B3F6CC-950A-4C96-9D7B-0E4947BC2821";
+				PROVISIONING_PROFILE = "4AF79503-396C-4A03-BF18-31C3A731C5D9";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4AF79503-396C-4A03-BF18-31C3A731C5D9";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

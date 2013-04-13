@@ -15,7 +15,7 @@
 #import "DragSprite.h"
 #import "BoxSprite.h"
 #import "SimpleAudioEngine.h"
-#import "Singleton.h"
+#import "GameManager.h"
 #import "RadialGradientLayer.h"
 #import "GameOverlayLayer.h"
 
@@ -63,7 +63,7 @@
         CCAction* hBlinkAction;
         CCAction* lBlinkAction;
         CCAction* pigBlinkAction;
-        Singleton* sharedSingleton;
+        GameManager* sharedSingleton;
 }
 
 @property (nonatomic,strong) CCAction *pBoxAction;
@@ -76,17 +76,18 @@
 @property (nonatomic) NSInteger currentScore;
 @property (nonatomic,assign) BOOL pigsNotAllowed;
 @property (nonatomic,assign) BOOL gameState;
+@property (nonatomic,assign) BOOL doublePointPowerupActivated;
 
 // returns a CCScene that contains the GameLayer as the only child
 +(CCScene *) scene;
--(void) checkIntersect;
--(void) gainLife;
--(void) loseLife;
--(void) halfSpeed;
--(void) fullSpeed;
--(void) startMovingBelt;
--(void) stopMovingBelt;
--(void) pauseGame:(BOOL)paused;
+- (void) checkIntersect;
+- (void) gainLife;
+- (void) loseLife;
+- (void) setPigsAllowed;
+- (void) setNoDoublePoints;
+- (void) startMovingBelt;
+- (void) stopMovingBelt;
+- (void) pauseGame:(BOOL)paused;
 - (void) restartGame;
 - (void) quitToMain;
 

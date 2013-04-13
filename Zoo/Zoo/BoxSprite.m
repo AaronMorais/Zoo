@@ -60,14 +60,14 @@
 }
 
 //random number function
--(NSNumber*)randFunction:(int)numOne:(int)numTwo {
+-(NSNumber*)randFunctionFrom:(int)numOne To:(int)numTwo {
     int randomNumber = (arc4random() % ((numTwo+1)-numOne))+numOne;
     return [NSNumber numberWithInt:randomNumber];
 }
 
 //create initial strokes for number outline
 -(void) firstStroke{
-    CCRenderTexture* stroke = [self createStroke:currentNumber:2];
+    CCRenderTexture* stroke = [self createStrokeOnLabel:currentNumber WithSize:2];
     self.currentStroke = stroke;
     [self.parent addChild:self.currentStroke];
 }
@@ -81,7 +81,7 @@
     [self.parent removeChild:self.currentStroke cleanup:YES];
     
     //generate new stroke for number
-    CCRenderTexture* stroke = [self createStroke:currentNumber:2];
+    CCRenderTexture* stroke = [self createStrokeOnLabel:currentNumber WithSize:2];
     self.currentStroke = stroke;
     
     //add stroke and number back
@@ -90,7 +90,7 @@
 }
 
 //create the outline around the number, returns a texture
--(CCRenderTexture*)createStroke:(CCLabelTTF*)label:(float) size{
+-(CCRenderTexture*)createStrokeOnLabel:(CCLabelTTF*)label WithSize:(float) size{
 	CCRenderTexture* rt = [CCRenderTexture renderTextureWithWidth:label.texture.contentSize.width+size*2  height:label.texture.contentSize.height+size*2];
 	CGPoint originalPos = [label position];
 	ccColor3B originalColor = [label color];

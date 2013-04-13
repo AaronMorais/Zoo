@@ -8,15 +8,15 @@
 
 /*
 Randomness stats!
-Hippo 205/1000
-Lion 205/1000
-Elephant 205/1000
-Penguin 205/1000
-Pig 100/1000
-HP 15/1000
-LP 30/1000
-EP 5/1000
-PP 30/1000*/
+Hippo 220/1000
+Lion 220/1000
+Elephant 220/1000
+Penguin 220/1000
+Pig 105/1000
+Double Points 5/1000
+No Pigs 5/1000
+Plus Life 0/1000
+Freeze 5/1000*/
 
 // Import the interfaces
 #import "GameLayer.h"
@@ -34,7 +34,7 @@ PP 30/1000*/
 @synthesize eBoxAction = _eBoxAction;
 @synthesize hBoxAction = _hBoxAction;
 @synthesize lBoxAction = _lBoxAction;
-@synthesize pFlailAction, lFlailAction, eFlailAction, hFlailAction, pBlinkAction, lBlinkAction, eBlinkAction, hBlinkAction, boxes,currentScore, pigsNotAllowed, gameState;
+@synthesize pFlailAction, lFlailAction, eFlailAction, hFlailAction, pBlinkAction, lBlinkAction, eBlinkAction, hBlinkAction, boxes,currentScore, pigsNotAllowed, gameState, doublePointPowerupActivated;
 
 // Helper class method that creates a Scene with the GameLayer as the only child.
 +(CCScene*) scene{
@@ -85,7 +85,7 @@ PP 30/1000*/
     //init box array
     boxes = [[NSMutableArray alloc]init];
     //init singleton
-    sharedSingleton = [Singleton sharedInstance];
+    sharedSingleton = [GameManager sharedInstance];
     [sharedSingleton resetSingleton];
     [self addBoxes];
 }
@@ -402,13 +402,13 @@ PP 30/1000*/
 
 //add sprite to game
 - (void)addSprite{
-    NSNumber* nsType = [self randFunction:900:1000]; //randomly choose animal type
+    NSNumber* nsType = [self randFunctionFrom:1 To:1000]; //randomly choose animal type
     int type = [nsType intValue];
     while((pigsNotAllowed && type > 819 && type < 920) || (lifeCount==5 && type < 970 && type > 964)) {
-        nsType = [self randFunction:1:1000];
+        nsType = [self randFunctionFrom:1 To:1000];
         type = [nsType intValue];
     }
-    NSNumber* side = [self randFunction:1:2]; //randomly choose animal side
+    NSNumber* side = [self randFunctionFrom:1 To:2]; //randomly choose animal side
     DragSprite* sprite; //init animal
     
     //assign the animal it's animations based on type
@@ -511,7 +511,7 @@ PP 30/1000*/
     [[sharedSingleton gameSpeed] replaceObjectAtIndex:0 withObject:speedNum];
 
     //determine delay by random number and rate
-    NSNumber* randomNum = [self randFunction:7:15];
+    NSNumber* randomNum = [self randFunctionFrom:7 To:15];
     double delay = [randomNum doubleValue];
     delay /=10;
     delay = delay * rate;
@@ -520,7 +520,7 @@ PP 30/1000*/
 }
 
 //random number generator
--(NSNumber*)randFunction:(int)numOne:(int)numTwo {
+-(NSNumber*)randFunctionFrom:(int)numOne To:(int)numTwo {
     int randomNumber = (arc4random() % ((numTwo+1)-numOne))+numOne;
     return [NSNumber numberWithInt:randomNumber];
 }
@@ -610,7 +610,7 @@ PP 30/1000*/
                 
                 //call box animation for swallow
                 [[boxes objectAtIndex:location] stopAllActions];
-                [self animateBox:[boxes objectAtIndex:location]:[NSNumber numberWithInt:location]];
+                [self animateBox:[boxes objectAtIndex:location]AtIndex:[NSNumber numberWithInt:location]];
                 
                 int check = [dragSprite.type intValue];
                 //p.e.h.l
@@ -654,7 +654,7 @@ PP 30/1000*/
 
 //provide the box with the correct animation and run it
 //animations are not stored in the boxes, they're assigned when needed
-- (void)animateBox:(BoxSprite*)box:(NSNumber*)index{
+- (void)animateBox:(BoxSprite*)box AtIndex:(NSNumber*)index{
 
     //get the box type from the boxOrder index and grab the correct animation
     NSNumber* value = [boxOrder objectAtIndex:[index integerValue]];
@@ -702,7 +702,7 @@ PP 30/1000*/
 
 //increment score function
 - (void) unitIncrement:(NSInteger)num {
-    if([sharedSingleton doublePointPowerupActivated]){
+    if(doublePointPowerupActivated){
         num *=2;
     }
     //incremenet score by 100*provided val and then display visually
@@ -744,6 +744,14 @@ PP 30/1000*/
     }
 }
 
+- (void) setPigsAllowed {
+    [self performSelector:@selector(setPigsNotAllowed:) withObject:[NSNumber numberWithBool:NO]];
+}
+
+- (void) setNoDoublePoints {
+    [self performSelector:@selector(setDoublePointPowerupActivated:) withObject:[NSNumber numberWithBool:NO]];
+}
+
 //lose life function
 - (void) loseLife {
     //decrement counter, display visually
@@ -767,7 +775,7 @@ PP 30/1000*/
 
 //end the game
 - (void) gameOver{
-    Boolean highScoreFlag = [sharedSingleton checkHighScore:currentScore]; //send the singleton the current game score, a high score may be recorded
+    [sharedSingleton checkHighScore:currentScore]; //send the singleton the current game score, a high score may be recorded
      [[ABGameKitHelper sharedClass] reportScore:currentScore forLeaderboard:@"ZooBoxLeaderboard"];
     
     [self endGameSound]; //play endgame sounds

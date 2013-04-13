@@ -8,13 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "cocos2d.h"
-#import "Singleton.h"
+#import "GameManager.h"
 
 @interface AppController : NSObject <UIApplicationDelegate, CCDirectorDelegate>
 {
 	UIWindow *window_;
 	UINavigationController *navController_;
-    Singleton* sharedSingleton;
+    GameManager* sharedSingleton;
 
 	CCDirectorIOS	*__unsafe_unretained director_;							// weak ref
 }

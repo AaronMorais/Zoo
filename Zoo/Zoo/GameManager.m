@@ -1,14 +1,14 @@
-#import "Singleton.h"
-@class Singleton;
+#import "GameManager.h"
+@class GameManager;
  
-@implementation Singleton
-@synthesize bezierArray, animals, gameSpeed, currentSpawnRate, sae, saveSpeed, frozenPowerupActivated, doublePointPowerupActivated;
+@implementation GameManager
+@synthesize bezierArray, animals, gameSpeed, currentSpawnRate, sae, saveSpeed, frozenPowerupActivated;
 
 #define IS_IPHONE_5 ([UIScreen mainScreen].bounds.size.height == 568.0)
 
-static Singleton *sharedInstance = nil;
+static GameManager *sharedInstance = nil;
  
-+ (Singleton*)sharedInstance {
++ (GameManager*)sharedInstance {
     if (sharedInstance == nil) {
         sharedInstance = [[super allocWithZone:NULL] init];
     }
@@ -48,7 +48,6 @@ static Singleton *sharedInstance = nil;
 
 -(void) resetSingleton{
     frozenPowerupActivated = NO;
-    doublePointPowerupActivated = NO;
 
     //init array for animals
     [animals removeAllObjects];
@@ -192,7 +191,7 @@ static Singleton *sharedInstance = nil;
 }
 
 //sets highscore if greater than current
--(Boolean) checkHighScore:(int)newScore{
+-(void) checkHighScore:(int)newScore{
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *docsPath = [paths objectAtIndex:0];
     NSString *path = [docsPath stringByAppendingPathComponent:@"database.sqlite"];
@@ -207,10 +206,12 @@ static Singleton *sharedInstance = nil;
     if(highScore<newScore){
         [database executeUpdate:[NSString stringWithFormat:@"UPDATE game SET value = '%d'where name = 'highScore'",newScore]];
         [database close];
-        return YES;
+        return;
+//        return YES;
     }
     [database close];
-    return NO;
+    return;
+//    return NO;
 }
 
 -(void)initBezier{
@@ -222,7 +223,7 @@ static Singleton *sharedInstance = nil;
 		{16,238},
 		{173,231}
 	};
-    bezierArray = [self generateBezier:bezierOne:100];
+    bezierArray = [self generateBezierArray:bezierOne WithSize:100];
     CGPoint bezierTwo[4] =
 	{
 		{173,231},
@@ -230,7 +231,7 @@ static Singleton *sharedInstance = nil;
 		{370,248},
 		{382,129}
 	};
-    [bezierArray addObjectsFromArray:[self generateBezier:bezierTwo:100]];
+    [bezierArray addObjectsFromArray:[self generateBezierArray:bezierTwo WithSize:100]];
     CGPoint bezierThree[4] =
 	{
 		{382,129},
@@ -238,19 +239,19 @@ static Singleton *sharedInstance = nil;
 		{470,82},
 		{530,80}
 	};
-    [bezierArray addObjectsFromArray:[self generateBezier:bezierThree:100]];
+    [bezierArray addObjectsFromArray:[self generateBezierArray:bezierThree WithSize:100]];
 }
 
-- (NSMutableArray*) generateBezier:(CGPoint[4])bezierPoints:(int)points {
+- (NSMutableArray*) generateBezierArray:(CGPoint[4])bezierPoints WithSize:(int)points {
     NSMutableArray* array = [[NSMutableArray alloc]init];
 	for(int i = 0; i < points; i++){
 		float t = (float)i / points;
 		CGPoint p;
-		p.x = [self bezierat:bezierPoints[0].x: bezierPoints[1].x: bezierPoints[2].x: bezierPoints[3].x: t];
+		p.x = [self bezierAtA:bezierPoints[0].x B:bezierPoints[1].x C:bezierPoints[2].x D:bezierPoints[3].x WithTime:t];
         if(IS_IPHONE_5) {
             p.x += 44;
         }
-		p.y = [self bezierat:bezierPoints[0].y: bezierPoints[1].y: bezierPoints[2].y: bezierPoints[3].y: t];
+		p.y = [self bezierAtA:bezierPoints[0].y B:bezierPoints[1].y C:bezierPoints[2].y D:bezierPoints[3].y WithTime:t];
         if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
             p.x *= 2.133333333;
             p.y *= 2.4;          
@@ -260,7 +261,7 @@ static Singleton *sharedInstance = nil;
     return array;
 }
 
-- (CGFloat) bezierat: (float) a: (float) b: (float) c: (float) d: (ccTime) t {
+- (CGFloat) bezierAtA: (float) a B: (float) b C: (float) c D: (float) d WithTime: (ccTime) t {
     return (powf(1-t,3) * a +
     3*t*(powf(1-t,2))*b +
     3*powf(t,2)*(1-t)*c +

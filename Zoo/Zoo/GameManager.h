@@ -11,7 +11,7 @@
 #import "FMDatabase.h"
 #import "SimpleAudioEngine.h"
 
-@interface Singleton : NSObject {
+@interface GameManager : NSObject {
 }
  
 @property(atomic,strong) NSMutableArray* bezierArray;
@@ -21,13 +21,10 @@
 @property(atomic,strong) SimpleAudioEngine* sae;
 @property(atomic,strong) NSNumber* saveSpeed;
 @property(atomic) BOOL frozenPowerupActivated;
-@property(atomic) BOOL doublePointPowerupActivated;
 
 + (id)sharedInstance;
-- (Boolean)checkHighScore:(int)newScore;
+- (void)checkHighScore:(int)newScore;
 - (void) resetSingleton;
-- (void) halfSpeed;
-- (void) fullSpeed;
 - (int) getHighScore;
 
 @end

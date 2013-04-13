@@ -13,7 +13,7 @@
             [[[CCDirector sharedDirector] touchDispatcher] addTargetedDelegate:self priority:0 swallowsTouches:YES];
        
             //initialize the singleton instance
-            sharedSingleton = [Singleton sharedInstance];
+            sharedSingleton = [GameManager sharedInstance];
        
             age = 1;
    }
@@ -211,11 +211,11 @@
 }
 
 -(CGFloat) powerupFunction{
+        [self scheduleOnce:@selector(setNoDoublePoints) delay:5.0f];
 //hippo powerup: double points
     if([self.type intValue] == 6){
-        [sharedSingleton setDoublePointPowerupActivated:YES];
-        [self unschedule:@selector(setNoDoublePoints)];
-        [self scheduleOnce:@selector(setNoDoublePoints) delay:5.0f];
+        [self.parent performSelector:@selector(setDoublePointPowerupActivated:) withObject:[NSNumber numberWithBool:YES]];
+        [self.parent scheduleOnce:@selector(stopMovingBelt) delay:5.0f];
         return 5.0f;
     }
 //lion powerup: no pigs for 10 seconds
@@ -238,14 +238,6 @@
         return 5.0f;
     }
     return 0.0f;
-}
-
-- (void) setPigsAllowed {
-    [self.parent performSelector:@selector(setPigsNotAllowed:) withObject:[NSNumber numberWithBool:NO]];
-}
-
-- (void) setNoDoublePoints {
-    [sharedSingleton setDoublePointPowerupActivated:NO];
 }
 
 - (void) updateSpeed {
