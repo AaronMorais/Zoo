@@ -7,10 +7,7 @@
 //
 
 
-#import <GameKit/GameKit.h> //gamecenter libraries  *****figure this out later!!
-//@interface GameLayer : CCLayer <GKAchievementViewControllerDelegate, GKLeaderboardViewControllerDelegate>
-
-// When you import this file, you import all the cocos2d classes
+#import <GameKit/GameKit.h> 
 #import "cocos2d.h"
 #import "DragSprite.h"
 #import "BoxSprite.h"
@@ -24,7 +21,6 @@
         int countDownCounter;
         CCSprite* countDownSprite;
         RadialGradientLayer* fadeLayer;
-        RadialGradientLayer* powerupLayer;
         GameOverlayLayer* pauseLayer;
         CGSize winSize;
         CCSprite* lifeSprite;
@@ -78,7 +74,6 @@
 @property (nonatomic,assign) BOOL gameState;
 @property (nonatomic,assign) BOOL doublePointPowerupActivated;
 
-// returns a CCScene that contains the GameLayer as the only child
 +(CCScene *) scene;
 - (void) checkIntersect;
 - (void) gainLife;

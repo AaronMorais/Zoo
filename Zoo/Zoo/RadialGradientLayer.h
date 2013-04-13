@@ -14,4 +14,6 @@
 - (id)initWithColor:(ccColor3B)color fadeIn:(BOOL)fade speed:(int)speed large:(BOOL)large;
 - (void) fadeAwayScheduler;
 
+- (void) removeAfterDelay:(CGFloat)delay;
+
 @end

@@ -82,4 +82,7 @@
     gradient4.position = ccp(winSize.width - winSize.width/size, 0);
 }
 
+- (void) removeAfterDelay:(CGFloat)delay{
+    [self performSelector:@selector(removeFromParentAndCleanup:) withObject:[NSNumber numberWithBool:YES] afterDelay:delay];
+}
 @end

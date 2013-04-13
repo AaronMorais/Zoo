@@ -6,29 +6,13 @@
 //  Copyright __MyCompanyName__ 2012. All rights reserved.
 //
 
-/*
-Randomness stats!
-Hippo 220/1000
-Lion 220/1000
-Elephant 220/1000
-Penguin 220/1000
-Pig 105/1000
-Double Points 5/1000
-No Pigs 5/1000
-Plus Life 0/1000
-Freeze 5/1000*/
-
-// Import the interfaces
 #import "GameLayer.h"
-
-// Needed to obtain the Navigation Controller
 #import "AppDelegate.h"
 #import "MenuLayer.h"
 #import "ABGameKitHelper.h"
 
 #pragma mark - GameLayer
 
-// GameLayer implementation
 @implementation GameLayer
 @synthesize pBoxAction = _pBoxAction;
 @synthesize eBoxAction = _eBoxAction;
@@ -408,7 +392,6 @@ Freeze 5/1000*/
         nsType = [self randFunctionFrom:1 To:1000];
         type = [nsType intValue];
     }
-    NSNumber* side = [self randFunctionFrom:1 To:2]; //randomly choose animal side
     DragSprite* sprite; //init animal
     
     //assign the animal it's animations based on type
@@ -417,54 +400,52 @@ Freeze 5/1000*/
         [sprite runAction:[pBlinkAction copy]];
         sprite.blink = [pBlinkAction copy];
         sprite.flail = [pFlailAction copy];
-        sprite.type = [NSNumber numberWithInt:1];
+        sprite.type = SpriteTypePenguin;
     }else if(type < 410){
         sprite = [DragSprite spriteWithSpriteFrameName:@"elephantblink01.png"];
         [sprite runAction:[eBlinkAction copy]];
         sprite.blink = [eBlinkAction copy];
         sprite.flail = [eFlailAction copy];
-        sprite.type = [NSNumber numberWithInt:2];
+        sprite.type = SpriteTypeElephant;
     }else if(type < 615){
         sprite = [DragSprite spriteWithSpriteFrameName:@"hippoblink01.png"];
         [sprite runAction:[hBlinkAction copy]];
         sprite.blink = [hBlinkAction copy];
         sprite.flail = [hFlailAction copy];
-        sprite.type = [NSNumber numberWithInt:3];
+        sprite.type = SpriteTypeHippo;
     }else if(type < 820){
         sprite = [DragSprite spriteWithSpriteFrameName:@"lionblinking01.png"];
         [sprite runAction:[lBlinkAction copy]];
         sprite.blink = [lBlinkAction copy];
         sprite.flail = [lFlailAction copy];
-        sprite.type = [NSNumber numberWithInt:4];
+        sprite.type = SpriteTypeLion;
     }else if(type < 920){
         sprite = [DragSprite spriteWithFile:@"assets/animals/pig.png"];
         sprite.blink = NULL;
         sprite.flail = NULL;
-        sprite.type = [NSNumber numberWithInt:5];
+        sprite.type = SpriteTypePig;
     }else if(type < 935){
         sprite = [DragSprite spriteWithFile:@"assets/animals/hippogold.png"];
         sprite.blink = NULL;
         sprite.flail = NULL;
-        sprite.type = [NSNumber numberWithInt:6];
+        sprite.type = SpriteTypeHippo;
     }else if(type < 965){
         sprite = [DragSprite spriteWithFile:@"assets/animals/liongold.png"];
         sprite.blink = NULL;
         sprite.flail = NULL;
-        sprite.type = [NSNumber numberWithInt:7];
+        sprite.type = SpriteTypeLion;
     }else if(type < 970){
         sprite = [DragSprite spriteWithFile:@"assets/animals/elephantgold.png"];
         sprite.blink = NULL;
         sprite.flail = NULL;
-        sprite.type = [NSNumber numberWithInt:8];
+        sprite.type = SpriteTypeElephant;
     }else{
         sprite = [DragSprite spriteWithFile:@"assets/animals/penguingold.png"];
         sprite.blink = NULL;
         sprite.flail = NULL;
-        sprite.type = [NSNumber numberWithInt:9];
+        sprite.type = SpriteTypePenguin;
     }
     [sprite moveSprite:NO];
-    //assign side and type
-    sprite.side = side;
     //add sprite to layer and assign correct z axis
     [self addChild:sprite z:1];
     //add sprite to singleton list
@@ -584,10 +565,9 @@ Freeze 5/1000*/
 //FIX THIS. We shouldn't be iterating through all animals
 -(void)checkIntersect{
     [self pickupSound]; //play pickup sound
-    NSMutableArray* discardedItems = [NSMutableArray array]; //initialize discard array
     
     //iterate through every animal in the singleton array
-    for(DragSprite* dragSprite in [sharedSingleton animals]){
+    for(DragSprite* dragSprite in [[sharedSingleton animals] copy]){
         if(dragSprite.scale == 1){
             //FIX SPRITE BOUNDING BOX for agnostic screen size
             CGRect smallSprite = CGRectInset(dragSprite.boundingBox, (.05 * winSize.width),(.05 * winSize.height));
@@ -605,31 +585,19 @@ Freeze 5/1000*/
             }
             //if only 1 intersection, put into that box
             if(intersections == 1){
-                //mark for animal for immediate removal
-                [discardedItems addObject:dragSprite];
+                //remove animal
+                [self removeChild:dragSprite cleanup:YES];
+                [[sharedSingleton animals] removeObject:dragSprite];
                 
                 //call box animation for swallow
                 [[boxes objectAtIndex:location] stopAllActions];
                 [self animateBox:[boxes objectAtIndex:location]AtIndex:[NSNumber numberWithInt:location]];
                 
-                int check = [dragSprite.type intValue];
-                //p.e.h.l
-                //hip.li.el.pen
-//                if(check == 6){
-//                    check = 3;
-//                }
-//                if(check == 7){
-//                    check = 4;
-//                }
-//                if(check == 8){
-//                    check = 2;
-//                }
-//                if(check == 9){
-//                    check = 1;
-//                }
+                int check = dragSprite.type;
+
                 //lose life or change box counter depending on animal type
                 if([boxOrder objectAtIndex:location] == [NSNumber numberWithInt:check] || check > 5){
-                    if(check <= 5) {
+                    if(check <= 4) {
                         [[boxes objectAtIndex:location] swallow];
                     }
                     CGFloat gradientLength = [dragSprite powerupFunction];
@@ -643,13 +611,6 @@ Freeze 5/1000*/
             }
         }
     }
-    
-    //iterate through flagged animals and remove them
-    //remove animals from singleton
-    for(DragSprite* remove in discardedItems){
-        [self removeChild:remove cleanup:YES];
-    }
-    [[sharedSingleton animals] removeObjectsInArray:discardedItems];
 }
 
 //provide the box with the correct animation and run it
@@ -673,23 +634,12 @@ Freeze 5/1000*/
 }
 
 - (void) showPowerupGradient:(CGFloat)delay {
-    [self unschedule:@selector(removePowerupLayer)];
-    [self removePowerupLayer];
-    powerupLayer = [[RadialGradientLayer alloc] initWithColor:ccc3(0,0,255) fadeIn:NO speed:20 large:NO];
+    RadialGradientLayer *powerupLayer = [[RadialGradientLayer alloc] initWithColor:ccc3(0,0,255) fadeIn:NO speed:20 large:NO];
     [self addChild:powerupLayer z:1];
-    
-    [self scheduleOnce:@selector(removePowerupLayer) delay:delay];
-}
-
-- (void) removePowerupLayer {
-    [self removeChild:powerupLayer cleanup:YES];
-    powerupLayer = nil;
+    [powerupLayer removeAfterDelay:delay];
 }
 
 - (void) showLoseLifeGradient {
-    if(fadeLayer) {
-        return;
-    }
     fadeLayer = [[RadialGradientLayer alloc] initWithColor:ccc3(255,0,0) fadeIn:NO speed:20 large:YES];
     [self addChild:fadeLayer z:1];
     [self scheduleOnce:@selector(removeFadeLayer) delay:0.15f];
@@ -752,6 +702,7 @@ Freeze 5/1000*/
     [self performSelector:@selector(setDoublePointPowerupActivated:) withObject:[NSNumber numberWithBool:NO]];
 }
 
+#pragma mark Life Methods
 //lose life function
 - (void) loseLife {
     //decrement counter, display visually
@@ -773,7 +724,8 @@ Freeze 5/1000*/
     }
 }
 
-//end the game
+
+#pragma mark Game Over Methods
 - (void) gameOver{
     [sharedSingleton checkHighScore:currentScore]; //send the singleton the current game score, a high score may be recorded
      [[ABGameKitHelper sharedClass] reportScore:currentScore forLeaderboard:@"ZooBoxLeaderboard"];
@@ -789,10 +741,9 @@ Freeze 5/1000*/
     [gameOver showLayer:YES];
 }
 
+#pragma mark Sound methods
 - (void) startSounds{
     [[sharedSingleton sae] playBackgroundMusic:@"gameLoop.mp3"];
-/*    soundSequence = [CCSequence actionOne:[CCCallBlock actionWithBlock:^(void){[[sharedSingleton sae]playEffect:@"engineStart.mp3"];}] two:[CCCallBlock actionWithBlock:^(void){[[sharedSingleton sae]playBackgroundMusic:@"engineLoop.mp3"];}]];
-    [self runAction:soundSequence];*/
 }
 
 - (void) startGameSound{
@@ -818,22 +769,4 @@ Freeze 5/1000*/
     [[sharedSingleton sae] pauseBackgroundMusic]; //stop background music
     [[sharedSingleton sae] playEffect:@"gameStop.mp3"]; //play end game effect
 }
-
-// on "dealloc" you need to release all your retained objects
-//FIX THIS - I DON"T THINK EVERYTHING IS DEALLOCED
-
-/* SOME GAME CENTER STUFF
-#pragma mark GameKit delegate
-
--(void) achievementViewControllerDidFinish:(GKAchievementViewController *)viewController
-{
-	AppController *app = (AppController*) [[UIApplication sharedApplication] delegate];
-	[[app navController] dismissModalViewControllerAnimated:YES];
-}
-
--(void) leaderboardViewControllerDidFinish:(GKLeaderboardViewController *)viewController
-{
-	AppController *app = (AppController*) [[UIApplication sharedApplication] delegate];
-	[[app navController] dismissModalViewControllerAnimated:YES];
-} */
 @end

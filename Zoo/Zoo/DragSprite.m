@@ -3,8 +3,11 @@
 
 #define IS_IPHONE_5 ([UIScreen mainScreen].bounds.size.height == 568.0)
 
+@interface DragSprite()
+@end
+
 @implementation DragSprite
-@synthesize type, side, blink, flail, currentPosition;
+@synthesize blink, flail, currentPosition;
 
 //initialization of sprite
 -(id) initWithTexture:(CCTexture2D*)texture rect:(CGRect)rect{
@@ -154,12 +157,12 @@
         }
     }
 
-    if([self.type intValue] < 5){
+    if(self.type <= 4){
         //lose life if animal is dead
         CCCallFunc* loseLife = [CCCallFunc actionWithTarget:self selector:@selector(loseLife)];
         [moveArray addObject:loseLife];
     }
-    if([self.type intValue] > 5){
+    if(self.type >=5){
         //powerup gets reborn at end of belt
         CCCallFunc* resetPosition = [CCCallFunc actionWithTarget:self selector:@selector(resetPosition)];
         [moveArray addObject:resetPosition];
@@ -213,25 +216,25 @@
 -(CGFloat) powerupFunction{
         [self scheduleOnce:@selector(setNoDoublePoints) delay:5.0f];
 //hippo powerup: double points
-    if([self.type intValue] == 6){
+    if(self.type == SpriteTypeHippo){
         [self.parent performSelector:@selector(setDoublePointPowerupActivated:) withObject:[NSNumber numberWithBool:YES]];
         [self.parent scheduleOnce:@selector(stopMovingBelt) delay:5.0f];
         return 5.0f;
     }
 //lion powerup: no pigs for 10 seconds
-    if([self.type intValue] == 7){
+    if(self.type == SpriteTypeLion){
         [self.parent performSelector:@selector(setPigsNotAllowed:) withObject:[NSNumber numberWithBool:YES]];
         [self unschedule:@selector(setPigsAllowed)];
         [self scheduleOnce:@selector(setPigsAllowed) delay:10.0f];
         return 10.0f;
     }
 //elephant powerup: plus life
-    if([self.type intValue] == 8){
+    if(self.type == SpriteTypeElephant){
         [self gainLife];
         return 0.15f;
     }
 //penguin powerup: freeze belt for 5 secs
-    if([self.type intValue] == 9){
+    if(self.type == SpriteTypePenguin){
         [self.parent performSelector:@selector(stopMovingBelt) withObject:self];
         [self.parent unschedule:@selector(startMovingBelt)];
         [self.parent scheduleOnce:@selector(startMovingBelt) delay:5.0f];

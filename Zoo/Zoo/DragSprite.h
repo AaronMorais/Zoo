@@ -6,12 +6,22 @@
 #import "cocos2d.h" //cocos2d library for sprite class
 #import "GameManager.h" //game singleton
 
+typedef enum {
+    SpriteTypeLion = 1,
+    SpriteTypeElephant,
+    SpriteTypeHippo,
+    SpriteTypePenguin,
+    SpriteTypePig,
+    SpriteTypeDoublePoints,
+    SpriteTypeNoPigs,
+    SpriteTypePlusLife,
+    SpriteTypeFreeze
+} SpriteType;
+
 //touch delegate used to identify touches on sprite
 @interface DragSprite : CCSprite <CCTargetedTouchDelegate> {
 
 	CGPoint whereTouch; //initial pick up location
-    NSNumber *type; //numeric type of animal; currently 1-4
-    NSNumber *side; //numeric side which the animal will spawn; currently 1-2; UNUSED!
     CCAction *blink; //store the blink action for the sprite
     CCAction *flail; //store the flail action for the sprite
     CCSprite *shadow;
@@ -20,6 +30,18 @@
 
 }
 
+/*
+Sprite Spawn Frequency:
+Hippo 220/1000
+Lion 220/1000
+Elephant 220/1000
+Penguin 220/1000
+Pig 105/1000
+Double Points 5/1000
+No Pigs 5/1000
+Plus Life 0/1000
+Freeze 5/1000
+*/
 -(BOOL) isTouchOnSprite:(CGPoint)touch;
 -(void) removeMe;
 -(void) rememberPosition;
@@ -27,8 +49,9 @@
 -(CGFloat) powerupFunction;
 -(void) updateSpeed;
 -(void) moveSprite:(BOOL)resume;
-@property(strong) NSNumber* type, * side;
+@property(strong) NSNumber* side;
 @property(strong) NSValue* currentPosition;
 @property(strong) CCAction* blink, *flail;
+@property (nonatomic,assign) SpriteType type;
 
 @end
