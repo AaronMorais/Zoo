@@ -268,9 +268,6 @@ static GameManager *sharedInstance = nil;
     powf(t,3)*d );
 }
 
-// Your dealloc method will never be called, as the singleton survives for the duration of your app.
-// However, I like to include it so I know what memory I'm using (and incase, one day, I convert away from Singleton).
- 
 // We don't want to allocate a new instance, so return the current one.
 + (id)allocWithZone:(NSZone*)zone {
     return [self sharedInstance];

@@ -17,8 +17,6 @@
        
             //initialize the singleton instance
             gameManager = [GameManager sharedInstance];
-       
-            age = 1;
    }
    return self;
 }
@@ -162,15 +160,9 @@
         CCCallFunc* loseLife = [CCCallFunc actionWithTarget:self selector:@selector(loseLife)];
         [moveArray addObject:loseLife];
     }
-    if(self.type >=5){
-        //powerup gets reborn at end of belt
-        CCCallFunc* resetPosition = [CCCallFunc actionWithTarget:self selector:@selector(resetPosition)];
-        [moveArray addObject:resetPosition];
-    } else {
-        //animal dies at end of belt
-        CCCallFunc* removeSprite = [CCCallFunc actionWithTarget:self selector:@selector(removeMe)];
-        [moveArray addObject:removeSprite];
-    }
+    //animal dies at end of belt
+    CCCallFunc* removeSprite = [CCCallFunc actionWithTarget:self selector:@selector(removeMe)];
+    [moveArray addObject:removeSprite];
 
     //execute sequence
     CCSequence* moveSeq = [CCSequence actionWithArray:moveArray];
@@ -184,11 +176,6 @@
 }
 
 - (void) resetPosition {
-    if (age > 3) {
-        [self removeMe];
-        return;
-    }
-    age++;
     if(IS_IPHONE_5){
         self.position = ccp(-10,83);
     } else if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {

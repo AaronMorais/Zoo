@@ -26,8 +26,6 @@ typedef enum {
     CCAction *flail; //store the flail action for the sprite
     CCSprite *shadow;
     GameManager *gameManager; //access to singleton
-    NSInteger age;
-
 }
 
 /*
