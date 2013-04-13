@@ -16,7 +16,7 @@
             [[[CCDirector sharedDirector] touchDispatcher] addTargetedDelegate:self priority:0 swallowsTouches:YES];
        
             //initialize the singleton instance
-            sharedSingleton = [GameManager sharedInstance];
+            gameManager = [GameManager sharedInstance];
        
             age = 1;
    }
@@ -24,7 +24,7 @@
 }
 
 //check that the sprite is being touched
--(BOOL) isTouchOnSprite:(CGPoint)touch{
+-(BOOL) isPointOnSprite:(CGPoint)touch{
 	if(CGRectContainsPoint(self.boundingBox, touch))
 		return YES;
 	else return NO;
@@ -38,7 +38,7 @@
 	touchPoint = [[CCDirector sharedDirector] convertToGL:touchPoint];
 	
     //if sprite is being touched, save current location, make the sprite pop out and flail
-	if([self isTouchOnSprite:touchPoint]){
+	if([self isPointOnSprite:touchPoint]){
 		whereTouch=ccpSub(self.position, touchPoint);
         self.scale = 1.2;
         [self.parent reorderChild:self z:2];
@@ -85,7 +85,7 @@
     //start moving the sprite again
     CCCallFunc* resumeMove = [CCCallFunc actionWithTarget:self selector:@selector(resumeMoveSprite)];
     //run action
-    if([sharedSingleton frozenPowerupActivated]){
+    if([gameManager frozenPowerupActivated]){
         [self runAction:[CCSequence actions:moveTo, nil]];
     } else {
         [self runAction:[CCSequence actions:moveTo, resumeMove, nil]];
@@ -137,14 +137,14 @@
         savedPoint = [self.currentPosition CGPointValue];
     }
     NSMutableArray* moveArray = [NSMutableArray array];
-    NSMutableArray* bezierArray = [sharedSingleton bezierArray];
+    NSMutableArray* bezierArray = [gameManager bezierArray];
     
     //move animal to each point smoothly
     //iterate through every point until getting to current spot then add to actions array
     for(NSValue* val in bezierArray){
         if(flag == 1){
             CGPoint p = [val CGPointValue];
-            float speed = [[[sharedSingleton gameSpeed] objectAtIndex:0] floatValue];
+            float speed = [[[gameManager gameSpeed] objectAtIndex:0] floatValue];
             float distanceApart = ccpDistance(savedPoint,p);
             float duration = distanceApart/(200*speed);
             CCMoveTo* moveTo = [CCMoveTo actionWithDuration:duration position:p];
@@ -258,7 +258,7 @@
 
 //cleanup sprite by removing from singleton list
 -(void) removeMe{
-    [[sharedSingleton animals] removeObject:self];
+    [[gameManager animals] removeObject:self];
     [self.parent removeChild:self cleanup:YES];
 }
 

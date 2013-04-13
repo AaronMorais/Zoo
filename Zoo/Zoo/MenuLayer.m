@@ -2,6 +2,7 @@
 #import "MenuLayer.h"
 #import "AppDelegate.h"
 #import "ABGameKitHelper.h"
+#import "GameManager.h"
 
 @implementation MenuLayer
  
@@ -23,9 +24,7 @@
 -(id) init{
 	// always call "super" init
 	// Apple recommends to re-assign "self" with the "super" return value
-	if( (self=[super init] )) {
-        sharedSingleton = [GameManager sharedInstance];
-        
+	if( (self=[super init] )) {        
         loading = [[LoadingLayer alloc] initWithColor:ccc4(0,0,0,255)];
         [self addChild:loading];
         
@@ -36,7 +35,7 @@
 	return self;
 }
 -(void) menuMusic{
-    [[sharedSingleton sae] playBackgroundMusic:@"menuMusic.mp3"];
+    [[[GameManager sharedInstance] sae] playBackgroundMusic:@"menuMusic.mp3"];
 }
 -(void) addBackgroundImage{
     CGSize winSize;
@@ -95,7 +94,7 @@
 	// cocos2d will automatically release all the children (Label)
  
 	// don't forget to call "super dealloc"
-    [[sharedSingleton sae] pauseBackgroundMusic];
+    [[[GameManager sharedInstance] sae] pauseBackgroundMusic];
 }
 
 - (void) play: (CCMenuItem*) menuItem{

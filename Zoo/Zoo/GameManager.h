@@ -24,7 +24,7 @@
 
 + (id)sharedInstance;
 - (void)checkHighScore:(int)newScore;
-- (void) resetSingleton;
+- (void) resetGameVariables;
 - (int) getHighScore;
 
 @end

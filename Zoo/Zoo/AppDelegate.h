@@ -14,7 +14,7 @@
 {
 	UIWindow *window_;
 	UINavigationController *navController_;
-    GameManager* sharedSingleton;
+    GameManager* gameManager;
 
 	CCDirectorIOS	*__unsafe_unretained director_;							// weak ref
 }

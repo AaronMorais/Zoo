@@ -18,14 +18,14 @@
     CCLabelTTF *highScoreFooter;
     CCLabelTTF *yourScoreHeader;
     CCLabelTTF *yourScoreFooter;
-    GameManager *sharedSingleton;
+    GameManager *gameManager;
     CCMenu * menu;
 }
 
 - (id)init {
     self = [super init];
     if (self) {
-        sharedSingleton = [GameManager sharedInstance];
+        gameManager = [GameManager sharedInstance];
         winSize = [[CCDirector sharedDirector] winSize];
         
         fadeLayer = [CCLayerColor layerWithColor:ccc4(0, 0, 0, 255)];
@@ -43,7 +43,7 @@
         highScoreHeader.position = ccp(winSize.width * 0.125, winSize.height * 0.72);
         [self addChild:highScoreHeader];
         
-        highScoreFooter = [[CCLabelTTF alloc] initWithString:[NSString stringWithFormat:@"%d",[sharedSingleton getHighScore]] fontName:@"Aharoni" fontSize:70.0f];
+        highScoreFooter = [[CCLabelTTF alloc] initWithString:[NSString stringWithFormat:@"%d",[gameManager getHighScore]] fontName:@"Aharoni" fontSize:70.0f];
         highScoreFooter.ignoreAnchorPointForPosition = YES;
         CGSize hsfSize = [highScoreFooter.string sizeWithFont:[UIFont fontWithName:@"Aharoni" size:70.0f]];
         highScoreFooter.position = ccp(winSize.width * 0.88 - hsfSize.width, winSize.height * 0.55);
@@ -112,7 +112,7 @@
         highScoreHeader.position = ccp(winSize.width * 0.125, winSize.height * 0.42);
         [self addChild:highScoreHeader];
         
-        highScoreFooter = [[CCLabelTTF alloc] initWithString:[NSString stringWithFormat:@"%d",[sharedSingleton getHighScore]] fontName:@"Aharoni" fontSize:55.0f];
+        highScoreFooter = [[CCLabelTTF alloc] initWithString:[NSString stringWithFormat:@"%d",[gameManager getHighScore]] fontName:@"Aharoni" fontSize:55.0f];
         highScoreFooter.ignoreAnchorPointForPosition = YES;
         CGSize hsfSize = [highScoreFooter.string sizeWithFont:[UIFont fontWithName:@"Aharoni" size:55.0f]];
         highScoreFooter.position = ccp(winSize.width * 0.88 - hsfSize.width, winSize.height * 0.30);

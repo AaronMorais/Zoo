@@ -59,7 +59,7 @@
         CCAction* hBlinkAction;
         CCAction* lBlinkAction;
         CCAction* pigBlinkAction;
-        GameManager* sharedSingleton;
+        GameManager* gameManager;
 }
 
 @property (nonatomic,strong) CCAction *pBoxAction;

@@ -25,7 +25,7 @@ static GameManager *sharedInstance = nil;
         //generate bezier values for animals
         [self initBezier];
         
-        [self resetSingleton];
+        [self resetGameVariables];
         
         //initialize database
         [self initDB];
@@ -46,7 +46,7 @@ static GameManager *sharedInstance = nil;
     return self;
 }
 
--(void) resetSingleton{
+-(void) resetGameVariables{
     frozenPowerupActivated = NO;
 
     //init array for animals

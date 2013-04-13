@@ -69,8 +69,8 @@
     //init box array
     boxes = [[NSMutableArray alloc]init];
     //init singleton
-    sharedSingleton = [GameManager sharedInstance];
-    [sharedSingleton resetSingleton];
+    gameManager = [GameManager sharedInstance];
+    [gameManager resetGameVariables];
     [self addBoxes];
 }
 
@@ -449,7 +449,7 @@
     //add sprite to layer and assign correct z axis
     [self addChild:sprite z:1];
     //add sprite to singleton list
-    [[sharedSingleton animals] addObject:sprite];
+    [[gameManager animals] addObject:sprite];
     //increment number of animal counter
     animalCount++;
     [self animalLoop]; //get the next animal
@@ -458,11 +458,11 @@
 //determine the amount of time until next animal 
 - (void) animalLoop {
     //get rate from singleton
-    NSNumber* rateNum = [[sharedSingleton currentSpawnRate] objectAtIndex:0];
+    NSNumber* rateNum = [[gameManager currentSpawnRate] objectAtIndex:0];
     double rate = [rateNum doubleValue];
     
     //get game speed from singleton
-    NSNumber* speedNum = [[sharedSingleton gameSpeed] objectAtIndex:0];
+    NSNumber* speedNum = [[gameManager gameSpeed] objectAtIndex:0];
     double speed= [speedNum doubleValue];
     
     //increase speed but decrease rate
@@ -487,9 +487,9 @@
     
     //save values into singleton
     rateNum = [NSNumber numberWithDouble:rate];
-    [[sharedSingleton currentSpawnRate] replaceObjectAtIndex:0 withObject:rateNum];
+    [[gameManager currentSpawnRate] replaceObjectAtIndex:0 withObject:rateNum];
     speedNum = [NSNumber numberWithDouble:speed];
-    [[sharedSingleton gameSpeed] replaceObjectAtIndex:0 withObject:speedNum];
+    [[gameManager gameSpeed] replaceObjectAtIndex:0 withObject:speedNum];
 
     //determine delay by random number and rate
     NSNumber* randomNum = [self randomNumberFrom:7 To:15];
@@ -567,7 +567,7 @@
     [self pickupSound]; //play pickup sound
     
     //iterate through every animal in the singleton array
-    for(DragSprite* dragSprite in [[sharedSingleton animals] copy]){
+    for(DragSprite* dragSprite in [[gameManager animals] copy]){
         if(dragSprite.scale == 1){
             //FIX SPRITE BOUNDING BOX for agnostic screen size
             CGRect smallSprite = CGRectInset(dragSprite.boundingBox, (.05 * winSize.width),(.05 * winSize.height));
@@ -607,7 +607,7 @@
                 
                 //remove animal
                 [self removeChild:dragSprite cleanup:YES];
-                [[sharedSingleton animals] removeObject:dragSprite];
+                [[gameManager animals] removeObject:dragSprite];
             }
         }
     }
@@ -685,7 +685,7 @@
 }
 
 -(void) moveBelt:(BOOL)move {
-    [sharedSingleton setFrozenPowerupActivated:!move];
+    [gameManager setFrozenPowerupActivated:!move];
     if(!move) {
         [beltSprite stopAllActions];
         [self unschedule:@selector(addSprite)];
@@ -694,7 +694,7 @@
         [beltSprite runAction:beltAction];
         [self schedule:@selector(addSprite) interval:2.0f];
     }
-    for(DragSprite* dragSprite in [sharedSingleton animals]){
+    for(DragSprite* dragSprite in [gameManager animals]){
         if(move) {
             [dragSprite updateSpeed];
         } else {
@@ -728,7 +728,7 @@
 
 #pragma mark Game Over Methods
 - (void) gameOver{
-    [sharedSingleton checkHighScore:currentScore]; //send the singleton the current game score, a high score may be recorded
+    [gameManager checkHighScore:currentScore]; //send the singleton the current game score, a high score may be recorded
      [[ABGameKitHelper sharedClass] reportScore:currentScore forLeaderboard:@"ZooBoxLeaderboard"];
     
     [self endGameSound]; //play endgame sounds
@@ -744,30 +744,30 @@
 
 #pragma mark Sound methods
 - (void) startSounds{
-    [[sharedSingleton sae] playBackgroundMusic:@"gameLoop.mp3"];
+    [[gameManager sae] playBackgroundMusic:@"gameLoop.mp3"];
 }
 
 - (void) startGameSound{
-    [[sharedSingleton sae] playBackgroundMusic:@"gameLoop.mp3"];
+    [[gameManager sae] playBackgroundMusic:@"gameLoop.mp3"];
 }
 - (void) killBG{
-    [[sharedSingleton sae] pauseBackgroundMusic];
+    [[gameManager sae] pauseBackgroundMusic];
 }
 
 - (void) startBG{
-    [[sharedSingleton sae] playBackgroundMusic:@"gameLoop.mp3"];
+    [[gameManager sae] playBackgroundMusic:@"gameLoop.mp3"];
 }
 
 - (void) pickupSound{
-    [[sharedSingleton sae] playEffect:@"pickup.mp3"]; //play pickup sound
+    [[gameManager sae] playEffect:@"pickup.mp3"]; //play pickup sound
 }
 
 - (void) countdownSound{
-    [[sharedSingleton sae] playEffect:@"countdown.mp3"]; //play pickup sound
+    [[gameManager sae] playEffect:@"countdown.mp3"]; //play pickup sound
 }
 
 - (void) endGameSound{
-    [[sharedSingleton sae] pauseBackgroundMusic]; //stop background music
-    [[sharedSingleton sae] playEffect:@"gameStop.mp3"]; //play end game effect
+    [[gameManager sae] pauseBackgroundMusic]; //stop background music
+    [[gameManager sae] playEffect:@"gameStop.mp3"]; //play end game effect
 }
 @end

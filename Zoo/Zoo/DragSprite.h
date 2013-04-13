@@ -25,7 +25,7 @@ typedef enum {
     CCAction *blink; //store the blink action for the sprite
     CCAction *flail; //store the flail action for the sprite
     CCSprite *shadow;
-    GameManager *sharedSingleton; //access to singleton
+    GameManager *gameManager; //access to singleton
     NSInteger age;
 
 }
@@ -42,7 +42,7 @@ No Pigs 5/1000
 Plus Life 0/1000
 Freeze 5/1000
 */
--(BOOL) isTouchOnSprite:(CGPoint)touch;
+-(BOOL) isPointOnSprite:(CGPoint)touch;
 -(void) removeMe;
 -(void) rememberPosition;
 -(void) resumeMoveSprite;
