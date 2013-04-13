@@ -59,12 +59,6 @@
     }
 }
 
-//random number function
--(NSNumber*)randFunctionFrom:(int)numOne To:(int)numTwo {
-    int randomNumber = (arc4random() % ((numTwo+1)-numOne))+numOne;
-    return [NSNumber numberWithInt:randomNumber];
-}
-
 //create initial strokes for number outline
 -(void) firstStroke{
     CCRenderTexture* stroke = [self createStrokeOnLabel:currentNumber WithSize:2];

@@ -39,7 +39,7 @@
 	director_.wantsFullScreenLayout = YES;
 
 	// Display FSP and SPF
-	[director_ setDisplayStats:YES];
+	[director_ setDisplayStats:NO];
 
 	// set FPS at 60
 	[director_ setAnimationInterval:1.0/60];
@@ -141,7 +141,7 @@
 	if( [navController_ visibleViewController] == director_ )
 		[director_ stopAnimation];
     GameLayer *game = [[[CCDirector sharedDirector] runningScene].children objectAtIndex:0];
-    if([game isKindOfClass:[GameLayer class]] && [game gameState]) {
+    if([game isKindOfClass:[GameLayer class]] && [game gameHasStarted]) {
         [game pauseGame:YES];
     }
 }

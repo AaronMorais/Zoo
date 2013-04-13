@@ -18,7 +18,7 @@
 @synthesize eBoxAction = _eBoxAction;
 @synthesize hBoxAction = _hBoxAction;
 @synthesize lBoxAction = _lBoxAction;
-@synthesize pFlailAction, lFlailAction, eFlailAction, hFlailAction, pBlinkAction, lBlinkAction, eBlinkAction, hBlinkAction, boxes,currentScore, pigsNotAllowed, gameState, doublePointPowerupActivated;
+@synthesize pFlailAction, lFlailAction, eFlailAction, hFlailAction, pBlinkAction, lBlinkAction, eBlinkAction, hBlinkAction, boxes,currentScore, gameHasStarted;
 
 // Helper class method that creates a Scene with the GameLayer as the only child.
 +(CCScene*) scene{
@@ -270,7 +270,7 @@
 #pragma mark Start Game
 //start the game
 - (void)startGame{
-    gameState = true;
+    gameHasStarted = true;
     [self startSounds];
     [beltSprite runAction:beltAction];
     [self schedule:@selector(addSprite) interval:1];
@@ -386,10 +386,10 @@
 
 //add sprite to game
 - (void)addSprite{
-    NSNumber* nsType = [self randFunctionFrom:1 To:1000]; //randomly choose animal type
+    NSNumber* nsType = [self randomNumberFrom:1 To:1000]; //randomly choose animal type
     int type = [nsType intValue];
-    while((pigsNotAllowed && type > 819 && type < 920) || (lifeCount==5 && type < 970 && type > 964)) {
-        nsType = [self randFunctionFrom:1 To:1000];
+    while((self.noPigsPowerupEnabled && type > 819 && type < 920) || (lifeCount==5 && type < 970 && type > 964)) {
+        nsType = [self randomNumberFrom:1 To:1000];
         type = [nsType intValue];
     }
     DragSprite* sprite; //init animal
@@ -428,22 +428,22 @@
         sprite = [DragSprite spriteWithFile:@"assets/animals/hippogold.png"];
         sprite.blink = NULL;
         sprite.flail = NULL;
-        sprite.type = SpriteTypeHippo;
+        sprite.type = SpriteTypeDoublePoints;
     }else if(type < 965){
         sprite = [DragSprite spriteWithFile:@"assets/animals/liongold.png"];
         sprite.blink = NULL;
         sprite.flail = NULL;
-        sprite.type = SpriteTypeLion;
+        sprite.type = SpriteTypeNoPigs;
     }else if(type < 970){
         sprite = [DragSprite spriteWithFile:@"assets/animals/elephantgold.png"];
         sprite.blink = NULL;
         sprite.flail = NULL;
-        sprite.type = SpriteTypeElephant;
+        sprite.type = SpriteTypePlusLife;
     }else{
         sprite = [DragSprite spriteWithFile:@"assets/animals/penguingold.png"];
         sprite.blink = NULL;
         sprite.flail = NULL;
-        sprite.type = SpriteTypePenguin;
+        sprite.type = SpriteTypeFreeze;
     }
     [sprite moveSprite:NO];
     //add sprite to layer and assign correct z axis
@@ -492,7 +492,7 @@
     [[sharedSingleton gameSpeed] replaceObjectAtIndex:0 withObject:speedNum];
 
     //determine delay by random number and rate
-    NSNumber* randomNum = [self randFunctionFrom:7 To:15];
+    NSNumber* randomNum = [self randomNumberFrom:7 To:15];
     double delay = [randomNum doubleValue];
     delay /=10;
     delay = delay * rate;
@@ -501,7 +501,7 @@
 }
 
 //random number generator
--(NSNumber*)randFunctionFrom:(int)numOne To:(int)numTwo {
+-(NSNumber*)randomNumberFrom:(int)numOne To:(int)numTwo {
     int randomNumber = (arc4random() % ((numTwo+1)-numOne))+numOne;
     return [NSNumber numberWithInt:randomNumber];
 }
@@ -530,7 +530,7 @@
         }
     }
     //check if pause button was touched
-    if(CGRectContainsPoint(pause.boundingBox, touchPoint) && gameState){
+    if(CGRectContainsPoint(pause.boundingBox, touchPoint) && gameHasStarted){
         [self pauseGame:YES];
     }
 }
@@ -584,11 +584,7 @@
                 }
             }
             //if only 1 intersection, put into that box
-            if(intersections == 1){
-                //remove animal
-                [self removeChild:dragSprite cleanup:YES];
-                [[sharedSingleton animals] removeObject:dragSprite];
-                
+            if(intersections == 1){                
                 //call box animation for swallow
                 [[boxes objectAtIndex:location] stopAllActions];
                 [self animateBox:[boxes objectAtIndex:location]AtIndex:[NSNumber numberWithInt:location]];
@@ -608,6 +604,10 @@
                     [self loseLife];
                     [self showLoseLifeGradient];
                 }
+                
+                //remove animal
+                [self removeChild:dragSprite cleanup:YES];
+                [[sharedSingleton animals] removeObject:dragSprite];
             }
         }
     }
@@ -652,7 +652,7 @@
 
 //increment score function
 - (void) unitIncrement:(NSInteger)num {
-    if(doublePointPowerupActivated){
+    if(self.doublePointPowerupEnabled){
         num *=2;
     }
     //incremenet score by 100*provided val and then display visually
@@ -665,6 +665,15 @@
     //reset counter and display visually
     currentScore = 0;
     [score setString:[NSString stringWithFormat:@"%d",currentScore]];
+}
+
+#pragma mark Powerup Methods
+-(void)setDoublePointPowerup:(NSNumber *)powerup {
+    [self setDoublePointPowerupEnabled:[powerup boolValue]];
+}
+
+-(void)setNoPigsPowerup:(NSNumber *)powerup {
+    [self setNoPigsPowerupEnabled:[powerup boolValue]];
 }
 
 - (void) startMovingBelt {
@@ -692,14 +701,6 @@
             [dragSprite stopAllActions];
         }
     }
-}
-
-- (void) setPigsAllowed {
-    [self performSelector:@selector(setPigsNotAllowed:) withObject:[NSNumber numberWithBool:NO]];
-}
-
-- (void) setNoDoublePoints {
-    [self performSelector:@selector(setDoublePointPowerupActivated:) withObject:[NSNumber numberWithBool:NO]];
 }
 
 #pragma mark Life Methods
@@ -731,7 +732,7 @@
      [[ABGameKitHelper sharedClass] reportScore:currentScore forLeaderboard:@"ZooBoxLeaderboard"];
     
     [self endGameSound]; //play endgame sounds
-    gameState = NO;
+    gameHasStarted = NO;
     
     [self pauseSchedulerAndActions];
     CCArray *children = self.children;

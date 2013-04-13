@@ -69,21 +69,22 @@
 @property (nonatomic,strong) CCAction *pFlailAction,* eFlailAction,* hFlailAction,* lFlailAction;
 @property (nonatomic,strong) CCAction *pBlinkAction,* eBlinkAction,* hBlinkAction,* lBlinkAction;
 @property (nonatomic) NSMutableArray *animals,* boxes;
-@property (nonatomic) NSInteger currentScore;
-@property (nonatomic,assign) BOOL pigsNotAllowed;
-@property (nonatomic,assign) BOOL gameState;
-@property (nonatomic,assign) BOOL doublePointPowerupActivated;
+@property (nonatomic) NSInteger  currentScore;
+@property (nonatomic,assign) BOOL gameHasStarted;
+@property (nonatomic,assign) BOOL noPigsPowerupEnabled;
+@property (nonatomic,assign) BOOL doublePointPowerupEnabled;
 
 +(CCScene *) scene;
 - (void) checkIntersect;
 - (void) gainLife;
 - (void) loseLife;
-- (void) setPigsAllowed;
-- (void) setNoDoublePoints;
 - (void) startMovingBelt;
 - (void) stopMovingBelt;
 - (void) pauseGame:(BOOL)paused;
 - (void) restartGame;
 - (void) quitToMain;
+
+-(void)setNoPigsPowerup:(NSNumber *)powerup;
+-(void)setDoublePointPowerup:(NSNumber *)powerup;
 
 @end

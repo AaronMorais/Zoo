@@ -65,7 +65,7 @@
 
 //touch end handling function
 - (void)ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event{
-    if(![(GameLayer *)self.parent gameState]) { return;}
+    if(![(GameLayer *)self.parent gameHasStarted]) { return;}
 
     //stop the sprite from flailing and stop sprite from popping
     [self stopAllActions];
@@ -214,27 +214,27 @@
 }
 
 -(CGFloat) powerupFunction{
-        [self scheduleOnce:@selector(setNoDoublePoints) delay:5.0f];
 //hippo powerup: double points
-    if(self.type == SpriteTypeHippo){
-        [self.parent performSelector:@selector(setDoublePointPowerupActivated:) withObject:[NSNumber numberWithBool:YES]];
-        [self.parent scheduleOnce:@selector(stopMovingBelt) delay:5.0f];
+    if(self.type == SpriteTypeDoublePoints){
+        [self.parent performSelector:@selector(setDoublePointPowerupEnabled:) withObject:[NSNumber numberWithBool:YES]];
+        [NSObject cancelPreviousPerformRequestsWithTarget:self.parent selector:@selector(setDoublePointPowerup:) object:[NSNumber numberWithBool:NO]];
+        [self.parent performSelector:@selector(setDoublePointPowerup:) withObject:[NSNumber numberWithBool:NO] afterDelay:5.0f];
         return 5.0f;
     }
 //lion powerup: no pigs for 10 seconds
-    if(self.type == SpriteTypeLion){
-        [self.parent performSelector:@selector(setPigsNotAllowed:) withObject:[NSNumber numberWithBool:YES]];
-        [self unschedule:@selector(setPigsAllowed)];
-        [self scheduleOnce:@selector(setPigsAllowed) delay:10.0f];
+    if(self.type == SpriteTypeNoPigs){
+        [self.parent performSelector:@selector(setNoPigsPowerupEnabled:) withObject:[NSNumber numberWithBool:YES]];
+        [NSObject cancelPreviousPerformRequestsWithTarget:self.parent selector:@selector(setNoPigsPowerup:) object:[NSNumber numberWithBool:NO]];
+        [self.parent performSelector:@selector(setNoPigsPowerup:) withObject:[NSNumber numberWithBool:NO] afterDelay:10.0f];
         return 10.0f;
     }
 //elephant powerup: plus life
-    if(self.type == SpriteTypeElephant){
+    if(self.type == SpriteTypePlusLife){
         [self gainLife];
         return 0.15f;
     }
 //penguin powerup: freeze belt for 5 secs
-    if(self.type == SpriteTypePenguin){
+    if(self.type == SpriteTypeFreeze){
         [self.parent performSelector:@selector(stopMovingBelt) withObject:self];
         [self.parent unschedule:@selector(startMovingBelt)];
         [self.parent scheduleOnce:@selector(startMovingBelt) delay:5.0f];
