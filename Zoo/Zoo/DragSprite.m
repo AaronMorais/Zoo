@@ -95,13 +95,27 @@
 // find the closest point on the conveyor belt and save it to currentPosition
 - (void) closest{
     double distance = DBL_MAX;
-    NSValue* point;
     
     //all of the bezier points that the animals follow
-    NSMutableArray *bezierArray = [sharedSingleton bezierArray];
+    NSMutableArray *bezierArray = [[gameManager bezierArray] mutableCopy];
     
+    for(DragSprite *dragSprite in [gameManager animals]) {
+        if(dragSprite == self) { continue; }
+        for(NSValue *val in [bezierArray copy]) {
+            BOOL passedOverSprite = NO;
+            CGRect spriteFrame = CGRectMake(dragSprite.position.x - floorf(dragSprite.contentSize.width/2), dragSprite.position.y - floorf(dragSprite.contentSize.height/2), dragSprite.contentSize.width, dragSprite.contentSize.height);
+            if(CGRectContainsPoint(CGRectInset(spriteFrame, -floorf(dragSprite.contentSize.height/8), -floorf(dragSprite.contentSize.width/8)), [val CGPointValue])) {
+                [bezierArray removeObject:val];
+                passedOverSprite = YES;
+            } else if(passedOverSprite){
+                break;
+            }
+        }
+    }
+   
+    NSValue* point;
     //iterate through every point to determine the optimal point
-    for(NSValue* val in bezierArray){
+    for(NSValue *val in bezierArray){
         double distanceApart = ccpDistance([val CGPointValue], self.position);
         if(distance>distanceApart){
             distance = distanceApart;
@@ -109,8 +123,12 @@
         }
     }
     
-    //save optimal point
-    self.currentPosition = point;
+    if(point) {
+        //save optimal point
+        self.currentPosition = point;
+    } else {
+        //fly away?
+    }
 }
 
 - (void) resumeMoveSprite{
@@ -181,7 +199,7 @@
     } else if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
         self.position = ccp(-10, 83);
     } else {
-        self.position = ccp(-10, 199.199997);
+        self.position = ccp(-10, 200);
     }
     [self updateSpeed];
 }
