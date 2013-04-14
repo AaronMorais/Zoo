@@ -2,7 +2,7 @@
 @class GameManager;
  
 @implementation GameManager
-@synthesize bezierArray, animals, gameSpeed, currentSpawnRate, sae, saveSpeed, frozenPowerupActivated;
+@synthesize bezierArray, animals, sae, frozenPowerupActivated;
 
 #define IS_IPHONE_5 ([UIScreen mainScreen].bounds.size.height == 568.0)
 #define K_SHOULD_SHOW_HOW_TO_PLAY @"should_show_how_to_play"
@@ -55,18 +55,10 @@ static GameManager *sharedInstance = nil;
     animals = [[NSMutableArray alloc] init];
     
     //initialize speed
-    double init = 0.30;
-    NSNumber* speed = [NSNumber numberWithDouble:init];
-    [gameSpeed removeAllObjects];
-    gameSpeed = [[NSMutableArray alloc] init];
-    [gameSpeed addObject:speed];
+    self.gameSpeed = 0.30;
     
     //initialize rate
-    double initRate = 2.00;
-    NSNumber* speedRate = [NSNumber numberWithDouble:initRate];
-    [currentSpawnRate removeAllObjects];
-    currentSpawnRate = [[NSMutableArray alloc] init];
-    [currentSpawnRate addObject:speedRate];
+    self.currentSpawnRate = 2.00;
 }
 
 -(void) initDB{

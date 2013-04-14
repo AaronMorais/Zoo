@@ -13,13 +13,12 @@
 @interface GameManager : NSObject {
 }
  
-@property(atomic,strong) NSMutableArray* bezierArray;
-@property(atomic,strong) NSMutableArray* animals;
-@property(atomic,strong) NSMutableArray* gameSpeed;
-@property(atomic,strong) NSMutableArray* currentSpawnRate;
-@property(atomic,strong) SimpleAudioEngine* sae;
-@property(atomic,strong) NSNumber* saveSpeed;
-@property(atomic) BOOL frozenPowerupActivated;
+@property(nonatomic,strong) NSMutableArray* bezierArray;
+@property(nonatomic,strong) NSMutableArray* animals;
+@property(nonatomic,assign) CGFloat gameSpeed;
+@property(nonatomic,assign) CGFloat currentSpawnRate;
+@property(nonatomic,strong) SimpleAudioEngine* sae;
+@property(nonatomic, assign) BOOL frozenPowerupActivated;
 
 + (id)sharedInstance;
 + (BOOL)shouldShowHowToPlay;

@@ -157,9 +157,9 @@
     for(NSValue* val in bezierArray){
         if(flag == 1){
             CGPoint p = [val CGPointValue];
-            float speed = [[[gameManager gameSpeed] objectAtIndex:0] floatValue];
-            float distanceApart = ccpDistance(savedPoint,p);
-            float duration = distanceApart/(200*speed);
+            CGFloat speed = [gameManager gameSpeed];
+            CGFloat distanceApart = ccpDistance(savedPoint,p);
+            CGFloat duration = distanceApart/(200*speed);
             CCMoveTo* moveTo = [CCMoveTo actionWithDuration:duration position:p];
             [moveArray addObject:moveTo];
             CCCallFunc* rememberPosition = [CCCallFunc actionWithTarget:self selector:@selector(rememberPosition)];

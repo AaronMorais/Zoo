@@ -13,6 +13,10 @@
 
 #pragma mark - GameLayer
 
+@interface GameLayer()
+    @property (nonatomic, assign) int currentRound;
+@end
+
 @implementation GameLayer
 @synthesize pBoxAction = _pBoxAction;
 @synthesize eBoxAction = _eBoxAction;
@@ -406,7 +410,7 @@
 }
 
 //add sprite to game
-- (void)addSprite{
+- (void)addSprite {
     NSNumber* nsType = [Utility randomNumberFrom:1 To:1000]; //randomly choose animal type
     int type = [nsType intValue];
     while((self.noPigsPowerupEnabled && type > 819 && type < 920) || (lifeCount==5 && type < 970 && type > 964)) {
@@ -478,13 +482,8 @@
 
 //determine the amount of time until next animal 
 - (void) animalLoop {
-    //get rate from singleton
-    NSNumber* rateNum = [[gameManager currentSpawnRate] objectAtIndex:0];
-    double rate = [rateNum doubleValue];
-    
-    //get game speed from singleton
-    NSNumber* speedNum = [[gameManager gameSpeed] objectAtIndex:0];
-    double speed= [speedNum doubleValue];
+    CGFloat rate = [gameManager currentSpawnRate];    
+    CGFloat speed = [gameManager gameSpeed];
     
     //increase speed but decrease rate
     if(currentScore < 1000) {
@@ -506,15 +505,12 @@
     }
     NSLog(@"speed: %f, rate: %f", speed, rate);
     
-    //save values into singleton
-    rateNum = [NSNumber numberWithDouble:rate];
-    [[gameManager currentSpawnRate] replaceObjectAtIndex:0 withObject:rateNum];
-    speedNum = [NSNumber numberWithDouble:speed];
-    [[gameManager gameSpeed] replaceObjectAtIndex:0 withObject:speedNum];
+    [gameManager setCurrentSpawnRate:rate];
+    [gameManager setGameSpeed:speed];
 
     //determine delay by random number and rate
     NSNumber* randomNum = [Utility randomNumberFrom:7 To:15];
-    double delay = [randomNum doubleValue];
+    CGFloat delay = [randomNum doubleValue];
     delay /=10;
     delay = delay * rate;
     //schedule next sprite
@@ -631,13 +627,13 @@
 #pragma mark Gradient Overlay methods
 - (void) showPowerupGradient:(CGFloat)delay {
     RadialGradientLayer *powerupLayer = [[RadialGradientLayer alloc] initWithColor:ccc3(0,0,255) fadeIn:NO speed:20 large:NO];
-    [self addChild:powerupLayer z:1];
+    [self addChild:powerupLayer z:2];
     [powerupLayer removeAfterDelay:delay];
 }
 
 - (void) showLoseLifeGradient {
     fadeLayer = [[RadialGradientLayer alloc] initWithColor:ccc3(255,0,0) fadeIn:NO speed:20 large:YES];
-    [self addChild:fadeLayer z:1];
+    [self addChild:fadeLayer z:2];
     [self scheduleOnce:@selector(removeFadeLayer) delay:0.15f];
 }
 
