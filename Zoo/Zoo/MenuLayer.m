@@ -1,6 +1,5 @@
 #import "GameLayer.h"
 #import "MenuLayer.h"
-#import "AppDelegate.h"
 #import "ABGameKitHelper.h"
 #import "GameManager.h"
 

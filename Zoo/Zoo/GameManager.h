@@ -7,7 +7,6 @@
 //
 
 #import "cocos2d.h"
-#import <Foundation/Foundation.h>
 #import "FMDatabase.h"
 #import "SimpleAudioEngine.h"
 

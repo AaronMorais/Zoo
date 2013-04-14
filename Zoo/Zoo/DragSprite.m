@@ -3,9 +3,6 @@
 
 #define IS_IPHONE_5 ([UIScreen mainScreen].bounds.size.height == 568.0)
 
-@interface DragSprite()
-@end
-
 @implementation DragSprite
 @synthesize blink, flail, currentPosition;
 

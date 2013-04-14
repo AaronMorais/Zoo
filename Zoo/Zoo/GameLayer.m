@@ -7,9 +7,9 @@
 //
 
 #import "GameLayer.h"
-#import "AppDelegate.h"
 #import "MenuLayer.h"
 #import "ABGameKitHelper.h"
+#import "Utility.h"
 
 #pragma mark - GameLayer
 
@@ -53,17 +53,9 @@
 
 - (void) loadAssets{
     winSize = [[CCDirector sharedDirector] winSize];
-    //add background image
-    [self addBackgroundImage];
-    //add score label
-    [self addScoreLabel];
-    [self addPauseLayer];
     //load sprite sheets
     [self loadSpriteSheets];
-    //add pause button
-    [self addPauseButton];
-    //add lives
-    [self addLivesSprite];
+    [self layoutLayer];
     //add animation frames and create actions
     [self loadAnimationFrames];
     //init box array
@@ -72,6 +64,14 @@
     gameManager = [GameManager sharedInstance];
     [gameManager resetGameVariables];
     [self addBoxes];
+}
+
+- (void) layoutLayer {
+    [self addBackgroundImage];
+    [self addScoreLabel];
+    [self addPauseLayer];
+    [self addPauseButton];
+    [self addLivesSprite];
 }
 
 - (void) addBackgroundImage{
@@ -95,6 +95,20 @@
     [pauseLayer showLayer:NO];
 }
 
+- (void) addPauseButton{
+    pause = [CCSprite spriteWithSpriteFrameName:@"pausebutton.png"];
+    [self addChild:pause];
+    //FIX MAKE agnostic
+    pause.position =  ccp((.046 * winSize.width),winSize.height-(.065 * winSize.height));
+}
+
+- (void) addLivesSprite{
+    lifeSprite = [CCSprite spriteWithSpriteFrameName:@"3lives.png"];
+    [self addChild:lifeSprite];
+    lifeSprite.position =  ccp(winSize.width - (.125 * winSize.width) ,winSize.height-(.065 * winSize.height));
+    lifeCount = 3;
+}
+
 - (void) loadSpriteSheets{
     [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile: @"assets/four.plist"];
     CCSpriteBatchNode *animalSpriteSheet = [CCSpriteBatchNode batchNodeWithFile:@"assets/four.png"];
@@ -115,20 +129,6 @@
     [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile: @"assets/countdown.plist"];
     CCSpriteBatchNode *countdownSpriteSheet = [CCSpriteBatchNode batchNodeWithFile:@"assets/countdown.png"];
     [self addChild:countdownSpriteSheet];
-}
-
-- (void) addPauseButton{
-    pause = [CCSprite spriteWithSpriteFrameName:@"pausebutton.png"];
-    [self addChild:pause];
-    //FIX MAKE agnostic
-    pause.position =  ccp((.046 * winSize.width),winSize.height-(.065 * winSize.height));
-}
-
-- (void) addLivesSprite{
-    lifeSprite = [CCSprite spriteWithSpriteFrameName:@"3lives.png"];
-    [self addChild:lifeSprite];
-    lifeSprite.position =  ccp(winSize.width - (.125 * winSize.width) ,winSize.height-(.065 * winSize.height));
-    lifeCount = 3;
 }
 
 //add animation frames and create actions
@@ -315,33 +315,33 @@
 //create all boxes
 - (void)addBoxes{
     [self generateOrder];
-    [self assignBoxType:[boxOrder objectAtIndex:0]];
-    [self assignBoxType:[boxOrder objectAtIndex:1]];
-    [self assignBoxType:[boxOrder objectAtIndex:2]];
-    [self assignBoxType:[boxOrder objectAtIndex:3]];
+    for(NSNumber *box in boxOrder) {
+        [self createBoxOfType:[box intValue]];
+    }
 }
 
 //create a box of given type
-- (void)assignBoxType:(NSNumber*)type{
+- (void)createBoxOfType:(SpriteType)type{
     //init box based on type
     BoxSprite* newBox;
     CCLabelTTF* currentNumber;
-    if(type ==[NSNumber numberWithInt:1]){
+        
+    if(type == SpriteTypePenguin){
         newBox = [BoxSprite spriteWithSpriteFrameName:@"penguinbox1.png"];
         currentNumber = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d",newBox.currentCapacity] fontName:@"Aharoni" fontSize:80];
         [currentNumber setColor:ccWHITE];
     }
-    if(type ==[NSNumber numberWithInt:2]){
+    if(type == SpriteTypeElephant){
         newBox = [BoxSprite spriteWithSpriteFrameName:@"elephantbox1.png"];
         currentNumber = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d",newBox.currentCapacity] fontName:@"Aharoni" fontSize:80];
         [currentNumber setColor:ccc3(129,137,137)];
     }
-    if(type ==[NSNumber numberWithInt:3]){
+    if(type == SpriteTypeHippo){
         newBox = [BoxSprite spriteWithSpriteFrameName:@"hippobox1.png"];
         currentNumber = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d",newBox.currentCapacity] fontName:@"Aharoni" fontSize:80];
         [currentNumber setColor:ccc3(225,105,180)];
     }
-    if(type ==[NSNumber numberWithInt:4]){
+    if(type == SpriteTypeLion){
         newBox = [BoxSprite spriteWithSpriteFrameName:@"lionbox1.png"];
         currentNumber = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d",newBox.currentCapacity] fontName:@"Aharoni" fontSize:80];
         [currentNumber setColor:ccYELLOW];
@@ -384,12 +384,33 @@
     }
 }
 
+
+//provide the box with the correct animation and run it
+//animations are not stored in the boxes, they're assigned when needed
+- (void)animateBox:(BoxSprite*)box AtIndex:(NSNumber*)index{
+
+    //get the box type from the boxOrder index and grab the correct animation
+    NSNumber* value = [boxOrder objectAtIndex:[index integerValue]];
+    if(value ==[NSNumber numberWithInt:SpriteTypePenguin]){
+        [box runAction:_pBoxAction];
+    }
+    if(value ==[NSNumber numberWithInt:SpriteTypeElephant]){
+        [box runAction:_eBoxAction];
+    }
+    if(value ==[NSNumber numberWithInt:SpriteTypeHippo]){
+        [box runAction:_hBoxAction];
+    }
+    if(value ==[NSNumber numberWithInt:SpriteTypeLion]){
+        [box runAction:_lBoxAction];
+    }
+}
+
 //add sprite to game
 - (void)addSprite{
-    NSNumber* nsType = [self randomNumberFrom:1 To:1000]; //randomly choose animal type
+    NSNumber* nsType = [Utility randomNumberFrom:1 To:1000]; //randomly choose animal type
     int type = [nsType intValue];
     while((self.noPigsPowerupEnabled && type > 819 && type < 920) || (lifeCount==5 && type < 970 && type > 964)) {
-        nsType = [self randomNumberFrom:1 To:1000];
+        nsType = [Utility randomNumberFrom:1 To:1000];
         type = [nsType intValue];
     }
     DragSprite* sprite; //init animal
@@ -492,18 +513,12 @@
     [[gameManager gameSpeed] replaceObjectAtIndex:0 withObject:speedNum];
 
     //determine delay by random number and rate
-    NSNumber* randomNum = [self randomNumberFrom:7 To:15];
+    NSNumber* randomNum = [Utility randomNumberFrom:7 To:15];
     double delay = [randomNum doubleValue];
     delay /=10;
     delay = delay * rate;
     //schedule next sprite
     [self schedule:@selector(addSprite) interval:delay];
-}
-
-//random number generator
--(NSNumber*)randomNumberFrom:(int)numOne To:(int)numTwo {
-    int randomNumber = (arc4random() % ((numTwo+1)-numOne))+numOne;
-    return [NSNumber numberWithInt:randomNumber];
 }
 
 //touch handlers for the pause button and boxes
@@ -613,26 +628,7 @@
     }
 }
 
-//provide the box with the correct animation and run it
-//animations are not stored in the boxes, they're assigned when needed
-- (void)animateBox:(BoxSprite*)box AtIndex:(NSNumber*)index{
-
-    //get the box type from the boxOrder index and grab the correct animation
-    NSNumber* value = [boxOrder objectAtIndex:[index integerValue]];
-    if(value ==[NSNumber numberWithInt:1]){
-        [box runAction:_pBoxAction];
-    }
-    if(value ==[NSNumber numberWithInt:2]){
-        [box runAction:_eBoxAction];
-    }
-    if(value ==[NSNumber numberWithInt:3]){
-        [box runAction:_hBoxAction];
-    }
-    if(value ==[NSNumber numberWithInt:4]){
-        [box runAction:_lBoxAction];
-    }
-}
-
+#pragma mark Gradient Overlay methods
 - (void) showPowerupGradient:(CGFloat)delay {
     RadialGradientLayer *powerupLayer = [[RadialGradientLayer alloc] initWithColor:ccc3(0,0,255) fadeIn:NO speed:20 large:NO];
     [self addChild:powerupLayer z:1];
@@ -650,6 +646,7 @@
     fadeLayer = nil;
 }
 
+#pragma mark Score Methods
 //increment score function
 - (void) unitIncrement:(NSInteger)num {
     if(self.doublePointPowerupEnabled){
@@ -676,6 +673,7 @@
     [self setNoPigsPowerupEnabled:[powerup boolValue]];
 }
 
+#pragma mark Converyor Belt Start/Stop
 - (void) startMovingBelt {
     [self moveBelt:YES];
 }

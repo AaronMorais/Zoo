@@ -14,6 +14,7 @@
 		933B9A2F15E99B16003770CF /* GameManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 933B9A2E15E99B16003770CF /* GameManager.m */; };
 		9378905E15DCACE9000AA56F /* DragSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = 9378905D15DCACE9000AA56F /* DragSprite.m */; };
 		9379BAE01687EDD700DB272D /* MenuLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9379BADF1687EDD700DB272D /* MenuLayer.m */; };
+		93816995171A295B00408C7F /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 93816994171A295B00408C7F /* Utility.m */; };
 		9383FC9316924F1F0031E2DC /* countdown.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9383FC9216924F1F0031E2DC /* countdown.mp3 */; };
 		9383FC98169252620031E2DC /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9383FC95169251B20031E2DC /* Default-568h@2x.png */; };
 		938FFD9315E01665009E8257 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 938FFD9215E01665009E8257 /* libsqlite3.0.dylib */; };
@@ -172,6 +173,8 @@
 		9378905D15DCACE9000AA56F /* DragSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DragSprite.m; sourceTree = "<group>"; };
 		9379BADE1687EDD700DB272D /* MenuLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuLayer.h; sourceTree = "<group>"; };
 		9379BADF1687EDD700DB272D /* MenuLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuLayer.m; sourceTree = "<group>"; };
+		93816993171A295B00408C7F /* Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
+		93816994171A295B00408C7F /* Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
 		9383FC9216924F1F0031E2DC /* countdown.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = countdown.mp3; path = Resources/countdown.mp3; sourceTree = "<group>"; };
 		9383FC95169251B20031E2DC /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
 		938FFD9215E01665009E8257 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
@@ -485,6 +488,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		93816996171A296000408C7F /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				93816993171A295B00408C7F /* Utility.h */,
+				93816994171A295B00408C7F /* Utility.m */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
 		93A2F2F317190B7B007367DB /* Sprites */ = {
 			isa = PBXGroup;
 			children = (
@@ -573,6 +585,7 @@
 				93A2F2F617190BEC007367DB /* View Controllers */,
 				93CAD276158E9C4C00F4EC4C /* Third Party */,
 				93A2F2F517190BC4007367DB /* Managers */,
+				93816996171A296000408C7F /* Utilities */,
 				93CAD25E158E9C4C00F4EC4C /* Resources */,
 				93CAD3D3158E9C4E00F4EC4C /* AppDelegate.h */,
 				93CAD3D4158E9C4E00F4EC4C /* AppDelegate.m */,
@@ -1170,6 +1183,7 @@
 				93EC44FF16D025BF0073C80D /* ABGameKitHelper.m in Sources */,
 				93EC450016D025BF0073C80D /* NSData+AES256.m in Sources */,
 				93200B3C16D0377A00F32512 /* RootViewController.m in Sources */,
+				93816995171A295B00408C7F /* Utility.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

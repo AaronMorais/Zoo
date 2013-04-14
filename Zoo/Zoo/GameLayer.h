@@ -7,7 +7,6 @@
 //
 
 
-#import <GameKit/GameKit.h> 
 #import "cocos2d.h"
 #import "DragSprite.h"
 #import "BoxSprite.h"
