@@ -37,29 +37,27 @@
     self.htpImageView = [[UIImageView alloc] initWithFrame:self.view.frame];
     [self.view addSubview:self.htpImageView];
     
-    self.nextButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    self.nextButton = [UIButton buttonWithType:UIButtonTypeCustom];
     self.nextButton.frame = CGRectMake(viewWidth - 60, viewHeight - 60, 50, 50);
-    [self.nextButton setTitle:@"NEXT" forState:UIControlStateNormal];
+    [self.nextButton setImage:[UIImage imageNamed:@"assets/buttons/htpn"] forState:UIControlStateNormal];
     [self.nextButton addTarget:self action:@selector(displayNextImage) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.nextButton];
     
-    self.prevButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [self.prevButton setTitle:@"PREV" forState:UIControlStateNormal];
+    self.prevButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.prevButton setImage:[UIImage imageNamed:@"assets/buttons/htpb"] forState:UIControlStateNormal];
     self.prevButton.frame = CGRectMake(10, viewHeight - 60, 50, 50);
     [self.prevButton addTarget:self action:@selector(displayPreviousImage) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.prevButton];
     
-    self.dismissButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    self.dismissButton = [UIButton buttonWithType:UIButtonTypeCustom];
     self.dismissButton.frame = CGRectMake(viewWidth - 60, 10, 50, 50);
-    [self.dismissButton setTitle:@"Main Menu" forState:UIControlStateNormal];
-    self.dismissButton.titleLabel.font = [UIFont systemFontOfSize:10.0f];
+    [self.dismissButton setImage:[UIImage imageNamed:@"assets/buttons/mm"] forState:UIControlStateNormal];
     [self.dismissButton addTarget:self action:@selector(dismissViewModalViewController) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.dismissButton];
     
-    self.playButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    self.playButton = [UIButton buttonWithType:UIButtonTypeCustom];
     self.playButton.frame = CGRectMake(floorf(viewWidth/2) - 25, viewHeight - 100, 50, 50);
-    [self.playButton setTitle:@"PLAY" forState:UIControlStateNormal];
-    self.playButton.titleLabel.font = [UIFont systemFontOfSize:10.0f];
+    [self.playButton setImage:[UIImage imageNamed:@"assets/buttons/p"] forState:UIControlStateNormal];
     [self.playButton addTarget:self action:@selector(playButtonPressed) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.playButton];
     
