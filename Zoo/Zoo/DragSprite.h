@@ -18,6 +18,10 @@ typedef enum {
     SpriteTypeFreeze
 } SpriteType;
 
+@protocol DragSpriteProtocol 
+    - (void)dragSpriteRemoved;
+@end
+
 //touch delegate used to identify touches on sprite
 @interface DragSprite : CCSprite <CCTargetedTouchDelegate> {
 
@@ -51,5 +55,6 @@ Freeze 5/1000
 @property(strong) NSValue* currentPosition;
 @property(strong) CCAction* blink, *flail;
 @property (nonatomic,assign) SpriteType type;
+@property (nonatomic, strong) id <DragSpriteProtocol> delegate;
 
 @end

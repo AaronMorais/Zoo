@@ -15,6 +15,7 @@
 
 @interface GameLayer()
     @property (nonatomic, assign) int currentRound;
+    @property (nonatomic, assign) BOOL roundStarted;
 @end
 
 @implementation GameLayer
@@ -271,13 +272,40 @@
                     [CCAnimate actionWithAnimation:lfAnim]];
 }
 
-#pragma mark Start Game
+#pragma mark Game State Methods
 //start the game
 - (void)startGame{
     gameHasStarted = true;
     [self startSounds];
     [beltSprite runAction:beltAction];
-    [self schedule:@selector(addSprite) interval:1];
+    self.currentRound = 0;
+    [self startNextRound];
+}
+
+- (void) pauseGame:(BOOL)paused {
+    if (paused) {
+        [pauseLayer showLayer:YES];
+        
+        [self pauseSchedulerAndActions];
+        CCArray *children = self.children;
+        [children makeObjectsPerformSelector:@selector(pauseSchedulerAndActions)];
+    } else {
+        [self resumeSchedulerAndActions];
+        CCArray *children = self.children;
+        [children makeObjectsPerformSelector:@selector(resumeSchedulerAndActions)];
+        
+        [pauseLayer showLayer:NO];
+    }
+}
+
+- (void) restartGame {
+    [[CCDirector sharedDirector] replaceScene:
+        [CCTransitionFade transitionWithDuration:0.5f scene:[GameLayer scene]]];
+}
+
+- (void) quitToMain {
+    [[CCDirector sharedDirector] replaceScene:
+     [CCTransitionFade transitionWithDuration:0.5f scene:[MenuLayer scene]]];
 }
 
 - (void)countDown{
@@ -316,6 +344,8 @@
     }
 }
 
+//TODO:move box and sprite methods into their respective classes
+#pragma mark Box Sprite Methods
 //create all boxes
 - (void)addBoxes{
     [self generateOrder];
@@ -409,8 +439,62 @@
     }
 }
 
+#pragma mark Round Methods
+- (void) startNextRound {
+    self.currentRound +=1;
+    self.roundStarted = YES;
+
+    CGFloat rate = [gameManager currentSpawnRate];
+    CGFloat speed = [gameManager gameSpeed];
+    CGFloat spawnCount = [gameManager currentSpawnCount];
+    
+    //increase speed but decrease rate
+    speed *= 1.1;
+    rate *= 0.95;
+    spawnCount *= 1.2;
+    
+    //cap speed at 1.7
+    if(speed > 1.6){
+        speed = 1.6;
+    }
+    
+    //cap rate at 0.3
+    if(rate < 0.6){
+        rate = 0.6;
+    }
+    
+    NSLog(@"Round: %d Count:%d Speed: %f, Rate: %f", self.currentRound, (int)spawnCount, speed, rate);
+    
+    [gameManager setCurrentSpawnRate:rate];
+    [gameManager setGameSpeed:speed];
+    [gameManager setCurrentSpawnCount:spawnCount];
+    
+    NSMutableArray *roundArray = [[NSMutableArray alloc] init];
+    for(int i=0;i<(int)spawnCount;i++){
+        //determine delay by random number and rate
+        NSNumber* randomNum = [Utility randomNumberFrom:7 To:15];
+        CGFloat delay = [randomNum doubleValue];
+        delay /=10;
+        delay = delay * rate;
+        id tDelay = [CCDelayTime actionWithDuration:delay];
+        id addDragSprite = [CCCallFunc actionWithTarget:self selector:@selector(addDragSprite)];
+        [roundArray addObjectsFromArray:@[tDelay, addDragSprite]];
+    }
+    id roundEnded = [CCCallFunc actionWithTarget:self selector:@selector(setRoundEnded)];
+    [roundArray addObject:roundEnded];
+    
+    CCSequence* roundSeq = [CCSequence actionWithArray:roundArray];
+    [self stopAllActions];
+    [self runAction:roundSeq];
+}
+
+-(void) setRoundEnded {
+    self.roundStarted = NO;
+}
+
+#pragma mark Drag Sprite Methods
 //add sprite to game
-- (void)addSprite {
+- (void)addDragSprite {
     NSNumber* nsType = [Utility randomNumberFrom:1 To:1000]; //randomly choose animal type
     int type = [nsType intValue];
     while((self.noPigsPowerupEnabled && type > 819 && type < 920) || (lifeCount==5 && type < 970 && type > 964)) {
@@ -470,110 +554,14 @@
         sprite.flail = NULL;
         sprite.type = SpriteTypeFreeze;
     }
+    sprite.delegate = self;
     [sprite moveSprite:NO];
     //add sprite to layer and assign correct z axis
     [self addChild:sprite z:1];
     //add sprite to singleton list
-    [[gameManager animals] addObject:sprite];
-    //increment number of animal counter
-    animalCount++;
-    [self animalLoop]; //get the next animal
-}
-
-//determine the amount of time until next animal 
-- (void) animalLoop {
-    CGFloat rate = [gameManager currentSpawnRate];    
-    CGFloat speed = [gameManager gameSpeed];
-    
-    //increase speed but decrease rate
-    if(currentScore < 1000) {
-        speed *= 1.020;
-        rate *= 0.990;
-    } else {
-        speed *= 1.015;
-        rate *= 0.995;
-    }
-    
-    //cap speed at 1.7
-    if(speed > 1.6){
-        speed = 1.6;
-    }
-    
-    //cap rate at 0.3
-    if(rate < 0.6){
-        rate = 0.6;
-    }
-    NSLog(@"speed: %f, rate: %f", speed, rate);
-    
-    [gameManager setCurrentSpawnRate:rate];
-    [gameManager setGameSpeed:speed];
-
-    //determine delay by random number and rate
-    NSNumber* randomNum = [Utility randomNumberFrom:7 To:15];
-    CGFloat delay = [randomNum doubleValue];
-    delay /=10;
-    delay = delay * rate;
-    //schedule next sprite
-    [self schedule:@selector(addSprite) interval:delay];
-}
-
-//touch handlers for the pause button and boxes
-- (BOOL)ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event{
-    return YES;
-}
-- (void)ccTouchMoved:(UITouch *)touch withEvent:(UIEvent *)event{
-}
-- (void)ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event{
-    //get touchpoint and convert to gl format
-	CGPoint touchPoint = [touch locationInView:[touch view]];
-	touchPoint = [[CCDirector sharedDirector] convertToGL:touchPoint];
-    
-    //iterate through each box to check touch
-    for(BoxSprite* boxTemp in boxes){
-        //FIX bounding box for agnostic screen
-        if(CGRectContainsPoint(CGRectInset(boxTemp.boundingBox,(.065 * winSize.width),(.035 * winSize.height)), touchPoint)){
-            if(boxTemp.swallowed == boxTemp.originalCapacity){
-                [self unitIncrement:boxTemp.swallowed*2];
-            }else{
-                [self unitIncrement:boxTemp.swallowed];
-            }
-            [boxTemp newNumber];
-        }
-    }
-    //check if pause button was touched
-    if(CGRectContainsPoint(pause.boundingBox, touchPoint) && gameHasStarted){
-        [self pauseGame:YES];
-    }
-}
-
-- (void) pauseGame:(BOOL)paused {
-    if (paused) {
-        [pauseLayer showLayer:YES];
-        
-        [self pauseSchedulerAndActions];
-        CCArray *children = self.children;
-        [children makeObjectsPerformSelector:@selector(pauseSchedulerAndActions)];
-    } else {
-        [self resumeSchedulerAndActions];
-        CCArray *children = self.children;
-        [children makeObjectsPerformSelector:@selector(resumeSchedulerAndActions)];
-        
-        [pauseLayer showLayer:NO];
-    }
-}
-
-- (void) restartGame {
-    [[CCDirector sharedDirector] replaceScene:
-        [CCTransitionFade transitionWithDuration:0.5f scene:[GameLayer scene]]];
-}
-
-- (void) quitToMain {
-    [[CCDirector sharedDirector] replaceScene:
-     [CCTransitionFade transitionWithDuration:0.5f scene:[MenuLayer scene]]];
 }
 
 //check intersections between box and animals
-//FIX THIS. We shouldn't be iterating through all animals
 -(void)checkIntersect{
     [self pickupSound]; //play pickup sound
     
@@ -618,9 +606,51 @@
                 
                 //remove animal
                 [self removeChild:dragSprite cleanup:YES];
-                [[gameManager animals] removeObject:dragSprite];
             }
         }
+    }
+}
+
+#pragma mark DragSpriteDelegate methods
+- (void)dragSpriteRemoved {
+    if([[gameManager animals] count] != 0 || self.roundStarted) { return;}
+    
+    NSMutableArray *roundArray = [NSMutableArray array];
+    id tDelay = [CCDelayTime actionWithDuration:1.0f];
+    id startNextRound = [CCCallFunc actionWithTarget:self selector:@selector(startNextRound)];
+    [roundArray addObjectsFromArray:@[tDelay, startNextRound]];
+    
+    CCSequence* roundSeq = [CCSequence actionWithArray:roundArray];
+    [self runAction:roundSeq];
+}
+
+#pragma mark CCTouchDelegate methods
+//touch handlers for the pause button and boxes
+- (BOOL)ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event{
+    return YES;
+}
+- (void)ccTouchMoved:(UITouch *)touch withEvent:(UIEvent *)event{
+}
+- (void)ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event{
+    //get touchpoint and convert to gl format
+	CGPoint touchPoint = [touch locationInView:[touch view]];
+	touchPoint = [[CCDirector sharedDirector] convertToGL:touchPoint];
+    
+    //iterate through each box to check touch
+    for(BoxSprite* boxTemp in boxes){
+        //FIX bounding box for agnostic screen
+        if(CGRectContainsPoint(CGRectInset(boxTemp.boundingBox,(.065 * winSize.width),(.035 * winSize.height)), touchPoint)){
+            if(boxTemp.swallowed == boxTemp.originalCapacity){
+                [self unitIncrement:boxTemp.swallowed*2];
+            }else{
+                [self unitIncrement:boxTemp.swallowed];
+            }
+            [boxTemp newNumber];
+        }
+    }
+    //check if pause button was touched
+    if(CGRectContainsPoint(pause.boundingBox, touchPoint) && gameHasStarted){
+        [self pauseGame:YES];
     }
 }
 
@@ -648,7 +678,7 @@
     if(self.doublePointPowerupEnabled){
         num *=2;
     }
-    //incremenet score by 100*provided val and then display visually
+    //incremenet score by 10*provided val and then display visually
     currentScore +=(10*num);
     [score setString:[NSString stringWithFormat:@"%d",currentScore]];
 }
@@ -682,11 +712,11 @@
     [gameManager setFrozenPowerupActivated:!move];
     if(!move) {
         [beltSprite stopAllActions];
-        [self unschedule:@selector(addSprite)];
+        [self pauseSchedulerAndActions];
     } else {
         [beltSprite stopAllActions];
         [beltSprite runAction:beltAction];
-        [self schedule:@selector(addSprite) interval:2.0f];
+        [self resumeSchedulerAndActions];
     }
     for(DragSprite* dragSprite in [gameManager animals]){
         if(move) {

@@ -2,7 +2,6 @@
 @class GameManager;
  
 @implementation GameManager
-@synthesize bezierArray, animals, sae, frozenPowerupActivated;
 
 #define IS_IPHONE_5 ([UIScreen mainScreen].bounds.size.height == 568.0)
 #define K_SHOULD_SHOW_HOW_TO_PLAY @"should_show_how_to_play"
@@ -32,15 +31,15 @@ static GameManager *sharedInstance = nil;
         [self initDB];
         
         //initilaize music
-        sae = [SimpleAudioEngine sharedEngine];
-        if (sae != nil) {
-            [sae preloadEffect:@"menuMusic.mp3"];
-            [sae preloadEffect:@"gameStop.mp3"];
-            [sae preloadEffect:@"pickup.mp3"];
-            [sae preloadEffect:@"countdown.mp3"];
-            [sae preloadBackgroundMusic:@"gameLoop.mp3"];
-            if (sae.willPlayBackgroundMusic) {
-                sae.backgroundMusicVolume = 0.7f;
+        self.sae = [SimpleAudioEngine sharedEngine];
+        if (self.sae != nil) {
+            [self.sae preloadEffect:@"menuMusic.mp3"];
+            [self.sae preloadEffect:@"gameStop.mp3"];
+            [self.sae preloadEffect:@"pickup.mp3"];
+            [self.sae preloadEffect:@"countdown.mp3"];
+            [self.sae preloadBackgroundMusic:@"gameLoop.mp3"];
+            if (self.sae.willPlayBackgroundMusic) {
+                self.sae.backgroundMusicVolume = 0.7f;
             }
         }
     }
@@ -48,17 +47,23 @@ static GameManager *sharedInstance = nil;
 }
 
 -(void) resetGameVariables{
-    frozenPowerupActivated = NO;
+    self.frozenPowerupActivated = NO;
 
     //init array for animals
-    [animals removeAllObjects];
-    animals = [[NSMutableArray alloc] init];
+    [self.animals removeAllObjects];
+    self.animals = [[NSMutableArray alloc] init];
     
     //initialize speed
     self.gameSpeed = 0.30;
     
     //initialize rate
     self.currentSpawnRate = 2.00;
+    
+    self.currentSpawnCount = 2.00;
+}
+
+-(void)setAnimals:(NSMutableArray *)animals {
+    _animals = animals;
 }
 
 -(void) initDB{
@@ -216,7 +221,7 @@ static GameManager *sharedInstance = nil;
 		{16,238},
 		{173,231}
 	};
-    bezierArray = [self generateBezierArray:bezierOne WithSize:100];
+    self.bezierArray = [self generateBezierArray:bezierOne WithSize:100];
     CGPoint bezierTwo[4] =
 	{
 		{173,231},
@@ -224,7 +229,7 @@ static GameManager *sharedInstance = nil;
 		{370,248},
 		{382,129}
 	};
-    [bezierArray addObjectsFromArray:[self generateBezierArray:bezierTwo WithSize:100]];
+    [self.bezierArray addObjectsFromArray:[self generateBezierArray:bezierTwo WithSize:100]];
     CGPoint bezierThree[4] =
 	{
 		{382,129},
@@ -232,7 +237,7 @@ static GameManager *sharedInstance = nil;
 		{470,82},
 		{530,80}
 	};
-    [bezierArray addObjectsFromArray:[self generateBezierArray:bezierThree WithSize:100]];
+    [self.bezierArray addObjectsFromArray:[self generateBezierArray:bezierThree WithSize:100]];
 }
 
 - (NSMutableArray*) generateBezierArray:(CGPoint[4])bezierPoints WithSize:(int)points {

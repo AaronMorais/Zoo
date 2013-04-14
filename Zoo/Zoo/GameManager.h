@@ -10,13 +10,13 @@
 #import "FMDatabase.h"
 #import "SimpleAudioEngine.h"
 
-@interface GameManager : NSObject {
-}
+@interface GameManager : NSObject
  
 @property(nonatomic,strong) NSMutableArray* bezierArray;
 @property(nonatomic,strong) NSMutableArray* animals;
 @property(nonatomic,assign) CGFloat gameSpeed;
 @property(nonatomic,assign) CGFloat currentSpawnRate;
+@property(nonatomic,assign) CGFloat currentSpawnCount;
 @property(nonatomic,strong) SimpleAudioEngine* sae;
 @property(nonatomic, assign) BOOL frozenPowerupActivated;
 

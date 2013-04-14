@@ -14,6 +14,7 @@
        
             //initialize the singleton instance
             gameManager = [GameManager sharedInstance];
+            [[gameManager animals] addObject:self];
    }
    return self;
 }
@@ -256,11 +257,12 @@
 //remove sprite's touch control
 -(void) onExit{
     [[[CCDirector sharedDirector] touchDispatcher] removeDelegate:self];
+    [[gameManager animals] removeObject:self];
+    [self.delegate dragSpriteRemoved];
 }
 
 //cleanup sprite by removing from singleton list
 -(void) removeMe{
-    [[gameManager animals] removeObject:self];
     [self.parent removeChild:self cleanup:YES];
 }
 

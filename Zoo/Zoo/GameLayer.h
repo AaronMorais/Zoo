@@ -15,8 +15,10 @@
 #import "RadialGradientLayer.h"
 #import "GameOverlayLayer.h"
 
+//TODO:switch from instance variables to properties and stop synthesizing
+//Also, not all variables should be public 
 @class DragSprite;
-@interface GameLayer : CCLayerColor{
+@interface GameLayer : CCLayerColor <DragSpriteProtocol>{
         int countDownCounter;
         CCSprite* countDownSprite;
         RadialGradientLayer* fadeLayer;
@@ -30,7 +32,6 @@
         NSMutableArray* boxes;
         NSInteger currentScore;
         NSInteger lifeCount;
-        NSInteger animalCount;
         CCSequence* soundSequence;
         SimpleAudioEngine *sae;
         CCAnimation* pbAnim;
