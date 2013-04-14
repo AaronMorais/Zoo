@@ -57,30 +57,25 @@
                                         selectedSprite:[CCSprite spriteWithFile:@"assets/buttons/rsme.png"]
                                         target:self
                                         selector:@selector(resumeGame)];
-        
-        resumeMenuItem.scale = 1.4;
-        
+                
         CCMenuItemImage * restartMenuItem = [CCMenuItemImage itemWithNormalSprite:[CCSprite spriteWithFile:@"assets/buttons/rstrt.png"]
                                         selectedSprite:[CCSprite spriteWithFile:@"assets/buttons/rstrt.png"]
                                         target:self
                                         selector:@selector(restartGame)];
-        restartMenuItem.scale = 1.4;
         
         CCMenuItemImage * optionsMenuItem = [CCMenuItemImage itemWithNormalSprite:[CCSprite spriteWithFile:@"assets/buttons/optns.png"]
                                         selectedSprite:[CCSprite spriteWithFile:@"assets/buttons/optns.png"]
                                         target:self
                                         selector:@selector(openOptions)];
-        optionsMenuItem.scale = 1.4;
         
         CCMenuItemImage * quitMenuItem = [CCMenuItemImage itemWithNormalSprite:[CCSprite spriteWithFile:@"assets/buttons/quit.png"]
                                         selectedSprite:[CCSprite spriteWithFile:@"assets/buttons/quit.png"]
                                         target:self
                                         selector:@selector(quitToMain)];
-        quitMenuItem.scale = 1.4;
         
         // Create a menu and add your menu items to it
         menu = [CCMenu menuWithItems:resumeMenuItem, restartMenuItem, optionsMenuItem, quitMenuItem, nil];
-        [menu alignItemsHorizontallyWithPadding:-30.0f];
+        [menu alignItemsHorizontallyWithPadding:0.0f];
         menu.position = ccp(winSize.width/2, 95);
         
         // add the menu to your scene
@@ -122,8 +117,8 @@
         [self addChild:mainSpriteSheet];
 
         
-        CCMenuItemImage * restartMenuItem = [CCMenuItemImage itemWithNormalSprite:[CCSprite spriteWithFile:@"assets/buttons/rstrt.png"]
-                                        selectedSprite:[CCSprite spriteWithFile:@"assets/buttons/rstrt.png"]
+        CCMenuItemImage * restartMenuItem = [CCMenuItemImage itemWithNormalSprite:[CCSprite spriteWithFile:@"assets/buttons/pa.png"]
+                                        selectedSprite:[CCSprite spriteWithFile:@"assets/buttons/pa.png"]
                                         target:self
                                         selector:@selector(restartGame)];
         
