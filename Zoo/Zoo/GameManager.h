@@ -22,6 +22,8 @@
 @property(atomic) BOOL frozenPowerupActivated;
 
 + (id)sharedInstance;
++ (BOOL)shouldShowHowToPlay;
++ (void)saveShouldShowHowToPlay:(BOOL)shouldShowHowToPlay;
 - (void)checkHighScore:(int)newScore;
 - (void) resetGameVariables;
 - (int) getHighScore;

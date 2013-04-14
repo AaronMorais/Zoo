@@ -5,6 +5,7 @@
 @synthesize bezierArray, animals, gameSpeed, currentSpawnRate, sae, saveSpeed, frozenPowerupActivated;
 
 #define IS_IPHONE_5 ([UIScreen mainScreen].bounds.size.height == 568.0)
+#define K_SHOULD_SHOW_HOW_TO_PLAY @"should_show_how_to_play"
 
 static GameManager *sharedInstance = nil;
  
@@ -266,6 +267,31 @@ static GameManager *sharedInstance = nil;
     3*t*(powf(1-t,2))*b +
     3*powf(t,2)*(1-t)*c +
     powf(t,3)*d );
+}
+
++ (BOOL)shouldShowHowToPlay {
+    NSNumber *number = [self retrievePreferenceForKey:K_SHOULD_SHOW_HOW_TO_PLAY];
+    if (!number) {
+        [self savePreference:[NSNumber numberWithBool:YES] forKey:K_SHOULD_SHOW_HOW_TO_PLAY];
+        return YES;
+    } else {
+        return number.boolValue;
+    }
+}
+
++ (void)saveShouldShowHowToPlay:(BOOL)shouldShowHowToPlay {
+    [self savePreference:[NSNumber numberWithBool:shouldShowHowToPlay] forKey:K_SHOULD_SHOW_HOW_TO_PLAY];
+}
+
++ (void) savePreference: (NSObject *) value forKey: (NSString *) key {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:value forKey:key];
+    [defaults synchronize];
+}
+
++ (id)retrievePreferenceForKey: (NSString *) key {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    return [defaults objectForKey:key];
 }
 
 // We don't want to allocate a new instance, so return the current one.

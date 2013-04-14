@@ -8,5 +8,6 @@
 }
 
 +(CCScene *) scene;
+- (void) playGame;
 
 @end

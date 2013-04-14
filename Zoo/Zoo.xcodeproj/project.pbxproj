@@ -15,6 +15,8 @@
 		9378905E15DCACE9000AA56F /* DragSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = 9378905D15DCACE9000AA56F /* DragSprite.m */; };
 		9379BAE01687EDD700DB272D /* MenuLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9379BADF1687EDD700DB272D /* MenuLayer.m */; };
 		93816995171A295B00408C7F /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 93816994171A295B00408C7F /* Utility.m */; };
+		93816999171A377300408C7F /* HowToPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93816998171A377200408C7F /* HowToPlayViewController.m */; };
+		9381699F171A42DB00408C7F /* htp in Resources */ = {isa = PBXBuildFile; fileRef = 9381699E171A42DB00408C7F /* htp */; };
 		9383FC9316924F1F0031E2DC /* countdown.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9383FC9216924F1F0031E2DC /* countdown.mp3 */; };
 		9383FC98169252620031E2DC /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9383FC95169251B20031E2DC /* Default-568h@2x.png */; };
 		938FFD9315E01665009E8257 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 938FFD9215E01665009E8257 /* libsqlite3.0.dylib */; };
@@ -175,6 +177,9 @@
 		9379BADF1687EDD700DB272D /* MenuLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuLayer.m; sourceTree = "<group>"; };
 		93816993171A295B00408C7F /* Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
 		93816994171A295B00408C7F /* Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
+		93816997171A377200408C7F /* HowToPlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HowToPlayViewController.h; sourceTree = "<group>"; };
+		93816998171A377200408C7F /* HowToPlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HowToPlayViewController.m; sourceTree = "<group>"; };
+		9381699E171A42DB00408C7F /* htp */ = {isa = PBXFileReference; lastKnownFileType = folder; name = htp; path = Resources/htp; sourceTree = "<group>"; };
 		9383FC9216924F1F0031E2DC /* countdown.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = countdown.mp3; path = Resources/countdown.mp3; sourceTree = "<group>"; };
 		9383FC95169251B20031E2DC /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
 		938FFD9215E01665009E8257 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
@@ -539,6 +544,8 @@
 			children = (
 				93200B3A16D0377A00F32512 /* RootViewController.h */,
 				93200B3B16D0377A00F32512 /* RootViewController.m */,
+				93816997171A377200408C7F /* HowToPlayViewController.h */,
+				93816998171A377200408C7F /* HowToPlayViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -596,6 +603,7 @@
 		93CAD25E158E9C4C00F4EC4C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				9381699E171A42DB00408C7F /* htp */,
 				9383FC95169251B20031E2DC /* Default-568h@2x.png */,
 				939CAB7D16912AF00064D90C /* Icon@2x.png */,
 				939CAB871691432F0064D90C /* gameLoop.mp3 */,
@@ -1055,6 +1063,7 @@
 				939CAB8A169143960064D90C /* gameStop.mp3 in Resources */,
 				9383FC9316924F1F0031E2DC /* countdown.mp3 in Resources */,
 				9383FC98169252620031E2DC /* Default-568h@2x.png in Resources */,
+				9381699F171A42DB00408C7F /* htp in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1184,6 +1193,7 @@
 				93EC450016D025BF0073C80D /* NSData+AES256.m in Sources */,
 				93200B3C16D0377A00F32512 /* RootViewController.m in Sources */,
 				93816995171A295B00408C7F /* Utility.m in Sources */,
+				93816999171A377300408C7F /* HowToPlayViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -2,6 +2,8 @@
 #import "MenuLayer.h"
 #import "ABGameKitHelper.h"
 #import "GameManager.h"
+#import "HowToPlayViewController.h"
+#import "AppDelegate.h"
 
 @implementation MenuLayer
  
@@ -30,6 +32,11 @@
         [self menuMusic];
         [self addBackgroundImage];
         [self setUpMenus];
+        if([GameManager shouldShowHowToPlay]) {
+            [self howToPlay];
+            [GameManager saveShouldShowHowToPlay:NO];
+        }
+//        [GameManager saveShouldShowHowToPlay:YES];
 	}
 	return self;
 }
@@ -54,7 +61,7 @@
 	CCMenuItemImage * menuItem1 = [CCMenuItemImage itemWithNormalSprite:[CCSprite spriteWithSpriteFrameName:@"p.png"]
                                     selectedSprite:[CCSprite spriteWithSpriteFrameName:@"p.png"]
                                     target:self
-                                    selector:@selector(play:)];
+                                    selector:@selector(playGame)];
     menuItem1.scale = 0.42;
     
     CCMenuItemImage * menuItem2 = [CCMenuItemImage itemWithNormalSprite:[CCSprite spriteWithSpriteFrameName:@"ldb.png"]
@@ -66,7 +73,7 @@
     CCMenuItemImage * menuItem3 = [CCMenuItemImage itemWithNormalSprite:[CCSprite spriteWithSpriteFrameName:@"htp.png"]
                                     selectedSprite:[CCSprite spriteWithSpriteFrameName:@"htp.png"]
                                     target:self
-                                    selector:@selector(howToPlay:)];
+                                    selector:@selector(howToPlay)];
     menuItem3.scale = 0.42;
 
     
@@ -96,7 +103,7 @@
     [[[GameManager sharedInstance] sae] pauseBackgroundMusic];
 }
 
-- (void) play: (CCMenuItem*) menuItem{
+- (void) playGame {
     [self removeChild:background cleanup:YES];
     [self removeChild:myMenu cleanup:YES];
     [self scheduleOnce:@selector(loadGameScene) delay:0.0f];
@@ -112,8 +119,13 @@
 - (void) options:(CCMenuItem*) menuItem{
 	NSLog(@"options");
 }
-- (void) howToPlay:(CCMenuItem*) menuItem{
-	NSLog(@"htp");
+
+- (void) howToPlay {
+    HowToPlayViewController* htp = [[HowToPlayViewController alloc] init];
+    htp.delegate = self;
+    htp.modalPresentationStyle = UIModalPresentationFullScreen;
+    htp.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    [[CCDirector sharedDirector] presentModalViewController:htp animated:YES];
 }
  
 @end
