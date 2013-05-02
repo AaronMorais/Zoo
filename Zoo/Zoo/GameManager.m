@@ -54,12 +54,12 @@ static GameManager *sharedInstance = nil;
     self.animals = [[NSMutableArray alloc] init];
     
     //initialize speed
-    self.gameSpeed = 0.30;
+    self.gameSpeed = 0.40;
     
     //initialize rate
     self.currentSpawnRate = 2.00;
     
-    self.currentSpawnCount = 2.00;
+    self.currentSpawnCount = 3.00;
 }
 
 -(void)setAnimals:(NSMutableArray *)animals {

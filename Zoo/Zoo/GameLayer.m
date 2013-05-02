@@ -453,12 +453,12 @@
     rate *= 0.95;
     spawnCount *= 1.2;
     
-    //cap speed at 1.7
+    //cap speed
     if(speed > 1.6){
         speed = 1.6;
     }
     
-    //cap rate at 0.3
+    //cap rate
     if(rate < 0.6){
         rate = 0.6;
     }
