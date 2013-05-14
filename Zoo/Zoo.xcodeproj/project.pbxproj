@@ -205,7 +205,7 @@
 		939CAB89169143960064D90C /* gameStop.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = gameStop.mp3; path = Resources/gameStop.mp3; sourceTree = "<group>"; };
 		93B0DC9A15DEE8FF001D462B /* BoxSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoxSprite.h; sourceTree = "<group>"; };
 		93B0DC9B15DEE8FF001D462B /* BoxSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoxSprite.m; sourceTree = "<group>"; };
-		93CAD247158E9C4C00F4EC4C /* Jungle Box.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Jungle Box.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		93CAD247158E9C4C00F4EC4C /* Wild Express.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Wild Express.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		93CAD24B158E9C4C00F4EC4C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		93CAD24D158E9C4C00F4EC4C /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		93CAD24F158E9C4C00F4EC4C /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
@@ -563,7 +563,7 @@
 		93CAD248158E9C4C00F4EC4C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				93CAD247158E9C4C00F4EC4C /* Jungle Box.app */,
+				93CAD247158E9C4C00F4EC4C /* Wild Express.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1009,7 +1009,7 @@
 			);
 			name = Zoo;
 			productName = Zoo;
-			productReference = 93CAD247158E9C4C00F4EC4C /* Jungle Box.app */;
+			productReference = 93CAD247158E9C4C00F4EC4C /* Wild Express.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1272,7 +1272,7 @@
 					"-lz",
 					"-ObjC",
 				);
-				PRODUCT_NAME = "Jungle Box";
+				PRODUCT_NAME = "Wild Express";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1292,7 +1292,7 @@
 					"-lz",
 					"-ObjC",
 				);
-				PRODUCT_NAME = "Jungle Box";
+				PRODUCT_NAME = "Wild Express";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};
