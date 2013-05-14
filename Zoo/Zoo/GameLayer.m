@@ -504,41 +504,41 @@
     DragSprite* sprite; //init animal
     
     //assign the animal it's animations based on type
-    if(type < 205){
+    if(type < 220){
         sprite = [DragSprite spriteWithSpriteFrameName:@"penguinblink01.png"];
         [sprite runAction:[pBlinkAction copy]];
         sprite.blink = [pBlinkAction copy];
         sprite.flail = [pFlailAction copy];
         sprite.type = SpriteTypePenguin;
-    }else if(type < 410){
+    }else if(type < 440){
         sprite = [DragSprite spriteWithSpriteFrameName:@"elephantblink01.png"];
         [sprite runAction:[eBlinkAction copy]];
         sprite.blink = [eBlinkAction copy];
         sprite.flail = [eFlailAction copy];
         sprite.type = SpriteTypeElephant;
-    }else if(type < 615){
+    }else if(type < 660){
         sprite = [DragSprite spriteWithSpriteFrameName:@"hippoblink01.png"];
         [sprite runAction:[hBlinkAction copy]];
         sprite.blink = [hBlinkAction copy];
         sprite.flail = [hFlailAction copy];
         sprite.type = SpriteTypeHippo;
-    }else if(type < 820){
+    }else if(type < 880){
         sprite = [DragSprite spriteWithSpriteFrameName:@"lionblinking01.png"];
         [sprite runAction:[lBlinkAction copy]];
         sprite.blink = [lBlinkAction copy];
         sprite.flail = [lFlailAction copy];
         sprite.type = SpriteTypeLion;
-    }else if(type < 920){
+    }else if(type < 985){
         sprite = [DragSprite spriteWithFile:@"assets/animals/pig.png"];
         sprite.blink = NULL;
         sprite.flail = NULL;
         sprite.type = SpriteTypePig;
-    }else if(type < 935){
+    }else if(type < 990){
         sprite = [DragSprite spriteWithFile:@"assets/animals/hippogold.png"];
         sprite.blink = NULL;
         sprite.flail = NULL;
         sprite.type = SpriteTypeDoublePoints;
-    }else if(type < 965){
+    }else if(type < 995){
         sprite = [DragSprite spriteWithFile:@"assets/animals/elephantgold.png"];
         sprite.blink = NULL;
         sprite.flail = NULL;

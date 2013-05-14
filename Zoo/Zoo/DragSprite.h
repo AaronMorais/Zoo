@@ -39,8 +39,7 @@ Elephant 220/1000
 Penguin 220/1000
 Pig 105/1000
 Double Points 5/1000
-No Pigs 5/1000
-Plus Life 0/1000
+Plus Life 5/1000
 Freeze 5/1000
 */
 -(BOOL) isPointOnSprite:(CGPoint)touch;
