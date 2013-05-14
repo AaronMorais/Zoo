@@ -224,13 +224,6 @@
         [self.parent performSelector:@selector(setDoublePointPowerup:) withObject:[NSNumber numberWithBool:NO] afterDelay:5.0f];
         return 5.0f;
     }
-//lion powerup: no pigs for 10 seconds
-    if(self.type == SpriteTypeNoPigs){
-        [self.parent performSelector:@selector(setNoPigsPowerupEnabled:) withObject:[NSNumber numberWithBool:YES]];
-        [NSObject cancelPreviousPerformRequestsWithTarget:self.parent selector:@selector(setNoPigsPowerup:) object:[NSNumber numberWithBool:NO]];
-        [self.parent performSelector:@selector(setNoPigsPowerup:) withObject:[NSNumber numberWithBool:NO] afterDelay:10.0f];
-        return 10.0f;
-    }
 //elephant powerup: plus life
     if(self.type == SpriteTypePlusLife){
         [self gainLife];

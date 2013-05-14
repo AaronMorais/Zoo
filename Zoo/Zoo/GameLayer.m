@@ -497,7 +497,7 @@
 - (void)addDragSprite {
     NSNumber* nsType = [Utility randomNumberFrom:1 To:1000]; //randomly choose animal type
     int type = [nsType intValue];
-    while((self.noPigsPowerupEnabled && type > 819 && type < 920) || (lifeCount==5 && type < 970 && type > 964)) {
+    while(lifeCount==5 && type < 970 && type > 964) {
         nsType = [Utility randomNumberFrom:1 To:1000];
         type = [nsType intValue];
     }
@@ -539,11 +539,6 @@
         sprite.flail = NULL;
         sprite.type = SpriteTypeDoublePoints;
     }else if(type < 965){
-        sprite = [DragSprite spriteWithFile:@"assets/animals/liongold.png"];
-        sprite.blink = NULL;
-        sprite.flail = NULL;
-        sprite.type = SpriteTypeNoPigs;
-    }else if(type < 970){
         sprite = [DragSprite spriteWithFile:@"assets/animals/elephantgold.png"];
         sprite.blink = NULL;
         sprite.flail = NULL;
@@ -693,10 +688,6 @@
 #pragma mark Powerup Methods
 -(void)setDoublePointPowerup:(NSNumber *)powerup {
     [self setDoublePointPowerupEnabled:[powerup boolValue]];
-}
-
--(void)setNoPigsPowerup:(NSNumber *)powerup {
-    [self setNoPigsPowerupEnabled:[powerup boolValue]];
 }
 
 #pragma mark Converyor Belt Start/Stop

@@ -13,7 +13,6 @@ typedef enum {
     SpriteTypePenguin,
     SpriteTypePig,
     SpriteTypeDoublePoints,
-    SpriteTypeNoPigs,
     SpriteTypePlusLife,
     SpriteTypeFreeze
 } SpriteType;

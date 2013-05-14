@@ -71,7 +71,6 @@
 @property (nonatomic) NSMutableArray *animals,* boxes;
 @property (nonatomic) NSInteger  currentScore;
 @property (nonatomic,assign) BOOL gameHasStarted;
-@property (nonatomic,assign) BOOL noPigsPowerupEnabled;
 @property (nonatomic,assign) BOOL doublePointPowerupEnabled;
 
 +(CCScene *) scene;
@@ -84,7 +83,6 @@
 - (void) restartGame;
 - (void) quitToMain;
 
--(void)setNoPigsPowerup:(NSNumber *)powerup;
 -(void)setDoublePointPowerup:(NSNumber *)powerup;
 
 @end
