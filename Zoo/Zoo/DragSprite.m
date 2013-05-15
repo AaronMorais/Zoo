@@ -4,8 +4,18 @@
 
 #define IS_IPHONE_5 ([UIScreen mainScreen].bounds.size.height == 568.0)
 
+@interface DragSprite()
+
+@property(nonatomic, strong) NSNumber *side;
+@property(nonatomic, strong) NSValue *currentPosition;
+@property(nonatomic, assign) CGPoint whereTouch;
+@property(nonatomic, strong) CCAction *blink, *flail;
+@property(nonatomic, strong) GameManager *gameManager;
+@property(nonatomic, strong) CCSprite *shadow;
+
+@end
+
 @implementation DragSprite
-@synthesize blink, flail, currentPosition;
 
 +(NSString *) initialSpriteNameForType:(SpriteType)type {
     switch(type){
@@ -48,8 +58,8 @@
 //        [self runAction:self.blink];
         
         //initialize the singleton instance
-        gameManager = [GameManager sharedInstance];
-        [[gameManager animals] addObject:self];
+        self.gameManager = [GameManager sharedInstance];
+        [[self.gameManager animals] addObject:self];
     }
     return self;
 }
@@ -70,7 +80,7 @@
 	
     //if sprite is being touched, save current location, make the sprite pop out and flail
 	if([self isPointOnSprite:touchPoint]){
-		whereTouch=ccpSub(self.position, touchPoint);
+		self.whereTouch = ccpSub(self.position, touchPoint);
         self.scale = 1.2;
         [self.parent reorderChild:self z:2];
         [self stopAllActions];
@@ -90,7 +100,7 @@
 	touchPoint = [[CCDirector sharedDirector] convertToGL:touchPoint];
 	
     //move the sprite to where the user is dragging it
-	self.position = ccpAdd(touchPoint,whereTouch);
+	self.position = ccpAdd(touchPoint, self.whereTouch);
 	
 }
 
@@ -110,13 +120,13 @@
     [self closest]; // find the closest point on the conveyor belt and save it to currentPosition
     
     //grab destination
-    NSValue* point = currentPosition; // NSValue* point = [self performSelector:@selector(currentPosition)];
+    NSValue* point = self.currentPosition; // NSValue* point = [self performSelector:@selector(currentPosition)];
     //smoothly move to destination
     CCMoveTo* moveTo = [CCMoveTo actionWithDuration:0.2 position:[point CGPointValue]];
     //start moving the sprite again
     CCCallFunc* resumeMove = [CCCallFunc actionWithTarget:self selector:@selector(resumeMoveSprite)];
     //run action
-    if([gameManager frozenPowerupActivated]){
+    if([self.gameManager frozenPowerupActivated]){
         [self runAction:[CCSequence actions:moveTo, nil]];
     } else {
         [self runAction:[CCSequence actions:moveTo, resumeMove, nil]];
@@ -130,9 +140,9 @@
     double distance = DBL_MAX;
     
     //all of the bezier points that the animals follow
-    NSMutableArray *bezierArray = [[gameManager bezierArray] mutableCopy];
+    NSMutableArray *bezierArray = [[self.gameManager bezierArray] mutableCopy];
     
-    for(DragSprite *dragSprite in [gameManager animals]) {
+    for(DragSprite *dragSprite in [self.gameManager animals]) {
         if(dragSprite == self) { continue; }
         for(NSValue *val in [bezierArray copy]) {
             BOOL passedOverSprite = NO;
@@ -186,14 +196,14 @@
         savedPoint = [self.currentPosition CGPointValue];
     }
     NSMutableArray* moveArray = [NSMutableArray array];
-    NSMutableArray* bezierArray = [gameManager bezierArray];
+    NSMutableArray* bezierArray = [self.gameManager bezierArray];
     
     //move animal to each point smoothly
     //iterate through every point until getting to current spot then add to actions array
     for(NSValue* val in bezierArray){
         if(flag == 1){
             CGPoint p = [val CGPointValue];
-            CGFloat speed = [gameManager gameSpeed];
+            CGFloat speed = [self.gameManager gameSpeed];
             CGFloat distanceApart = ccpDistance(savedPoint,p);
             CGFloat duration = distanceApart/(200*speed);
             CCMoveTo* moveTo = [CCMoveTo actionWithDuration:duration position:p];
@@ -240,14 +250,14 @@
 //make sprite flail
 -(void) flailCurrentSprite{
     if(self.flail){
-        [self runAction:flail];
+        [self runAction:self.flail];
     }
 }
 
 //make sprite blink
 -(void) blinkCurrentSprite{
     if(self.blink){
-        [self runAction:blink];
+        [self runAction:self.blink];
     }
 }
 
@@ -285,7 +295,7 @@
 //remove sprite's touch control
 -(void) onExit{
     [[[CCDirector sharedDirector] touchDispatcher] removeDelegate:self];
-    [[gameManager animals] removeObject:self];
+    [[self.gameManager animals] removeObject:self];
     [self.delegate dragSpriteRemoved];
 }
 
@@ -306,14 +316,14 @@
 
 - (void) showShadow:(BOOL)enabled {
     if (enabled) {
-        shadow = [CCSprite spriteWithSpriteFrame:[self displayFrame]];
-        [self addChild:shadow z:-1];
-        shadow.ignoreAnchorPointForPosition = YES;
-        shadow.color = ccBLACK;
-        shadow.opacity = 100;
-        shadow.position = ccp(-5,-5);
+        self.shadow = [CCSprite spriteWithSpriteFrame:[self displayFrame]];
+        [self addChild:self.shadow z:-1];
+        self.shadow.ignoreAnchorPointForPosition = YES;
+        self.shadow.color = ccBLACK;
+        self.shadow.opacity = 100;
+        self.shadow.position = ccp(-5,-5);
     } else {
-        [self removeChild:shadow cleanup:YES];
+        [self removeChild:self.shadow cleanup:YES];
     }
 }
 

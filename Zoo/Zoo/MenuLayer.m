@@ -5,6 +5,13 @@
 #import "HowToPlayViewController.h"
 #import "AppDelegate.h"
 
+@interface MenuLayer () {
+    CCSprite *_background;
+    CCMenu *_mainMenu;
+    LoadingLayer *_loading;
+}
+@end
+
 @implementation MenuLayer
  
 +(id) scene{
@@ -26,8 +33,8 @@
 	// always call "super" init
 	// Apple recommends to re-assign "self" with the "super" return value
 	if( (self=[super init] )) {        
-        loading = [[LoadingLayer alloc] initWithColor:ccc4(0,0,0,255)];
-        [self addChild:loading];
+        _loading = [[LoadingLayer alloc] initWithColor:ccc4(0,0,0,255)];
+        [self addChild:_loading];
         
         [self menuMusic];
         [self addBackgroundImage];
@@ -36,7 +43,6 @@
             [self howToPlay];
             [GameManager saveShouldShowHowToPlay:NO];
         }
-//        [GameManager saveShouldShowHowToPlay:YES];
 	}
 	return self;
 }
@@ -46,9 +52,9 @@
 -(void) addBackgroundImage{
     CGSize winSize;
     winSize = [[CCDirector sharedDirector] winSize];
-    background = [CCSprite spriteWithFile:@"assets/mainBackground.png"];
-    [self addChild:background];
-    background.position = ccp(winSize.width/2, winSize.height/2);
+    _background = [CCSprite spriteWithFile:@"assets/mainBackground.png"];
+    [self addChild:_background];
+    _background.position = ccp(winSize.width/2, winSize.height/2);
 }
 
 // set up the Menu
@@ -85,12 +91,12 @@
     
     
 	// Create a menu and add your menu items to it
-	myMenu = [CCMenu menuWithItems:menuItem1, menuItem2, menuItem3, menuItem4, nil];
-    [myMenu alignItemsHorizontallyWithPadding:-30.0f];
-    myMenu.position = ccp([[CCDirector sharedDirector] winSize].width/2, 95);
+	_mainMenu = [CCMenu menuWithItems:menuItem1, menuItem2, menuItem3, menuItem4, nil];
+    [_mainMenu alignItemsHorizontallyWithPadding:-30.0f];
+    _mainMenu.position = ccp([[CCDirector sharedDirector] winSize].width/2, 95);
     
 	// add the menu to your scene
-	[self addChild:myMenu];
+	[self addChild:_mainMenu];
 }
  
 // on "dealloc" you need to release all your retained objects
@@ -104,8 +110,8 @@
 }
 
 - (void) playGame {
-    [self removeChild:background cleanup:YES];
-    [self removeChild:myMenu cleanup:YES];
+    [self removeChild:_background cleanup:YES];
+    [self removeChild:_mainMenu cleanup:YES];
     [self scheduleOnce:@selector(loadGameScene) delay:0.0f];
 }
 

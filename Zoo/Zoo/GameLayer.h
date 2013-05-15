@@ -16,25 +16,7 @@
 #import "GameOverlayLayer.h"
 
 @class DragSprite;
-@interface GameLayer : CCLayerColor <DragSpriteProtocol>{
-        int countDownCounter;
-        CCSprite* countDownSprite;
-        RadialGradientLayer* fadeLayer;
-        GameOverlayLayer* pauseLayer;
-        CGSize winSize;
-        CCSprite* lifeSprite;
-        CCSprite* pause;
-        CCLabelTTF* score;
-        NSInteger currentScore;
-        NSInteger lifeCount;
-        CCSequence* soundSequence;
-        SimpleAudioEngine *sae;
-        GameManager* gameManager;
-}
-
-@property (nonatomic) NSInteger  currentScore;
-@property (nonatomic,assign) BOOL gameHasStarted;
-@property (nonatomic,assign) BOOL doublePointPowerupEnabled;
+@interface GameLayer : CCLayerColor <DragSpriteProtocol>
 
 + (CCScene *) scene;
 - (void) checkIntersect;
@@ -45,7 +27,8 @@
 - (void) pauseGame:(BOOL)paused;
 - (void) restartGame;
 - (void) quitToMain;
+- (void) setDoublePointPowerup:(NSNumber *)powerup;
 
-- (void)setDoublePointPowerup:(NSNumber *)powerup;
+@property (nonatomic,assign) BOOL gameHasStarted;
 
 @end

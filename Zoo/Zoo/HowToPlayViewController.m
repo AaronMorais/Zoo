@@ -10,12 +10,14 @@
 #define K_NUMBER_OF_IMAGES 20
 
 @interface HowToPlayViewController ()
-    @property (nonatomic, strong) UIImageView *htpImageView;
-    @property (nonatomic, strong) UIButton *nextButton;
-    @property (nonatomic, strong) UIButton *prevButton;
-    @property (nonatomic, strong) UIButton *dismissButton;
-    @property (nonatomic, strong) UIButton *playButton;
-    @property (nonatomic, assign) int currentImageIndex;
+
+@property (nonatomic, strong) UIImageView *htpImageView;
+@property (nonatomic, strong) UIButton *nextButton;
+@property (nonatomic, strong) UIButton *prevButton;
+@property (nonatomic, strong) UIButton *dismissButton;
+@property (nonatomic, strong) UIButton *playButton;
+@property (nonatomic, assign) int currentImageIndex;
+
 @end
 
 @implementation HowToPlayViewController

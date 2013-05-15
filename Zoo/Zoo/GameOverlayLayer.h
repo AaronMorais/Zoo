@@ -11,7 +11,6 @@
 
 @interface GameOverlayLayer : CCLayer
 
-- (id)init;
 - (id)initAsPauseMenu;
 - (id)initAsGameOver:(int)score;
 - (void) showLayer:(BOOL)show;

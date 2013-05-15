@@ -7,8 +7,8 @@
 #import "ActionManager.h"
 
 @interface BoxSprite()
-@property (nonatomic,strong) CCLabelTTF* currentNumber; //label of current capacity
-@property (nonatomic,strong) CCRenderTexture* currentStroke; //black outline of label
+@property (nonatomic,strong) CCLabelTTF *currentNumber; //label of current capacity
+@property (nonatomic,strong) CCRenderTexture *currentStroke; //black outline of label
 @property (nonatomic,assign) SpriteType type;
 @end
 

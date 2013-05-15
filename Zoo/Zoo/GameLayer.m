@@ -15,16 +15,31 @@
 #pragma mark - GameLayer
 
 @interface GameLayer() {
-    CCSprite *beltSprite;
-    CCAction *beltAction;
+    CCSprite *_beltSprite;
+    CCAction *_beltAction;
+    int _countDownCounter;
+    CCSprite *_countDownSprite;
+    RadialGradientLayer *_fadeLayer;
+    GameOverlayLayer *_pauseLayer;
+    CGSize _winSize;
+    CCSprite* _lifeSprite;
+    CCSprite* _pause;
+    CCLabelTTF* _score;
+    NSInteger _lifeCount;
+    CCSequence *_soundSequence;
+    SimpleAudioEngine *_sae;
+    GameManager *_gameManager;
 }
-    @property (nonatomic, assign) int currentRound;
-    @property (nonatomic, assign) BOOL roundStarted;
-    @property (nonatomic, strong) NSMutableArray *boxes;
+
+@property (nonatomic, assign) NSInteger currentScore;
+@property (nonatomic, assign) int currentRound;
+@property (nonatomic, assign) BOOL roundStarted;
+@property (nonatomic, strong) NSMutableArray *boxes;
+@property (nonatomic, assign) BOOL doublePointPowerupEnabled;
+
 @end
 
 @implementation GameLayer
-@synthesize currentScore, gameHasStarted;
 
 // Helper class method that creates a Scene with the GameLayer as the only child.
 +(CCScene*) scene{
@@ -51,14 +66,14 @@
         //load assets
         [self loadAssets];
         //start game
-        countDownCounter = 5;
+        _countDownCounter = 5;
         [self countDown];
 	}
 	return self;
 }
 
 - (void) loadAssets{
-    winSize = [[CCDirector sharedDirector] winSize];
+    _winSize = [[CCDirector sharedDirector] winSize];
     //load sprite sheets
     [self loadSpriteSheets];
     [self layoutLayer];
@@ -67,8 +82,8 @@
     //init box array
     [self createBoxes];
     //init singleton
-    gameManager = [GameManager sharedInstance];
-    [gameManager resetGameVariables];
+    _gameManager = [GameManager sharedInstance];
+    [_gameManager resetGameVariables];
 }
 
 - (void) layoutLayer {
@@ -82,36 +97,36 @@
 - (void) addBackgroundImage{
     CCSprite* background = [CCSprite spriteWithFile:@"assets/playbkgd.png"];
     [self addChild:background];
-    background.position = ccp(winSize.width/2, winSize.height/2);
+    background.position = ccp(_winSize.width/2, _winSize.height/2);
 }
 
 - (void) addScoreLabel{
-    score = [CCLabelTTF labelWithString:@"0" fontName:@"Aharoni" fontSize:50];
-    [score setColor:ccc3(0,0,0)];
-    [score setHorizontalAlignment:kCCTextAlignmentRight];
-    [self addChild: score];
-    score.anchorPoint = ccp(0,0.5);
-    score.position =  ccp((.1 * winSize.width),winSize.height-(.065 * winSize.height));
+    _score = [CCLabelTTF labelWithString:@"0" fontName:@"Aharoni" fontSize:50];
+    [_score setColor:ccc3(0,0,0)];
+    [_score setHorizontalAlignment:kCCTextAlignmentRight];
+    [self addChild: _score];
+    _score.anchorPoint = ccp(0,0.5);
+    _score.position =  ccp((.1 * _winSize.width),_winSize.height-(.065 * _winSize.height));
 }
 
 - (void) addPauseLayer {
-    pauseLayer = [[GameOverlayLayer alloc] initAsPauseMenu];
-    [self addChild:pauseLayer z:6];
-    [pauseLayer showLayer:NO];
+    _pauseLayer = [[GameOverlayLayer alloc] initAsPauseMenu];
+    [self addChild:_pauseLayer z:6];
+    [_pauseLayer showLayer:NO];
 }
 
 - (void) addPauseButton{
-    pause = [CCSprite spriteWithSpriteFrameName:@"pausebutton.png"];
-    [self addChild:pause];
+    _pause = [CCSprite spriteWithSpriteFrameName:@"pausebutton.png"];
+    [self addChild:_pause];
     //FIX MAKE agnostic
-    pause.position =  ccp((.046 * winSize.width),winSize.height-(.065 * winSize.height));
+    _pause.position =  ccp((.046 * _winSize.width),_winSize.height-(.065 * _winSize.height));
 }
 
 - (void) addLivesSprite{
-    lifeSprite = [CCSprite spriteWithSpriteFrameName:@"3lives.png"];
-    [self addChild:lifeSprite];
-    lifeSprite.position =  ccp(winSize.width - (.125 * winSize.width) ,winSize.height-(.065 * winSize.height));
-    lifeCount = 3;
+    _lifeSprite = [CCSprite spriteWithSpriteFrameName:@"3lives.png"];
+    [self addChild:_lifeSprite];
+    _lifeSprite.position =  ccp(_winSize.width - (.125 * _winSize.width) ,_winSize.height-(.065 * _winSize.height));
+    _lifeCount = 3;
 }
 
 - (void) loadSpriteSheets{
@@ -124,26 +139,26 @@
 
 //add animation frames and create actions
 - (void) loadBelt{
-    beltAction = [[ActionManager sharedInstance] beltAction];
-    beltSprite = [CCSprite spriteWithSpriteFrameName:@"conbelt01.png"];
-    beltSprite.position = ccp(winSize.width/2, winSize.height/2 - (.06 * winSize.height));
-    [self addChild:beltSprite];
-    beltSprite.scale = CC_CONTENT_SCALE_FACTOR();
+    _beltAction = [[ActionManager sharedInstance] beltAction];
+    _beltSprite = [CCSprite spriteWithSpriteFrameName:@"conbelt01.png"];
+    _beltSprite.position = ccp(_winSize.width/2, _winSize.height/2 - (.06 * _winSize.height));
+    [self addChild:_beltSprite];
+    _beltSprite.scale = CC_CONTENT_SCALE_FACTOR();
 }
 
 #pragma mark Game State Methods
 //start the game
 - (void)startGame{
-    gameHasStarted = true;
+    self.gameHasStarted = true;
     [self startSounds];
-    [beltSprite runAction:beltAction];
+    [_beltSprite runAction:_beltAction];
     self.currentRound = 0;
     [self startNextRound];
 }
 
 - (void) pauseGame:(BOOL)paused {
     if (paused) {
-        [pauseLayer showLayer:YES];
+        [_pauseLayer showLayer:YES];
         
         [self pauseSchedulerAndActions];
         CCArray *children = self.children;
@@ -153,7 +168,7 @@
         CCArray *children = self.children;
         [children makeObjectsPerformSelector:@selector(resumeSchedulerAndActions)];
         
-        [pauseLayer showLayer:NO];
+        [_pauseLayer showLayer:NO];
     }
 }
 
@@ -168,37 +183,37 @@
 }
 
 - (void)countDown{
-    countDownCounter--;
+    _countDownCounter--;
     [[[CCDirector sharedDirector] touchDispatcher] setDispatchEvents:NO];
-    if(countDownCounter == 4){
-        fadeLayer = [[RadialGradientLayer alloc] initWithColor:ccc3(0,0,0) fadeIn:NO speed:2 large:YES];
-        [self addChild:fadeLayer z:1];
+    if(_countDownCounter == 4){
+        _fadeLayer = [[RadialGradientLayer alloc] initWithColor:ccc3(0,0,0) fadeIn:NO speed:2 large:YES];
+        [self addChild:_fadeLayer z:1];
         [self schedule:@selector(countDown) interval:0.5];
-    }else if(countDownCounter > 0){
-        [self removeChild:countDownSprite cleanup:YES];
-        NSString* path = [NSString stringWithFormat:@"%d.png",countDownCounter];
-        countDownSprite = [CCSprite spriteWithSpriteFrameName:path];
-        countDownSprite.position = ccp(winSize.width/2, winSize.height/2);
-        countDownSprite.scale = 0.75;
-        [self addChild:countDownSprite z:2];
+    }else if(_countDownCounter > 0){
+        [self removeChild:_countDownSprite cleanup:YES];
+        NSString* path = [NSString stringWithFormat:@"%d.png",_countDownCounter];
+        _countDownSprite = [CCSprite spriteWithSpriteFrameName:path];
+        _countDownSprite.position = ccp(_winSize.width/2, _winSize.height/2);
+        _countDownSprite.scale = 0.75;
+        [self addChild:_countDownSprite z:2];
         [self schedule:@selector(countDown) interval:1];
         [self countdownSound];
-    }else if(countDownCounter == 0){
-        [fadeLayer fadeAwayScheduler];
+    }else if(_countDownCounter == 0){
+        [_fadeLayer fadeAwayScheduler];
         [self scheduleOnce:@selector(removeFadeLayer) delay:2.0f];
         
-        [self removeChild:countDownSprite cleanup:YES];
-        countDownSprite = [CCSprite spriteWithSpriteFrameName:@"go!.png"];
-        countDownSprite.position = ccp(winSize.width/2, winSize.height/2);
-        countDownSprite.scale = 0.65;
-        [self addChild:countDownSprite z:2];
+        [self removeChild:_countDownSprite cleanup:YES];
+        _countDownSprite = [CCSprite spriteWithSpriteFrameName:@"go!.png"];
+        _countDownSprite.position = ccp(_winSize.width/2, _winSize.height/2);
+        _countDownSprite.scale = 0.65;
+        [self addChild:_countDownSprite z:2];
         [self schedule:@selector(countDown) interval:0.5];
         [self countdownSound];
-    }else if(countDownCounter == -1){
+    }else if(_countDownCounter == -1){
         [self startGame];
-        [self removeChild:countDownSprite cleanup:YES];
+        [self removeChild:_countDownSprite cleanup:YES];
         [self unschedule:@selector(countDown)];
-        countDownCounter = 5;
+        _countDownCounter = 5;
         [[[CCDirector sharedDirector] touchDispatcher] setDispatchEvents:YES];
     }
 }
@@ -209,9 +224,9 @@
     self.currentRound +=1;
     self.roundStarted = YES;
 
-    CGFloat rate = [gameManager currentSpawnRate];
-    CGFloat speed = [gameManager gameSpeed];
-    CGFloat spawnCount = [gameManager currentSpawnCount];
+    CGFloat rate = [_gameManager currentSpawnRate];
+    CGFloat speed = [_gameManager gameSpeed];
+    CGFloat spawnCount = [_gameManager currentSpawnCount];
     
     //increase speed but decrease rate
     speed *= 1.1;
@@ -230,9 +245,9 @@
     
     NSLog(@"Round: %d Count:%d Speed: %f, Rate: %f", self.currentRound, (int)spawnCount, speed, rate);
     
-    [gameManager setCurrentSpawnRate:rate];
-    [gameManager setGameSpeed:speed];
-    [gameManager setCurrentSpawnCount:spawnCount];
+    [_gameManager setCurrentSpawnRate:rate];
+    [_gameManager setGameSpeed:speed];
+    [_gameManager setCurrentSpawnCount:spawnCount];
     
     NSMutableArray *roundArray = [[NSMutableArray alloc] init];
     for(int i=0;i<(int)spawnCount;i++){
@@ -273,7 +288,7 @@
 - (void)addDragSprite {
     NSNumber* nsType = [Utility randomNumberFrom:1 To:1000]; //randomly choose animal type
     int type = [nsType intValue];
-    while(lifeCount==5 && type < 970 && type > 964) {
+    while(_lifeCount==5 && type < 970 && type > 964) {
         nsType = [Utility randomNumberFrom:1 To:1000];
         type = [nsType intValue];
     }
@@ -308,16 +323,16 @@
     [self pickupSound]; //play pickup sound
     
     //iterate through every animal in the singleton array
-    for(DragSprite* dragSprite in [[gameManager animals] copy]){
+    for(DragSprite* dragSprite in [[_gameManager animals] copy]){
         if(dragSprite.scale == 1){
             //FIX SPRITE BOUNDING BOX for agnostic screen size
-            CGRect smallSprite = CGRectInset(dragSprite.boundingBox, (.05 * winSize.width),(.05 * winSize.height));
+            CGRect smallSprite = CGRectInset(dragSprite.boundingBox, (.05 * _winSize.width),(.05 * _winSize.height));
             int intersections = 0;
             int location = -1;
             //iterate through each box and check for intersections
             for (BoxSprite* boxTemp in self.boxes){
                 //FIX BOX BOUNDING BOX for agnostic screen size
-                if(CGRectIntersectsRect(smallSprite, CGRectInset(boxTemp.boundingBox,(.065 * winSize.width),(.035 * winSize.height)))){
+                if(CGRectIntersectsRect(smallSprite, CGRectInset(boxTemp.boundingBox,(.065 * _winSize.width),(.035 * _winSize.height)))){
                     intersections++;
                     if(location == -1){
                         location = [self.boxes indexOfObject:boxTemp];
@@ -355,7 +370,7 @@
 
 #pragma mark DragSpriteDelegate methods
 - (void)dragSpriteRemoved {
-    if([[gameManager animals] count] != 0 || self.roundStarted) { return;}
+    if([[_gameManager animals] count] != 0 || self.roundStarted) { return;}
     
     NSMutableArray *roundArray = [NSMutableArray array];
     id tDelay = [CCDelayTime actionWithDuration:1.0f];
@@ -381,7 +396,7 @@
     //iterate through each box to check touch
     for(BoxSprite* boxTemp in self.boxes){
         //FIX bounding box for agnostic screen
-        if(CGRectContainsPoint(CGRectInset(boxTemp.boundingBox,(.065 * winSize.width),(.035 * winSize.height)), touchPoint)){
+        if(CGRectContainsPoint(CGRectInset(boxTemp.boundingBox,(.065 * _winSize.width),(.035 * _winSize.height)), touchPoint)){
             if(boxTemp.swallowed == boxTemp.originalCapacity){
                 [self unitIncrement:boxTemp.swallowed*2];
             }else{
@@ -391,7 +406,7 @@
         }
     }
     //check if pause button was touched
-    if(CGRectContainsPoint(pause.boundingBox, touchPoint) && gameHasStarted){
+    if(CGRectContainsPoint(_pause.boundingBox, touchPoint) && self.gameHasStarted){
         [self pauseGame:YES];
     }
 }
@@ -404,14 +419,14 @@
 }
 
 - (void) showLoseLifeGradient {
-    fadeLayer = [[RadialGradientLayer alloc] initWithColor:ccc3(255,0,0) fadeIn:NO speed:20 large:YES];
-    [self addChild:fadeLayer z:2];
+    _fadeLayer = [[RadialGradientLayer alloc] initWithColor:ccc3(255,0,0) fadeIn:NO speed:20 large:YES];
+    [self addChild:_fadeLayer z:2];
     [self scheduleOnce:@selector(removeFadeLayer) delay:0.15f];
 }
 
 - (void) removeFadeLayer {
-    [self removeChild:fadeLayer cleanup:YES];
-    fadeLayer = nil;
+    [self removeChild:_fadeLayer cleanup:YES];
+    _fadeLayer = nil;
 }
 
 #pragma mark Score Methods
@@ -421,15 +436,15 @@
         num *=2;
     }
     //incremenet score by 10*provided val and then display visually
-    currentScore +=(10*num);
-    [score setString:[NSString stringWithFormat:@"%d",currentScore]];
+    self.currentScore +=(10*num);
+    [_score setString:[NSString stringWithFormat:@"%d",self.currentScore]];
 }
 
 //reset score function
 - (void) resetScore {
     //reset counter and display visually
-    currentScore = 0;
-    [score setString:[NSString stringWithFormat:@"%d",currentScore]];
+    self.currentScore = 0;
+    [_score setString:[NSString stringWithFormat:@"%d",self.currentScore]];
 }
 
 #pragma mark Powerup Methods
@@ -447,16 +462,16 @@
 }
 
 -(void) moveBelt:(BOOL)move {
-    [gameManager setFrozenPowerupActivated:!move];
+    [_gameManager setFrozenPowerupActivated:!move];
     if(!move) {
-        [beltSprite stopAllActions];
+        [_beltSprite stopAllActions];
         [self pauseSchedulerAndActions];
     } else {
-        [beltSprite stopAllActions];
-        [beltSprite runAction:beltAction];
+        [_beltSprite stopAllActions];
+        [_beltSprite runAction:_beltAction];
         [self resumeSchedulerAndActions];
     }
-    for(DragSprite* dragSprite in [gameManager animals]){
+    for(DragSprite* dragSprite in [_gameManager animals]){
         if(move) {
             [dragSprite updateSpeed];
         } else {
@@ -470,66 +485,66 @@
 - (void) loseLife {
     //decrement counter, display visually
     //if 0 lives, wait 0.25 seconds then call game-over function
-    lifeCount--;
-    if(lifeCount >= 0){
-        [lifeSprite setDisplayFrame:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:[NSString stringWithFormat:@"%dlives.png",lifeCount]]];
+    _lifeCount--;
+    if(_lifeCount >= 0){
+        [_lifeSprite setDisplayFrame:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:[NSString stringWithFormat:@"%dlives.png",_lifeCount]]];
     }
-    if(lifeCount == 0){
+    if(_lifeCount == 0){
         [self scheduleOnce:@selector(gameOver) delay:0.25];
     }
 }
 
 - (void) gainLife{
     //increment counter, display visually
-    if(lifeCount !=5){
-        lifeCount++;
-        [lifeSprite setDisplayFrame:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:[NSString stringWithFormat:@"%dlives.png",lifeCount]]];
+    if(_lifeCount !=5){
+        _lifeCount++;
+        [_lifeSprite setDisplayFrame:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:[NSString stringWithFormat:@"%dlives.png",_lifeCount]]];
     }
 }
 
 
 #pragma mark Game Over Methods
 - (void) gameOver{
-    [gameManager checkHighScore:currentScore]; //send the singleton the current game score, a high score may be recorded
-     [[ABGameKitHelper sharedClass] reportScore:currentScore forLeaderboard:@"ZooBoxLeaderboard"];
+    [_gameManager checkHighScore:self.currentScore]; //send the singleton the current game score, a high score may be recorded
+     [[ABGameKitHelper sharedClass] reportScore:self.currentScore forLeaderboard:@"ZooBoxLeaderboard"];
     
     [self endGameSound]; //play endgame sounds
-    gameHasStarted = NO;
+    self.gameHasStarted = NO;
     
     [self pauseSchedulerAndActions];
     CCArray *children = self.children;
     [children makeObjectsPerformSelector:@selector(pauseSchedulerAndActions)];
-    GameOverlayLayer *gameOver = [[GameOverlayLayer alloc] initAsGameOver:currentScore];
+    GameOverlayLayer *gameOver = [[GameOverlayLayer alloc] initAsGameOver:self.currentScore];
     [self addChild:gameOver z:6];
     [gameOver showLayer:YES];
 }
 
 #pragma mark Sound methods
 - (void) startSounds{
-    [[gameManager sae] playBackgroundMusic:@"gameLoop.mp3"];
+    [[_gameManager sae] playBackgroundMusic:@"gameLoop.mp3"];
 }
 
 - (void) startGameSound{
-    [[gameManager sae] playBackgroundMusic:@"gameLoop.mp3"];
+    [[_gameManager sae] playBackgroundMusic:@"gameLoop.mp3"];
 }
 - (void) killBG{
-    [[gameManager sae] pauseBackgroundMusic];
+    [[_gameManager sae] pauseBackgroundMusic];
 }
 
 - (void) startBG{
-    [[gameManager sae] playBackgroundMusic:@"gameLoop.mp3"];
+    [[_gameManager sae] playBackgroundMusic:@"gameLoop.mp3"];
 }
 
 - (void) pickupSound{
-    [[gameManager sae] playEffect:@"pickup.mp3"]; //play pickup sound
+    [[_gameManager sae] playEffect:@"pickup.mp3"]; //play pickup sound
 }
 
 - (void) countdownSound{
-    [[gameManager sae] playEffect:@"countdown.mp3"]; //play pickup sound
+    [[_gameManager sae] playEffect:@"countdown.mp3"]; //play pickup sound
 }
 
 - (void) endGameSound{
-    [[gameManager sae] pauseBackgroundMusic]; //stop background music
-    [[gameManager sae] playEffect:@"gameStop.mp3"]; //play end game effect
+    [[_gameManager sae] pauseBackgroundMusic]; //stop background music
+    [[_gameManager sae] playEffect:@"gameStop.mp3"]; //play end game effect
 }
 @end
