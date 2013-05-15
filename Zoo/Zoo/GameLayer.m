@@ -323,6 +323,7 @@
     
     //iterate through every animal in the singleton array
     for(DragSprite* dragSprite in [[_gameManager animals] copy]){
+        if(dragSprite.type > 5) { continue;}
         if(dragSprite.scale == 1){
             //FIX for iPad
             CGRect smallSprite = CGRectInset(dragSprite.boundingBox, (.05 * _winSize.width),(.05 * _winSize.height));
@@ -350,10 +351,6 @@
                 if(((location+1) == check) || check > 5){
                     if(check <= 4) {
                         [[self.boxes objectAtIndex:location] swallow];
-                    }
-                    CGFloat gradientLength = [dragSprite powerupFunction];
-                    if(gradientLength > 0.0f) {
-                        [self showPowerupGradient:gradientLength];
                     }
                 }else{
                     [self loseLife];

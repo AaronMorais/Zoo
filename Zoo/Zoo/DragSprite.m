@@ -12,6 +12,7 @@
 @property(nonatomic, strong) CCAction *blink, *flail;
 @property(nonatomic, strong) GameManager *gameManager;
 @property(nonatomic, strong) CCSprite *shadow;
+@property(nonatomic, assign) NSTimeInterval lastTapTime;
 
 @end
 
@@ -60,6 +61,8 @@
         //initialize the singleton instance
         self.gameManager = [GameManager sharedInstance];
         [[self.gameManager animals] addObject:self];
+        
+        self.lastTapTime = [NSDate timeIntervalSinceReferenceDate];
     }
     return self;
 }
@@ -107,6 +110,20 @@
 //touch end handling function
 - (void)ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event{
     if(![(GameLayer *)self.parent gameHasStarted]) { return;}
+
+    if(self.type > 5) {
+        NSTimeInterval currentTime = [NSDate timeIntervalSinceReferenceDate];
+        NSTimeInterval diff = currentTime - self.lastTapTime;
+
+        if(diff < 0.5 ) {
+            CGFloat gradientLength = [self powerupFunction];
+            if(gradientLength > 0.0f) {
+                [((GameLayer *)self.parent) showPowerupGradient:gradientLength];
+            }
+            [self removeMe];
+        }
+        self.lastTapTime = [NSDate timeIntervalSinceReferenceDate];
+    }
 
     //stop the sprite from flailing and stop sprite from popping
     [self stopAllActions];

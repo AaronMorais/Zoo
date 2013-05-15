@@ -27,6 +27,7 @@
 - (void) pauseGame:(BOOL)paused;
 - (void) restartGame;
 - (void) quitToMain;
+- (void) showPowerupGradient:(CGFloat)delay;
 - (void) setDoublePointPowerup:(NSNumber *)powerup;
 
 @property (nonatomic,assign) BOOL gameHasStarted;
