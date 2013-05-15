@@ -4,17 +4,71 @@
 //
 
 #import "BoxSprite.h"
+#import "ActionManager.h"
+
+@interface BoxSprite()
+@property (nonatomic,strong) CCLabelTTF* currentNumber; //label of current capacity
+@property (nonatomic,strong) CCRenderTexture* currentStroke; //black outline of label
+@property (nonatomic,assign) SpriteType type;
+@end
 
 @implementation BoxSprite
-@synthesize originalCapacity, currentCapacity, swallowed, currentNumber, currentStroke;
 
-//initialization of sprite
--(id) initWithTexture:(CCTexture2D*)texture rect:(CGRect)rect{
-   if((self=[super initWithTexture:texture rect:rect])){
-        //initialize the box number
++(NSString *) initialSpriteNameForType:(SpriteType)type {
+    switch(type){
+        case SpriteTypePenguin:
+            return @"penguinbox1.png";
+        case SpriteTypeElephant:
+            return @"elephantbox1.png";
+        case SpriteTypeHippo:
+            return @"hippobox1.png";
+        case SpriteTypeLion:
+            return @"lionbox1.png";
+        default:
+            return @"";
+    }
+}
+
+-(id) initWithType:(SpriteType)type {
+    NSString *fileName = [BoxSprite initialSpriteNameForType:type];
+    self = [BoxSprite spriteWithSpriteFrameName:fileName];
+    if(self) {
+        self.type = type;
         [self newNumber];
-   }
-   return self;
+        self.currentNumber = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d",self.currentCapacity] fontName:@"Aharoni" fontSize:80];
+        
+        CGSize winSize = [[CCDirector sharedDirector] winSize];
+        if(type == SpriteTypePenguin) {
+            [self.currentNumber setColor:ccWHITE];
+            self.position = ccp(winSize.width/2 - (.1 * winSize.width), winSize.height/2 - (.075 * winSize.height));
+        } else if(type == SpriteTypeElephant) {
+            [self.currentNumber setColor:ccc3(129,137,137)];
+            self.position = ccp(winSize.width/2 + (.1 * winSize.width), winSize.height/2 - (.075 * winSize.height));
+        } else if(type == SpriteTypeHippo) {
+            [self.currentNumber setColor:ccc3(225,105,180)];
+            self.position = ccp(winSize.width/2 - (.1 * winSize.width), winSize.height/2 - (.34 * winSize.height));
+        } else if(type == SpriteTypeLion) {
+            [self.currentNumber setColor:ccYELLOW];
+            self.position = ccp(winSize.width/2 + (.1 * winSize.width), winSize.height/2 - (.34 * winSize.height));
+        }
+        //position the number with offset
+        self.currentNumber.position = ccp(self.position.x - (.02 * winSize.width),self.position.y);
+    }
+    return self;
+}
+
+//provide the box with the correct animation and run it
+//animations are not stored in the boxes, they're assigned when needed
+- (void)animate {
+    if(self.type == SpriteTypePenguin){
+        [self runAction:[[ActionManager sharedInstance] boxActions][0]];
+    } else if(self.type == SpriteTypeElephant){
+        [self runAction:[[ActionManager sharedInstance] boxActions][1]];
+    } else if(self.type == SpriteTypeHippo){
+        [self runAction:[[ActionManager sharedInstance] boxActions][2]];
+    } else if(self.type == SpriteTypeLion){
+        [self runAction:[[ActionManager sharedInstance] boxActions][3]];
+    }
 }
 
 //whenever the box takes an animal it swallows
@@ -30,7 +84,7 @@
     }
     
     //update count on box
-    [self stroke];
+    [self updateStrokes];
 }
 
 //init/reset the box with a new number
@@ -52,35 +106,28 @@
         self.currentCapacity = [new integerValue];
         self.originalCapacity = [new integerValue];
     }
-    
-    //if the box had a number, reset its values
-    if(self.currentNumber){
-        [self stroke];
-    }
 }
 
-//create initial strokes for number outline
--(void) firstStroke{
-    CCRenderTexture* stroke = [self createStrokeOnLabel:currentNumber WithSize:2];
-    self.currentStroke = stroke;
-    [self.parent addChild:self.currentStroke];
+-(void) boxTapped {
+    [self newNumber];
+    [self updateStrokes];
 }
 
 //remove current stroke and refresh strokes
-- (void) stroke{
+- (void) updateStrokes{
     self.currentNumber.string = [NSString stringWithFormat:@"%d",self.currentCapacity];
     //remove current number and stroke
     //removing and adding number ensures no stroke overlap!
-    [self.parent removeChild:currentNumber cleanup:YES];
+    [self.parent removeChild:self.currentNumber cleanup:YES];
     [self.parent removeChild:self.currentStroke cleanup:YES];
     
     //generate new stroke for number
-    CCRenderTexture* stroke = [self createStrokeOnLabel:currentNumber WithSize:2];
+    CCRenderTexture* stroke = [self createStrokeOnLabel:self.currentNumber WithSize:2];
     self.currentStroke = stroke;
     
     //add stroke and number back
     [self.parent addChild:self.currentStroke];
-    [self.parent addChild:currentNumber];
+    [self.parent addChild:self.currentNumber];
 }
 
 //create the outline around the number, returns a texture

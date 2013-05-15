@@ -42,13 +42,14 @@ Double Points 5/1000
 Plus Life 5/1000
 Freeze 5/1000
 */
+-(id) initWithType:(SpriteType)type;
 -(BOOL) isPointOnSprite:(CGPoint)touch;
 -(void) removeMe;
 -(void) rememberPosition;
 -(void) resumeMoveSprite;
 -(CGFloat) powerupFunction;
 -(void) updateSpeed;
--(void) moveSprite:(BOOL)resume;
+-(void) moveSpriteIsResuming:(BOOL)resume;
 @property(strong) NSNumber* side;
 @property(strong) NSValue* currentPosition;
 @property(strong) CCAction* blink, *flail;

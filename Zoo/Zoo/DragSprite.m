@@ -1,22 +1,57 @@
 #import "DragSprite.h"
 #import "GameLayer.h"
+#import "ActionManager.h"
 
 #define IS_IPHONE_5 ([UIScreen mainScreen].bounds.size.height == 568.0)
 
 @implementation DragSprite
 @synthesize blink, flail, currentPosition;
 
-//initialization of sprite
--(id) initWithTexture:(CCTexture2D*)texture rect:(CGRect)rect{
-   if((self=[super initWithTexture:texture rect:rect])){
-            //make sure touches are handled by the sprite. swallows touch so only one animal per touchpoint!
-            [[[CCDirector sharedDirector] touchDispatcher] addTargetedDelegate:self priority:0 swallowsTouches:YES];
-       
-            //initialize the singleton instance
-            gameManager = [GameManager sharedInstance];
-            [[gameManager animals] addObject:self];
-   }
-   return self;
++(NSString *) initialSpriteNameForType:(SpriteType)type {
+    switch(type){
+        case SpriteTypePenguin:
+            return @"penguinblink01.png";
+        case SpriteTypeElephant:
+            return @"elephantblink01.png";
+        case SpriteTypeHippo:
+            return @"hippoblink01.png";
+        case SpriteTypeLion:
+            return @"lionblinking01.png";
+        case SpriteTypePig:
+            return @"assets/animals/pig.png";
+        case SpriteTypeDoublePoints:
+            return @"assets/animals/hippogold.png";
+        case SpriteTypePlusLife:
+            return @"assets/animals/elephantgold.png";
+        case SpriteTypeFreeze:
+            return @"assets/animals/penguingold.png";
+    }
+    return @"";
+}
+
+-(id) initWithType:(SpriteType)type{
+    NSString *fileName = [DragSprite initialSpriteNameForType:type];
+    if(type < 5) {
+        self = [DragSprite spriteWithSpriteFrameName:fileName];
+    } else {
+        self = [DragSprite spriteWithFile:fileName];
+    }
+    if(self) {
+        //make sure touches are handled by the sprite. swallows touch so only one animal per touchpoint!
+        [[[CCDirector sharedDirector] touchDispatcher] addTargetedDelegate:self priority:0 swallowsTouches:YES];
+        
+        if(type < 5) {
+            self.blink = [[[[ActionManager sharedInstance] animalBlinkActions] objectAtIndex:(((int)type) - 1)] copy];
+            self.flail = [[[[ActionManager sharedInstance] animalFlailActions] objectAtIndex:(((int)type) - 1)] copy];
+        }
+        self.type = type;
+//        [self runAction:self.blink];
+        
+        //initialize the singleton instance
+        gameManager = [GameManager sharedInstance];
+        [[gameManager animals] addObject:self];
+    }
+    return self;
 }
 
 //check that the sprite is being touched
@@ -130,10 +165,10 @@
 }
 
 - (void) resumeMoveSprite{
-    [self moveSprite:YES];
+    [self moveSpriteIsResuming:YES];
 }
 
-- (void) moveSprite:(BOOL)resume{
+- (void) moveSpriteIsResuming:(BOOL)resume{
     //set initial position and declare arrays
     CGPoint savedPoint;
     int flag = 0;

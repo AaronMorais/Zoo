@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		930829BE15DADAE2006C7CF9 /* assets in Resources */ = {isa = PBXBuildFile; fileRef = 930829BD15DADAE2006C7CF9 /* assets */; };
 		930829C315DADC5C006C7CF9 /* GameLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 930829C215DADC5C006C7CF9 /* GameLayer.m */; };
+		9309877E1742E63B00C25047 /* ActionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9309877D1742E63B00C25047 /* ActionManager.m */; };
 		931C13A116C7693C00BBAD18 /* RadialGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 931C13A016C7693C00BBAD18 /* RadialGradientLayer.m */; };
 		93200B3C16D0377A00F32512 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93200B3B16D0377A00F32512 /* RootViewController.m */; };
 		933B9A2F15E99B16003770CF /* GameManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 933B9A2E15E99B16003770CF /* GameManager.m */; };
@@ -165,6 +166,8 @@
 		930829BD15DADAE2006C7CF9 /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; name = assets; path = Resources/assets; sourceTree = "<group>"; };
 		930829C115DADC5C006C7CF9 /* GameLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameLayer.h; sourceTree = "<group>"; };
 		930829C215DADC5C006C7CF9 /* GameLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameLayer.m; sourceTree = "<group>"; };
+		9309877C1742E63B00C25047 /* ActionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionManager.h; sourceTree = "<group>"; };
+		9309877D1742E63B00C25047 /* ActionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionManager.m; sourceTree = "<group>"; };
 		931C139F16C7693C00BBAD18 /* RadialGradientLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadialGradientLayer.h; sourceTree = "<group>"; };
 		931C13A016C7693C00BBAD18 /* RadialGradientLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadialGradientLayer.m; sourceTree = "<group>"; };
 		93200B3A16D0377A00F32512 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
@@ -535,6 +538,8 @@
 			children = (
 				933B9A2D15E99B16003770CF /* GameManager.h */,
 				933B9A2E15E99B16003770CF /* GameManager.m */,
+				9309877C1742E63B00C25047 /* ActionManager.h */,
+				9309877D1742E63B00C25047 /* ActionManager.m */,
 			);
 			name = Managers;
 			sourceTree = "<group>";
@@ -1194,6 +1199,7 @@
 				93200B3C16D0377A00F32512 /* RootViewController.m in Sources */,
 				93816995171A295B00408C7F /* Utility.m in Sources */,
 				93816999171A377300408C7F /* HowToPlayViewController.m in Sources */,
+				9309877E1742E63B00C25047 /* ActionManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
