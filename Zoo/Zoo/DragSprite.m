@@ -55,7 +55,7 @@
             self.flail = [[[[ActionManager sharedInstance] animalFlailActions] objectAtIndex:(((int)type) - 1)] copy];
         }
         self.type = type;
-        [self runAction:self.blink];
+        [self blinkCurrentSprite];
         
         //initialize the singleton instance
         self.gameManager = [GameManager sharedInstance];
