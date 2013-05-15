@@ -115,7 +115,7 @@
     [self.parent reorderChild:self z:1];
     [self showShadow:NO];
     
-    //check intersection with boxes FIX THIS - IT CHECKS ALL OF THEM 
+    //check intersection with boxes 
     [self.parent respondsToSelector:@selector(checkIntersect)];
     [self closest]; // find the closest point on the conveyor belt and save it to currentPosition
     

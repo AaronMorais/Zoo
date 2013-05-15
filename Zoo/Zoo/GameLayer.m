@@ -118,7 +118,6 @@
 - (void) addPauseButton{
     _pause = [CCSprite spriteWithSpriteFrameName:@"pausebutton.png"];
     [self addChild:_pause];
-    //FIX MAKE agnostic
     _pause.position =  ccp((.046 * _winSize.width),_winSize.height-(.065 * _winSize.height));
 }
 
@@ -325,13 +324,13 @@
     //iterate through every animal in the singleton array
     for(DragSprite* dragSprite in [[_gameManager animals] copy]){
         if(dragSprite.scale == 1){
-            //FIX SPRITE BOUNDING BOX for agnostic screen size
+            //FIX for iPad
             CGRect smallSprite = CGRectInset(dragSprite.boundingBox, (.05 * _winSize.width),(.05 * _winSize.height));
             int intersections = 0;
             int location = -1;
             //iterate through each box and check for intersections
             for (BoxSprite* boxTemp in self.boxes){
-                //FIX BOX BOUNDING BOX for agnostic screen size
+                //FIX for iPad
                 if(CGRectIntersectsRect(smallSprite, CGRectInset(boxTemp.boundingBox,(.065 * _winSize.width),(.035 * _winSize.height)))){
                     intersections++;
                     if(location == -1){
@@ -395,7 +394,7 @@
     
     //iterate through each box to check touch
     for(BoxSprite* boxTemp in self.boxes){
-        //FIX bounding box for agnostic screen
+        //FIX for iPad
         if(CGRectContainsPoint(CGRectInset(boxTemp.boundingBox,(.065 * _winSize.width),(.035 * _winSize.height)), touchPoint)){
             if(boxTemp.swallowed == boxTemp.originalCapacity){
                 [self unitIncrement:boxTemp.swallowed*2];
