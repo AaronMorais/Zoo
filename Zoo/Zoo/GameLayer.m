@@ -12,7 +12,7 @@
 #import "Utility.h"
 #import "ActionManager.h"
 
-#pragma mark - GameLayer
+#define IS_IPHONE_5 ([UIScreen mainScreen].bounds.size.height == 568.0)
 
 @interface GameLayer() {
     CCSprite *_beltSprite;
@@ -98,6 +98,16 @@
     CCSprite* background = [CCSprite spriteWithFile:@"assets/playbkgd.png"];
     [self addChild:background z:ElementLevelBackground];
     background.position = ccp(_winSize.width/2, _winSize.height/2);
+    
+    if(IS_IPHONE_5) {
+        CCSprite* leftBackground = [CCSprite spriteWithFile:@"assets/playbkgdLeft.png"];
+        [self addChild:leftBackground z:ElementLevelBackground];
+        leftBackground.position = ccp(leftBackground.boundingBox.size.width/2,leftBackground.boundingBox.size.height/2);
+        
+        CCSprite* rightBackground = [CCSprite spriteWithFile:@"assets/playbkgdRight.png"];
+        [self addChild:rightBackground z:ElementLevelBackground];
+        rightBackground.position = ccp(_winSize.width - (rightBackground.boundingBox.size.width/2), rightBackground.boundingBox.size.height/2);
+    }
 }
 
 - (void) addScoreLabel{
