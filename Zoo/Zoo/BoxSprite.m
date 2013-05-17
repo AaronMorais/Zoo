@@ -5,6 +5,7 @@
 
 #import "BoxSprite.h"
 #import "ActionManager.h"
+#import "GameLayer.h"
 
 @interface BoxSprite()
 @property (nonatomic,strong) CCLabelTTF *currentNumber; //label of current capacity
@@ -126,8 +127,8 @@
     self.currentStroke = stroke;
     
     //add stroke and number back
-    [self.parent addChild:self.currentStroke];
-    [self.parent addChild:self.currentNumber];
+    [self.parent addChild:self.currentStroke z:ElementLevelBoxNumber];
+    [self.parent addChild:self.currentNumber z:ElementLevelBoxNumber];
 }
 
 //create the outline around the number, returns a texture

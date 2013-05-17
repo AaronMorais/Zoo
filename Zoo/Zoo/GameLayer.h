@@ -15,6 +15,18 @@
 #import "RadialGradientLayer.h"
 #import "GameOverlayLayer.h"
 
+typedef enum {
+    ElementLevelBackground = 1,
+    ElementLevelHUD,
+    ElementLevelBelt,
+    ElementLevelBox,
+    ElementLevelBoxNumber,
+    ElementLevelSprite,
+    ElementLevelSpritePopup,
+    ElementLevelCountdown,
+    ElementLevelOverlay
+} ElementLevel;
+
 @class DragSprite;
 @interface GameLayer : CCLayerColor <DragSpriteProtocol>
 
@@ -27,7 +39,7 @@
 - (void) pauseGame:(BOOL)paused;
 - (void) restartGame;
 - (void) quitToMain;
-- (void) showPowerupGradient:(CGFloat)delay;
+- (void) showPowerupBackgroundOfType:(SpriteType)type WithDelay:(CGFloat)delay;
 - (void) setDoublePointPowerup:(NSNumber *)powerup;
 
 @property (nonatomic,assign) BOOL gameHasStarted;

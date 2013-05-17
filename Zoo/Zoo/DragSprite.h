@@ -29,7 +29,6 @@ typedef enum {
 -(void) removeMe;
 -(void) rememberPosition;
 -(void) resumeMoveSprite;
--(CGFloat) powerupFunction;
 -(void) updateSpeed;
 -(void) moveSpriteIsResuming:(BOOL)resume;
 

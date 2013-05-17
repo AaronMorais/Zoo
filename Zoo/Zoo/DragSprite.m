@@ -85,7 +85,7 @@
 	if([self isPointOnSprite:touchPoint]){
 		self.whereTouch = ccpSub(self.position, touchPoint);
         self.scale = 1.2;
-        [self.parent reorderChild:self z:2];
+        [self.parent reorderChild:self z:ElementLevelSpritePopup];
         [self stopAllActions];
         [self flailCurrentSprite];
         [self showShadow:YES];
@@ -116,9 +116,9 @@
         NSTimeInterval diff = currentTime - self.lastTapTime;
 
         if(diff < 0.5 ) {
-            CGFloat gradientLength = [self powerupFunction];
-            if(gradientLength > 0.0f) {
-                [((GameLayer *)self.parent) showPowerupGradient:gradientLength];
+            CGFloat powerupLength = [self activatePowerup];
+            if(powerupLength > 0.0f) {
+                [((GameLayer *)self.parent) showPowerupBackgroundOfType:self.type WithDelay:powerupLength];
             }
             [self removeMe];
         }
@@ -129,7 +129,7 @@
     [self stopAllActions];
     [self blinkCurrentSprite];
     self.scale = 1;
-    [self.parent reorderChild:self z:1];
+    [self.parent reorderChild:self z:ElementLevelSprite];
     [self showShadow:NO];
     
     //check intersection with boxes 
@@ -272,27 +272,22 @@
 }
 
 //make sprite blink
--(void) blinkCurrentSprite{
+-(void) blinkCurrentSprite {
     if(self.blink){
         [self runAction:self.blink];
     }
 }
 
--(CGFloat) powerupFunction{
-//hippo powerup: double points
+-(CGFloat) activatePowerup {
     if(self.type == SpriteTypeDoublePoints){
         [self.parent performSelector:@selector(setDoublePointPowerupEnabled:) withObject:[NSNumber numberWithBool:YES]];
         [NSObject cancelPreviousPerformRequestsWithTarget:self.parent selector:@selector(setDoublePointPowerup:) object:[NSNumber numberWithBool:NO]];
         [self.parent performSelector:@selector(setDoublePointPowerup:) withObject:[NSNumber numberWithBool:NO] afterDelay:5.0f];
         return 5.0f;
-    }
-//elephant powerup: plus life
-    if(self.type == SpriteTypePlusLife){
+    } else if(self.type == SpriteTypePlusLife){
         [self gainLife];
         return 0.15f;
-    }
-//penguin powerup: freeze belt for 5 secs
-    if(self.type == SpriteTypeFreeze){
+    } else if(self.type == SpriteTypeFreeze){
         [self.parent performSelector:@selector(stopMovingBelt) withObject:self];
         [self.parent unschedule:@selector(startMovingBelt)];
         [self.parent scheduleOnce:@selector(startMovingBelt) delay:5.0f];

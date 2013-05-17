@@ -94,9 +94,9 @@
     [self addLivesSprite];
 }
 
-- (void) addBackgroundImage{
+- (void) addBackgroundImage {
     CCSprite* background = [CCSprite spriteWithFile:@"assets/playbkgd.png"];
-    [self addChild:background];
+    [self addChild:background z:ElementLevelBackground];
     background.position = ccp(_winSize.width/2, _winSize.height/2);
 }
 
@@ -104,26 +104,26 @@
     _score = [CCLabelTTF labelWithString:@"0" fontName:@"Aharoni" fontSize:50];
     [_score setColor:ccc3(0,0,0)];
     [_score setHorizontalAlignment:kCCTextAlignmentRight];
-    [self addChild: _score];
+    [self addChild:_score z:ElementLevelHUD];
     _score.anchorPoint = ccp(0,0.5);
     _score.position =  ccp((.1 * _winSize.width),_winSize.height-(.065 * _winSize.height));
 }
 
 - (void) addPauseLayer {
     _pauseLayer = [[GameOverlayLayer alloc] initAsPauseMenu];
-    [self addChild:_pauseLayer z:6];
+    [self addChild:_pauseLayer z:ElementLevelOverlay];
     [_pauseLayer showLayer:NO];
 }
 
 - (void) addPauseButton{
     _pause = [CCSprite spriteWithSpriteFrameName:@"pausebutton.png"];
-    [self addChild:_pause];
+    [self addChild:_pause z:ElementLevelHUD];
     _pause.position =  ccp((.046 * _winSize.width),_winSize.height-(.065 * _winSize.height));
 }
 
 - (void) addLivesSprite{
     _lifeSprite = [CCSprite spriteWithSpriteFrameName:@"3lives.png"];
-    [self addChild:_lifeSprite];
+    [self addChild:_lifeSprite z:ElementLevelHUD];
     _lifeSprite.position =  ccp(_winSize.width - (.125 * _winSize.width) ,_winSize.height-(.065 * _winSize.height));
     _lifeCount = 3;
 }
@@ -141,7 +141,7 @@
     _beltAction = [[ActionManager sharedInstance] beltAction];
     _beltSprite = [CCSprite spriteWithSpriteFrameName:@"conbelt01.png"];
     _beltSprite.position = ccp(_winSize.width/2, _winSize.height/2 - (.06 * _winSize.height));
-    [self addChild:_beltSprite];
+    [self addChild:_beltSprite z:ElementLevelBelt];
     _beltSprite.scale = CC_CONTENT_SCALE_FACTOR();
 }
 
@@ -186,7 +186,7 @@
     [[[CCDirector sharedDirector] touchDispatcher] setDispatchEvents:NO];
     if(_countDownCounter == 4){
         _fadeLayer = [[RadialGradientLayer alloc] initWithColor:ccc3(0,0,0) fadeIn:NO speed:2 large:YES];
-        [self addChild:_fadeLayer z:1];
+        [self addChild:_fadeLayer z:ElementLevelOverlay];
         [self schedule:@selector(countDown) interval:0.5];
     }else if(_countDownCounter > 0){
         [self removeChild:_countDownSprite cleanup:YES];
@@ -194,7 +194,7 @@
         _countDownSprite = [CCSprite spriteWithSpriteFrameName:path];
         _countDownSprite.position = ccp(_winSize.width/2, _winSize.height/2);
         _countDownSprite.scale = 0.75;
-        [self addChild:_countDownSprite z:2];
+        [self addChild:_countDownSprite z:ElementLevelCountdown];
         [self schedule:@selector(countDown) interval:1];
         [self countdownSound];
     }else if(_countDownCounter == 0){
@@ -205,7 +205,7 @@
         _countDownSprite = [CCSprite spriteWithSpriteFrameName:@"go!.png"];
         _countDownSprite.position = ccp(_winSize.width/2, _winSize.height/2);
         _countDownSprite.scale = 0.65;
-        [self addChild:_countDownSprite z:2];
+        [self addChild:_countDownSprite z:ElementLevelCountdown];
         [self schedule:@selector(countDown) interval:0.5];
         [self countdownSound];
     }else if(_countDownCounter == -1){
@@ -276,7 +276,7 @@
     self.boxes = [NSMutableArray array];
     for(int i=1;i<=4;i++) {
         BoxSprite *box = [[BoxSprite alloc] initWithType:i];
-        [self addChild:box];
+        [self addChild:box z:ElementLevelBox];
         [box updateStrokes];
         [self.boxes addObject:box];
     }
@@ -313,7 +313,7 @@
     }
     sprite.delegate = self;
     //add sprite to layer and assign correct z axis
-    [self addChild:sprite z:1];
+    [self addChild:sprite z:ElementLevelSprite];
     [sprite moveSpriteIsResuming:NO];
 }
 
@@ -407,16 +407,24 @@
     }
 }
 
-#pragma mark Gradient Overlay methods
-- (void) showPowerupGradient:(CGFloat)delay {
-    RadialGradientLayer *powerupLayer = [[RadialGradientLayer alloc] initWithColor:ccc3(0,0,255) fadeIn:NO speed:20 large:NO];
-    [self addChild:powerupLayer z:2];
-    [powerupLayer removeAfterDelay:delay];
+#pragma mark Visual Event Notification methods
+- (void) showPowerupBackgroundOfType:(SpriteType)type WithDelay:(CGFloat)delay {
+    CCSprite* background = nil;
+    if(type == SpriteTypeFreeze) {
+        background = [CCSprite spriteWithFile:@"assets/freezebkgd.png"];
+    } else if(type == SpriteTypeDoublePoints) {
+        background = [CCSprite spriteWithFile:@"assets/freezebkgd.png"];
+    }
+    if(background) {
+        [self addChild:background z:ElementLevelBackground];
+        background.position = ccp(_winSize.width/2, _winSize.height/2);
+        [background performSelector:@selector(removeFromParentAndCleanup:) withObject:[NSNumber numberWithBool:YES] afterDelay:delay];
+    }
 }
 
 - (void) showLoseLifeGradient {
     _fadeLayer = [[RadialGradientLayer alloc] initWithColor:ccc3(255,0,0) fadeIn:NO speed:20 large:YES];
-    [self addChild:_fadeLayer z:2];
+    [self addChild:_fadeLayer z:ElementLevelOverlay];
     [self scheduleOnce:@selector(removeFadeLayer) delay:0.15f];
 }
 
@@ -511,7 +519,7 @@
     CCArray *children = self.children;
     [children makeObjectsPerformSelector:@selector(pauseSchedulerAndActions)];
     GameOverlayLayer *gameOver = [[GameOverlayLayer alloc] initAsGameOver:self.currentScore];
-    [self addChild:gameOver z:6];
+    [self addChild:gameOver z:ElementLevelOverlay];
     [gameOver showLayer:YES];
 }
 
