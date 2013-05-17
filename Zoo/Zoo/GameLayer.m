@@ -101,11 +101,11 @@
     
     if(IS_IPHONE_5) {
         CCSprite* leftBackground = [CCSprite spriteWithFile:@"assets/playbkgdLeft.png"];
-        [self addChild:leftBackground z:ElementLevelBackground];
+        [self addChild:leftBackground z:ElementLevelOverlap];
         leftBackground.position = ccp(leftBackground.boundingBox.size.width/2,leftBackground.boundingBox.size.height/2);
         
         CCSprite* rightBackground = [CCSprite spriteWithFile:@"assets/playbkgdRight.png"];
-        [self addChild:rightBackground z:ElementLevelBackground];
+        [self addChild:rightBackground z:ElementLevelOverlap];
         rightBackground.position = ccp(_winSize.width - (rightBackground.boundingBox.size.width/2), rightBackground.boundingBox.size.height/2);
     }
 }

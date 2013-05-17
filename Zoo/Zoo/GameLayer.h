@@ -23,6 +23,7 @@ typedef enum {
     ElementLevelBoxNumber,
     ElementLevelSprite,
     ElementLevelSpritePopup,
+    ElementLevelOverlap,
     ElementLevelCountdown,
     ElementLevelOverlay
 } ElementLevel;
