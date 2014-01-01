@@ -1,0 +1,2374 @@
+{
+    "xcode_project": "Zoo.xcodeproj", 
+    "java_sources": [], 
+    "pchs": [
+        "./Zoo/Prefix.pch"
+    ], 
+    "assets": [
+        {
+            "asset": "../../../../../Applications/Xcode5-DP.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/ResourceRules.plist", 
+            "target": "ResourceRules.plist"
+        }, 
+        {
+            "asset": "Zoo/Resources/Icon-72.png", 
+            "target": "Icon-72.png"
+        }, 
+        {
+            "asset": "Zoo/Resources/fps_images.png", 
+            "target": "fps_images.png"
+        }, 
+        {
+            "asset": "Zoo/Resources/Icon-Small.png", 
+            "target": "Icon-Small.png"
+        }, 
+        {
+            "asset": "Zoo/Resources/fps_images-ipadhd.png", 
+            "target": "fps_images-ipadhd.png"
+        }, 
+        {
+            "asset": "Zoo/Resources/fps_images-hd.png", 
+            "target": "fps_images-hd.png"
+        }, 
+        {
+            "asset": "Zoo/Resources/Icon-Small-50.png", 
+            "target": "Icon-Small-50.png"
+        }, 
+        {
+            "asset": "Zoo/Resources/Icon-Small@2x.png", 
+            "target": "Icon-Small@2x.png"
+        }, 
+        {
+            "asset": "Zoo/Resources/Icon.png", 
+            "target": "Icon.png"
+        }, 
+        {
+            "asset": "Zoo/Resources/Icon@2x.png", 
+            "target": "Icon@2x.png"
+        }, 
+        {
+            "asset": "Zoo/Resources/iTunesArtwork", 
+            "target": "iTunesArtwork"
+        }, 
+        {
+            "asset": "Zoo/libs/kazmath/src/ChangeLog", 
+            "target": "ChangeLog"
+        }, 
+        {
+            "asset": "Zoo/Resources/assets/.DS_Store", 
+            "target": "assets/.DS_Store"
+        }, 
+        {
+            "asset": "Zoo/Resources/assets/aharoni.TTF", 
+            "target": "assets/aharoni.TTF"
+        }, 
+        {
+            "asset": "Zoo/Resources/assets/conbelt.plist", 
+            "target": "assets/conbelt.plist"
+        }, 
+        {
+            "asset": "Zoo/Resources/assets/conbelt.png", 
+            "target": "assets/conbelt.png"
+        }, 
+        {
+            "asset": "Zoo/Resources/assets/countdown-hd.plist", 
+            "target": "assets/countdown-hd.plist"
+        }, 
+        {
+            "asset": "Zoo/Resources/assets/countdown-hd.png", 
+            "target": "assets/countdown-hd.png"
+        }, 
+        {
+            "asset": "Zoo/Resources/assets/countdown.plist", 
+            "target": "assets/countdown.plist"
+        }, 
+        {
+            "asset": "Zoo/Resources/assets/countdown.png", 
+            "target": "assets/countdown.png"
+        }, 
+        {
+            "asset": "Zoo/Resources/assets/four-hd.plist", 
+            "target": "assets/four-hd.plist"
+        }, 
+        {
+            "asset": "Zoo/Resources/assets/four-hd.png", 
+            "target": "assets/four-hd.png"
+        }, 
+        {
+            "asset": "Zoo/Resources/assets/four.plist", 
+            "target": "assets/four.plist"
+        }, 
+        {
+            "asset": "Zoo/Resources/assets/four.png", 
+            "target": "assets/four.png"
+        }, 
+        {
+            "asset": "Zoo/Resources/assets/four2-hd.plist", 
+            "target": "assets/four2-hd.plist"
+        }, 
+        {
+            "asset": "Zoo/Resources/assets/four2-hd.png", 
+            "target": "assets/four2-hd.png"
+        }, 
+        {
+            "asset": "Zoo/Resources/assets/four2.plist", 
+            "target": "assets/four2.plist"
+        }, 
+        {
+            "asset": "Zoo/Resources/assets/four2.png", 
+            "target": "assets/four2.png"
+        }, 
+        {
+            "asset": "Zoo/Resources/assets/freezebkgd-hd.png", 
+            "target": "assets/freezebkgd-hd.png"
+        }, 
+        {
+            "asset": "Zoo/Resources/assets/freezebkgd.png", 
+            "target": "assets/freezebkgd.png"
+        }, 
+        {
+            "asset": "Zoo/Resources/assets/HUD-hd.plist", 
+            "target": "assets/HUD-hd.plist"
+        }, 
+        {
+            "asset": "Zoo/Resources/assets/HUD-hd.png", 
+            "target": "assets/HUD-hd.png"
+        }, 
+        {
+            "asset": "Zoo/Resources/assets/HUD.plist", 
+            "target": "assets/HUD.plist"
+        }, 
+        {
+            "asset": "Zoo/Resources/assets/HUD.png", 
+            "target": "assets/HUD.png"
+        }, 
+        {
+            "asset": "Zoo/Resources/assets/loadingScreen-hd.jpg", 
+            "target": "assets/loadingScreen-hd.jpg"
+        }, 
+        {
+            "asset": "Zoo/Resources/assets/loadingScreen.jpg", 
+            "target": "assets/loadingScreen.jpg"
+        }, 
+        {
+            "asset": "Zoo/Resources/assets/mainBackground-hd.png", 
+            "target": "assets/mainBackground-hd.png"
+        }, 
+        {
+            "asset": "Zoo/Resources/assets/mainBackground.png", 
+            "target": "assets/mainBackground.png"
+        }, 
+        {
+            "asset": "Zoo/Resources/assets/mainMenu-hd.plist", 
+            "target": "assets/mainMenu-hd.plist"
+        }, 
+        {
+            "asset": "Zoo/Resources/assets/mainMenu-hd.png", 
+            "target": "assets/mainMenu-hd.png"
+        }, 
+        {
+            "asset": "Zoo/Resources/assets/mainMenu.plist", 
+            "target": "assets/mainMenu.plist"
+        }, 
+        {
+            "asset": "Zoo/Resources/assets/mainMenu.png", 
+            "target": "assets/mainMenu.png"
+        }, 
+        {
+            "asset": "Zoo/Resources/assets/playbkgd-hd.png", 
+            "target": "assets/playbkgd-hd.png"
+        }, 
+        {
+            "asset": "Zoo/Resources/assets/playbkgd.png", 
+            "target": "assets/playbkgd.png"
+        }, 
+        {
+            "asset": "Zoo/Resources/assets/playbkgdLeft.png", 
+            "target": "assets/playbkgdLeft.png"
+        }, 
+        {
+            "asset": "Zoo/Resources/assets/playbkgdRight.png", 
+            "target": "assets/playbkgdRight.png"
+        }, 
+        {
+            "asset": "Zoo/Resources/assets/animals/.DS_Store", 
+            "target": "assets/animals/.DS_Store"
+        }, 
+        {
+            "asset": "Zoo/Resources/assets/animals/elephantgold-hd.png", 
+            "target": "assets/animals/elephantgold-hd.png"
+        }, 
+        {
+            "asset": "Zoo/Resources/assets/animals/elephantgold.png", 
+            "target": "assets/animals/elephantgold.png"
+        }, 
+        {
+            "asset": "Zoo/Resources/assets/animals/hippogold-hd.png", 
+            "target": "assets/animals/hippogold-hd.png"
+        }, 
+        {
+            "asset": "Zoo/Resources/assets/animals/hippogold.png", 
+            "target": "assets/animals/hippogold.png"
+        }, 
+        {
+            "asset": "Zoo/Resources/assets/animals/penguingold-hd.png", 
+            "target": "assets/animals/penguingold-hd.png"
+        }, 
+        {
+            "asset": "Zoo/Resources/assets/animals/penguingold.png", 
+            "target": "assets/animals/penguingold.png"
+        }, 
+        {
+            "asset": "Zoo/Resources/assets/animals/pig-hd.png", 
+            "target": "assets/animals/pig-hd.png"
+        }, 
+        {
+            "asset": "Zoo/Resources/assets/animals/pig.png", 
+            "target": "assets/animals/pig.png"
+        }, 
+        {
+            "asset": "Zoo/Resources/assets/buttons/.DS_Store", 
+            "target": "assets/buttons/.DS_Store"
+        }, 
+        {
+            "asset": "Zoo/Resources/assets/buttons/htpb.png", 
+            "target": "assets/buttons/htpb.png"
+        }, 
+        {
+            "asset": "Zoo/Resources/assets/buttons/htpb@2x.png", 
+            "target": "assets/buttons/htpb@2x.png"
+        }, 
+        {
+            "asset": "Zoo/Resources/assets/buttons/htpn.png", 
+            "target": "assets/buttons/htpn.png"
+        }, 
+        {
+            "asset": "Zoo/Resources/assets/buttons/htpn@2x.png", 
+            "target": "assets/buttons/htpn@2x.png"
+        }, 
+        {
+            "asset": "Zoo/Resources/assets/buttons/mm.png", 
+            "target": "assets/buttons/mm.png"
+        }, 
+        {
+            "asset": "Zoo/Resources/assets/buttons/mm@2x.png", 
+            "target": "assets/buttons/mm@2x.png"
+        }, 
+        {
+            "asset": "Zoo/Resources/assets/buttons/optns-hd.png", 
+            "target": "assets/buttons/optns-hd.png"
+        }, 
+        {
+            "asset": "Zoo/Resources/assets/buttons/optns.png", 
+            "target": "assets/buttons/optns.png"
+        }, 
+        {
+            "asset": "Zoo/Resources/assets/buttons/p.png", 
+            "target": "assets/buttons/p.png"
+        }, 
+        {
+            "asset": "Zoo/Resources/assets/buttons/p@2x.png", 
+            "target": "assets/buttons/p@2x.png"
+        }, 
+        {
+            "asset": "Zoo/Resources/assets/buttons/pa-hd.png", 
+            "target": "assets/buttons/pa-hd.png"
+        }, 
+        {
+            "asset": "Zoo/Resources/assets/buttons/pa.png", 
+            "target": "assets/buttons/pa.png"
+        }, 
+        {
+            "asset": "Zoo/Resources/assets/buttons/quit-hd.png", 
+            "target": "assets/buttons/quit-hd.png"
+        }, 
+        {
+            "asset": "Zoo/Resources/assets/buttons/quit.png", 
+            "target": "assets/buttons/quit.png"
+        }, 
+        {
+            "asset": "Zoo/Resources/assets/buttons/rsme-hd.png", 
+            "target": "assets/buttons/rsme-hd.png"
+        }, 
+        {
+            "asset": "Zoo/Resources/assets/buttons/rsme.png", 
+            "target": "assets/buttons/rsme.png"
+        }, 
+        {
+            "asset": "Zoo/Resources/assets/buttons/rstrt-hd.png", 
+            "target": "assets/buttons/rstrt-hd.png"
+        }, 
+        {
+            "asset": "Zoo/Resources/assets/buttons/rstrt.png", 
+            "target": "assets/buttons/rstrt.png"
+        }, 
+        {
+            "asset": "Zoo/Resources/game.db", 
+            "target": "game.db"
+        }, 
+        {
+            "asset": "Default.png", 
+            "target": "Default.png"
+        }, 
+        {
+            "asset": "Default@2x.png", 
+            "target": "Default@2x.png"
+        }, 
+        {
+            "asset": "Zoo/Resources/menuMusic.mp3", 
+            "target": "menuMusic.mp3"
+        }, 
+        {
+            "asset": "Zoo/Resources/pickup.mp3", 
+            "target": "pickup.mp3"
+        }, 
+        {
+            "asset": "Zoo/Resources/gameLoop.mp3", 
+            "target": "gameLoop.mp3"
+        }, 
+        {
+            "asset": "Zoo/Resources/gameStop.mp3", 
+            "target": "gameStop.mp3"
+        }, 
+        {
+            "asset": "Zoo/Resources/countdown.mp3", 
+            "target": "countdown.mp3"
+        }, 
+        {
+            "asset": "Default-568h@2x.png", 
+            "target": "Default-568h@2x.png"
+        }, 
+        {
+            "asset": "Zoo/Resources/htp/.DS_Store", 
+            "target": "htp/.DS_Store"
+        }, 
+        {
+            "asset": "Zoo/Resources/htp/1.png", 
+            "target": "htp/1.png"
+        }, 
+        {
+            "asset": "Zoo/Resources/htp/10.png", 
+            "target": "htp/10.png"
+        }, 
+        {
+            "asset": "Zoo/Resources/htp/10@2x.png", 
+            "target": "htp/10@2x.png"
+        }, 
+        {
+            "asset": "Zoo/Resources/htp/11.png", 
+            "target": "htp/11.png"
+        }, 
+        {
+            "asset": "Zoo/Resources/htp/11@2x.png", 
+            "target": "htp/11@2x.png"
+        }, 
+        {
+            "asset": "Zoo/Resources/htp/12.png", 
+            "target": "htp/12.png"
+        }, 
+        {
+            "asset": "Zoo/Resources/htp/12@2x.png", 
+            "target": "htp/12@2x.png"
+        }, 
+        {
+            "asset": "Zoo/Resources/htp/13.png", 
+            "target": "htp/13.png"
+        }, 
+        {
+            "asset": "Zoo/Resources/htp/13@2x.png", 
+            "target": "htp/13@2x.png"
+        }, 
+        {
+            "asset": "Zoo/Resources/htp/14.png", 
+            "target": "htp/14.png"
+        }, 
+        {
+            "asset": "Zoo/Resources/htp/14@2x.png", 
+            "target": "htp/14@2x.png"
+        }, 
+        {
+            "asset": "Zoo/Resources/htp/15.png", 
+            "target": "htp/15.png"
+        }, 
+        {
+            "asset": "Zoo/Resources/htp/15@2x.png", 
+            "target": "htp/15@2x.png"
+        }, 
+        {
+            "asset": "Zoo/Resources/htp/16.png", 
+            "target": "htp/16.png"
+        }, 
+        {
+            "asset": "Zoo/Resources/htp/16@2x.png", 
+            "target": "htp/16@2x.png"
+        }, 
+        {
+            "asset": "Zoo/Resources/htp/17.png", 
+            "target": "htp/17.png"
+        }, 
+        {
+            "asset": "Zoo/Resources/htp/17@2x.png", 
+            "target": "htp/17@2x.png"
+        }, 
+        {
+            "asset": "Zoo/Resources/htp/18.png", 
+            "target": "htp/18.png"
+        }, 
+        {
+            "asset": "Zoo/Resources/htp/18@2x.png", 
+            "target": "htp/18@2x.png"
+        }, 
+        {
+            "asset": "Zoo/Resources/htp/19.png", 
+            "target": "htp/19.png"
+        }, 
+        {
+            "asset": "Zoo/Resources/htp/19@2x.png", 
+            "target": "htp/19@2x.png"
+        }, 
+        {
+            "asset": "Zoo/Resources/htp/1@2x.png", 
+            "target": "htp/1@2x.png"
+        }, 
+        {
+            "asset": "Zoo/Resources/htp/2.png", 
+            "target": "htp/2.png"
+        }, 
+        {
+            "asset": "Zoo/Resources/htp/20.png", 
+            "target": "htp/20.png"
+        }, 
+        {
+            "asset": "Zoo/Resources/htp/20@2x.png", 
+            "target": "htp/20@2x.png"
+        }, 
+        {
+            "asset": "Zoo/Resources/htp/2@2x.png", 
+            "target": "htp/2@2x.png"
+        }, 
+        {
+            "asset": "Zoo/Resources/htp/3.png", 
+            "target": "htp/3.png"
+        }, 
+        {
+            "asset": "Zoo/Resources/htp/3@2x.png", 
+            "target": "htp/3@2x.png"
+        }, 
+        {
+            "asset": "Zoo/Resources/htp/4.png", 
+            "target": "htp/4.png"
+        }, 
+        {
+            "asset": "Zoo/Resources/htp/4@2x.png", 
+            "target": "htp/4@2x.png"
+        }, 
+        {
+            "asset": "Zoo/Resources/htp/5.png", 
+            "target": "htp/5.png"
+        }, 
+        {
+            "asset": "Zoo/Resources/htp/5@2x.png", 
+            "target": "htp/5@2x.png"
+        }, 
+        {
+            "asset": "Zoo/Resources/htp/6.png", 
+            "target": "htp/6.png"
+        }, 
+        {
+            "asset": "Zoo/Resources/htp/6@2x.png", 
+            "target": "htp/6@2x.png"
+        }, 
+        {
+            "asset": "Zoo/Resources/htp/7.png", 
+            "target": "htp/7.png"
+        }, 
+        {
+            "asset": "Zoo/Resources/htp/7@2x.png", 
+            "target": "htp/7@2x.png"
+        }, 
+        {
+            "asset": "Zoo/Resources/htp/8.png", 
+            "target": "htp/8.png"
+        }, 
+        {
+            "asset": "Zoo/Resources/htp/8@2x.png", 
+            "target": "htp/8@2x.png"
+        }, 
+        {
+            "asset": "Zoo/Resources/htp/9.png", 
+            "target": "htp/9.png"
+        }, 
+        {
+            "asset": "Zoo/Resources/htp/9@2x.png", 
+            "target": "htp/9@2x.png"
+        }
+    ], 
+    "link_flags": [], 
+    "config": {
+        "FEATURES": [
+            "opengles2", 
+            "landscape"
+        ], 
+        "APPLICATION_IDENTIFIER": "com.tapastudio.junglebox", 
+        "APPLICATION_NAME": "WildExpress", 
+        "LONG_VERSION": "1.0", 
+        "TEMPLATE_VALUES": {
+            "PRODUCT_NAME": "Wild Express", 
+            "EXECUTABLE_NAME": "Wild Express"
+        }, 
+        "APPLICATION_FULL_NAME": "Wild Express"
+    }, 
+    "header_paths": [
+        {
+            "header_path": "Wild Express-generated-files.hmap", 
+            "type": "iquote", 
+            "hmap": {}
+        }, 
+        {
+            "header_path": "Wild Express-own-target-headers.hmap", 
+            "type": "I", 
+            "hmap": {}
+        }, 
+        {
+            "header_path": "Wild Express-all-target-headers.hmap", 
+            "type": "I", 
+            "hmap": {}
+        }, 
+        {
+            "header_path": "Wild Express-project-headers.hmap", 
+            "type": "iquote", 
+            "hmap": {
+                "CCTextureCache.h": {
+                    "prefix": "Zoo/libs/cocos2d/", 
+                    "suffix": "CCTextureCache.h", 
+                    "key": "CCTextureCache.h"
+                }, 
+                "CCActionGrid.h": {
+                    "prefix": "Zoo/libs/cocos2d/", 
+                    "suffix": "CCActionGrid.h", 
+                    "key": "CCActionGrid.h"
+                }, 
+                "ccShader_PositionTextureColor_vert.h": {
+                    "prefix": "Zoo/libs/cocos2d/", 
+                    "suffix": "ccShader_PositionTextureColor_vert.h", 
+                    "key": "ccShader_PositionTextureColor_vert.h"
+                }, 
+                "NSThread+performBlock.h": {
+                    "prefix": "Zoo/libs/cocos2d/Support/", 
+                    "suffix": "NSThread+performBlock.h", 
+                    "key": "NSThread+performBlock.h"
+                }, 
+                "ccShader_PositionTexture_uColor_frag.h": {
+                    "prefix": "Zoo/libs/cocos2d/", 
+                    "suffix": "ccShader_PositionTexture_uColor_frag.h", 
+                    "key": "ccShader_PositionTexture_uColor_frag.h"
+                }, 
+                "CCTMXTiledMap.h": {
+                    "prefix": "Zoo/libs/cocos2d/", 
+                    "suffix": "CCTMXTiledMap.h", 
+                    "key": "CCTMXTiledMap.h"
+                }, 
+                "CCTouchDelegateProtocol.h": {
+                    "prefix": "Zoo/libs/cocos2d/Platforms/iOS/", 
+                    "suffix": "CCTouchDelegateProtocol.h", 
+                    "key": "CCTouchDelegateProtocol.h"
+                }, 
+                "CDAudioManager.h": {
+                    "prefix": "Zoo/libs/CocosDenshion/", 
+                    "suffix": "CDAudioManager.h", 
+                    "key": "CDAudioManager.h"
+                }, 
+                "FMDatabase.h": {
+                    "prefix": "Zoo/libs/FMDB/", 
+                    "suffix": "FMDatabase.h", 
+                    "key": "FMDatabase.h"
+                }, 
+                "ccShader_PositionTexture_uColor_vert.h": {
+                    "prefix": "Zoo/libs/cocos2d/", 
+                    "suffix": "ccShader_PositionTexture_uColor_vert.h", 
+                    "key": "ccShader_PositionTexture_uColor_vert.h"
+                }, 
+                "CocosDenshion.h": {
+                    "prefix": "Zoo/libs/CocosDenshion/", 
+                    "suffix": "CocosDenshion.h", 
+                    "key": "CocosDenshion.h"
+                }, 
+                "CCActionProgressTimer.h": {
+                    "prefix": "Zoo/libs/cocos2d/", 
+                    "suffix": "CCActionProgressTimer.h", 
+                    "key": "CCActionProgressTimer.h"
+                }, 
+                "CCActionPageTurn3D.h": {
+                    "prefix": "Zoo/libs/cocos2d/", 
+                    "suffix": "CCActionPageTurn3D.h", 
+                    "key": "CCActionPageTurn3D.h"
+                }, 
+                "CCAtlasNode.h": {
+                    "prefix": "Zoo/libs/cocos2d/", 
+                    "suffix": "CCAtlasNode.h", 
+                    "key": "CCAtlasNode.h"
+                }, 
+                "CCLayer.h": {
+                    "prefix": "Zoo/libs/cocos2d/", 
+                    "suffix": "CCLayer.h", 
+                    "key": "CCLayer.h"
+                }, 
+                "FMDatabasePool.h": {
+                    "prefix": "Zoo/libs/FMDB/", 
+                    "suffix": "FMDatabasePool.h", 
+                    "key": "FMDatabasePool.h"
+                }, 
+                "ccConfig.h": {
+                    "prefix": "Zoo/libs/cocos2d/", 
+                    "suffix": "ccConfig.h", 
+                    "key": "ccConfig.h"
+                }, 
+                "CCAnimationCache.h": {
+                    "prefix": "Zoo/libs/cocos2d/", 
+                    "suffix": "CCAnimationCache.h", 
+                    "key": "CCAnimationCache.h"
+                }, 
+                "cocos2d.h": {
+                    "prefix": "Zoo/libs/cocos2d/", 
+                    "suffix": "cocos2d.h", 
+                    "key": "cocos2d.h"
+                }, 
+                "CCGrid.h": {
+                    "prefix": "Zoo/libs/cocos2d/", 
+                    "suffix": "CCGrid.h", 
+                    "key": "CCGrid.h"
+                }, 
+                "GameOverlayLayer.h": {
+                    "prefix": "Zoo/", 
+                    "suffix": "GameOverlayLayer.h", 
+                    "key": "GameOverlayLayer.h"
+                }, 
+                "ray2.h": {
+                    "prefix": "Zoo/libs/kazmath/include/kazmath/", 
+                    "suffix": "ray2.h", 
+                    "key": "ray2.h"
+                }, 
+                "CCTransition.h": {
+                    "prefix": "Zoo/libs/cocos2d/", 
+                    "suffix": "CCTransition.h", 
+                    "key": "CCTransition.h"
+                }, 
+                "CCSpriteFrameCache.h": {
+                    "prefix": "Zoo/libs/cocos2d/", 
+                    "suffix": "CCSpriteFrameCache.h", 
+                    "key": "CCSpriteFrameCache.h"
+                }, 
+                "CCGrabber.h": {
+                    "prefix": "Zoo/libs/cocos2d/", 
+                    "suffix": "CCGrabber.h", 
+                    "key": "CCGrabber.h"
+                }, 
+                "DragSprite.h": {
+                    "prefix": "Zoo/", 
+                    "suffix": "DragSprite.h", 
+                    "key": "DragSprite.h"
+                }, 
+                "CCProtocols.h": {
+                    "prefix": "Zoo/libs/cocos2d/", 
+                    "suffix": "CCProtocols.h", 
+                    "key": "CCProtocols.h"
+                }, 
+                "BoxSprite.h": {
+                    "prefix": "Zoo/", 
+                    "suffix": "BoxSprite.h", 
+                    "key": "BoxSprite.h"
+                }, 
+                "ccShader_Position_uColor_frag.h": {
+                    "prefix": "Zoo/libs/cocos2d/", 
+                    "suffix": "ccShader_Position_uColor_frag.h", 
+                    "key": "ccShader_Position_uColor_frag.h"
+                }, 
+                "CCArray.h": {
+                    "prefix": "Zoo/libs/cocos2d/Support/", 
+                    "suffix": "CCArray.h", 
+                    "key": "CCArray.h"
+                }, 
+                "ccCArray.h": {
+                    "prefix": "Zoo/libs/cocos2d/Support/", 
+                    "suffix": "ccCArray.h", 
+                    "key": "ccCArray.h"
+                }, 
+                "CCMenu.h": {
+                    "prefix": "Zoo/libs/cocos2d/", 
+                    "suffix": "CCMenu.h", 
+                    "key": "CCMenu.h"
+                }, 
+                "CCDrawingPrimitives.h": {
+                    "prefix": "Zoo/libs/cocos2d/", 
+                    "suffix": "CCDrawingPrimitives.h", 
+                    "key": "CCDrawingPrimitives.h"
+                }, 
+                "CCActionTween.h": {
+                    "prefix": "Zoo/libs/cocos2d/", 
+                    "suffix": "CCActionTween.h", 
+                    "key": "CCActionTween.h"
+                }, 
+                "ABGameKitHelper.h": {
+                    "prefix": "Zoo/libs/ABGameKitHelper/", 
+                    "suffix": "ABGameKitHelper.h", 
+                    "key": "ABGameKitHelper.h"
+                }, 
+                "CCTouchHandler.h": {
+                    "prefix": "Zoo/libs/cocos2d/Platforms/iOS/", 
+                    "suffix": "CCTouchHandler.h", 
+                    "key": "CCTouchHandler.h"
+                }, 
+                "NSData+AES256.h": {
+                    "prefix": "Zoo/libs/ABGameKitHelper/", 
+                    "suffix": "NSData+AES256.h", 
+                    "key": "NSData+AES256.h"
+                }, 
+                "ccShader_PositionColor_frag.h": {
+                    "prefix": "Zoo/libs/cocos2d/", 
+                    "suffix": "ccShader_PositionColor_frag.h", 
+                    "key": "ccShader_PositionColor_frag.h"
+                }, 
+                "CCEventDispatcher.h": {
+                    "prefix": "Zoo/libs/cocos2d/Platforms/Mac/", 
+                    "suffix": "CCEventDispatcher.h", 
+                    "key": "CCEventDispatcher.h"
+                }, 
+                "ccShader_PositionTextureColor_frag.h": {
+                    "prefix": "Zoo/libs/cocos2d/", 
+                    "suffix": "ccShader_PositionTextureColor_frag.h", 
+                    "key": "ccShader_PositionTextureColor_frag.h"
+                }, 
+                "CCTransitionProgress.h": {
+                    "prefix": "Zoo/libs/cocos2d/", 
+                    "suffix": "CCTransitionProgress.h", 
+                    "key": "CCTransitionProgress.h"
+                }, 
+                "CDOpenALSupport.h": {
+                    "prefix": "Zoo/libs/CocosDenshion/", 
+                    "suffix": "CDOpenALSupport.h", 
+                    "key": "CDOpenALSupport.h"
+                }, 
+                "ccShader_PositionColor_vert.h": {
+                    "prefix": "Zoo/libs/cocos2d/", 
+                    "suffix": "ccShader_PositionColor_vert.h", 
+                    "key": "ccShader_PositionColor_vert.h"
+                }, 
+                "CCVertex.h": {
+                    "prefix": "Zoo/libs/cocos2d/Support/", 
+                    "suffix": "CCVertex.h", 
+                    "key": "CCVertex.h"
+                }, 
+                "quaternion.h": {
+                    "prefix": "Zoo/libs/kazmath/include/kazmath/", 
+                    "suffix": "quaternion.h", 
+                    "key": "quaternion.h"
+                }, 
+                "TransformUtils.h": {
+                    "prefix": "Zoo/libs/cocos2d/Support/", 
+                    "suffix": "TransformUtils.h", 
+                    "key": "TransformUtils.h"
+                }, 
+                "CCSprite.h": {
+                    "prefix": "Zoo/libs/cocos2d/", 
+                    "suffix": "CCSprite.h", 
+                    "key": "CCSprite.h"
+                }, 
+                "neon_matrix_impl.h": {
+                    "prefix": "Zoo/libs/kazmath/include/kazmath/", 
+                    "suffix": "neon_matrix_impl.h", 
+                    "key": "neon_matrix_impl.h"
+                }, 
+                "ccGLStateCache.h": {
+                    "prefix": "Zoo/libs/cocos2d/", 
+                    "suffix": "ccGLStateCache.h", 
+                    "key": "ccGLStateCache.h"
+                }, 
+                "CCParallaxNode.h": {
+                    "prefix": "Zoo/libs/cocos2d/", 
+                    "suffix": "CCParallaxNode.h", 
+                    "key": "CCParallaxNode.h"
+                }, 
+                "kazmath.h": {
+                    "prefix": "Zoo/libs/kazmath/include/kazmath/", 
+                    "suffix": "kazmath.h", 
+                    "key": "kazmath.h"
+                }, 
+                "aabb.h": {
+                    "prefix": "Zoo/libs/kazmath/include/kazmath/", 
+                    "suffix": "aabb.h", 
+                    "key": "aabb.h"
+                }, 
+                "CCActionInterval.h": {
+                    "prefix": "Zoo/libs/cocos2d/", 
+                    "suffix": "CCActionInterval.h", 
+                    "key": "CCActionInterval.h"
+                }, 
+                "CCConfiguration.h": {
+                    "prefix": "Zoo/libs/cocos2d/", 
+                    "suffix": "CCConfiguration.h", 
+                    "key": "CCConfiguration.h"
+                }, 
+                "CCRenderTexture.h": {
+                    "prefix": "Zoo/libs/cocos2d/", 
+                    "suffix": "CCRenderTexture.h", 
+                    "key": "CCRenderTexture.h"
+                }, 
+                "vec4.h": {
+                    "prefix": "Zoo/libs/kazmath/include/kazmath/", 
+                    "suffix": "vec4.h", 
+                    "key": "vec4.h"
+                }, 
+                "FMResultSet.h": {
+                    "prefix": "Zoo/libs/FMDB/", 
+                    "suffix": "FMResultSet.h", 
+                    "key": "FMResultSet.h"
+                }, 
+                "CCActionGrid3D.h": {
+                    "prefix": "Zoo/libs/cocos2d/", 
+                    "suffix": "CCActionGrid3D.h", 
+                    "key": "CCActionGrid3D.h"
+                }, 
+                "TGAlib.h": {
+                    "prefix": "Zoo/libs/cocos2d/Support/", 
+                    "suffix": "TGAlib.h", 
+                    "key": "TGAlib.h"
+                }, 
+                "utlist.h": {
+                    "prefix": "Zoo/libs/cocos2d/Support/", 
+                    "suffix": "utlist.h", 
+                    "key": "utlist.h"
+                }, 
+                "CCTouchDispatcher.h": {
+                    "prefix": "Zoo/libs/cocos2d/Platforms/iOS/", 
+                    "suffix": "CCTouchDispatcher.h", 
+                    "key": "CCTouchDispatcher.h"
+                }, 
+                "CCScene.h": {
+                    "prefix": "Zoo/libs/cocos2d/", 
+                    "suffix": "CCScene.h", 
+                    "key": "CCScene.h"
+                }, 
+                "CCActionTiledGrid.h": {
+                    "prefix": "Zoo/libs/cocos2d/", 
+                    "suffix": "CCActionTiledGrid.h", 
+                    "key": "CCActionTiledGrid.h"
+                }, 
+                "OpenGL_Internal.h": {
+                    "prefix": "Zoo/libs/cocos2d/Support/", 
+                    "suffix": "OpenGL_Internal.h", 
+                    "key": "OpenGL_Internal.h"
+                }, 
+                "CCParticleSystem.h": {
+                    "prefix": "Zoo/libs/cocos2d/", 
+                    "suffix": "CCParticleSystem.h", 
+                    "key": "CCParticleSystem.h"
+                }, 
+                "SimpleAudioEngine.h": {
+                    "prefix": "Zoo/libs/CocosDenshion/", 
+                    "suffix": "SimpleAudioEngine.h", 
+                    "key": "SimpleAudioEngine.h"
+                }, 
+                "ccShaders.h": {
+                    "prefix": "Zoo/libs/cocos2d/", 
+                    "suffix": "ccShaders.h", 
+                    "key": "ccShaders.h"
+                }, 
+                "CGPointExtension.h": {
+                    "prefix": "Zoo/libs/cocos2d/Support/", 
+                    "suffix": "CGPointExtension.h", 
+                    "key": "CGPointExtension.h"
+                }, 
+                "plane.h": {
+                    "prefix": "Zoo/libs/kazmath/include/kazmath/", 
+                    "suffix": "plane.h", 
+                    "key": "plane.h"
+                }, 
+                "CCES2Renderer.h": {
+                    "prefix": "Zoo/libs/cocos2d/Platforms/iOS/", 
+                    "suffix": "CCES2Renderer.h", 
+                    "key": "CCES2Renderer.h"
+                }, 
+                "CCParticleExamples.h": {
+                    "prefix": "Zoo/libs/cocos2d/", 
+                    "suffix": "CCParticleExamples.h", 
+                    "key": "CCParticleExamples.h"
+                }, 
+                "CCAnimation.h": {
+                    "prefix": "Zoo/libs/cocos2d/", 
+                    "suffix": "CCAnimation.h", 
+                    "key": "CCAnimation.h"
+                }, 
+                "ActionManager.h": {
+                    "prefix": "Zoo/", 
+                    "suffix": "ActionManager.h", 
+                    "key": "ActionManager.h"
+                }, 
+                "ZipUtils.h": {
+                    "prefix": "Zoo/libs/cocos2d/Support/", 
+                    "suffix": "ZipUtils.h", 
+                    "key": "ZipUtils.h"
+                }, 
+                "Prefix.pch": {
+                    "prefix": "Zoo/", 
+                    "suffix": "Prefix.pch", 
+                    "key": "Prefix.pch"
+                }, 
+                "CCLabelBMFont.h": {
+                    "prefix": "Zoo/libs/cocos2d/", 
+                    "suffix": "CCLabelBMFont.h", 
+                    "key": "CCLabelBMFont.h"
+                }, 
+                "CCActionEase.h": {
+                    "prefix": "Zoo/libs/cocos2d/", 
+                    "suffix": "CCActionEase.h", 
+                    "key": "CCActionEase.h"
+                }, 
+                "CCProfiling.h": {
+                    "prefix": "Zoo/libs/cocos2d/Support/", 
+                    "suffix": "CCProfiling.h", 
+                    "key": "CCProfiling.h"
+                }, 
+                "CCGL.h": {
+                    "prefix": "Zoo/libs/cocos2d/Platforms/", 
+                    "suffix": "CCGL.h", 
+                    "key": "CCGL.h"
+                }, 
+                "GameManager.h": {
+                    "prefix": "Zoo/", 
+                    "suffix": "GameManager.h", 
+                    "key": "GameManager.h"
+                }, 
+                "CCActionCatmullRom.h": {
+                    "prefix": "Zoo/libs/cocos2d/", 
+                    "suffix": "CCActionCatmullRom.h", 
+                    "key": "CCActionCatmullRom.h"
+                }, 
+                "CCGLProgram.h": {
+                    "prefix": "Zoo/libs/cocos2d/", 
+                    "suffix": "CCGLProgram.h", 
+                    "key": "CCGLProgram.h"
+                }, 
+                "CCFileUtils.h": {
+                    "prefix": "Zoo/libs/cocos2d/Support/", 
+                    "suffix": "CCFileUtils.h", 
+                    "key": "CCFileUtils.h"
+                }, 
+                "matrix.h": {
+                    "prefix": "Zoo/libs/kazmath/include/kazmath/GL/", 
+                    "suffix": "matrix.h", 
+                    "key": "matrix.h"
+                }, 
+                "CCActionManager.h": {
+                    "prefix": "Zoo/libs/cocos2d/", 
+                    "suffix": "CCActionManager.h", 
+                    "key": "CCActionManager.h"
+                }, 
+                "CCMotionStreak.h": {
+                    "prefix": "Zoo/libs/cocos2d/", 
+                    "suffix": "CCMotionStreak.h", 
+                    "key": "CCMotionStreak.h"
+                }, 
+                "mat4.h": {
+                    "prefix": "Zoo/libs/kazmath/include/kazmath/", 
+                    "suffix": "mat4.h", 
+                    "key": "mat4.h"
+                }, 
+                "CCDirectorIOS.h": {
+                    "prefix": "Zoo/libs/cocos2d/Platforms/iOS/", 
+                    "suffix": "CCDirectorIOS.h", 
+                    "key": "CCDirectorIOS.h"
+                }, 
+                "CCNode+Debug.h": {
+                    "prefix": "Zoo/libs/cocos2d/", 
+                    "suffix": "CCNode+Debug.h", 
+                    "key": "CCNode+Debug.h"
+                }, 
+                "FMDatabaseAdditions.h": {
+                    "prefix": "Zoo/libs/FMDB/", 
+                    "suffix": "FMDatabaseAdditions.h", 
+                    "key": "FMDatabaseAdditions.h"
+                }, 
+                "CCAction.h": {
+                    "prefix": "Zoo/libs/cocos2d/", 
+                    "suffix": "CCAction.h", 
+                    "key": "CCAction.h"
+                }, 
+                "CCSpriteBatchNode.h": {
+                    "prefix": "Zoo/libs/cocos2d/", 
+                    "suffix": "CCSpriteBatchNode.h", 
+                    "key": "CCSpriteBatchNode.h"
+                }, 
+                "CCTMXObjectGroup.h": {
+                    "prefix": "Zoo/libs/cocos2d/", 
+                    "suffix": "CCTMXObjectGroup.h", 
+                    "key": "CCTMXObjectGroup.h"
+                }, 
+                "HowToPlayViewController.h": {
+                    "prefix": "Zoo/", 
+                    "suffix": "HowToPlayViewController.h", 
+                    "key": "HowToPlayViewController.h"
+                }, 
+                "CCTMXXMLParser.h": {
+                    "prefix": "Zoo/libs/cocos2d/", 
+                    "suffix": "CCTMXXMLParser.h", 
+                    "key": "CCTMXXMLParser.h"
+                }, 
+                "ccTypes.h": {
+                    "prefix": "Zoo/libs/cocos2d/", 
+                    "suffix": "ccTypes.h", 
+                    "key": "ccTypes.h"
+                }, 
+                "CCActionCamera.h": {
+                    "prefix": "Zoo/libs/cocos2d/", 
+                    "suffix": "CCActionCamera.h", 
+                    "key": "CCActionCamera.h"
+                }, 
+                "ccShader_PositionTextureA8Color_vert.h": {
+                    "prefix": "Zoo/libs/cocos2d/", 
+                    "suffix": "ccShader_PositionTextureA8Color_vert.h", 
+                    "key": "ccShader_PositionTextureA8Color_vert.h"
+                }, 
+                "CDConfig.h": {
+                    "prefix": "Zoo/libs/CocosDenshion/", 
+                    "suffix": "CDConfig.h", 
+                    "key": "CDConfig.h"
+                }, 
+                "CCLabelTTF.h": {
+                    "prefix": "Zoo/libs/cocos2d/", 
+                    "suffix": "CCLabelTTF.h", 
+                    "key": "CCLabelTTF.h"
+                }, 
+                "RootViewController.h": {
+                    "prefix": "Zoo/", 
+                    "suffix": "RootViewController.h", 
+                    "key": "RootViewController.h"
+                }, 
+                "ccShader_Position_uColor_vert.h": {
+                    "prefix": "Zoo/libs/cocos2d/", 
+                    "suffix": "ccShader_Position_uColor_vert.h", 
+                    "key": "ccShader_Position_uColor_vert.h"
+                }, 
+                "uthash.h": {
+                    "prefix": "Zoo/libs/cocos2d/Support/", 
+                    "suffix": "uthash.h", 
+                    "key": "uthash.h"
+                }, 
+                "mat4stack.h": {
+                    "prefix": "Zoo/libs/kazmath/include/kazmath/GL/", 
+                    "suffix": "mat4stack.h", 
+                    "key": "mat4stack.h"
+                }, 
+                "CCNS.h": {
+                    "prefix": "Zoo/libs/cocos2d/Platforms/", 
+                    "suffix": "CCNS.h", 
+                    "key": "CCNS.h"
+                }, 
+                "CCTileMapAtlas.h": {
+                    "prefix": "Zoo/libs/cocos2d/", 
+                    "suffix": "CCTileMapAtlas.h", 
+                    "key": "CCTileMapAtlas.h"
+                }, 
+                "CCTMXLayer.h": {
+                    "prefix": "Zoo/libs/cocos2d/", 
+                    "suffix": "CCTMXLayer.h", 
+                    "key": "CCTMXLayer.h"
+                }, 
+                "LoadingLayer.h": {
+                    "prefix": "Zoo/", 
+                    "suffix": "LoadingLayer.h", 
+                    "key": "LoadingLayer.h"
+                }, 
+                "CCActionInstant.h": {
+                    "prefix": "Zoo/libs/cocos2d/", 
+                    "suffix": "CCActionInstant.h", 
+                    "key": "CCActionInstant.h"
+                }, 
+                "CCSpriteFrame.h": {
+                    "prefix": "Zoo/libs/cocos2d/", 
+                    "suffix": "CCSpriteFrame.h", 
+                    "key": "CCSpriteFrame.h"
+                }, 
+                "CCScheduler.h": {
+                    "prefix": "Zoo/libs/cocos2d/", 
+                    "suffix": "CCScheduler.h", 
+                    "key": "CCScheduler.h"
+                }, 
+                "ccShader_PositionTextureColorAlphaTest_frag.h": {
+                    "prefix": "Zoo/libs/cocos2d/", 
+                    "suffix": "ccShader_PositionTextureColorAlphaTest_frag.h", 
+                    "key": "ccShader_PositionTextureColorAlphaTest_frag.h"
+                }, 
+                "CCESRenderer.h": {
+                    "prefix": "Zoo/libs/cocos2d/Platforms/iOS/", 
+                    "suffix": "CCESRenderer.h", 
+                    "key": "CCESRenderer.h"
+                }, 
+                "GameLayer.h": {
+                    "prefix": "Zoo/", 
+                    "suffix": "GameLayer.h", 
+                    "key": "GameLayer.h"
+                }, 
+                "CCTransitionPageTurn.h": {
+                    "prefix": "Zoo/libs/cocos2d/", 
+                    "suffix": "CCTransitionPageTurn.h", 
+                    "key": "CCTransitionPageTurn.h"
+                }, 
+                "base64.h": {
+                    "prefix": "Zoo/libs/cocos2d/Support/", 
+                    "suffix": "base64.h", 
+                    "key": "base64.h"
+                }, 
+                "ccDeprecated.h": {
+                    "prefix": "Zoo/libs/cocos2d/", 
+                    "suffix": "ccDeprecated.h", 
+                    "key": "ccDeprecated.h"
+                }, 
+                "CCParticleBatchNode.h": {
+                    "prefix": "Zoo/libs/cocos2d/", 
+                    "suffix": "CCParticleBatchNode.h", 
+                    "key": "CCParticleBatchNode.h"
+                }, 
+                "MenuLayer.h": {
+                    "prefix": "Zoo/", 
+                    "suffix": "MenuLayer.h", 
+                    "key": "MenuLayer.h"
+                }, 
+                "ccShader_PositionTexture_frag.h": {
+                    "prefix": "Zoo/libs/cocos2d/", 
+                    "suffix": "ccShader_PositionTexture_frag.h", 
+                    "key": "ccShader_PositionTexture_frag.h"
+                }, 
+                "CCGLView.h": {
+                    "prefix": "Zoo/libs/cocos2d/Platforms/iOS/", 
+                    "suffix": "CCGLView.h", 
+                    "key": "CCGLView.h"
+                }, 
+                "CCParticleSystemQuad.h": {
+                    "prefix": "Zoo/libs/cocos2d/", 
+                    "suffix": "CCParticleSystemQuad.h", 
+                    "key": "CCParticleSystemQuad.h"
+                }, 
+                "vec2.h": {
+                    "prefix": "Zoo/libs/kazmath/include/kazmath/", 
+                    "suffix": "vec2.h", 
+                    "key": "vec2.h"
+                }, 
+                "ccMacros.h": {
+                    "prefix": "Zoo/libs/cocos2d/", 
+                    "suffix": "ccMacros.h", 
+                    "key": "ccMacros.h"
+                }, 
+                "ccShader_PositionTexture_vert.h": {
+                    "prefix": "Zoo/libs/cocos2d/", 
+                    "suffix": "ccShader_PositionTexture_vert.h", 
+                    "key": "ccShader_PositionTexture_vert.h"
+                }, 
+                "CCLabelAtlas.h": {
+                    "prefix": "Zoo/libs/cocos2d/", 
+                    "suffix": "CCLabelAtlas.h", 
+                    "key": "CCLabelAtlas.h"
+                }, 
+                "AppDelegate.h": {
+                    "prefix": "Zoo/", 
+                    "suffix": "AppDelegate.h", 
+                    "key": "AppDelegate.h"
+                }, 
+                "RadialGradientLayer.h": {
+                    "prefix": "Zoo/", 
+                    "suffix": "RadialGradientLayer.h", 
+                    "key": "RadialGradientLayer.h"
+                }, 
+                "mat3.h": {
+                    "prefix": "Zoo/libs/kazmath/include/kazmath/", 
+                    "suffix": "mat3.h", 
+                    "key": "mat3.h"
+                }, 
+                "CCTexture2D.h": {
+                    "prefix": "Zoo/libs/cocos2d/", 
+                    "suffix": "CCTexture2D.h", 
+                    "key": "CCTexture2D.h"
+                }, 
+                "CCTextureAtlas.h": {
+                    "prefix": "Zoo/libs/cocos2d/", 
+                    "suffix": "CCTextureAtlas.h", 
+                    "key": "CCTextureAtlas.h"
+                }, 
+                "utility.h": {
+                    "prefix": "Zoo/libs/kazmath/include/kazmath/", 
+                    "suffix": "utility.h", 
+                    "key": "utility.h"
+                }, 
+                "FMDatabaseQueue.h": {
+                    "prefix": "Zoo/libs/FMDB/", 
+                    "suffix": "FMDatabaseQueue.h", 
+                    "key": "FMDatabaseQueue.h"
+                }, 
+                "vec3.h": {
+                    "prefix": "Zoo/libs/kazmath/include/kazmath/", 
+                    "suffix": "vec3.h", 
+                    "key": "vec3.h"
+                }, 
+                "CCWindow.h": {
+                    "prefix": "Zoo/libs/cocos2d/Platforms/Mac/", 
+                    "suffix": "CCWindow.h", 
+                    "key": "CCWindow.h"
+                }, 
+                "CCShaderCache.h": {
+                    "prefix": "Zoo/libs/cocos2d/", 
+                    "suffix": "CCShaderCache.h", 
+                    "key": "CCShaderCache.h"
+                }, 
+                "CCProgressTimer.h": {
+                    "prefix": "Zoo/libs/cocos2d/", 
+                    "suffix": "CCProgressTimer.h", 
+                    "key": "CCProgressTimer.h"
+                }, 
+                "CCNode.h": {
+                    "prefix": "Zoo/libs/cocos2d/", 
+                    "suffix": "CCNode.h", 
+                    "key": "CCNode.h"
+                }, 
+                "CCTexturePVR.h": {
+                    "prefix": "Zoo/libs/cocos2d/", 
+                    "suffix": "CCTexturePVR.h", 
+                    "key": "CCTexturePVR.h"
+                }, 
+                "ccUtils.h": {
+                    "prefix": "Zoo/libs/cocos2d/Support/", 
+                    "suffix": "ccUtils.h", 
+                    "key": "ccUtils.h"
+                }, 
+                "ccShader_PositionTextureA8Color_frag.h": {
+                    "prefix": "Zoo/libs/cocos2d/", 
+                    "suffix": "ccShader_PositionTextureA8Color_frag.h", 
+                    "key": "ccShader_PositionTextureA8Color_frag.h"
+                }, 
+                "CCDirector.h": {
+                    "prefix": "Zoo/libs/cocos2d/", 
+                    "suffix": "CCDirector.h", 
+                    "key": "CCDirector.h"
+                }, 
+                "CCMenuItem.h": {
+                    "prefix": "Zoo/libs/cocos2d/", 
+                    "suffix": "CCMenuItem.h", 
+                    "key": "CCMenuItem.h"
+                }, 
+                "CCCamera.h": {
+                    "prefix": "Zoo/libs/cocos2d/", 
+                    "suffix": "CCCamera.h", 
+                    "key": "CCCamera.h"
+                }, 
+                "CCDirectorMac.h": {
+                    "prefix": "Zoo/libs/cocos2d/Platforms/Mac/", 
+                    "suffix": "CCDirectorMac.h", 
+                    "key": "CCDirectorMac.h"
+                }
+            }
+        }, 
+        {
+            "header_path": "Zoo/libs/kazmath/include", 
+            "type": "I"
+        }
+    ], 
+    "modules": [], 
+    "sources": [
+        {
+            "source": "Zoo/ActionManager.m", 
+            "header_paths": [], 
+            "flags": [], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/AppDelegate.m", 
+            "header_paths": [], 
+            "flags": [], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/BoxSprite.m", 
+            "header_paths": [], 
+            "flags": [], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/DragSprite.m", 
+            "header_paths": [], 
+            "flags": [], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/GameLayer.m", 
+            "header_paths": [], 
+            "flags": [], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/GameManager.m", 
+            "header_paths": [], 
+            "flags": [], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/GameOverlayLayer.m", 
+            "header_paths": [], 
+            "flags": [], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/HowToPlayViewController.m", 
+            "header_paths": [], 
+            "flags": [], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/LoadingLayer.m", 
+            "header_paths": [], 
+            "flags": [], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/MenuLayer.m", 
+            "header_paths": [], 
+            "flags": [], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/RadialGradientLayer.m", 
+            "header_paths": [], 
+            "flags": [], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/RootViewController.m", 
+            "header_paths": [], 
+            "flags": [], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/Utility.m", 
+            "header_paths": [], 
+            "flags": [], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/ABGameKitHelper/ABGameKitHelper.m", 
+            "header_paths": [], 
+            "flags": [
+                "-fno-objc-arc"
+            ], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/ABGameKitHelper/NSData+AES256.m", 
+            "header_paths": [], 
+            "flags": [
+                "-fno-objc-arc"
+            ], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/CocosDenshion/CDAudioManager.m", 
+            "header_paths": [], 
+            "flags": [
+                "-fno-objc-arc"
+            ], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/CocosDenshion/CDOpenALSupport.m", 
+            "header_paths": [], 
+            "flags": [
+                "-fno-objc-arc"
+            ], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/CocosDenshion/CocosDenshion.m", 
+            "header_paths": [], 
+            "flags": [
+                "-fno-objc-arc"
+            ], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/CocosDenshion/SimpleAudioEngine.m", 
+            "header_paths": [], 
+            "flags": [
+                "-fno-objc-arc"
+            ], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/FMDB/FMDatabase.m", 
+            "header_paths": [], 
+            "flags": [
+                "-fno-objc-arc"
+            ], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/FMDB/FMDatabaseAdditions.m", 
+            "header_paths": [], 
+            "flags": [
+                "-fno-objc-arc"
+            ], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/FMDB/FMDatabasePool.m", 
+            "header_paths": [], 
+            "flags": [
+                "-fno-objc-arc"
+            ], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/FMDB/FMDatabaseQueue.m", 
+            "header_paths": [], 
+            "flags": [
+                "-fno-objc-arc"
+            ], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/FMDB/FMResultSet.m", 
+            "header_paths": [], 
+            "flags": [
+                "-fno-objc-arc"
+            ], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/cocos2d/CCAction.m", 
+            "header_paths": [], 
+            "flags": [
+                "-fno-objc-arc"
+            ], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/cocos2d/CCActionCamera.m", 
+            "header_paths": [], 
+            "flags": [
+                "-fno-objc-arc"
+            ], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/cocos2d/CCActionCatmullRom.m", 
+            "header_paths": [], 
+            "flags": [
+                "-fno-objc-arc"
+            ], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/cocos2d/CCActionEase.m", 
+            "header_paths": [], 
+            "flags": [
+                "-fno-objc-arc"
+            ], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/cocos2d/CCActionGrid.m", 
+            "header_paths": [], 
+            "flags": [
+                "-fno-objc-arc"
+            ], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/cocos2d/CCActionGrid3D.m", 
+            "header_paths": [], 
+            "flags": [
+                "-fno-objc-arc"
+            ], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/cocos2d/CCActionInstant.m", 
+            "header_paths": [], 
+            "flags": [
+                "-fno-objc-arc"
+            ], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/cocos2d/CCActionInterval.m", 
+            "header_paths": [], 
+            "flags": [
+                "-fno-objc-arc"
+            ], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/cocos2d/CCActionManager.m", 
+            "header_paths": [], 
+            "flags": [
+                "-fno-objc-arc"
+            ], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/cocos2d/CCActionPageTurn3D.m", 
+            "header_paths": [], 
+            "flags": [
+                "-fno-objc-arc"
+            ], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/cocos2d/CCActionProgressTimer.m", 
+            "header_paths": [], 
+            "flags": [
+                "-fno-objc-arc"
+            ], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/cocos2d/CCActionTiledGrid.m", 
+            "header_paths": [], 
+            "flags": [
+                "-fno-objc-arc"
+            ], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/cocos2d/CCActionTween.m", 
+            "header_paths": [], 
+            "flags": [
+                "-fno-objc-arc"
+            ], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/cocos2d/CCAnimation.m", 
+            "header_paths": [], 
+            "flags": [
+                "-fno-objc-arc"
+            ], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/cocos2d/CCAnimationCache.m", 
+            "header_paths": [], 
+            "flags": [
+                "-fno-objc-arc"
+            ], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/cocos2d/CCAtlasNode.m", 
+            "header_paths": [], 
+            "flags": [
+                "-fno-objc-arc"
+            ], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/cocos2d/CCCamera.m", 
+            "header_paths": [], 
+            "flags": [
+                "-fno-objc-arc"
+            ], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/cocos2d/CCConfiguration.m", 
+            "header_paths": [], 
+            "flags": [
+                "-fno-objc-arc"
+            ], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/cocos2d/CCDirector.m", 
+            "header_paths": [], 
+            "flags": [
+                "-fno-objc-arc"
+            ], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/cocos2d/CCDrawingPrimitives.m", 
+            "header_paths": [], 
+            "flags": [
+                "-fno-objc-arc"
+            ], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/cocos2d/CCGLProgram.m", 
+            "header_paths": [], 
+            "flags": [
+                "-fno-objc-arc"
+            ], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/cocos2d/CCGrabber.m", 
+            "header_paths": [], 
+            "flags": [
+                "-fno-objc-arc"
+            ], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/cocos2d/CCGrid.m", 
+            "header_paths": [], 
+            "flags": [
+                "-fno-objc-arc"
+            ], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/cocos2d/CCLabelAtlas.m", 
+            "header_paths": [], 
+            "flags": [
+                "-fno-objc-arc"
+            ], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/cocos2d/CCLabelBMFont.m", 
+            "header_paths": [], 
+            "flags": [
+                "-fno-objc-arc"
+            ], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/cocos2d/CCLabelTTF.m", 
+            "header_paths": [], 
+            "flags": [
+                "-fno-objc-arc"
+            ], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/cocos2d/CCLayer.m", 
+            "header_paths": [], 
+            "flags": [
+                "-fno-objc-arc"
+            ], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/cocos2d/CCMenu.m", 
+            "header_paths": [], 
+            "flags": [
+                "-fno-objc-arc"
+            ], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/cocos2d/CCMenuItem.m", 
+            "header_paths": [], 
+            "flags": [
+                "-fno-objc-arc"
+            ], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/cocos2d/CCMotionStreak.m", 
+            "header_paths": [], 
+            "flags": [
+                "-fno-objc-arc"
+            ], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/cocos2d/CCNode+Debug.m", 
+            "header_paths": [], 
+            "flags": [
+                "-fno-objc-arc"
+            ], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/cocos2d/CCNode.m", 
+            "header_paths": [], 
+            "flags": [
+                "-fno-objc-arc"
+            ], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/cocos2d/CCParallaxNode.m", 
+            "header_paths": [], 
+            "flags": [
+                "-fno-objc-arc"
+            ], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/cocos2d/CCParticleBatchNode.m", 
+            "header_paths": [], 
+            "flags": [
+                "-fno-objc-arc"
+            ], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/cocos2d/CCParticleExamples.m", 
+            "header_paths": [], 
+            "flags": [
+                "-fno-objc-arc"
+            ], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/cocos2d/CCParticleSystem.m", 
+            "header_paths": [], 
+            "flags": [
+                "-fno-objc-arc"
+            ], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/cocos2d/CCParticleSystemQuad.m", 
+            "header_paths": [], 
+            "flags": [
+                "-fno-objc-arc"
+            ], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/cocos2d/CCProgressTimer.m", 
+            "header_paths": [], 
+            "flags": [
+                "-fno-objc-arc"
+            ], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/cocos2d/CCRenderTexture.m", 
+            "header_paths": [], 
+            "flags": [
+                "-fno-objc-arc"
+            ], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/cocos2d/CCScene.m", 
+            "header_paths": [], 
+            "flags": [
+                "-fno-objc-arc"
+            ], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/cocos2d/CCScheduler.m", 
+            "header_paths": [], 
+            "flags": [
+                "-fno-objc-arc"
+            ], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/cocos2d/CCShaderCache.m", 
+            "header_paths": [], 
+            "flags": [
+                "-fno-objc-arc"
+            ], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/cocos2d/CCSprite.m", 
+            "header_paths": [], 
+            "flags": [
+                "-fno-objc-arc"
+            ], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/cocos2d/CCSpriteBatchNode.m", 
+            "header_paths": [], 
+            "flags": [
+                "-fno-objc-arc"
+            ], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/cocos2d/CCSpriteFrame.m", 
+            "header_paths": [], 
+            "flags": [
+                "-fno-objc-arc"
+            ], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/cocos2d/CCSpriteFrameCache.m", 
+            "header_paths": [], 
+            "flags": [
+                "-fno-objc-arc"
+            ], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/cocos2d/CCTMXLayer.m", 
+            "header_paths": [], 
+            "flags": [
+                "-fno-objc-arc"
+            ], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/cocos2d/CCTMXObjectGroup.m", 
+            "header_paths": [], 
+            "flags": [
+                "-fno-objc-arc"
+            ], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/cocos2d/CCTMXTiledMap.m", 
+            "header_paths": [], 
+            "flags": [
+                "-fno-objc-arc"
+            ], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/cocos2d/CCTMXXMLParser.m", 
+            "header_paths": [], 
+            "flags": [
+                "-fno-objc-arc"
+            ], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/cocos2d/CCTexture2D.m", 
+            "header_paths": [], 
+            "flags": [
+                "-fno-objc-arc"
+            ], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/cocos2d/CCTextureAtlas.m", 
+            "header_paths": [], 
+            "flags": [
+                "-fno-objc-arc"
+            ], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/cocos2d/CCTextureCache.m", 
+            "header_paths": [], 
+            "flags": [
+                "-fno-objc-arc"
+            ], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/cocos2d/CCTexturePVR.m", 
+            "header_paths": [], 
+            "flags": [
+                "-fno-objc-arc"
+            ], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/cocos2d/CCTileMapAtlas.m", 
+            "header_paths": [], 
+            "flags": [
+                "-fno-objc-arc"
+            ], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/cocos2d/CCTransition.m", 
+            "header_paths": [], 
+            "flags": [
+                "-fno-objc-arc"
+            ], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/cocos2d/CCTransitionPageTurn.m", 
+            "header_paths": [], 
+            "flags": [
+                "-fno-objc-arc"
+            ], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/cocos2d/CCTransitionProgress.m", 
+            "header_paths": [], 
+            "flags": [
+                "-fno-objc-arc"
+            ], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/cocos2d/Platforms/Mac/CCDirectorMac.m", 
+            "header_paths": [], 
+            "flags": [
+                "-fno-objc-arc"
+            ], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/cocos2d/Platforms/Mac/CCEventDispatcher.m", 
+            "header_paths": [], 
+            "flags": [
+                "-fno-objc-arc"
+            ], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/cocos2d/Platforms/Mac/CCGLView.m", 
+            "header_paths": [], 
+            "flags": [
+                "-fno-objc-arc"
+            ], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/cocos2d/Platforms/Mac/CCWindow.m", 
+            "header_paths": [], 
+            "flags": [
+                "-fno-objc-arc"
+            ], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/cocos2d/Platforms/iOS/CCDirectorIOS.m", 
+            "header_paths": [], 
+            "flags": [
+                "-fno-objc-arc"
+            ], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/cocos2d/Platforms/iOS/CCES2Renderer.m", 
+            "header_paths": [], 
+            "flags": [
+                "-fno-objc-arc"
+            ], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/cocos2d/Platforms/iOS/CCGLView.m", 
+            "header_paths": [], 
+            "flags": [
+                "-fno-objc-arc"
+            ], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/cocos2d/Platforms/iOS/CCTouchDispatcher.m", 
+            "header_paths": [], 
+            "flags": [
+                "-fno-objc-arc"
+            ], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/cocos2d/Platforms/iOS/CCTouchHandler.m", 
+            "header_paths": [], 
+            "flags": [
+                "-fno-objc-arc"
+            ], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/cocos2d/Support/CCArray.m", 
+            "header_paths": [], 
+            "flags": [
+                "-fno-objc-arc"
+            ], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/cocos2d/Support/CCFileUtils.m", 
+            "header_paths": [], 
+            "flags": [
+                "-fno-objc-arc"
+            ], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/cocos2d/Support/CCProfiling.m", 
+            "header_paths": [], 
+            "flags": [
+                "-fno-objc-arc"
+            ], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/cocos2d/Support/CCVertex.m", 
+            "header_paths": [], 
+            "flags": [
+                "-fno-objc-arc"
+            ], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/cocos2d/Support/CGPointExtension.m", 
+            "header_paths": [], 
+            "flags": [
+                "-fno-objc-arc"
+            ], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/cocos2d/Support/NSThread+performBlock.m", 
+            "header_paths": [], 
+            "flags": [
+                "-fno-objc-arc"
+            ], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/cocos2d/Support/TGAlib.m", 
+            "header_paths": [], 
+            "flags": [
+                "-fno-objc-arc"
+            ], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/cocos2d/Support/TransformUtils.m", 
+            "header_paths": [], 
+            "flags": [
+                "-fno-objc-arc"
+            ], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/cocos2d/Support/ZipUtils.m", 
+            "header_paths": [], 
+            "flags": [
+                "-fno-objc-arc"
+            ], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/cocos2d/Support/base64.c", 
+            "header_paths": [], 
+            "flags": [], 
+            "language": "c", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/cocos2d/Support/ccCArray.m", 
+            "header_paths": [], 
+            "flags": [
+                "-fno-objc-arc"
+            ], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/cocos2d/Support/ccUtils.c", 
+            "header_paths": [], 
+            "flags": [], 
+            "language": "c", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/cocos2d/ccDeprecated.m", 
+            "header_paths": [], 
+            "flags": [
+                "-fno-objc-arc"
+            ], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/cocos2d/ccGLStateCache.m", 
+            "header_paths": [], 
+            "flags": [
+                "-fno-objc-arc"
+            ], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/cocos2d/ccShaders.m", 
+            "header_paths": [], 
+            "flags": [
+                "-fno-objc-arc"
+            ], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/cocos2d/cocos2d.m", 
+            "header_paths": [], 
+            "flags": [
+                "-fno-objc-arc"
+            ], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/kazmath/src/GL/mat4stack.c", 
+            "header_paths": [], 
+            "flags": [], 
+            "language": "c", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/kazmath/src/GL/matrix.c", 
+            "header_paths": [], 
+            "flags": [], 
+            "language": "c", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/kazmath/src/aabb.c", 
+            "header_paths": [], 
+            "flags": [], 
+            "language": "c", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/kazmath/src/mat3.c", 
+            "header_paths": [], 
+            "flags": [], 
+            "language": "c", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/kazmath/src/mat4.c", 
+            "header_paths": [], 
+            "flags": [], 
+            "language": "c", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/kazmath/src/neon_matrix_impl.c", 
+            "header_paths": [], 
+            "flags": [], 
+            "language": "c", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/kazmath/src/plane.c", 
+            "header_paths": [], 
+            "flags": [], 
+            "language": "c", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/kazmath/src/quaternion.c", 
+            "header_paths": [], 
+            "flags": [], 
+            "language": "c", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/kazmath/src/ray2.c", 
+            "header_paths": [], 
+            "flags": [], 
+            "language": "c", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/kazmath/src/utility.c", 
+            "header_paths": [], 
+            "flags": [], 
+            "language": "c", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/kazmath/src/vec2.c", 
+            "header_paths": [], 
+            "flags": [], 
+            "language": "c", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/kazmath/src/vec3.c", 
+            "header_paths": [], 
+            "flags": [], 
+            "language": "c", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/libs/kazmath/src/vec4.c", 
+            "header_paths": [], 
+            "flags": [], 
+            "language": "c", 
+            "defines": {}
+        }, 
+        {
+            "source": "Zoo/main.m", 
+            "header_paths": [], 
+            "flags": [
+                "-fno-objc-arc"
+            ], 
+            "language": "objc", 
+            "defines": {}
+        }
+    ], 
+    "version": "1", 
+    "flags": [
+        "-fwritable-strings", 
+        "-fobjc-arc", 
+        "-fasm-blocks", 
+        {
+            "flag": "-std=gnu99", 
+            "not_type": "c++"
+        }, 
+        {
+            "flag": "-fgnu-keywords", 
+            "not_type": "c++"
+        }, 
+        "-fno-asm", 
+        "-fpascal-strings", 
+        "-Wempty-body", 
+        "-Wno-deprecated-declarations", 
+        "-Wreturn-type", 
+        "-Wswitch", 
+        "-Wparentheses", 
+        "-Wformat", 
+        "-Wuninitialized", 
+        "-Wunused-function", 
+        "-Wunused-value", 
+        "-Wunused-variable", 
+        {
+            "flag": "-Winvalid-offsetof", 
+            "type": "c++"
+        }, 
+        {
+            "flag": "-Wprotocol", 
+            "type": "objc"
+        }, 
+        {
+            "flag": "-Wundeclared-selector", 
+            "type": "objc"
+        }
+    ], 
+    "infoplists": [
+        "./Zoo/Resources/Info.plist"
+    ], 
+    "deps": [
+        "UIKit", 
+        "AudioToolbox", 
+        "QuartzCore", 
+        "OpenGLES", 
+        "OpenAL", 
+        "AVFoundation", 
+        "UIKit", 
+        "Foundation", 
+        "CoreGraphics", 
+        "GameKit"
+    ], 
+    "libs": [
+        "z", 
+        "sqlite3.0"
+    ], 
+    "java_sourcepaths": [], 
+    "java_res_dirs": [], 
+    "type": "app", 
+    "java_libs": [], 
+    "defines": {
+        "NDEBUG": 1, 
+        "NS_BLOCK_ASSERTIONS": 1, 
+        "__IPHONE_OS_VERSION_MIN_REQUIRED": 40300
+    }
+}

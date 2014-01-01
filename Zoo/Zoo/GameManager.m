@@ -14,7 +14,6 @@ static GameManager *sharedInstance = nil;
     }
     return sharedInstance;
 }
-
  
 // We can still have a regular init method, that will get called the first time the Singleton is used.
 - (id)init

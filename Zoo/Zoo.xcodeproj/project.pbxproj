@@ -480,11 +480,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93CAD252158E9C4C00F4EC4C /* AudioToolbox.framework in Frameworks */,
 				938FFD9315E01665009E8257 /* libsqlite3.0.dylib in Frameworks */,
 				93CAD24C158E9C4C00F4EC4C /* QuartzCore.framework in Frameworks */,
 				93CAD24E158E9C4C00F4EC4C /* OpenGLES.framework in Frameworks */,
 				93CAD250158E9C4C00F4EC4C /* OpenAL.framework in Frameworks */,
-				93CAD252158E9C4C00F4EC4C /* AudioToolbox.framework in Frameworks */,
 				93CAD254158E9C4C00F4EC4C /* AVFoundation.framework in Frameworks */,
 				93CAD256158E9C4C00F4EC4C /* UIKit.framework in Frameworks */,
 				93CAD258158E9C4C00F4EC4C /* Foundation.framework in Frameworks */,
@@ -1023,7 +1023,7 @@
 		93CAD23E158E9C4C00F4EC4C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0460;
+				LastUpgradeCheck = 0500;
 			};
 			buildConfigurationList = 93CAD241158E9C4C00F4EC4C /* Build configuration list for PBXProject "Zoo" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -1209,8 +1209,9 @@
 		93CAD3D9158E9C4E00F4EC4C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -1225,9 +1226,12 @@
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "4AF79503-396C-4A03-BF18-31C3A731C5D9";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4AF79503-396C-4A03-BF18-31C3A731C5D9";
 				SDKROOT = iphoneos;
@@ -1238,8 +1242,9 @@
 		93CAD3DA158E9C4E00F4EC4C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -1252,7 +1257,9 @@
 				);
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				PROVISIONING_PROFILE = "4AF79503-396C-4A03-BF18-31C3A731C5D9";
@@ -1267,6 +1274,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Aaron Morais (9H7KMKFCSH)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Aaron Morais (9H7KMKFCSH)";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1279,6 +1288,8 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "Wild Express";
+				PROVISIONING_PROFILE = "7EDB48B2-0998-4C93-B34B-28DC27722F9B";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7EDB48B2-0998-4C93-B34B-28DC27722F9B";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1288,6 +1299,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Aaron Morais (9H7KMKFCSH)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Aaron Morais (9H7KMKFCSH)";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Zoo/Prefix.pch;
@@ -1299,6 +1312,8 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "Wild Express";
+				PROVISIONING_PROFILE = "7EDB48B2-0998-4C93-B34B-28DC27722F9B";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7EDB48B2-0998-4C93-B34B-28DC27722F9B";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};

@@ -88,6 +88,11 @@
 - (id)initAsGameOver:(int)score {
     self = [self init];
     if (self) {
+        CCLabelTTF *gameOverLabel = [[CCLabelTTF alloc] initWithString:@"Game Over!" fontName:@"Aharoni" fontSize:55.0f];
+        gameOverLabel.ignoreAnchorPointForPosition = YES;
+        gameOverLabel.position = ccp(_winSize.width * 0.125, _winSize.height * 0.75);
+        [self addChild:gameOverLabel];
+        
         _userScoreHeader = [[CCLabelTTF alloc] initWithString:@"your score:" fontName:@"Aharoni" fontSize:40.0f];
         _userScoreHeader.ignoreAnchorPointForPosition = YES;
         _userScoreHeader.position = ccp(_winSize.width * 0.125, _winSize.height * 0.63);

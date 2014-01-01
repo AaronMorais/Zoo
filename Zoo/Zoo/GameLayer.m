@@ -11,6 +11,7 @@
 #import "ABGameKitHelper.h"
 #import "Utility.h"
 #import "ActionManager.h"
+#import <AudioToolbox/AudioServices.h>
 
 #define IS_IPHONE_5 ([UIScreen mainScreen].bounds.size.height == 568.0)
 
@@ -364,7 +365,6 @@
                     }
                 }else{
                     [self loseLife];
-                    [self showLoseLifeGradient];
                 }
                 
                 //remove animal
@@ -433,7 +433,7 @@
 }
 
 - (void) showLoseLifeGradient {
-    _fadeLayer = [[RadialGradientLayer alloc] initWithColor:ccc3(255,0,0) fadeIn:NO speed:20 large:YES];
+    _fadeLayer = [[RadialGradientLayer alloc] initWithColor:ccc3(231, 76, 60) fadeIn:NO speed:20 large:YES];
     [self addChild:_fadeLayer z:ElementLevelOverlay];
     [self scheduleOnce:@selector(removeFadeLayer) delay:0.15f];
 }
@@ -500,6 +500,11 @@
     //decrement counter, display visually
     //if 0 lives, wait 0.25 seconds then call game-over function
     _lifeCount--;
+    
+    [self killBG];
+	AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+    [self showLoseLifeGradient];
+    
     if(_lifeCount >= 0){
         [_lifeSprite setDisplayFrame:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:[NSString stringWithFormat:@"%dlives.png",_lifeCount]]];
     }
